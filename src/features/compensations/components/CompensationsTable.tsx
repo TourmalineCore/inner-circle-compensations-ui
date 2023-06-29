@@ -3,6 +3,7 @@ import { formatMoney } from '../../../common/utils/formatMoney';
 
 type CompensationsType = {
   list: { date: string; comment: string; amount: number; isUnpaid: boolean }[],
+  totalUnpaidAmount: number;
 };
 
 function CompensationsTable({
@@ -26,6 +27,10 @@ function CompensationsTable({
         </div>
       ))}
 
+      <div data-cy="compensations-table-row-total">
+        <span>Unpaid</span>
+        <span>{formatMoney(compensations.totalUnpaidAmount)}</span>
+      </div>
     </div>
   );
 }
