@@ -76,6 +76,25 @@ describe('CompensationsTable', () => {
     cy.getByData('compensations-table-row-amount')
       .should('have.class', 'compensations-table__column-amount--paid');
   });
+
+  it('SHOULD render valid amount in row WHEN element have unpaid amount', () => {
+    mountComponent({
+      compensations: {
+        list: [
+          {
+            date: '2023-06-08T11:42:04.467165Z',
+            comment: 'I bought milk',
+            amount: 760,
+            isUnpaid: true,
+          },
+        ],
+        totalUnpaidAmount: 760,
+      },
+    });
+
+    cy.getByData('compensations-table-row-amount')
+      .should('have.class', 'compensations-table__column-amount--unpaid');
+  });
 });
 
 function mountComponent({
