@@ -46,6 +46,18 @@ describe('CompensationsTable', () => {
     cy.getByData('compensations-table-row-total')
       .should('exist');
   });
+
+  it('SHOULD render compensations table with not message WHEN not have data', () => {
+    mountComponent({
+      compensations: {
+        list: [],
+        totalUnpaidAmount: 0,
+      },
+    });
+
+    cy.getByData('compensations-table-no-data')
+      .should('exist');
+  });
 });
 
 function mountComponent({
