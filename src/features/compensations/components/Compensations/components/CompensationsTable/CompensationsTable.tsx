@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import moment from 'moment';
-import { formatMoney } from '../../../common/utils/formatMoney';
+import { formatMoney } from '../../../../../../common/utils/formatMoney';
 
 const NO_DATA = 'Not';
 
