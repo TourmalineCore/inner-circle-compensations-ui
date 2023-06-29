@@ -6,9 +6,22 @@ type CompensationsType = {
   list: { date: string; comment: string; amount: number; isUnpaid: boolean }[],
 };
 
+const mockData = {
+  list: [
+    {
+      date: '2023-06-08T11:42:04.467165Z',
+      comment: 'I bought milk',
+      amount: 760,
+      isUnpaid: false,
+    },
+  ],
+};
+
 describe('CompensationsTable', () => {
-  it('SHOULD render roles table WHEN visit roles page', () => {
-    mountComponent();
+  it('SHOULD render compensations table WHEN visit compensations page', () => {
+    mountComponent({
+      compensations: mockData,
+    });
 
     cy.getByData('compensations-table')
       .should('exist');
@@ -16,16 +29,7 @@ describe('CompensationsTable', () => {
 
   it('SHOULD render compensations table row WHEN have data', () => {
     mountComponent({
-      compensations: {
-        list: [
-          {
-            date: '2023-06-08T11:42:04.467165Z',
-            comment: 'I bought milk',
-            amount: 760,
-            isUnpaid: false,
-          },
-        ],
-      },
+      compensations: mockData,
     });
 
     cy.getByData('compensations-table-row')
@@ -39,6 +43,8 @@ function mountComponent({
   compensations: CompensationsType;
 }) {
   cy.mount(
-    <CompensationsTable compensations={compensations} />,
+    <CompensationsTable
+      compensations={compensations}
+    />,
   );
 }
