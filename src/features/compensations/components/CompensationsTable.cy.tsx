@@ -4,6 +4,7 @@ import CompensationsTable from './CompensationsTable';
 
 type CompensationsType = {
   list: { date: string; comment: string; amount: number; isUnpaid: boolean }[],
+  totalUnpaidAmount: number;
 };
 
 const mockData = {
@@ -15,6 +16,7 @@ const mockData = {
       isUnpaid: false,
     },
   ],
+  totalUnpaidAmount: 760,
 };
 
 describe('CompensationsTable', () => {
@@ -33,6 +35,15 @@ describe('CompensationsTable', () => {
     });
 
     cy.getByData('compensations-table-row')
+      .should('exist');
+  });
+
+  it('SHOULD render compensations table row total WHEN have data', () => {
+    mountComponent({
+      compensations: mockData,
+    });
+
+    cy.getByData('compensations-table-row-total')
       .should('exist');
   });
 });
