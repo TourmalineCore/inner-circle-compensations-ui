@@ -19,7 +19,7 @@ function CompensationsTable({
       {compensations.list.length !== 0 ? (
         <>
           {compensations.list.map(({
-            date, amount, comment,
+            date, amount, comment, isUnpaid,
           }) => (
             <div data-cy="compensations-table-row" key={date}>
               <span data-cy="compensations-table-row-month">{moment(date).format('MMMM YYYY')}</span>
@@ -27,7 +27,9 @@ function CompensationsTable({
               <span data-cy="compensations-table-row-comment">{comment}</span>
               <span
                 data-cy="compensations-table-row-amount"
-                className={clsx('compensations-table__column-amount compensations-table__column-amount--paid')}
+                className={clsx('compensations-table__column-amount compensations-table__column-amount--paid', {
+                  'compensations-table__column-amount--unpaid': isUnpaid,
+                })}
               >
                 {formatMoney(amount)}
               </span>
