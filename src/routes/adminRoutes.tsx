@@ -13,6 +13,7 @@ import {
   rolesSidebarRoutes,
   sidebarAccountManagement,
 } from '../features/account-management/routers';
+import { compensationsRoutes, compensationsSidebarRoutes } from '../features/compensations/routes';
 
 export function getAdminRoutes(accessPermissions: Map<keyof typeof Permission, boolean>) {
   const routes: {
@@ -21,8 +22,9 @@ export function getAdminRoutes(accessPermissions: Map<keyof typeof Permission, b
     Component: () => JSX.Element;
   }[] = [];
 
-  // ToDo
+  routes.push(...compensationsRoutes);
 
+  // ToDo
   console.log('accessPermissions', accessPermissions);
 
   return routes;
@@ -44,6 +46,8 @@ export function getSidebarRoutes(accessPermissions: Map<keyof typeof Permission,
   if (accessPermissions.get('ViewContacts') || accessPermissions.get('ViewSalaryAndDocumentsData')) {
     routes.push(...employeesSidebarRoutes);
   }
+
+  routes.push(...compensationsSidebarRoutes);
 
   if (accessPermissions.get('ViewAccounts') && accessPermissions.get('ViewRoles')) {
     copyAccountManagement.routes = [accountsSidebarRoutes, rolesSidebarRoutes];
