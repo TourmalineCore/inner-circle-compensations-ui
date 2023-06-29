@@ -58,6 +58,24 @@ describe('CompensationsTable', () => {
     cy.getByData('compensations-table-no-data')
       .should('exist');
   });
+
+  it('SHOULD render valid data for all elements in row WHEN have data', () => {
+    mountComponent({
+      compensations: mockData,
+    });
+
+    cy.getByData('compensations-table-row-month')
+      .should('have.text', 'June 2023');
+
+    cy.getByData('compensations-table-row-date')
+      .should('have.text', '08.06.2023');
+
+    cy.getByData('compensations-table-row-comment')
+      .should('have.text', 'I bought milk');
+
+    cy.getByData('compensations-table-row-amount')
+      .should('have.class', 'compensations-table__column-amount--paid');
+  });
 });
 
 function mountComponent({
