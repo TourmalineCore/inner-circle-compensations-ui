@@ -15,8 +15,8 @@ function CompensationsContent() {
 
   return (
     <section data-cy="compensations">
-      <CompensationsFilter />
-      <CompensationsTable />
+      <CompensationsFilter className="compensations__filter" />
+      <CompensationsTable className="compensations__table" />
     </section>
   );
 
