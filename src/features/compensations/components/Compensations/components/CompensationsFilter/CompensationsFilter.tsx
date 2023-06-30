@@ -1,4 +1,10 @@
+import {
+  MouseEvent, useContext,
+} from 'react';
+
 import { Button } from '@tourmalinecore/react-tc-ui-kit';
+import { observer } from 'mobx-react-lite';
+import CompensationsStateContext from '../../state/CompensationsStateContext';
 
 const filterElements = [
   {
@@ -12,6 +18,8 @@ const filterElements = [
 ];
 
 function CompensationsFilter() {
+  const compensationsState = useContext(CompensationsStateContext);
+
   return (
     <div data-cy="compensations-filter-inner">
       {filterElements.map((item) => (
@@ -20,6 +28,7 @@ function CompensationsFilter() {
           data-cy="compensations-filter"
           key={item.id}
           id={item.id}
+          onClick={(event: MouseEvent<HTMLButtonElement>) => compensationsState.updateFilterTerm(event.currentTarget.id)}
         >
           {item.name}
         </Button>
@@ -28,4 +37,4 @@ function CompensationsFilter() {
   );
 }
 
-export default CompensationsFilter;
+export default observer(CompensationsFilter);
