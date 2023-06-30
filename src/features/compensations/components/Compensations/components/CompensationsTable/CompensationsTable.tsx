@@ -1,27 +1,22 @@
 import clsx from 'clsx';
 import moment from 'moment';
+import { useContext } from 'react';
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
+import CompensationsStateContext from '../../state/CompensationsStateContext';
 
 const NO_DATA = 'No records in this month';
 
-type CompensationsType = {
-  list: { date: string; comment: string; amount: number; isUnpaid: boolean }[],
-  totalUnpaidAmount: number;
-};
+function CompensationsTable() {
+  const compensationsState = useContext(CompensationsStateContext);
 
-function CompensationsTable({
-  compensations,
-}: {
-  compensations: CompensationsType,
-}) {
   return (
     <div
       data-cy="compensations-table"
       className="compensations-table"
     >
-      {compensations.list.length !== 0 ? (
+      {compensationsState.allCompensations.list.length !== 0 ? (
         <>
-          {compensations.list.map(({
+          {compensationsState.allCompensations.list.map(({
             date, amount, comment, isUnpaid,
           }) => (
             <div
@@ -53,7 +48,7 @@ function CompensationsTable({
             className="compensations-table__row compensations-table__row-total"
           >
             <span>Unpaid</span>
-            <span className="compensations-table__total-amount">{formatMoney(compensations.totalUnpaidAmount)}</span>
+            <span className="compensations-table__total-amount">{formatMoney(compensationsState.allCompensations.totalUnpaidAmount)}</span>
           </div>
         </>
       ) : (

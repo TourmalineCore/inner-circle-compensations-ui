@@ -1,4 +1,7 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../../../cypress/support/commands';
+import CompensationsState from '../../state/CompensationsState';
+import CompensationsStateContext from '../../state/CompensationsStateContext';
 
 import CompensationsTable from './CompensationsTable';
 
@@ -102,9 +105,15 @@ function mountComponent({
 }: {
   compensations: CompensationsType;
 }) {
+  const compensationsState = new CompensationsState();
+
+  compensationsState.initialize({
+    loadedCompensations: compensations,
+  });
+
   cy.mount(
-    <CompensationsTable
-      compensations={compensations}
-    />,
+    <CompensationsStateContext.Provider value={compensationsState}>
+      <CompensationsTable />
+    </CompensationsStateContext.Provider>,
   );
 }
