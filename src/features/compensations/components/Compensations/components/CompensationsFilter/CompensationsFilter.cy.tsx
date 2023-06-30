@@ -9,6 +9,14 @@ describe('CompensationsTable', () => {
     cy.getByData('compensations-filter-inner')
       .should('exist');
   });
+
+  it('SHOULD render elements in component WHEN have data about filters', () => {
+    mountComponent();
+
+    cy.getByData('compensations-filter-inner')
+      .children()
+      .should('have.length', 2);
+  });
 });
 
 function mountComponent() {
