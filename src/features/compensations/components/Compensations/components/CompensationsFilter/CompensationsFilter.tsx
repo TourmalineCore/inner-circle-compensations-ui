@@ -18,11 +18,15 @@ const filterElements = [
   },
 ];
 
-function CompensationsFilter() {
+function CompensationsFilter({
+  className = '',
+}: {
+  className?: string;
+}) {
   const compensationsState = useContext(CompensationsStateContext);
 
   return (
-    <div className="compensations-filter" data-cy="compensations-filter-inner">
+    <div className={`compensations-filter ${className}`} data-cy="compensations-filter-inner">
       {filterElements.map((item) => (
         <Button
           type="button"
