@@ -4,18 +4,20 @@ import { API_ROOT, LINK_TO_COMPENSATIONS_SERVICE } from '../../../../common/conf
 
 import Compensations from './Compensations';
 
-const GET_ROLES = `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}all`;
+const GET_COMPENSATIONS = `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}all`;
 
 const initialData = {
   list: [
     {
-      date: '2023-06-08T11:42:04.467165Z',
+      dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
+      dateCompensation: '2023-06-08T11:42:04.467165Z',
       comment: 'I bought milk',
       amount: 760,
       isUnpaid: false,
     },
     {
-      date: '2023-06-08T11:42:04.467165Z',
+      dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
+      dateCompensation: '2023-06-08T11:42:04.467165Z',
       comment: 'I bought milk milk',
       amount: 760,
       isUnpaid: true,
@@ -26,7 +28,7 @@ const initialData = {
 
 describe('Compensations', () => {
   it('SHOULD render compensations WHEN visit compensations page', () => {
-    cy.intercept('GET', GET_ROLES, initialData);
+    cy.intercept('GET', GET_COMPENSATIONS, {});
 
     mountComponent();
 
@@ -34,8 +36,8 @@ describe('Compensations', () => {
       .should('exist');
   });
 
-  it('SHOULD render compensations WHEN visit compensations page', () => {
-    cy.intercept('GET', GET_ROLES, initialData);
+  it('SHOULD render compensations with data WHEN have data', () => {
+    cy.intercept('GET', GET_COMPENSATIONS, initialData);
 
     mountComponent();
 
@@ -44,7 +46,7 @@ describe('Compensations', () => {
   });
 
   it('SHOULD render compensations WHEN visit compensations page', () => {
-    cy.intercept('GET', GET_ROLES, initialData);
+    cy.intercept('GET', GET_COMPENSATIONS, initialData);
 
     mountComponent();
 
