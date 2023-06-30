@@ -1,6 +1,8 @@
+import Compensations from './components/Compensations/Compensations';
+
 function CompensationsPage() {
   return (
-    <div>CompensationsPage</div>
+    <Compensations />
   );
 }
 
