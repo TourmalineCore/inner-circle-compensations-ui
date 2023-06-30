@@ -6,7 +6,7 @@ import Compensations from './Compensations';
 
 const GET_ROLES = `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}all`;
 
-const mockData = {
+const initialData = {
   list: [
     {
       date: '2023-06-08T11:42:04.467165Z',
@@ -26,7 +26,7 @@ const mockData = {
 
 describe('Compensations', () => {
   it('SHOULD render compensations WHEN visit compensations page', () => {
-    cy.intercept('GET', GET_ROLES, mockData);
+    cy.intercept('GET', GET_ROLES, initialData);
 
     mountComponent();
 
@@ -35,7 +35,7 @@ describe('Compensations', () => {
   });
 
   it('SHOULD render compensations WHEN visit compensations page', () => {
-    cy.intercept('GET', GET_ROLES, mockData);
+    cy.intercept('GET', GET_ROLES, initialData);
 
     mountComponent();
 
@@ -44,7 +44,7 @@ describe('Compensations', () => {
   });
 
   it('SHOULD render compensations WHEN visit compensations page', () => {
-    cy.intercept('GET', GET_ROLES, mockData);
+    cy.intercept('GET', GET_ROLES, initialData);
 
     mountComponent();
 

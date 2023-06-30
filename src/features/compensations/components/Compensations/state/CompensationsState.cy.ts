@@ -2,7 +2,7 @@ import '../../../../../../cypress/support/commands';
 
 import CompensationsState from './CompensationsState';
 
-describe('RolesPageState', () => {
+describe('CompensationsState', () => {
   it('SHOULD return all compensations WHEN initialized', () => {
     const compensationsState = new CompensationsState();
 
