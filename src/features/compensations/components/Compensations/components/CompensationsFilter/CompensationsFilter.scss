@@ -3,7 +3,7 @@
     @include tc-button-reset;
   }
 
-  &__button-active {
+  &__button--active {
     background-color: $color-white-smoke;
   }
 }
