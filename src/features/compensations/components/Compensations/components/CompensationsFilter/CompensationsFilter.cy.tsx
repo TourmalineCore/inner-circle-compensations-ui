@@ -6,7 +6,7 @@ import CompensationsStateContext from '../../state/CompensationsStateContext';
 
 import CompensationsFilter from './CompensationsFilter';
 
-describe('CompensationsTable', () => {
+describe('CompensationsFilter', () => {
   it('SHOULD render compensations filter WHEN visit compensations page', () => {
     mountComponent();
 
