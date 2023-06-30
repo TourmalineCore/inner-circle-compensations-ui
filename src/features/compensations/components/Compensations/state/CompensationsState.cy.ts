@@ -23,4 +23,12 @@ describe('RolesPageState', () => {
     expect(compensationsState.allCompensations.list).to.has.lengthOf(1);
     expect(compensationsState.allCompensations.totalUnpaidAmount).eq(760);
   });
+
+  it('SHOULD get value filter WHEN called update', () => {
+    const compensationsState = new CompensationsState();
+
+    compensationsState.updateFilterTerm('all');
+
+    expect(compensationsState.filterTerm).eq('all');
+  });
 });
