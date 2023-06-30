@@ -12,7 +12,7 @@ const initialData = {
       dateCompensation: '2023-06-08T11:42:04.467165Z',
       comment: 'I bought milk',
       amount: 760,
-      isUnpaid: false,
+      isUnpaid: true,
     },
   ],
   totalUnpaidAmount: 760,
@@ -73,7 +73,7 @@ describe('CompensationsTable', () => {
       .should('have.text', 'I bought milk');
 
     cy.getByData('compensations-table-row-amount')
-      .should('have.class', 'compensations-table__column-amount--paid');
+      .should('have.class', 'compensations-table__column-amount--unpaid');
   });
 
   it('SHOULD render valid amount in row WHEN element have unpaid amount', () => {

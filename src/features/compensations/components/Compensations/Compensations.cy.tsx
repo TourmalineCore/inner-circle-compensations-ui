@@ -45,7 +45,7 @@ describe('Compensations', () => {
       .should('have.length', 1);
   });
 
-  it('SHOULD render compensations WHEN visit compensations page', () => {
+  it('SHOULD render compensations  with data WHEN update filter', () => {
     cy.intercept('GET', GET_COMPENSATIONS, initialData);
 
     mountComponent();
