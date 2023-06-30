@@ -1,12 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 
-type CompensationsType = {
-  list: { date: string; comment: string; amount: number; isUnpaid: boolean }[],
-  totalUnpaidAmount: number;
-};
-
 class CompensationsState {
-  private _compensations:CompensationsType = {
+  private _compensations: CompensationsType = {
     list: [],
     totalUnpaidAmount: 0,
   };
@@ -42,16 +37,11 @@ class CompensationsState {
 }
 
 export function getFiltering(
-  employee: {
-    date: string;
-    comment: string;
-    amount: number;
-    isUnpaid: boolean
-  },
+  employee: CompensationsItemType,
   filterTerm: string,
 ) {
   if (filterTerm === 'unpaid') {
-    return !employee.isUnpaid;
+    return employee.isUnpaid;
   }
 
   return employee;

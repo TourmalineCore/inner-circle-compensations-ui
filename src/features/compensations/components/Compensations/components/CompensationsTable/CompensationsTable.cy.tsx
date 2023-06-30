@@ -5,12 +5,7 @@ import CompensationsStateContext from '../../state/CompensationsStateContext';
 
 import CompensationsTable from './CompensationsTable';
 
-type CompensationsType = {
-  list: { date: string; comment: string; amount: number; isUnpaid: boolean }[],
-  totalUnpaidAmount: number;
-};
-
-const mockData = {
+const initialData = {
   list: [
     {
       date: '2023-06-08T11:42:04.467165Z',
@@ -25,7 +20,7 @@ const mockData = {
 describe('CompensationsTable', () => {
   it('SHOULD render compensations table WHEN visit compensations page', () => {
     mountComponent({
-      compensations: mockData,
+      compensations: initialData,
     });
 
     cy.getByData('compensations-table')
@@ -34,7 +29,7 @@ describe('CompensationsTable', () => {
 
   it('SHOULD render compensations table row WHEN have data', () => {
     mountComponent({
-      compensations: mockData,
+      compensations: initialData,
     });
 
     cy.getByData('compensations-table-row')
@@ -43,7 +38,7 @@ describe('CompensationsTable', () => {
 
   it('SHOULD render compensations table row total WHEN have data', () => {
     mountComponent({
-      compensations: mockData,
+      compensations: initialData,
     });
 
     cy.getByData('compensations-table-row-total')
@@ -64,7 +59,7 @@ describe('CompensationsTable', () => {
 
   it('SHOULD render valid data for all elements in row WHEN have data', () => {
     mountComponent({
-      compensations: mockData,
+      compensations: initialData,
     });
 
     cy.getByData('compensations-table-row-month')
