@@ -14,8 +14,14 @@ const mockData = {
       amount: 760,
       isUnpaid: false,
     },
+    {
+      date: '2023-06-08T11:42:04.467165Z',
+      comment: 'I bought milk milk',
+      amount: 760,
+      isUnpaid: true,
+    },
   ],
-  totalUnpaidAmount: 760,
+  totalUnpaidAmount: 1520,
 };
 
 describe('Compensations', () => {
@@ -26,6 +32,28 @@ describe('Compensations', () => {
 
     cy.getByData('compensations')
       .should('exist');
+  });
+
+  it('SHOULD render compensations WHEN visit compensations page', () => {
+    cy.intercept('GET', GET_ROLES, mockData);
+
+    mountComponent();
+
+    cy.getByData('compensations-table-row')
+      .should('have.length', 1);
+  });
+
+  it('SHOULD render compensations WHEN visit compensations page', () => {
+    cy.intercept('GET', GET_ROLES, mockData);
+
+    mountComponent();
+
+    cy.getByData('compensations-filter')
+      .first()
+      .click();
+
+    cy.getByData('compensations-table-row')
+      .should('have.length', 2);
   });
 });
 
