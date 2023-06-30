@@ -11,6 +11,8 @@ class CompensationsState {
     totalUnpaidAmount: 0,
   };
 
+  private _filterTerm = 'unpaid';
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -19,12 +21,20 @@ class CompensationsState {
     return this._compensations;
   }
 
+  get filterTerm() {
+    return this._filterTerm;
+  }
+
   initialize({
     loadedCompensations,
   }: {
     loadedCompensations: CompensationsType,
   }) {
     this._compensations = loadedCompensations;
+  }
+
+  updateFilterTerm(newFilterTerm: string) {
+    this._filterTerm = newFilterTerm;
   }
 }
 
