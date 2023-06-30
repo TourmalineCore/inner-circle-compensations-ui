@@ -1,9 +1,9 @@
 .compensations-filter {
   &__button {
     @include tc-button-reset;
-  }
 
-  &__button-active {
-    background-color: $color-white-smoke;
+    &--active {
+      background-color: $color-white-smoke;
+    }
   }
 }

@@ -32,7 +32,7 @@ function CompensationsFilter({
           type="button"
           data-cy="compensations-filter"
           className={clsx('compensations-filter__button', {
-            'compensations-filter__button-active': item.id === compensationsState.filterTerm,
+            'compensations-filter__button--active': item.id === compensationsState.filterTerm,
           })}
           key={item.id}
           id={item.id}

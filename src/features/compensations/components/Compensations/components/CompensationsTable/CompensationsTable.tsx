@@ -22,15 +22,15 @@ function CompensationsTable({
       {compensationsState.allCompensations.list.length !== 0 ? (
         <>
           {compensationsState.allCompensations.list.map(({
-            date, amount, comment, isUnpaid,
+            dateCompensation, dateCreateCompensation, amount, comment, isUnpaid,
           }) => (
             <div
               data-cy="compensations-table-row"
               className="compensations-table__row"
-              key={date}
+              key={dateCreateCompensation}
             >
-              <span data-cy="compensations-table-row-month">{moment(date).format('MMMM YYYY')}</span>
-              <span data-cy="compensations-table-row-date">{moment(date).format('DD.MM.YYYY')}</span>
+              <span data-cy="compensations-table-row-month">{moment(dateCompensation).format('MMMM YYYY')}</span>
+              <span data-cy="compensations-table-row-date">{moment(dateCreateCompensation).format('DD.MM.YYYY')}</span>
               <span
                 data-cy="compensations-table-row-comment"
                 className="compensations-table__column-comment"
@@ -39,8 +39,9 @@ function CompensationsTable({
               </span>
               <span
                 data-cy="compensations-table-row-amount"
-                className={clsx('compensations-table__column-amount compensations-table__column-amount--paid', {
+                className={clsx('compensations-table__column-amount', {
                   'compensations-table__column-amount--unpaid': isUnpaid,
+                  'compensations-table__column-amount--paid': !isUnpaid,
                 })}
               >
                 {formatMoney(amount)}
@@ -59,7 +60,7 @@ function CompensationsTable({
       ) : (
         <div
           data-cy="compensations-table-no-data"
-          className="compensations-table__not-data"
+          className="compensations-table__no-data"
         >
           {NO_DATA}
         </div>

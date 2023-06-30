@@ -1,4 +1,10 @@
-type CompensationsItemType = { date: string; comment: string; amount: number; isUnpaid: boolean };
+type CompensationsItemType = {
+  dateCreateCompensation: string;
+  dateCompensation: string;
+  comment: string;
+  amount: number;
+  isUnpaid: boolean;
+};
 
 type CompensationsType = {
   list: CompensationsItemType[],

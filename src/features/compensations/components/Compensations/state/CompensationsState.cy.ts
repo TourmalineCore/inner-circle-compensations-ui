@@ -10,10 +10,11 @@ describe('CompensationsState', () => {
       loadedCompensations: {
         list: [
           {
-            date: '2023-06-08T11:42:04.467165Z',
+            dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
+            dateCompensation: '2023-06-08T11:42:04.467165Z',
             comment: 'I bought milk',
             amount: 760,
-            isUnpaid: false,
+            isUnpaid: true,
           },
         ],
         totalUnpaidAmount: 760,
