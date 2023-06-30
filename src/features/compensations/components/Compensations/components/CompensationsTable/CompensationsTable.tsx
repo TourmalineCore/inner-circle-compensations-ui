@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import moment from 'moment';
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
 
-const NO_DATA = 'Not';
+const NO_DATA = 'No records in this month';
 
 type CompensationsType = {
   list: { date: string; comment: string; amount: number; isUnpaid: boolean }[],
