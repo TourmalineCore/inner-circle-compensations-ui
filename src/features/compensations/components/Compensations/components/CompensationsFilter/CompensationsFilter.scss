@@ -1,0 +1,13 @@
+.compensations-filter {
+  &__button {
+    @include tc-button-reset;
+
+    & + & {
+      margin-left: 10px;
+    }
+  }
+
+  &__button-active {
+    background-color: $color-white-smoke;
+  }
+}
