@@ -89,4 +89,14 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allCompensations[0].comment).eq('');
     expect(createCompensationsState.allCompensations[0].amount).eq(0);
   });
+
+  it('SHOULD return compensation WHEN called remove compensation', () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    createCompensationsState.addCompensation();
+    expect(createCompensationsState.allCompensations).to.has.lengthOf(1);
+
+    createCompensationsState.removeCompensation(1);
+    expect(createCompensationsState.allCompensations).to.has.lengthOf(0);
+  });
 });
