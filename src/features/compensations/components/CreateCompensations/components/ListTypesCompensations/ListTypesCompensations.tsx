@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { MouseEvent, useContext } from 'react';
 import CreateCompensationsStateContext from '../../state/CreateCompensationsStateContext';
 
 function ListTypesCompensations() {
@@ -12,6 +12,7 @@ function ListTypesCompensations() {
             data-cy={`type-compensation-${value}`}
             type="button"
             id={value}
+            onClick={(event: MouseEvent<HTMLButtonElement>) => createCompensationsState.addCompensation(event.currentTarget.id)}
           >
             {label}
           </button>
