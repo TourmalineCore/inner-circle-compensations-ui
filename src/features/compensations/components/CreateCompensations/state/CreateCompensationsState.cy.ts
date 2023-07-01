@@ -67,4 +67,15 @@ describe('CreateCompensationsState', () => {
 
     expect(createCompensationsState.dateCompensation).eq('2023-06-08T11:42:04.467165Z');
   });
+
+  it('SHOULD return compensation WHEN called adding compensation not use type', () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    createCompensationsState.addCompensation();
+
+    expect(createCompensationsState.allCompensations).to.has.lengthOf(1);
+    expect(createCompensationsState.allCompensations[0].type).eq('');
+    expect(createCompensationsState.allCompensations[0].comment).eq('');
+    expect(createCompensationsState.allCompensations[0].amount).eq(0);
+  });
 });
