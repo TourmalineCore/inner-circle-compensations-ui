@@ -68,7 +68,7 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.dateCompensation).eq('2023-06-08T11:42:04.467165Z');
   });
 
-  it('SHOULD return compensation WHEN called adding compensation not use type', () => {
+  it('SHOULD return compensation WHEN called adding compensation', () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.addCompensation();
@@ -100,7 +100,7 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allCompensations).to.has.lengthOf(0);
   });
 
-  it('SHOULD return compensation with new data WHEN called update compensation', () => {
+  it('SHOULD return compensation with new data WHEN called update the created compensation', () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.addCompensation();
