@@ -1,0 +1,21 @@
+.list-types-compensations {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  &__button {
+    outline: none;
+    border: 2px solid #aaa;
+    border-radius: 20px;
+    padding: 10px 24px;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover,
+    &:active,
+    &:focus {
+      opacity: 0.5;
+    }
+  }
+}
