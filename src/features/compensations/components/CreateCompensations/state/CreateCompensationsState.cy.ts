@@ -78,4 +78,15 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allCompensations[0].comment).eq('');
     expect(createCompensationsState.allCompensations[0].amount).eq(0);
   });
+
+  it('SHOULD return compensation WHEN called adding compensation use type "english"', () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    createCompensationsState.addCompensation('english');
+
+    expect(createCompensationsState.allCompensations).to.has.lengthOf(1);
+    expect(createCompensationsState.allCompensations[0].type).eq('english');
+    expect(createCompensationsState.allCompensations[0].comment).eq('');
+    expect(createCompensationsState.allCompensations[0].amount).eq(0);
+  });
 });
