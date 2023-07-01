@@ -68,6 +68,14 @@ describe('ListTypesCompensations', () => {
       .children()
       .should('have.length', 11);
   });
+
+  it('SHOULD have focus element "Milk" WHEN click on type "milk"', () => {
+    mountComponent();
+
+    cy.getByData('type-compensation-milk')
+      .click()
+      .focused();
+  });
 });
 
 function mountComponent() {
