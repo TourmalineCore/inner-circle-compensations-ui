@@ -62,6 +62,24 @@ class CreateCompensations {
   removeCompensation(compensationId: number) {
     this._compensations = this._compensations.filter((compensation) => compensation.id !== compensationId);
   }
+
+  updateCompensation({
+    id,
+    type,
+    comment,
+    amount,
+  }: {
+    id: number;
+    type: string;
+    comment: string;
+    amount: number
+  }) {
+    const compensationItem = this._compensations.find((compensation) => compensation.id === id);
+
+    compensationItem!.type = type;
+    compensationItem!.comment = comment;
+    compensationItem!.amount = amount;
+  }
 }
 
 export default CreateCompensations;
