@@ -8,6 +8,15 @@ class CreateCompensations {
 
   private _dateCompensation: Date | string = new Date();
 
+  private _nextSourceFeedId: number = 1;
+
+  private _compensations: {
+    id: number;
+    type: string;
+    comment: string;
+    amount: number
+  }[] = [];
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -18,6 +27,10 @@ class CreateCompensations {
 
   get dateCompensation() {
     return this._dateCompensation;
+  }
+
+  get allCompensations() {
+    return this._compensations;
   }
 
   initializeTypes({
@@ -33,6 +46,17 @@ class CreateCompensations {
 
   updateDate(newDate: Date | string) {
     this._dateCompensation = newDate;
+  }
+
+  addCompensation() {
+    this._compensations.push({
+      id: this._nextSourceFeedId,
+      type: '',
+      comment: '',
+      amount: 0,
+    });
+
+    this._nextSourceFeedId++;
   }
 }
 
