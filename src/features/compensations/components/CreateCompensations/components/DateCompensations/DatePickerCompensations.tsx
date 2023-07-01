@@ -9,10 +9,11 @@ const DatePickerCompensationsCustomElement = forwardRef<HTMLButtonElement, HTMLP
     type="button"
     onClick={onClick}
     ref={ref}
+    className="date-compensations__button"
     data-cy="date-picker-compensations-select"
   >
     <span data-cy="date-picker-compensations-result">{value}</span>
-    <span>&or;</span>
+    <span className="date-compensations__arrow">&or;</span>
   </button>
 ));
 
@@ -21,9 +22,10 @@ function DatePickerCompensations() {
 
   return (
     <div
+      className="date-picker-compensations"
       data-cy="date-picker-compensations"
     >
-      <span>Month:</span>
+      <span className="date-compensations__title">Month:</span>
       <DatePicker
         selected={createCompensationsState.dateCompensation}
         onChange={(date: Date) => createCompensationsState.updateDate(date)}
