@@ -6,12 +6,18 @@ class CreateCompensations {
     value: string;
   }[] = [];
 
+  private _dateCompensation: Date | string = new Date();
+
   constructor() {
     makeAutoObservable(this);
   }
 
   get allTypes() {
     return this._types;
+  }
+
+  get dateCompensation() {
+    return this._dateCompensation;
   }
 
   initializeTypes({
@@ -23,6 +29,10 @@ class CreateCompensations {
     }[]
   }) {
     this._types = loadedTypes;
+  }
+
+  updateDate(newDate: Date | string) {
+    this._dateCompensation = newDate;
   }
 }
 
