@@ -58,6 +58,10 @@ class CreateCompensations {
 
     this._nextSourceFeedId++;
   }
+
+  removeCompensation(compensationId: number) {
+    this._compensations = this._compensations.filter((compensation) => compensation.id !== compensationId);
+  }
 }
 
 export default CreateCompensations;
