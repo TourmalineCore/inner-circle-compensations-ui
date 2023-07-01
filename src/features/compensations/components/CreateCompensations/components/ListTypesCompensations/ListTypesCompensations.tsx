@@ -1,4 +1,5 @@
 import { MouseEvent, useContext } from 'react';
+import { observer } from 'mobx-react-lite';
 import CreateCompensationsStateContext from '../../state/CreateCompensationsStateContext';
 
 function ListTypesCompensations() {
@@ -26,4 +27,4 @@ function ListTypesCompensations() {
   );
 }
 
-export default ListTypesCompensations;
+export default observer(ListTypesCompensations);
