@@ -54,7 +54,7 @@ const INITIAL_TYPES = [
 ];
 
 describe('ListTypesCompensations', () => {
-  it('SHOULD render list types compensations WHEN visit compensations page', () => {
+  it('SHOULD render component WHEN visit compensations page', () => {
     mountComponent();
 
     cy.getByData('list-types-compensations')
