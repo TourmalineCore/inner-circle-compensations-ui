@@ -29,6 +29,22 @@ describe('ListTypesCompensations', () => {
     cy.getByData('date-picker-compensations-result')
       .should('have.text', 'January 2024');
   });
+
+  it('SHOULD render correct date WHEN select next year', () => {
+    mountComponent();
+
+    cy.getByData('date-picker-compensations-select')
+      .click();
+
+    cy.get('[aria-label="Previous Year"]')
+      .click();
+
+    cy.contains('Feb')
+      .click();
+
+    cy.getByData('date-picker-compensations-result')
+      .should('have.text', 'February 2022');
+  });
 });
 
 function mountComponent() {
