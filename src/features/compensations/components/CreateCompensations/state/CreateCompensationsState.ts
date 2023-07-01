@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 
-class CreateCompensations {
+class CreateCompensationsState {
   private _types: {
     label: string;
     value: string;
@@ -82,4 +82,4 @@ class CreateCompensations {
   }
 }
 
-export default CreateCompensations;
+export default CreateCompensationsState;
