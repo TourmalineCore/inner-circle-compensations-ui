@@ -99,4 +99,21 @@ describe('CreateCompensationsState', () => {
     createCompensationsState.removeCompensation(1);
     expect(createCompensationsState.allCompensations).to.has.lengthOf(0);
   });
+
+  it('SHOULD return compensation with new data WHEN called update compensation', () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    createCompensationsState.addCompensation();
+
+    createCompensationsState.updateCompensation({
+      id: 1,
+      comment: 'Test comment',
+      type: 'english',
+      amount: 100,
+    });
+
+    expect(createCompensationsState.allCompensations[0].type).eq('english');
+    expect(createCompensationsState.allCompensations[0].comment).eq('Test comment');
+    expect(createCompensationsState.allCompensations[0].amount).eq(100);
+  });
 });
