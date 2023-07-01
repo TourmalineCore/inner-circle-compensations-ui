@@ -1,0 +1,31 @@
+.date-compensations {
+  display: flex;
+  align-items: center;
+
+  &__button {
+    outline: none;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active {
+      opacity: 0.5;
+    }
+  }
+
+  &__arrow {
+    margin-left: 8px;
+  }
+
+  &__title {
+    margin-right: 16px;
+    color: #838383;
+  }
+}
+
+.react-datepicker-wrapper {
+  width: auto;
+}

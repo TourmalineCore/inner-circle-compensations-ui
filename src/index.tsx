@@ -4,6 +4,7 @@ import 'react-app-polyfill/stable';
 // above code required for ie11 support
 
 import 'react-loading-skeleton/dist/skeleton.css';
+import 'react-datepicker/dist/react-datepicker.css';
 import '@tourmalinecore/react-tc-ui-kit/es/index.css';
 import '@tourmalinecore/react-tc-modal/es/index.css';
 import '@tourmalinecore/react-table-responsive/es/index.css';
