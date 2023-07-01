@@ -48,10 +48,10 @@ class CreateCompensations {
     this._dateCompensation = newDate;
   }
 
-  addCompensation() {
+  addCompensation(type?: string) {
     this._compensations.push({
       id: this._nextSourceFeedId,
-      type: '',
+      type: type || '',
       comment: '',
       amount: 0,
     });
