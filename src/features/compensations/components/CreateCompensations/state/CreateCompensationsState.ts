@@ -42,6 +42,10 @@ class CreateCompensationsState {
     return this._compensations;
   }
 
+  get totalCount() {
+    return this._compensations.reduce((accumulator, currentValue) => accumulator + currentValue.amount, 0);
+  }
+
   initializeTypes({
     loadedTypes,
   }: {
