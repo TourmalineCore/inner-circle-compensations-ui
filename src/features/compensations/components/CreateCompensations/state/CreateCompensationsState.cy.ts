@@ -152,11 +152,12 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.totalCount).eq(100);
   });
 
-  //   const createCompensationsState = new CreateCompensationsState();
+  it('SHOULD change isTriedToSubmit WHEN change state', () => {
+    const createCompensationsState = new CreateCompensationsState();
 
-  //   expect(createCompensationsState.isTriedToSubmit).eq(false);
+    expect(createCompensationsState.isTriedToSubmit).eq(false);
 
-  //   createCompensationsState.setIsTriedToSubmit(true);
-  //   expect(createCompensationsState.isTriedToSubmit).eq(true);
-  // });
+    createCompensationsState.setIsTriedToSubmit(true);
+    expect(createCompensationsState.isTriedToSubmit).eq(true);
+  });
 });
