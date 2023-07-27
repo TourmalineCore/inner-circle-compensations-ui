@@ -77,6 +77,19 @@ describe('TableCreateCompensations', () => {
     cy.getByData('date-picker-compensations')
       .should('exist');
   });
+
+  it('SHOULD render create compensations table WHEN visit page', () => {
+    cy.intercept(
+      'GET',
+      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+      INITIAL_TYPES,
+    );
+
+    mountComponent();
+
+    cy.getByData(' table-create-compensations')
+      .should('exist');
+  });
 });
 
 function mountComponent() {
