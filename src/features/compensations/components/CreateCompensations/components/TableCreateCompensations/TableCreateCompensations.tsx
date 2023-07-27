@@ -93,7 +93,7 @@ function TableCreateCompensations() {
       <tfoot>
         <tr data-cy="table-create-compensations-total">
           <td colSpan={2}>Total:</td>
-          <td colSpan={2}>{createCompensationState.totalCount}</td>
+          <td colSpan={2} data-cy="table-create-compensations-sum">{createCompensationState.totalCount}</td>
         </tr>
       </tfoot>
     </table>
