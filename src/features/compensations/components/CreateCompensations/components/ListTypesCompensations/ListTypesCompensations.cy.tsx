@@ -61,7 +61,7 @@ describe('ListTypesCompensations', () => {
       .should('exist');
   });
 
-  it('SHOULD render list type element compensations WHEN have types data', () => {
+  it('SHOULD render list of compensation types WHEN have types data', () => {
     mountComponent();
 
     cy.getByData('list-types-compensations')
@@ -69,7 +69,7 @@ describe('ListTypesCompensations', () => {
       .should('have.length', 11);
   });
 
-  it('SHOULD have focus element "Milk" WHEN click on type "milk"', () => {
+  it('SHOULD have focused element "milk" WHEN click on type "milk"', () => {
     mountComponent();
 
     cy.getByData('type-compensation-milk')

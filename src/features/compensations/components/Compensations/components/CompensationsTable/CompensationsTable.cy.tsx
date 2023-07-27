@@ -28,7 +28,7 @@ describe('CompensationsTable', () => {
       .should('exist');
   });
 
-  it('SHOULD render compensations table row WHEN have data', () => {
+  it('SHOULD render compensations table row WHEN there is data', () => {
     mountComponent({
       compensations: initialData,
     });
@@ -37,7 +37,7 @@ describe('CompensationsTable', () => {
       .should('exist');
   });
 
-  it('SHOULD render compensations table row total WHEN have data', () => {
+  it('SHOULD render compensations table row total WHEN there is data', () => {
     mountComponent({
       compensations: initialData,
     });
@@ -46,7 +46,7 @@ describe('CompensationsTable', () => {
       .should('exist');
   });
 
-  it('SHOULD render compensations table with not message WHEN not have data', () => {
+  it('SHOULD render compensations table with no data message WHEN there is no data', () => {
     mountComponent({
       compensations: {
         list: [],
@@ -58,7 +58,7 @@ describe('CompensationsTable', () => {
       .should('exist');
   });
 
-  it('SHOULD render valid data for all elements in row WHEN have data', () => {
+  it('SHOULD render valid data for all elements in row WHEN there s data', () => {
     mountComponent({
       compensations: initialData,
     });
@@ -76,7 +76,7 @@ describe('CompensationsTable', () => {
       .should('have.class', 'compensations-table__column-amount--unpaid');
   });
 
-  it('SHOULD render valid amount in row WHEN element have unpaid amount', () => {
+  it('SHOULD render valid amount in row WHEN element has unpaid amount', () => {
     mountComponent({
       compensations: {
         list: [
