@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
 import CreateCompensationsStateContext from '../../state/CreateCompensationsStateContext';
 
@@ -23,6 +24,12 @@ function TableCreateCompensations() {
               <select
                 data-cy="table-create-compensations-select"
                 value={type}
+                onChange={(event) => createCompensationState.updateCompensation({
+                  id,
+                  type: event.target.value,
+                  comment,
+                  amount,
+                })}
               >
                 {createCompensationState.allTypes.map(({ value, label }) => (
                   <option
@@ -39,6 +46,12 @@ function TableCreateCompensations() {
               <textarea
                 value={comment}
                 data-cy="table-create-compensations-comment"
+                onChange={(event) => createCompensationState.updateCompensation({
+                  id,
+                  type,
+                  comment: event.target.value,
+                  amount,
+                })}
               />
             </td>
             <td>
@@ -46,6 +59,12 @@ function TableCreateCompensations() {
                 data-cy="table-create-compensations-amount"
                 type="text"
                 value={amount}
+                onChange={(event) => createCompensationState.updateCompensation({
+                  id,
+                  type,
+                  comment,
+                  amount: Number(event.target.value),
+                })}
               />
             </td>
             <td>
@@ -79,4 +98,4 @@ function TableCreateCompensations() {
   );
 }
 
-export default TableCreateCompensations;
+export default observer(TableCreateCompensations);
