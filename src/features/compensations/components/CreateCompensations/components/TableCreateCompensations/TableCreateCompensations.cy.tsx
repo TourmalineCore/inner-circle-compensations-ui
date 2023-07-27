@@ -10,6 +10,14 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations')
       .should('exist');
   });
+
+  it('SHOULD render table header WHEN visit compensations page', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-head')
+      .children()
+      .should('have.length', 4);
+  });
 });
 
 function mountComponent() {
