@@ -60,7 +60,7 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allTypes).to.has.lengthOf(11);
   });
 
-  it('SHOULD return date compensation WHEN called update', () => {
+  it('SHOULD return compensation date WHEN call update', () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.updateDate('2023-06-08T11:42:04.467165Z');
@@ -68,39 +68,39 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.dateCompensation).eq('2023-06-08T11:42:04.467165Z');
   });
 
-  it('SHOULD return compensation WHEN called adding compensation', () => {
+  it('SHOULD return compensation WHEN add compensation', () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.addCompensation();
 
-    expect(createCompensationsState.allCompensations).to.has.lengthOf(1);
+    expect(createCompensationsState.allCompensations).to.has.lengthOf(2);
     expect(createCompensationsState.allCompensations[0].type).eq('');
     expect(createCompensationsState.allCompensations[0].comment).eq('');
     expect(createCompensationsState.allCompensations[0].amount).eq(0);
   });
 
-  it('SHOULD return compensation WHEN called adding compensation use type "english"', () => {
+  it('SHOULD return compensation of correct type WHEN add compensation of this type', () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.addCompensation('english');
 
-    expect(createCompensationsState.allCompensations).to.has.lengthOf(1);
-    expect(createCompensationsState.allCompensations[0].type).eq('english');
-    expect(createCompensationsState.allCompensations[0].comment).eq('');
-    expect(createCompensationsState.allCompensations[0].amount).eq(0);
+    expect(createCompensationsState.allCompensations).to.has.lengthOf(2);
+    expect(createCompensationsState.allCompensations[1].type).eq('english');
+    expect(createCompensationsState.allCompensations[1].comment).eq('');
+    expect(createCompensationsState.allCompensations[1].amount).eq(0);
   });
 
-  it('SHOULD return compensation WHEN called remove compensation', () => {
+  it('SHOULD return compensation WHEN remove compensation', () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.addCompensation();
-    expect(createCompensationsState.allCompensations).to.has.lengthOf(1);
+    expect(createCompensationsState.allCompensations).to.has.lengthOf(2);
 
     createCompensationsState.removeCompensation(1);
-    expect(createCompensationsState.allCompensations).to.has.lengthOf(0);
+    expect(createCompensationsState.allCompensations).to.has.lengthOf(1);
   });
 
-  it('SHOULD return compensation with new data WHEN called update the created compensation', () => {
+  it('SHOULD return compensation with new data WHEN update the created compensation', () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.addCompensation();
@@ -112,8 +112,25 @@ describe('CreateCompensationsState', () => {
       amount: 100,
     });
 
-    expect(createCompensationsState.allCompensations[0].type).eq('english');
-    expect(createCompensationsState.allCompensations[0].comment).eq('Test comment');
-    expect(createCompensationsState.allCompensations[0].amount).eq(100);
+    expect(createCompensationsState.allCompensations[1].type).eq('english');
+    expect(createCompensationsState.allCompensations[1].comment).eq('Test comment');
+    expect(createCompensationsState.allCompensations[1].amount).eq(100);
+  });
+
+  it('SHOULD return compensation with new data WHEN update the created compensation', () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    createCompensationsState.addCompensation();
+
+    createCompensationsState.updateCompensation({
+      id: 1,
+      comment: 'Test comment',
+      type: 'english',
+      amount: 100,
+    });
+
+    expect(createCompensationsState.allCompensations[1].type).eq('english');
+    expect(createCompensationsState.allCompensations[1].comment).eq('Test comment');
+    expect(createCompensationsState.allCompensations[1].amount).eq(100);
   });
 });
