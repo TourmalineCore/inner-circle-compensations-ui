@@ -45,6 +45,14 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-add-button')
       .should('exist');
   });
+
+  it('SHOULD render table total WHEN visit compensations page', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-total')
+      .children()
+      .should('have.length', 2);
+  });
 });
 
 function mountComponent() {
