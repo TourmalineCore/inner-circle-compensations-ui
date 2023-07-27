@@ -133,4 +133,30 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allCompensations[1].comment).eq('Test comment');
     expect(createCompensationsState.allCompensations[1].amount).eq(100);
   });
+
+  it('SHOULD return total sum WHEN enter ammount', () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    createCompensationsState.addCompensation();
+
+    createCompensationsState.updateCompensation({
+      id: 1,
+      comment: 'Test comment',
+      type: 'english',
+      amount: 100,
+    });
+
+    expect(createCompensationsState.allCompensations[1].type).eq('english');
+    expect(createCompensationsState.allCompensations[1].comment).eq('Test comment');
+    expect(createCompensationsState.allCompensations[1].amount).eq(100);
+    expect(createCompensationsState.totalCount).eq(100);
+  });
+
+  //   const createCompensationsState = new CreateCompensationsState();
+
+  //   expect(createCompensationsState.isTriedToSubmit).eq(false);
+
+  //   createCompensationsState.setIsTriedToSubmit(true);
+  //   expect(createCompensationsState.isTriedToSubmit).eq(true);
+  // });
 });
