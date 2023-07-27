@@ -154,6 +154,29 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-item')
       .should('have.length', 1);
   });
+
+  it('SHOULD calculate correct sum total WHEN enter amount', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-sum')
+      .contains(0);
+
+    cy.getByData('table-create-compensations-amount')
+      .type('1000');
+
+    cy.getByData('table-create-compensations-sum')
+      .contains(1000);
+
+    cy.getByData('table-create-compensations-add-button')
+      .click();
+
+    cy.getByData('table-create-compensations-amount')
+      .last()
+      .type('10');
+
+    cy.getByData('table-create-compensations-sum')
+      .contains(1010);
+  });
 });
 
 function mountComponent() {
