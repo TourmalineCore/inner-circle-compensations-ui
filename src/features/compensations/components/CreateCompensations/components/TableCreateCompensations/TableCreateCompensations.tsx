@@ -82,6 +82,7 @@ function TableCreateCompensations() {
             <button
               type="button"
               data-cy="table-create-compensations-add-button"
+              onClick={() => createCompensationState.addCompensation()}
             >
               Add position
             </button>
