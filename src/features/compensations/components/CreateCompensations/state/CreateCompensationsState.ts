@@ -46,6 +46,10 @@ class CreateCompensationsState {
     return this._compensations.reduce((accumulator, currentValue) => accumulator + currentValue.amount, 0);
   }
 
+  get isTriedToSubmit() {
+    return this._isTriedToSubmit;
+  }
+
   initializeTypes({
     loadedTypes,
   }: {
@@ -55,6 +59,10 @@ class CreateCompensationsState {
     }[]
   }) {
     this._types = loadedTypes;
+  }
+
+  setIsTriedToSubmit(newValue: boolean) {
+    this._isTriedToSubmit = newValue;
   }
 
   updateDate(newDate: Date | string) {
