@@ -71,6 +71,7 @@ function TableCreateCompensations() {
               <button
                 type="button"
                 data-cy="table-create-compensations-remove-button"
+                onClick={() => createCompensationState.removeCompensation(id)}
               >
                 x
               </button>
