@@ -69,6 +69,12 @@ function TableCreateCompensations() {
           </td>
         </tr>
       </tbody>
+      <tfoot>
+        <tr data-cy="table-create-compensations-total">
+          <td colSpan={2}>Total:</td>
+          <td colSpan={2}>{createCompensationState.totalCount}</td>
+        </tr>
+      </tfoot>
     </table>
   );
 }
