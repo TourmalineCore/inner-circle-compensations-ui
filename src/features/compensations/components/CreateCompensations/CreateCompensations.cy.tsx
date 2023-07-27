@@ -64,6 +64,19 @@ describe('TableCreateCompensations', () => {
       .children()
       .should('have.length', 11);
   });
+
+  it('SHOULD render date picker WHEN visit page', () => {
+    cy.intercept(
+      'GET',
+      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+      INITIAL_TYPES,
+    );
+
+    mountComponent();
+
+    cy.getByData('date-picker-compensations')
+      .should('exist');
+  });
 });
 
 function mountComponent() {
