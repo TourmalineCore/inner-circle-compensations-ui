@@ -3,6 +3,53 @@ import CreateCompensationsState from '../../state/CreateCompensationsState';
 import CreateCompensationsStateContext from '../../state/CreateCompensationsStateContext';
 import TableCreateCompensations from './TableCreateCompensations';
 
+const INITIAL_TYPES = [
+  {
+    label: 'English',
+    value: 'english',
+  },
+  {
+    label: 'Milk',
+    value: 'milk',
+  },
+  {
+    label: 'German',
+    value: 'german',
+  },
+  {
+    label: 'Swimming',
+    value: 'swimming',
+  },
+  {
+    label: 'Water',
+    value: 'water',
+  },
+  {
+    label: 'Coworking',
+    value: 'coworking',
+  },
+  {
+    label: 'Massage',
+    value: 'massage',
+  },
+  {
+    label: 'Products',
+    value: 'products',
+  },
+  {
+    label: 'Consumables',
+    value: 'consumables',
+  },
+  {
+    label: 'Periphery',
+    value: 'periphery',
+  },
+  {
+    label: 'Business trip',
+    value: 'businessTrip',
+  },
+];
+
 describe('TableCreateCompensations', () => {
   it('SHOULD render component WHEN visit compensations page', () => {
     mountComponent();
@@ -53,10 +100,44 @@ describe('TableCreateCompensations', () => {
       .children()
       .should('have.length', 2);
   });
+
+  it('SHOULD update compensation type WHEN call onSelect', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-select')
+      .select('english');
+
+    cy.getByData('table-create-compensations-select')
+      .should('have.value', 'english');
+  });
+
+  it('SHOULD update compensation comment WHEN enter text', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-comment')
+      .type('test');
+
+    cy.getByData('table-create-compensations-comment')
+      .should('have.value', 'test');
+  });
+
+  it('SHOULD update compensation amount WHEN enter text', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-amount')
+      .type('2');
+
+    cy.getByData('table-create-compensations-amount')
+      .should('have.value', '2');
+  });
 });
 
 function mountComponent() {
   const createCompensationsState = new CreateCompensationsState();
+
+  createCompensationsState.initializeTypes({
+    loadedTypes: INITIAL_TYPES,
+  });
 
   cy.mount(
     <CreateCompensationsStateContext.Provider value={createCompensationsState}>
