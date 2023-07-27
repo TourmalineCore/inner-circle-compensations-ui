@@ -1,4 +1,9 @@
+import { useContext } from 'react';
+import CreateCompensationsStateContext from '../../state/CreateCompensationsStateContext';
+
 function TableCreateCompensations() {
+  const createCompensationState = useContext(CreateCompensationsStateContext);
+
   return (
     <table data-cy="table-create-compensations">
       <thead>
@@ -9,6 +14,51 @@ function TableCreateCompensations() {
           <th />
         </tr>
       </thead>
+      <tbody>
+        {createCompensationState.allCompensations.map(({
+          id, type, comment, amount,
+        }) => (
+          <tr key={id} data-cy="table-create-compensations-item">
+            <td>
+              <select
+                data-cy="table-create-compensations-select"
+                value={type}
+              >
+                {createCompensationState.allTypes.map(({ value, label }) => (
+                  <option
+                    key={value}
+                    value={value}
+                  >
+                    {label}
+                  </option>
+                ))}
+                <option value="" disabled selected hidden>type*</option>
+              </select>
+            </td>
+            <td>
+              <textarea
+                value={comment}
+                data-cy="table-create-compensations-comment"
+              />
+            </td>
+            <td>
+              <input
+                data-cy="table-create-compensations-amount"
+                type="text"
+                value={amount}
+              />
+            </td>
+            <td>
+              <button
+                type="button"
+                data-cy="table-create-compensations-remove-button"
+              >
+                x
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 }
