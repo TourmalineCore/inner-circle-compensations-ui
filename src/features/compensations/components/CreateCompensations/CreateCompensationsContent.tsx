@@ -1,7 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import CreateCompensationsStateContext from './state/CreateCompensationsStateContext';
-import TableCreateCompensations from './components/TableCreateCompensations/TableCreateCompensations';
 import ListTypesCompensations from './components/ListTypesCompensations/ListTypesCompensations';
 import DatePickerCompensations from './components/DateCompensations/DatePickerCompensations';
 import { api } from '../../../../common/api';
@@ -18,6 +17,7 @@ function CreateCompensationsContent() {
     <div>
       <h2>New compensation</h2>
       <ListTypesCompensations />
+      <DatePickerCompensations />
     </div>
   );
 
