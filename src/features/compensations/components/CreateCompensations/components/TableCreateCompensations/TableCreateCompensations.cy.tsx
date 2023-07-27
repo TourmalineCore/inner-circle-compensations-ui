@@ -38,6 +38,13 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-remove-button')
       .should('exist');
   });
+
+  it('SHOULD render add button WHEN visit compensations page', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-add-button')
+      .should('exist');
+  });
 });
 
 function mountComponent() {
