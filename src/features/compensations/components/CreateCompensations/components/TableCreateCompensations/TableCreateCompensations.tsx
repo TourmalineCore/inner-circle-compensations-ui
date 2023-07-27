@@ -58,6 +58,16 @@ function TableCreateCompensations() {
             </td>
           </tr>
         ))}
+        <tr>
+          <td colSpan={4}>
+            <button
+              type="button"
+              data-cy="table-create-compensations-add-button"
+            >
+              Add position
+            </button>
+          </td>
+        </tr>
       </tbody>
     </table>
   );
