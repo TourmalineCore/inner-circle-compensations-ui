@@ -18,6 +18,26 @@ describe('TableCreateCompensations', () => {
       .children()
       .should('have.length', 4);
   });
+
+  it('SHOULD render empty compensation item on table WHEN visit compensations page', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-item')
+      .children()
+      .should('have.length', 4);
+
+    cy.getByData('table-create-compensations-select')
+      .should('have.value', null);
+
+    cy.getByData('table-create-compensations-comment')
+      .should('have.value', '');
+
+    cy.getByData('table-create-compensations-amount')
+      .should('have.value', 0);
+
+    cy.getByData('table-create-compensations-remove-button')
+      .should('exist');
+  });
 });
 
 function mountComponent() {
