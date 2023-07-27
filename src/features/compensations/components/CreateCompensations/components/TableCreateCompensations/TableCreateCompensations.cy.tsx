@@ -140,6 +140,20 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-item')
       .should('have.length', 2);
   });
+
+  it('SHOULD remove second compensation WHEN call delete', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-add-button')
+      .click();
+
+    cy.getByData('table-create-compensations-remove-button')
+      .last()
+      .click();
+
+    cy.getByData('table-create-compensations-item')
+      .should('have.length', 1);
+  });
 });
 
 function mountComponent() {
