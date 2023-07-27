@@ -130,6 +130,16 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-amount')
       .should('have.value', '2');
   });
+
+  it('SHOULD add new row WHEN click add button', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-add-button')
+      .click();
+
+    cy.getByData('table-create-compensations-item')
+      .should('have.length', 2);
+  });
 });
 
 function mountComponent() {
