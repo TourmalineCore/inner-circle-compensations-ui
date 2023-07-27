@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
+import clsx from 'clsx';
 import CreateCompensationsStateContext from '../../state/CreateCompensationsStateContext';
 
 function TableCreateCompensations() {
@@ -23,6 +24,9 @@ function TableCreateCompensations() {
             <td>
               <select
                 data-cy="table-create-compensations-select"
+                className={clsx('select', {
+                  'select--invalid': type === '' && createCompensationState.isTriedToSubmit,
+                })}
                 value={type}
                 onChange={(event) => createCompensationState.updateCompensation({
                   id,
@@ -58,6 +62,9 @@ function TableCreateCompensations() {
               <input
                 data-cy="table-create-compensations-amount"
                 type="text"
+                className={clsx('input', {
+                  'input--invalid': amount === 0 && createCompensationState.isTriedToSubmit,
+                })}
                 value={amount}
                 onChange={(event) => createCompensationState.updateCompensation({
                   id,
