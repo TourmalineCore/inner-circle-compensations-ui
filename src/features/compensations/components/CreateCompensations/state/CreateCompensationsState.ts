@@ -8,14 +8,23 @@ class CreateCompensationsState {
 
   private _dateCompensation: Date | string = new Date();
 
-  private _nextSourceFeedId: number = 1;
+  private _nextCompensationId: number = 1;
 
   private _compensations: {
     id: number;
     type: string;
     comment: string;
     amount: number
-  }[] = [];
+  }[] = [
+      {
+        id: 0,
+        type: '',
+        comment: '',
+        amount: 0,
+      },
+    ];
+
+  private _isTriedToSubmit = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -50,13 +59,13 @@ class CreateCompensationsState {
 
   addCompensation(type?: string) {
     this._compensations.push({
-      id: this._nextSourceFeedId,
+      id: this._nextCompensationId,
       type: type || '',
       comment: '',
       amount: 0,
     });
 
-    this._nextSourceFeedId++;
+    this._nextCompensationId++;
   }
 
   removeCompensation(compensationId: number) {
