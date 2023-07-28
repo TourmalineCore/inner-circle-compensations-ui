@@ -111,34 +111,30 @@ describe('TableCreateCompensations', () => {
       INITIAL_TYPES,
     ).as('call-1');
 
-    // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(1000);
-
     mountComponent();
-
-    // cy.getByData('table-create-compensations-amount')
-    //   .type('800');
 
     cy.intercept(
       'POST',
       `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}create`,
       {
-        compensations: [
-          {
-            type: 'English',
-            comment: '',
-            amount: '0',
-          },
-        ],
-        date: '2023-06-01T00:00:00Z',
+        statusCode: 400,
       },
     ).as('call-2');
+
+    cy.getByData('create-compensations-submit')
+      .click();
 
     cy.getByData('table-create-compensations-amount')
       .should('have.class', 'input--invalid');
 
+    cy.getByData('table-create-compensations-select')
+      .should('have.class', 'select--invalid');
+
     cy.getByData('table-create-compensations-amount')
       .type('800');
+
+    cy.getByData('table-create-compensations-select')
+      .select('english');
 
     cy.intercept(
       'POST',
@@ -154,6 +150,9 @@ describe('TableCreateCompensations', () => {
         date: '2023-06-01T00:00:00Z',
       },
     ).as('call-3');
+
+    cy.getByData('create-compensations-submit')
+      .click();
 
     cy.getByData('table-create-compensations-add-button')
       .click();
