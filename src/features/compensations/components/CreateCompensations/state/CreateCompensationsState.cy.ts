@@ -160,4 +160,15 @@ describe('CreateCompensationsState', () => {
     createCompensationsState.setIsTriedToSubmit(true);
     expect(createCompensationsState.isTriedToSubmit).eq(true);
   });
+
+  it('SHOULD remove compensation from the list WHEN call removal', () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    expect(createCompensationsState.allCompensations).to.has.lengthOf(1);
+    createCompensationsState.addCompensation();
+    createCompensationsState.addCompensation();
+    expect(createCompensationsState.allCompensations).to.has.lengthOf(3);
+    createCompensationsState.removeCompensationsFromList();
+    expect(createCompensationsState.allCompensations).to.has.lengthOf(1);
+  });
 });
