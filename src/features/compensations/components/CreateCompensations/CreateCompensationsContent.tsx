@@ -49,6 +49,7 @@ function CreateCompensationsContent() {
         createCompensationState.allCompensations,
       );
 
+      createCompensationState.removeCompensationsFromList();
       createCompensationState.setIsTriedToSubmit(false);
     } catch {
       console.log('error');
