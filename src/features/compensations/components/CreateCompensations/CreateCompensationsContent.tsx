@@ -20,6 +20,13 @@ function CreateCompensationsContent() {
       <ListTypesCompensations />
       <DatePickerCompensations />
       <TableCreateCompensations />
+      <button
+        data-cy="create-compensations-submit"
+        type="button"
+        onClick={() => createCompensation()}
+      >
+        Send
+      </button>
     </div>
   );
 
@@ -28,6 +35,21 @@ function CreateCompensationsContent() {
       const { data } = await api.get(`${LINK_TO_COMPENSATIONS_SERVICE}types`);
 
       createCompensationState.initializeTypes({ loadedTypes: data });
+    } catch {
+      console.log('error');
+    }
+  }
+
+  async function createCompensation() {
+    createCompensationState.setIsTriedToSubmit(true);
+
+    try {
+      await api.post(
+        `${LINK_TO_COMPENSATIONS_SERVICE}create`,
+        createCompensationState.allCompensations,
+      );
+
+      createCompensationState.setIsTriedToSubmit(false);
     } catch {
       console.log('error');
     }
