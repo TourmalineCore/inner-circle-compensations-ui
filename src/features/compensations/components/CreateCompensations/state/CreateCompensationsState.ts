@@ -84,6 +84,17 @@ class CreateCompensationsState {
     this._compensations = this._compensations.filter((compensation) => compensation.id !== compensationId);
   }
 
+  removeCompensationsFromList() {
+    this._compensations = [
+      {
+        id: 0,
+        type: '',
+        comment: '',
+        amount: 0,
+      },
+    ];
+  }
+
   updateCompensation({
     id,
     type,
