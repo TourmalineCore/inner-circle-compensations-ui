@@ -7,6 +7,53 @@ import DatePickerCompensations from './components/DateCompensations/DatePickerCo
 import { api } from '../../../../common/api';
 import { LINK_TO_COMPENSATIONS_SERVICE } from '../../../../common/config/config';
 
+const INITIAL_TYPES = [
+  {
+    label: 'English',
+    value: 'english',
+  },
+  {
+    label: 'German',
+    value: 'german',
+  },
+  {
+    label: 'Swimming',
+    value: 'swimming',
+  },
+  {
+    label: 'Water',
+    value: 'water',
+  },
+  {
+    label: 'Coworking',
+    value: 'coworking',
+  },
+  {
+    label: 'Massage',
+    value: 'massage',
+  },
+  {
+    label: 'Products',
+    value: 'products',
+  },
+  {
+    label: 'Consumables',
+    value: 'consumables',
+  },
+  {
+    label: 'Periphery',
+    value: 'periphery',
+  },
+  {
+    label: 'Business trip',
+    value: 'businessTrip',
+  },
+  {
+    label: 'Other',
+    value: 'other',
+  },
+];
+
 function CreateCompensationsContent() {
   const createCompensationState = useContext(CreateCompensationsStateContext);
 
@@ -15,12 +62,16 @@ function CreateCompensationsContent() {
   }, []);
 
   return (
-    <div>
-      <h2>New compensation</h2>
+    <div className="create-compensations">
+      <h2 className="create-compensations__header">New compensation</h2>
       <ListTypesCompensations />
       <DatePickerCompensations />
       <TableCreateCompensations />
+      <div className="create-compensations__error-message">
+        {createCompensationState.isFilled && createCompensationState.isTriedToSubmit && ('Please fill required field.')}
+      </div>
       <button
+        className="create-compensations__button"
         data-cy="create-compensations-submit"
         type="button"
         onClick={() => createCompensation()}
@@ -37,6 +88,7 @@ function CreateCompensationsContent() {
       createCompensationState.initializeTypes({ loadedTypes: data });
     } catch {
       console.log('error');
+      createCompensationState.initializeTypes({ loadedTypes: INITIAL_TYPES });
     }
   }
 
@@ -52,7 +104,7 @@ function CreateCompensationsContent() {
       createCompensationState.removeCompensationsFromList();
       createCompensationState.setIsTriedToSubmit(false);
     } catch {
-      console.log('error');
+      console.log(createCompensationState.isFilled);
     }
   }
 }

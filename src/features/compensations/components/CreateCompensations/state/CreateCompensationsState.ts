@@ -10,6 +10,8 @@ class CreateCompensationsState {
 
   private _nextCompensationId: number = 1;
 
+  private _isFilled: boolean = false;
+
   private _compensations: {
     id: number;
     type: string;
@@ -28,6 +30,10 @@ class CreateCompensationsState {
 
   constructor() {
     makeAutoObservable(this);
+  }
+
+  get isFilled() {
+    return this._compensations.some((item) => item.type.length === 0 || item.amount === 0);
   }
 
   get allTypes() {

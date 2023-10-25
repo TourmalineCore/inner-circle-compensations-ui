@@ -12,10 +12,6 @@ const INITIAL_TYPES = [
     value: 'english',
   },
   {
-    label: 'Milk',
-    value: 'milk',
-  },
-  {
     label: 'German',
     value: 'german',
   },
@@ -50,6 +46,10 @@ const INITIAL_TYPES = [
   {
     label: 'Business trip',
     value: 'businessTrip',
+  },
+  {
+    label: 'Other',
+    value: 'other',
   },
 ];
 

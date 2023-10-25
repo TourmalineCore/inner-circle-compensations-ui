@@ -1,0 +1,44 @@
+.create-compensations {
+  border: 1px solid var(--comp-color-gray);
+  border-radius: 4px;
+  padding: 32px 40px;
+  width: 100%;
+  max-width: 830px;
+  background: var(--color-white);
+
+  &__header {
+    margin: 0;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 36px;
+  }
+
+  &__button {
+    display: block;
+    margin-top: 24px;
+    margin-left: auto;
+    border: 2px solid var(--comp-color-gray);
+    border-radius: 10px;
+    padding: 10px 72px;
+    font-family: Montserrat, Rubik, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    background-color: var(--color-white);
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      opacity: 0.5;
+    }
+  }
+
+  &__error-message {
+    margin-top: 24px;
+    height: 21px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 21px;
+    color: #da2228;
+  }
+}
