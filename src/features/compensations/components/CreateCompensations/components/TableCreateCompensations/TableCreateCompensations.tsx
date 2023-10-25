@@ -69,7 +69,8 @@ function TableCreateCompensations() {
             >
               <input
                 data-cy="table-create-compensations-amount"
-                type="text"
+                type="number"
+                // placeholder="0"
                 className={clsx('table-create-compensations__column-amount__input', {
                   'table-create-compensations__column-amount__input--default': amount === 0,
                 })}
