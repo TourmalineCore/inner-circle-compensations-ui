@@ -21,9 +21,11 @@ function TableCreateCompensations() {
           id, type, comment, amount,
         }) => (
           <tr key={id} className="table-create-compensations__item" data-cy="table-create-compensations-item">
-            <td className={clsx('table-create-compensations__column-type', {
-              'table-create-compensations__column-type--invalid ': type === '' && createCompensationState.isTriedToSubmit,
-            })}
+            <td
+              data-cy="table-create-compensations-td-select"
+              className={clsx('table-create-compensations__column-type', {
+                'table-create-compensations__column-type--invalid': type === '' && createCompensationState.isTriedToSubmit,
+              })}
             >
               <select
                 data-cy="table-create-compensations-select"
@@ -63,12 +65,13 @@ function TableCreateCompensations() {
                 })}
               />
             </td>
-            <td className={clsx('table-create-compensations__column-amount', {
-              'table-create-compensations__column-amount--invalid ': amount === 0 && createCompensationState.isTriedToSubmit,
-            })}
+            <td
+              data-cy="table-create-compensations-amount"
+              className={clsx('table-create-compensations__column-amount', {
+                'table-create-compensations__column-amount--invalid': amount === 0 && createCompensationState.isTriedToSubmit,
+              })}
             >
               <input
-                data-cy="table-create-compensations-amount"
                 type="number"
                 // placeholder="0"
                 className={clsx('table-create-compensations__column-amount__input', {

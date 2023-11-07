@@ -69,10 +69,10 @@ describe('ListTypesCompensations', () => {
       .should('have.length', 11);
   });
 
-  it('SHOULD have focused element "milk" WHEN click on type "milk"', () => {
+  it('SHOULD have focused element "english" WHEN click on type "english"', () => {
     mountComponent();
 
-    cy.getByData('type-compensation-milk')
+    cy.getByData('type-compensation-english')
       .click()
       .focused();
   });

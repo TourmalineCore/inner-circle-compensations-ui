@@ -9,10 +9,6 @@ const INITIAL_TYPES = [
     value: 'english',
   },
   {
-    label: 'Milk',
-    value: 'milk',
-  },
-  {
     label: 'German',
     value: 'german',
   },
@@ -47,6 +43,10 @@ const INITIAL_TYPES = [
   {
     label: 'Business trip',
     value: 'businessTrip',
+  },
+  {
+    label: 'Other',
+    value: 'other',
   },
 ];
 
@@ -87,7 +87,7 @@ describe('TableCreateCompensations', () => {
 
     mountComponent();
 
-    cy.getByData(' table-create-compensations')
+    cy.getByData('table-create-compensations')
       .should('exist');
   });
 
@@ -98,10 +98,10 @@ describe('TableCreateCompensations', () => {
       .click();
 
     cy.getByData('table-create-compensations-amount')
-      .should('have.class', 'input--invalid');
+      .should('have.class', 'table-create-compensations__column-amount--invalid');
 
-    cy.getByData('table-create-compensations-select')
-      .should('have.class', 'select--invalid');
+    cy.getByData('table-create-compensations-td-select')
+      .should('have.class', 'table-create-compensations__column-type--invalid');
   });
 
   it('SHOULD not show validation on newly created compensation WHEN submit of the previous one was successful', () => {
@@ -125,10 +125,10 @@ describe('TableCreateCompensations', () => {
       .click();
 
     cy.getByData('table-create-compensations-amount')
-      .should('have.class', 'input--invalid');
+      .should('have.class', 'table-create-compensations__column-amount--invalid');
 
-    cy.getByData('table-create-compensations-select')
-      .should('have.class', 'select--invalid');
+    cy.getByData('table-create-compensations-td-select')
+      .should('have.class', 'table-create-compensations__column-type--invalid');
 
     cy.getByData('table-create-compensations-amount')
       .type('800');
@@ -157,8 +157,8 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-add-button')
       .click();
 
-    cy.getByData('table-create-compensations-select')
-      .should('not.have.class', 'select--invalid');
+    cy.getByData('table-create-compensations-td-select')
+      .should('not.have.class', 'table-create-compensations__column-type--invalid');
   });
 });
 
