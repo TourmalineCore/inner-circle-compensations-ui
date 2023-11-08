@@ -97,7 +97,7 @@ describe('TableCreateCompensations', () => {
     cy.getByData('create-compensations-submit')
       .click();
 
-    cy.getByData('table-create-compensations-amount')
+    cy.getByData('table-create-compensations-td-amount')
       .should('have.class', 'table-create-compensations__column-amount--invalid');
 
     cy.getByData('table-create-compensations-td-select')
@@ -124,7 +124,7 @@ describe('TableCreateCompensations', () => {
     cy.getByData('create-compensations-submit')
       .click();
 
-    cy.getByData('table-create-compensations-amount')
+    cy.getByData('table-create-compensations-td-amount')
       .should('have.class', 'table-create-compensations__column-amount--invalid');
 
     cy.getByData('table-create-compensations-td-select')
