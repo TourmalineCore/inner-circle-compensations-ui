@@ -121,7 +121,6 @@ describe('TableCreateCompensations', () => {
       .should('have.value', 'test');
   });
 
-  // TODO Nastya fix
   it('SHOULD update compensation amount WHEN enter text', () => {
     mountComponent();
 

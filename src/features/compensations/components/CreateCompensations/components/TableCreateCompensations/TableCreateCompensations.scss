@@ -30,7 +30,7 @@
     max-width: 200px;
     font-weight: 500;
     font-size: 20px;
-    line-height: 28px;
+    line-height: 1.4;
     text-align: left;
 
     &__select {
@@ -40,9 +40,9 @@
       height: 28px;
       min-width: 100px;
       max-width: 200px;
-      font-family: Montserrat, Rubik, sans-serif;
+      font-family: inherit;
       font-size: 20px;
-      line-height: 28px;
+      line-height: 1.4;
       color: var(--color-black);
       cursor: pointer;
 
@@ -65,10 +65,10 @@
       align-items: center;
       border: none;
       width: 100%;
-      max-width: 200.5px;
-      font-family: Montserrat, Rubik, sans-serif;
+      max-width: 200px;
+      font-family: inherit;
       font-size: 15px;
-      line-height: 21px;
+      line-height: 1.5;
       color: var(--comp-color-dark-gray);
       background-color: transparent;
       cursor: pointer;
@@ -101,7 +101,7 @@
     max-width: 350px;
     font-weight: 500;
     font-size: 20px;
-    line-height: 28px;
+    line-height: 1.4;
     text-align: left;
     color: var(--color-black);
 
@@ -116,9 +116,9 @@
       width: 100%;
       height: 28px;
       max-width: 318px;
-      font-family: Montserrat, Rubik, sans-serif;
+      font-family: inherit;
       font-size: 20px;
-      line-height: 28px;
+      line-height: 1.4;
       color: var(--color-black);
       resize: none;
 
@@ -139,7 +139,7 @@
     max-width: 150px;
     font-weight: 500;
     font-size: 20px;
-    line-height: 28px;
+    line-height: 1.4;
     text-align: left;
     color: var(--color-black);
 
@@ -150,13 +150,11 @@
       height: 28px;
       min-width: 50px;
       max-width: 118px;
-      font-family: Montserrat, Rubik, sans-serif;
+      font-family: inherit;
       font-size: 20px;
-      line-height: 28px;
+      line-height: 1.4;
       text-align: end;
       color: var(--color-black);
-
-      // appearance: none;
 
       &:focus {
         outline: none;
@@ -181,7 +179,7 @@
       max-width: 150px;
       font-weight: 600;
       font-size: 20px;
-      line-height: 28px;
+      line-height: 1.4;
       text-align: end;
       color: var(--color-black);
     }
