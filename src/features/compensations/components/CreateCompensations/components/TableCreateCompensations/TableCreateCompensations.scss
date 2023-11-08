@@ -155,7 +155,8 @@
       line-height: 28px;
       text-align: end;
       color: var(--color-black);
-      appearance: none;
+
+      // appearance: none;
 
       &:focus {
         outline: none;

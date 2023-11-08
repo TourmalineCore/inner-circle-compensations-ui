@@ -66,18 +66,19 @@ function TableCreateCompensations() {
               />
             </td>
             <td
-              data-cy="table-create-compensations-amount"
+              data-cy="table-create-compensations-td-amount"
               className={clsx('table-create-compensations__column-amount', {
                 'table-create-compensations__column-amount--invalid': amount === 0 && createCompensationState.isTriedToSubmit,
               })}
             >
               <input
+                data-cy="table-create-compensations-amount"
                 type="number"
-                // placeholder="0"
+                placeholder="0"
                 className={clsx('table-create-compensations__column-amount__input', {
                   'table-create-compensations__column-amount__input--default': amount === 0,
                 })}
-                value={amount}
+                value={amount === 0 ? '' : amount}
                 onChange={(event) => createCompensationState.updateCompensation({
                   id,
                   type,
