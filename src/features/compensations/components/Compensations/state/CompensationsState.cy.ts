@@ -14,7 +14,7 @@ describe('CompensationsState', () => {
             dateCompensation: '2023-06-08T11:42:04.467165Z',
             comment: 'I bought milk',
             amount: 760,
-            isUnpaid: true,
+            isPaid: false,
           },
         ],
         totalUnpaidAmount: 760,

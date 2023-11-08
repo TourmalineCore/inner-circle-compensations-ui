@@ -1,9 +1,10 @@
 type CompensationsItemType = {
+  id?: number;
   dateCreateCompensation: string;
   dateCompensation: string;
   comment: string;
   amount: number;
-  isUnpaid: boolean;
+  isPaid: boolean;
 };
 
 type CompensationsType = {

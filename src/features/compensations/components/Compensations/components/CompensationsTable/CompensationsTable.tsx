@@ -22,7 +22,7 @@ function CompensationsTable({
       {compensationsState.allCompensations.list.length !== 0 ? (
         <>
           {compensationsState.allCompensations.list.map(({
-            dateCompensation, dateCreateCompensation, amount, comment, isUnpaid,
+            dateCompensation, dateCreateCompensation, amount, comment, isPaid,
           }) => (
             <div
               data-cy="compensations-table-row"
@@ -40,8 +40,8 @@ function CompensationsTable({
               <span
                 data-cy="compensations-table-row-amount"
                 className={clsx('compensations-table__column-amount', {
-                  'compensations-table__column-amount--unpaid': isUnpaid,
-                  'compensations-table__column-amount--paid': !isUnpaid,
+                  'compensations-table__column-amount--unpaid': !isPaid,
+                  'compensations-table__column-amount--paid': isPaid,
                 })}
               >
                 {formatMoney(amount)}
