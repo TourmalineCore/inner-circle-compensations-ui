@@ -9,7 +9,6 @@ export default defineConfig({
     video: false,
     setupNodeEvents(on, config) {},
   },
-
   component: {
     video: false,
     devServer: {
