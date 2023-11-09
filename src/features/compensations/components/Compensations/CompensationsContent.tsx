@@ -28,7 +28,7 @@ function CompensationsContent() {
         loadedCompensations: data,
       });
     } catch (e) {
-      console.log('CompensationsContent', e);
+      console.log('CompensationsContent ', e);
     }
   }
 }
