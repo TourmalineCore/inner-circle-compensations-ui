@@ -41,7 +41,7 @@ export function getFiltering(
   filterTerm: string,
 ) {
   if (filterTerm === 'unpaid') {
-    return employee.isUnpaid;
+    return !employee.isPaid;
   }
 
   return employee;

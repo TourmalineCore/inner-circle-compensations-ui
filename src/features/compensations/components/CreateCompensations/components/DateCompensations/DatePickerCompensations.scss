@@ -1,0 +1,40 @@
+.date-compensations {
+  display: flex;
+  align-items: center;
+
+  &__button {
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.5;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      opacity: 0.5;
+    }
+  }
+
+  &__arrow {
+    margin-left: 8px;
+  }
+
+  &__title {
+    margin-right: 16px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--comp-color-dark-gray);
+  }
+}
+
+.react-datepicker-wrapper {
+  width: auto;
+}
+
+.date-picker-compensations {
+  margin-top: 24px;
+}
