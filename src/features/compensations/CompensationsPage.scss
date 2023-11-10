@@ -1,4 +1,10 @@
 .compensations-page {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+
+  &__employee {
+    display: flex;
+    flex-direction: row;
+  }
 }

@@ -1,12 +1,12 @@
 import '../../../../../../cypress/support/commands';
 
-import CompensationsState from './CompensationsState';
+import CompensationsCeoState from './CompensationsCeoState';
 
-describe('CompensationsState', () => {
+describe('CompensationsCeoState', () => {
   it('SHOULD return all compensations WHEN initialized', () => {
-    const compensationsState = new CompensationsState();
+    const compensationsCeoState = new CompensationsCeoState();
 
-    compensationsState.initialize({
+    compensationsCeoState.initialize({
       loadedCompensations: {
         list: [
           {
@@ -22,15 +22,15 @@ describe('CompensationsState', () => {
       },
     });
 
-    expect(compensationsState.allCompensations.list).to.has.lengthOf(1);
-    expect(compensationsState.allCompensations.totalUnpaidAmount).eq(760);
+    expect(compensationsCeoState.allCompensations.list).to.has.lengthOf(1);
+    expect(compensationsCeoState.allCompensations.totalUnpaidAmount).eq(760);
   });
 
   it('SHOULD get value filter WHEN called update', () => {
-    const compensationsState = new CompensationsState();
+    const compensationsCeoState = new CompensationsCeoState();
 
-    compensationsState.updateFilterTerm('all');
+    compensationsCeoState.updateFilterTerm('all');
 
-    expect(compensationsState.filterTerm).eq('all');
+    expect(compensationsCeoState.filterTerm).eq('all');
   });
 });

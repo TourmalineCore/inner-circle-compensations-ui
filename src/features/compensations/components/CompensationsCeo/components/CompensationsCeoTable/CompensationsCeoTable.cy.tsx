@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../../../cypress/support/commands';
-import CompensationsState from '../../state/CompensationsState';
-import CompensationsStateContext from '../../state/CompensationsStateContext';
+import CompensationsCeoState from '../../state/CompensationsCeoState';
+import CompensationsCeoStateContext from '../../state/CompensationsCeoStateContext';
 
-import CompensationsTable from './CompensationsTable';
+import CompensationsCeoTable from './CompensationsCeoTable';
 
 const initialData = {
   list: [
@@ -19,7 +19,7 @@ const initialData = {
   totalUnpaidAmount: 760,
 };
 
-describe('CompensationsTable', () => {
+describe('CompensationsCeoTable', () => {
   it('SHOULD render compensations table WHEN visit compensations page', () => {
     mountComponent({
       compensations: initialData,
@@ -104,15 +104,15 @@ function mountComponent({
 }: {
   compensations: CompensationsType;
 }) {
-  const compensationsState = new CompensationsState();
+  const compensationsCeoState = new CompensationsCeoState();
 
-  compensationsState.initialize({
+  compensationsCeoState.initialize({
     loadedCompensations: compensations,
   });
 
   cy.mount(
-    <CompensationsStateContext.Provider value={compensationsState}>
-      <CompensationsTable />
-    </CompensationsStateContext.Provider>,
+    <CompensationsCeoStateContext.Provider value={compensationsCeoState}>
+      <CompensationsCeoTable />
+    </CompensationsCeoStateContext.Provider>,
   );
 }

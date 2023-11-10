@@ -1,4 +1,4 @@
-type CompensationsItemType = {
+type CompensationsCeoItemType = {
   id?: number;
   dateCreateCompensation: string;
   dateCompensation: string;
@@ -8,7 +8,7 @@ type CompensationsItemType = {
   employeeId: number;
 };
 
-type CompensationsType = {
+type CompensationsCeoType = {
   list: CompensationsItemType[],
   totalUnpaidAmount: number;
 };

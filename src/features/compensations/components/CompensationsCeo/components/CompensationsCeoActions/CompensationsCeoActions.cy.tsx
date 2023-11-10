@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import '../../../../../cypress/support/commands';
-import { API_ROOT, LINK_TO_COMPENSATIONS_SERVICE } from '../../../../common/config/config';
+import '../../../../../../../cypress/support/commands';
+import { API_ROOT, LINK_TO_COMPENSATIONS_SERVICE } from '../../../../../../common/config/config';
 
-import Compensations from './Compensations';
+import CompensationsCeoActions from './CompensationsCeoActions';
 
 const GET_COMPENSATIONS = `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}all`;
 
@@ -28,7 +28,7 @@ const initialData = {
   totalUnpaidAmount: 1520,
 };
 
-describe('Compensations', () => {
+describe('CompensationsCeo', () => {
   it('SHOULD render compensations WHEN visit compensations page', () => {
     cy.intercept('GET', GET_COMPENSATIONS, {});
 
@@ -63,6 +63,6 @@ describe('Compensations', () => {
 
 function mountComponent() {
   cy.mount(
-    <Compensations />,
+    <CompensationsCeoActions />,
   );
 }
