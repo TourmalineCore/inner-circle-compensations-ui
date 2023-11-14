@@ -2,6 +2,7 @@
 cypress.*
 cypress
 .commitlintrc.*
+*.cy.*
 .eslintrc.json
 cypress.config.ts
 LICENSE
