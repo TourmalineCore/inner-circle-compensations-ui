@@ -5,48 +5,48 @@ import TableCreateCompensations from './TableCreateCompensations';
 
 const INITIAL_TYPES = [
   {
+    typeId: 1,
     label: 'English',
-    value: 'english',
   },
   {
+    typeId: 2,
     label: 'German',
-    value: 'german',
   },
   {
+    typeId: 3,
     label: 'Swimming',
-    value: 'swimming',
   },
   {
+    typeId: 4,
     label: 'Water',
-    value: 'water',
   },
   {
+    typeId: 5,
     label: 'Coworking',
-    value: 'coworking',
   },
   {
+    typeId: 6,
     label: 'Massage',
-    value: 'massage',
   },
   {
+    typeId: 7,
     label: 'Products',
-    value: 'products',
   },
   {
+    typeId: 8,
     label: 'Consumables',
-    value: 'consumables',
   },
   {
+    typeId: 9,
     label: 'Periphery',
-    value: 'periphery',
   },
   {
+    typeId: 10,
     label: 'Business trip',
-    value: 'businessTrip',
   },
   {
+    typeId: 11,
     label: 'Other',
-    value: 'other',
   },
 ];
 
@@ -104,11 +104,14 @@ describe('TableCreateCompensations', () => {
   it('SHOULD update compensation type WHEN call onSelect', () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations-select')
-      .select('english');
+    // english
 
     cy.getByData('table-create-compensations-select')
-      .should('have.value', 'english');
+      .select('1');
+    // english
+
+    cy.getByData('table-create-compensations-select')
+      .should('have.value', '1');
   });
 
   it('SHOULD update compensation comment WHEN enter text', () => {
