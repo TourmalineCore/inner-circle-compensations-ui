@@ -1,9 +1,9 @@
-FROM node:16.14.0 as build
+FROM node:18.14. as build
 ENV PATH /node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
 # COPY .npmrc ./
-RUN npm ci --production
+RUN npm ci
 COPY . ./
 RUN npm run build
 
