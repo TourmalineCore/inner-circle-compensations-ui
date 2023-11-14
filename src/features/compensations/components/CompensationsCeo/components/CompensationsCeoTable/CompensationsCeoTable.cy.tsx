@@ -14,6 +14,7 @@ const initialData = {
       amount: 760,
       isPaid: false,
       employeeId: 1,
+      fio: 'fio',
     },
   ],
   totalUnpaidAmount: 760,
@@ -25,7 +26,7 @@ describe('CompensationsCeoTable', () => {
       compensations: initialData,
     });
 
-    cy.getByData('compensations-table')
+    cy.getByData('compensations-ceo-table')
       .should('exist');
   });
 
@@ -34,7 +35,7 @@ describe('CompensationsCeoTable', () => {
       compensations: initialData,
     });
 
-    cy.getByData('compensations-table-row')
+    cy.getByData('compensations-ceo-table-row')
       .should('exist');
   });
 
@@ -43,7 +44,7 @@ describe('CompensationsCeoTable', () => {
       compensations: initialData,
     });
 
-    cy.getByData('compensations-table-row-total')
+    cy.getByData('compensations-ceo-table-row-total')
       .should('exist');
   });
 
@@ -55,7 +56,7 @@ describe('CompensationsCeoTable', () => {
       },
     });
 
-    cy.getByData('compensations-table-no-data')
+    cy.getByData('compensations-ceo-table-no-data')
       .should('exist');
   });
 
@@ -64,17 +65,17 @@ describe('CompensationsCeoTable', () => {
       compensations: initialData,
     });
 
-    cy.getByData('compensations-table-row-month')
+    cy.getByData('compensations-ceo-table-row-month')
       .should('have.text', 'June 2023');
 
-    cy.getByData('compensations-table-row-date')
+    cy.getByData('compensations-ceo-table-row-date')
       .should('have.text', '08.06.2023');
 
-    cy.getByData('compensations-table-row-comment')
+    cy.getByData('compensations-ceo-table-row-comment')
       .should('have.text', 'I bought milk');
 
-    cy.getByData('compensations-table-row-amount')
-      .should('have.class', 'compensations-table__column-amount--unpaid');
+    cy.getByData('compensations-ceo-table-row-amount')
+      .should('have.class', 'compensations-ceo-table__column-amount--unpaid');
   });
 
   it('SHOULD render valid amount in row WHEN element has unpaid amount', () => {
@@ -88,21 +89,22 @@ describe('CompensationsCeoTable', () => {
             amount: 760,
             isPaid: false,
             employeeId: 1,
+            fio: 'fio',
           },
         ],
         totalUnpaidAmount: 760,
       },
     });
 
-    cy.getByData('compensations-table-row-amount')
-      .should('have.class', 'compensations-table__column-amount--unpaid');
+    cy.getByData('compensations-ceo-table-row-amount')
+      .should('have.class', 'compensations-ceo-table__column-amount--unpaid');
   });
 });
 
 function mountComponent({
   compensations,
 }: {
-  compensations: CompensationsType;
+  compensations: CompensationsCeoType;
 }) {
   const compensationsCeoState = new CompensationsCeoState();
 

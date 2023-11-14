@@ -11,12 +11,12 @@ const DatePickerCompensationsCustomElement = forwardRef<HTMLButtonElement, HTMLP
     type="button"
     onClick={onClick}
     ref={ref}
-    className="date-picker-compensations__button"
-    data-cy="date-picker-compensations-select"
+    className="date-picker-compensations-ceo__button"
+    data-cy="date-picker-compensations-ceo-select"
   >
-    <img className="date-picker-compensations__icon" src={logoData} width="24" height="24" alt="DataPicker" />
-    <span data-cy="date-picker-compensations-result">{value}</span>
-    <span className="date-picker-compensations__arrow">&or;</span>
+    <img className="date-picker-compensations-ceo__icon" src={logoData} width="24" height="24" alt="DataPicker" />
+    <span data-cy="date-picker-compensations-ceo-result">{value}</span>
+    <span className="date-picker-compensations-ceo__arrow">&or;</span>
   </button>
 ));
 
@@ -25,8 +25,8 @@ function DatePickerCompensationsCeo() {
 
   return (
     <div
-      className="date-picker-compensations"
-      data-cy="date-picker-compensations"
+      className="date-picker-compensations-ceo"
+      data-cy="date-picker-compensations-ceo"
     >
       <DatePicker
         selected={compensationsCeoState.dateCompensation}

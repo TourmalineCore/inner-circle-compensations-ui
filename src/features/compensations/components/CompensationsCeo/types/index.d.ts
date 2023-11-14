@@ -6,9 +6,10 @@ type CompensationsCeoItemType = {
   amount: number;
   isPaid: boolean;
   employeeId: number;
+  fio: string;
 };
 
 type CompensationsCeoType = {
-  list: CompensationsItemType[],
+  list: CompensationsCeoItemType[],
   totalUnpaidAmount: number;
 };

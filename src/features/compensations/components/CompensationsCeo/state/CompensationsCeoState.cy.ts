@@ -16,6 +16,7 @@ describe('CompensationsCeoState', () => {
             amount: 760,
             isPaid: false,
             employeeId: 1,
+            fio: 'fio',
           },
         ],
         totalUnpaidAmount: 760,
