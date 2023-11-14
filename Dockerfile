@@ -1,4 +1,4 @@
-FROM node:18.14. as build
+FROM node:18.14.1 as build
 ENV PATH /node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
