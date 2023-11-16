@@ -4,48 +4,48 @@ import CreateCompensationsState from './CreateCompensationsState';
 
 const INITIAL_TYPES = [
   {
+    typeId: 1,
     label: 'English',
-    value: 'english',
   },
   {
-    label: 'Milk',
-    value: 'milk',
-  },
-  {
+    typeId: 2,
     label: 'German',
-    value: 'german',
   },
   {
+    typeId: 3,
     label: 'Swimming',
-    value: 'swimming',
   },
   {
+    typeId: 4,
     label: 'Water',
-    value: 'water',
   },
   {
+    typeId: 5,
     label: 'Coworking',
-    value: 'coworking',
   },
   {
+    typeId: 6,
     label: 'Massage',
-    value: 'massage',
   },
   {
+    typeId: 7,
     label: 'Products',
-    value: 'products',
   },
   {
+    typeId: 8,
     label: 'Consumables',
-    value: 'consumables',
   },
   {
+    typeId: 9,
     label: 'Periphery',
-    value: 'periphery',
   },
   {
+    typeId: 10,
     label: 'Business trip',
-    value: 'businessTrip',
+  },
+  {
+    typeId: 11,
+    label: 'Other',
   },
 ];
 
@@ -74,7 +74,7 @@ describe('CreateCompensationsState', () => {
     createCompensationsState.addCompensation();
 
     expect(createCompensationsState.allCompensations).to.has.lengthOf(2);
-    expect(createCompensationsState.allCompensations[0].type).eq('');
+    expect(createCompensationsState.allCompensations[0].typeId).eq(0);
     expect(createCompensationsState.allCompensations[0].comment).eq('');
     expect(createCompensationsState.allCompensations[0].amount).eq(0);
   });
@@ -82,10 +82,10 @@ describe('CreateCompensationsState', () => {
   it('SHOULD return compensation of correct type WHEN add compensation of this type', () => {
     const createCompensationsState = new CreateCompensationsState();
 
-    createCompensationsState.addCompensation('english');
+    createCompensationsState.addCompensation(1);
 
     expect(createCompensationsState.allCompensations).to.has.lengthOf(2);
-    expect(createCompensationsState.allCompensations[1].type).eq('english');
+    expect(createCompensationsState.allCompensations[1].typeId).eq(1);
     expect(createCompensationsState.allCompensations[1].comment).eq('');
     expect(createCompensationsState.allCompensations[1].amount).eq(0);
   });
@@ -108,11 +108,11 @@ describe('CreateCompensationsState', () => {
     createCompensationsState.updateCompensation({
       id: 1,
       comment: 'Test comment',
-      type: 'english',
+      typeId: 1,
       amount: 100,
     });
 
-    expect(createCompensationsState.allCompensations[1].type).eq('english');
+    expect(createCompensationsState.allCompensations[1].typeId).eq(1);
     expect(createCompensationsState.allCompensations[1].comment).eq('Test comment');
     expect(createCompensationsState.allCompensations[1].amount).eq(100);
   });
@@ -125,11 +125,11 @@ describe('CreateCompensationsState', () => {
     createCompensationsState.updateCompensation({
       id: 1,
       comment: 'Test comment',
-      type: 'english',
+      typeId: 1,
       amount: 100,
     });
 
-    expect(createCompensationsState.allCompensations[1].type).eq('english');
+    expect(createCompensationsState.allCompensations[1].typeId).eq(1);
     expect(createCompensationsState.allCompensations[1].comment).eq('Test comment');
     expect(createCompensationsState.allCompensations[1].amount).eq(100);
   });
@@ -142,11 +142,11 @@ describe('CreateCompensationsState', () => {
     createCompensationsState.updateCompensation({
       id: 1,
       comment: 'Test comment',
-      type: 'english',
+      typeId: 1,
       amount: 100,
     });
 
-    expect(createCompensationsState.allCompensations[1].type).eq('english');
+    expect(createCompensationsState.allCompensations[1].typeId).eq(1);
     expect(createCompensationsState.allCompensations[1].comment).eq('Test comment');
     expect(createCompensationsState.allCompensations[1].amount).eq(100);
     expect(createCompensationsState.totalCount).eq(100);

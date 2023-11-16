@@ -5,7 +5,7 @@ import TableCreateCompensations from './components/TableCreateCompensations/Tabl
 import ListTypesCompensations from './components/ListTypesCompensations/ListTypesCompensations';
 import DatePickerCompensations from './components/DateCompensations/DatePickerCompensations';
 import { api } from '../../../../common/api';
-import { LINK_TO_COMPENSATIONS_SERVICE, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
+import { LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
 
 function CreateCompensationsContent() {
   const createCompensationState = useContext(CreateCompensationsStateContext);
@@ -49,7 +49,7 @@ function CreateCompensationsContent() {
 
     try {
       await api.post(
-        `${LINK_TO_COMPENSATIONS_SERVICE}create`,
+        `${LINK_TO_SALARY_SERVICE}/compensations/create`,
         createCompensationState.allCompensations,
       );
 

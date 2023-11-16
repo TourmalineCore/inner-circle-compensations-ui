@@ -10,14 +10,14 @@ function ListTypesCompensations() {
       className="list-types-compensations"
       data-cy="list-types-compensations"
     >
-      {createCompensationsState.allTypes.map(({ label, value }) => (
-        <li key={value}>
+      {createCompensationsState.allTypes.map(({ typeId, label }) => (
+        <li key={typeId}>
           <button
             className="list-types-compensations__button"
-            data-cy={`type-compensation-${value}`}
+            data-cy={`type-compensation-${typeId}`}
             type="button"
-            id={value}
-            onClick={(event: MouseEvent<HTMLButtonElement>) => createCompensationsState.addCompensation(event.currentTarget.id)}
+            id={typeId.toString()}
+            onClick={(event: MouseEvent<HTMLButtonElement>) => createCompensationsState.addCompensation(Number(event.currentTarget.id))}
           >
             {label}
           </button>
