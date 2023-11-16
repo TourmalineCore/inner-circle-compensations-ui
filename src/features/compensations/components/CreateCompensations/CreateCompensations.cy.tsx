@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../cypress/support/commands';
-import { API_ROOT, LINK_TO_COMPENSATIONS_SERVICE, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
+import { API_ROOT, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
 import CreateCompensations from './CreateCompensations';
 
 const INITIAL_TYPES = [
@@ -115,7 +115,7 @@ describe('TableCreateCompensations', () => {
 
     cy.intercept(
       'POST',
-      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}create`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/create`,
       {
         statusCode: 400,
       },
@@ -139,7 +139,7 @@ describe('TableCreateCompensations', () => {
 
     cy.intercept(
       'POST',
-      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}create`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/create`,
       {
         compensations: [
           {

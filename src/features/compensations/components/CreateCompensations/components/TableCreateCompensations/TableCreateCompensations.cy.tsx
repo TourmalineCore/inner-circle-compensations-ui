@@ -104,11 +104,8 @@ describe('TableCreateCompensations', () => {
   it('SHOULD update compensation type WHEN call onSelect', () => {
     mountComponent();
 
-    // english
-
     cy.getByData('table-create-compensations-select')
       .select('1');
-    // english
 
     cy.getByData('table-create-compensations-select')
       .should('have.value', '1');
