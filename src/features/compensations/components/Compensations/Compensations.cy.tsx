@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../cypress/support/commands';
-import { API_ROOT, LINK_TO_COMPENSATIONS_SERVICE } from '../../../../common/config/config';
+import { API_ROOT, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
 
 import Compensations from './Compensations';
 
-const GET_COMPENSATIONS = `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}all`;
+const GET_COMPENSATIONS = `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/all`;
 
 const initialData = {
   list: [
