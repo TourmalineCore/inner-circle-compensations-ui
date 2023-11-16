@@ -37,14 +37,14 @@ class CompensationsState {
 }
 
 export function getFiltering(
-  employee: CompensationsItemType,
+  compensation: CompensationsItemType,
   filterTerm: string,
 ) {
   if (filterTerm === 'unpaid') {
-    return !employee.isPaid;
+    return !compensation.isPaid;
   }
 
-  return employee;
+  return compensation;
 }
 
 export default CompensationsState;
