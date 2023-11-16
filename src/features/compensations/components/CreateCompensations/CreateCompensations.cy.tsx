@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../cypress/support/commands';
-import { API_ROOT, LINK_TO_COMPENSATIONS_SERVICE } from '../../../../common/config/config';
+import { API_ROOT, LINK_TO_COMPENSATIONS_SERVICE, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
 import CreateCompensations from './CreateCompensations';
 
 const INITIAL_TYPES = [
@@ -54,7 +54,7 @@ describe('TableCreateCompensations', () => {
   it('SHOULD render compensation types WHEN visit page', () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
       INITIAL_TYPES,
     );
 
@@ -68,7 +68,7 @@ describe('TableCreateCompensations', () => {
   it('SHOULD render date picker WHEN visit page', () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
       INITIAL_TYPES,
     );
 
@@ -81,7 +81,7 @@ describe('TableCreateCompensations', () => {
   it('SHOULD render create compensations table WHEN visit page', () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
       INITIAL_TYPES,
     );
 
@@ -107,7 +107,7 @@ describe('TableCreateCompensations', () => {
   it('SHOULD not show validation on newly created compensation WHEN submit of the previous one was successful', () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
       INITIAL_TYPES,
     ).as('call-1');
 
