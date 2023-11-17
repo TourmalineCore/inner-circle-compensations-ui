@@ -16,7 +16,7 @@ function ListTypesCompensations() {
             className="list-types-compensations__button"
             data-cy={`type-compensation-${typeId}`}
             type="button"
-            id={typeId.toString()}
+            id={String(typeId)}
             onClick={(event: MouseEvent<HTMLButtonElement>) => createCompensationsState.addCompensation(Number(event.currentTarget.id))}
           >
             {label}

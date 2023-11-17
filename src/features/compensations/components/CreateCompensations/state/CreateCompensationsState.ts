@@ -94,7 +94,7 @@ class CreateCompensationsState {
     this._compensations = [
       {
         id: 0,
-        typeId: 1,
+        typeId: 0,
         comment: '',
         amount: 0,
       },
@@ -113,8 +113,7 @@ class CreateCompensationsState {
     amount: number
   }) {
     const compensationItem = this._compensations.find((compensation) => compensation.id === id);
-
-    compensationItem!.typeId = typeId;
+    compensationItem!.typeId = Number(typeId);
     compensationItem!.comment = comment;
     compensationItem!.amount = amount;
   }

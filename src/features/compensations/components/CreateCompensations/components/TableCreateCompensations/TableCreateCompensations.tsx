@@ -35,7 +35,7 @@ function TableCreateCompensations() {
                 value={typeId}
                 onChange={(event) => createCompensationState.updateCompensation({
                   id,
-                  typeId: Number(event.target.value),
+                  typeId: event.target.value as any,
                   comment,
                   amount,
                 })}
