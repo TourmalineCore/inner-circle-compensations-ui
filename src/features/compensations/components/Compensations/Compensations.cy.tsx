@@ -3,6 +3,8 @@ import '../../../../../cypress/support/commands';
 import { API_ROOT, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
 
 import Compensations from './Compensations';
+import CompensationsState from './state/CompensationsState';
+import CompensationsStateContext from './state/CompensationsStateContext';
 
 const GET_COMPENSATIONS = `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/all`;
 
@@ -60,7 +62,11 @@ describe('Compensations', () => {
 });
 
 function mountComponent() {
+  const compensationsState = new CompensationsState();
+
   cy.mount(
-    <Compensations />,
+    <CompensationsStateContext.Provider value={compensationsState}>
+      <Compensations />
+    </CompensationsStateContext.Provider>,
   );
 }
