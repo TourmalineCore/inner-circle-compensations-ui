@@ -6,9 +6,11 @@ import ListTypesCompensations from './components/ListTypesCompensations/ListType
 import DatePickerCompensations from './components/DateCompensations/DatePickerCompensations';
 import { api } from '../../../../common/api';
 import { LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
+import CompensationsStateContext from '../Compensations/state/CompensationsStateContext';
 
 function CreateCompensationsContent() {
   const createCompensationState = useContext(CreateCompensationsStateContext);
+  const compensationsState = useContext(CompensationsStateContext);
 
   useEffect(() => {
     loadCompensationTypes();
@@ -50,11 +52,20 @@ function CreateCompensationsContent() {
     try {
       await api.post(
         `${LINK_TO_SALARY_SERVICE}/compensations/create`,
-        createCompensationState.allCompensations,
+        {
+          compensations: createCompensationState.allCompensations,
+          dateCompensation: createCompensationState.dateCompensation,
+        },
       );
 
       createCompensationState.removeCompensationsFromList();
       createCompensationState.setIsTriedToSubmit(false);
+
+      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}/compensations/all`);
+
+      compensationsState.initialize({
+        loadedCompensations: data,
+      });
     } catch {
       console.log(createCompensationState.isFilled);
     }
