@@ -2,7 +2,6 @@ import {
   MouseEvent, useContext,
 } from 'react';
 
-import { Button } from '@tourmalinecore/react-tc-ui-kit';
 import clsx from 'clsx';
 import { observer } from 'mobx-react-lite';
 import CompensationsStateContext from '../../state/CompensationsStateContext';
@@ -28,7 +27,7 @@ function CompensationsFilter({
   return (
     <div className={`compensations-filter ${className}`} data-cy="compensations-filter-inner">
       {filterElements.map((item) => (
-        <Button
+        <button
           type="button"
           data-cy="compensations-filter"
           className={clsx('compensations-filter__button', {
@@ -39,7 +38,7 @@ function CompensationsFilter({
           onClick={(event: MouseEvent<HTMLButtonElement>) => compensationsState.updateFilterTerm(event.currentTarget.id)}
         >
           {item.name}
-        </Button>
+        </button>
       ))}
     </div>
   );
