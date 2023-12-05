@@ -46,6 +46,10 @@ const INITIAL_TYPES = [
   },
   {
     typeId: 11,
+    label: 'Psychotherapy',
+  },
+  {
+    typeId: 12,
     label: 'Other',
   },
 ];
