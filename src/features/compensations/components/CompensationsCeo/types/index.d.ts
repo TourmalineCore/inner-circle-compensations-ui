@@ -6,7 +6,7 @@ type CompensationsCeoItemType = {
   amount: number;
   isPaid: boolean;
   employeeId: number;
-  fio: string;
+  EmployeeFullName: string;
 };
 
 type CompensationsCeoType = {
