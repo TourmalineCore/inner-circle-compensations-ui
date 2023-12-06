@@ -45,6 +45,10 @@ const INITIAL_TYPES = [
   },
   {
     typeId: 11,
+    label: 'Psychotherapy',
+  },
+  {
+    typeId: 12,
     label: 'Other',
   },
 ];
@@ -57,7 +61,7 @@ describe('CreateCompensationsState', () => {
       loadedTypes: INITIAL_TYPES,
     });
 
-    expect(createCompensationsState.allTypes).to.has.lengthOf(11);
+    expect(createCompensationsState.allTypes).to.has.lengthOf(12);
   });
 
   it('SHOULD return compensation date WHEN call update', () => {

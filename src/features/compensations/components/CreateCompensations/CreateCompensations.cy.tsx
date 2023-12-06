@@ -46,6 +46,10 @@ const INITIAL_TYPES = [
   },
   {
     typeId: 11,
+    label: 'Psychotherapy',
+  },
+  {
+    typeId: 12,
     label: 'Other',
   },
 ];
@@ -62,7 +66,7 @@ describe('TableCreateCompensations', () => {
 
     cy.getByData('list-types-compensations')
       .children()
-      .should('have.length', 11);
+      .should('have.length', 12);
   });
 
   it('SHOULD render date picker WHEN visit page', () => {
