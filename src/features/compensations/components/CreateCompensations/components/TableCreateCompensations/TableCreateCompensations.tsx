@@ -68,12 +68,14 @@ function TableCreateCompensations() {
             <td
               data-cy="table-create-compensations-td-amount"
               className={clsx('table-create-compensations__column-amount', {
-                'table-create-compensations__column-amount--invalid': amount === 0 && createCompensationState.isTriedToSubmit,
+                'table-create-compensations__column-amount--invalid': amount <= 0 && createCompensationState.isTriedToSubmit,
               })}
             >
+
               <input
                 data-cy="table-create-compensations-amount"
                 type="number"
+                min={0}
                 placeholder="0"
                 className={clsx('table-create-compensations__column-amount__input', {
                   'table-create-compensations__column-amount__input--default': amount === 0,

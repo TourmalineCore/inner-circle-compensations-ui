@@ -36,6 +36,10 @@ class CreateCompensationsState {
     return this._compensations.some((item) => item.typeId === 0 || item.amount === 0);
   }
 
+  get isNegative() {
+    return this._compensations.some((item) => item.amount < 0);
+  }
+
   get allTypes() {
     return this._types;
   }
