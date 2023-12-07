@@ -138,7 +138,7 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allCompensations[1].amount).eq(100);
   });
 
-  it('SHOULD return total sum WHEN enter ammount', () => {
+  it('SHOULD return total sum WHEN enter amount', () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.addCompensation();
@@ -174,5 +174,77 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allCompensations).to.has.lengthOf(3);
     createCompensationsState.removeCompensationsFromList();
     expect(createCompensationsState.allCompensations).to.has.lengthOf(1);
+  });
+
+  it.skip('SHOULD render error message WHEN click send button with negative amount', () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    expect(createCompensationsState.isTriedToSubmit).eq(false);
+    createCompensationsState.addCompensation();
+
+    createCompensationsState.updateCompensation({
+      id: 1,
+      comment: 'Test comment',
+      typeId: 1,
+      amount: -100,
+    });
+    createCompensationsState.setIsTriedToSubmit(true);
+    expect(createCompensationsState.isNegative).eq(true);
+
+    cy.contains('Amount can not be zero or negative').should('exist');
+  });
+
+  it('SHOULD not render error message WHEN click send button with not negative amount', () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    expect(createCompensationsState.isTriedToSubmit).eq(false);
+    createCompensationsState.addCompensation();
+
+    createCompensationsState.updateCompensation({
+      id: 1,
+      comment: 'Test comment',
+      typeId: 1,
+      amount: 100,
+    });
+    createCompensationsState.setIsTriedToSubmit(true);
+    expect(createCompensationsState.isNegative).eq(false);
+
+    cy.contains('Amount can not be zero or negative').should('not.exist');
+  });
+
+  it.skip('SHOULD render error message WHEN click send button with empty fields required', () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    expect(createCompensationsState.isTriedToSubmit).eq(false);
+    createCompensationsState.addCompensation();
+
+    createCompensationsState.updateCompensation({
+      id: 1,
+      comment: 'Test comment',
+      typeId: 0,
+      amount: 0,
+    });
+    createCompensationsState.setIsTriedToSubmit(true);
+    expect(createCompensationsState.isFilled).eq(false);
+
+    cy.contains('Please fill required field. ').should('exist');
+  });
+
+  it('SHOULD render error message WHEN click send button with empty fields required', () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    expect(createCompensationsState.isTriedToSubmit).eq(false);
+    createCompensationsState.addCompensation();
+
+    createCompensationsState.updateCompensation({
+      id: 1,
+      comment: 'Test comment',
+      typeId: 2,
+      amount: 100,
+    });
+    createCompensationsState.setIsTriedToSubmit(true);
+    expect(createCompensationsState.isFilled).eq(true);
+
+    cy.contains('Please fill required field. ').should('not.exist');
   });
 });

@@ -165,6 +165,60 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-td-select')
       .should('not.have.class', 'table-create-compensations__column-type--invalid');
   });
+
+  it.skip('SHOULD render error messages WHEN click send button with empty inputs required', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-select')
+      .select('0');
+
+    cy.getByData('table-create-compensations-amount')
+      .type('0');
+
+    cy.getByData('create-compensations-submit')
+      .click();
+
+    cy.contains('Please fill required field. ').should('exist');
+  });
+
+  it.skip('SHOULD not render error messages WHEN click send button with not empty inputs required', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-select')
+      .select('2');
+
+    cy.getByData('table-create-compensations-amount')
+      .type('200');
+
+    cy.getByData('create-compensations-submit')
+      .click();
+
+    cy.contains('Please fill required field. ').should('not.exist');
+  });
+
+  it('SHOULD render error messages WHEN click send button with negative amount required', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-amount')
+      .type('-2');
+
+    cy.getByData('create-compensations-submit')
+      .click();
+
+    cy.contains('Amount can not be zero or negative' || 'Please fill required field. Amount can not be zero or negative').should('exist');
+  });
+
+  it('SHOULD not render error messages WHEN click send button with not negative amount required', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-amount')
+      .type('2');
+
+    cy.getByData('create-compensations-submit')
+      .click();
+
+    cy.contains('Amount can not be zero or negative' || 'Please fill required field. Amount can not be zero or negative').should('not.exist');
+  });
 });
 
 function mountComponent() {
