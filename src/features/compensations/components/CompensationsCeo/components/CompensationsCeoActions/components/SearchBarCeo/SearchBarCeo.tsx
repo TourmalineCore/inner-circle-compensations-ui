@@ -10,6 +10,7 @@ function SearchBarCeo() {
       type="text"
       placeholder="Search for employee.."
       className="search-bar"
+      data-cy="search-bar"
       onChange={searchHandler}
     />
   );

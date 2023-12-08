@@ -6,18 +6,18 @@ import CompensationsCeoStateContext from '../../../../state/CompensationsCeoStat
 
 import DatePickerCompensationsCeo from './DatePickerCompensationsCeo';
 
-describe('ListTypesCompensations', () => {
+describe('DatePickerCompensationsCeo', () => {
   it('SHOULD render component WHEN visit compensations page', () => {
     mountComponent();
 
-    cy.getByData('date-picker-compensations')
+    cy.getByData('date-picker-compensations-ceo')
       .should('exist');
   });
 
   it('SHOULD render correct date WHEN select next year', () => {
     mountComponent();
 
-    cy.getByData('date-picker-compensations-select')
+    cy.getByData('date-picker-compensations-ceo-select')
       .click();
 
     cy.get('[aria-label="Next Year"]')
@@ -26,14 +26,14 @@ describe('ListTypesCompensations', () => {
     cy.contains('Jan')
       .click();
 
-    cy.getByData('date-picker-compensations-result')
-      .should('have.text', 'January 2024');
+    cy.getByData('date-picker-compensations-ceo-result')
+      .should('have.text', 'Jan 2024');
   });
 
   it('SHOULD render correct date WHEN select next year', () => {
     mountComponent();
 
-    cy.getByData('date-picker-compensations-select')
+    cy.getByData('date-picker-compensations-ceo-select')
       .click();
 
     cy.get('[aria-label="Previous Year"]')
@@ -42,8 +42,8 @@ describe('ListTypesCompensations', () => {
     cy.contains('Feb')
       .click();
 
-    cy.getByData('date-picker-compensations-result')
-      .should('have.text', 'February 2022');
+    cy.getByData('date-picker-compensations-ceo-result')
+      .should('have.text', 'Feb 2022');
   });
 });
 

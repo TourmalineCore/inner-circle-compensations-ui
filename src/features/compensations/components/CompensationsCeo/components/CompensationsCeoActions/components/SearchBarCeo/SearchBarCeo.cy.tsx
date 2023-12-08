@@ -4,26 +4,14 @@ import '../../../../../../../../../cypress/support/commands';
 import CompensationsCeoState from '../../../../state/CompensationsCeoState';
 import CompensationsCeoStateContext from '../../../../state/CompensationsCeoStateContext';
 
-import MarkAsPaidButton from './MarkAsPaidButton';
+import SearchBarCeo from './SearchBarCeo';
 
-describe('MarkAsPaidButton', () => {
+describe('SearchBarCeo', () => {
   it('SHOULD render component WHEN visit compensations page', () => {
     mountComponent();
 
-    cy.getByData('mark-as-paid-button-submit')
+    cy.getByData('search-bar')
       .should('exist');
-  });
-
-  it('SHOULD be in focus WHEN  click on it', () => {
-    mountComponent();
-
-    cy.getByData('mark-as-paid-button-submit')
-      .last()
-      .click();
-
-    cy.getByData('mark-as-paid-button-submit')
-      .last()
-      .focused();
   });
 });
 
@@ -32,7 +20,7 @@ function mountComponent() {
 
   cy.mount(
     <CompensationsCeoStateContext.Provider value={compensationsCeoState}>
-      <MarkAsPaidButton />
+      <SearchBarCeo />
     </CompensationsCeoStateContext.Provider>,
   );
 }

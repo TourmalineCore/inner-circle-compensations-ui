@@ -10,14 +10,14 @@ describe('CompensationsCeoFilter', () => {
   it('SHOULD render compensations filter WHEN visit compensations page', () => {
     mountComponent();
 
-    cy.getByData('compensations-filter-inner')
+    cy.getByData('compensations-ceo-filter-inner')
       .should('exist');
   });
 
   it('SHOULD render elements in component WHEN have data about filters', () => {
     mountComponent();
 
-    cy.getByData('compensations-filter-inner')
+    cy.getByData('compensations-ceo-filter-inner')
       .children()
       .should('have.length', 2);
   });
@@ -25,11 +25,11 @@ describe('CompensationsCeoFilter', () => {
   it('SHOULD be in focus WHEN  click on it', () => {
     mountComponent();
 
-    cy.getByData('compensations-filter')
+    cy.getByData('compensations-ceo-filter')
       .last()
       .click();
 
-    cy.getByData('compensations-filter')
+    cy.getByData('compensations-ceo-filter')
       .last()
       .focused();
   });

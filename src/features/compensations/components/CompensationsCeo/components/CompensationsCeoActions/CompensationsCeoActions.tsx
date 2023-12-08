@@ -5,7 +5,7 @@ import SearchBarCeo from './components/SearchBarCeo/SearchBarCeo';
 
 function CompensationsCeoActions() {
   return (
-    <div className="compensation-actions">
+    <div className="compensation-actions" data-cy="compensation-actions">
       <SearchBarCeo />
       <DateCompensationsCeo />
       <CompensationsCeoFilter />
