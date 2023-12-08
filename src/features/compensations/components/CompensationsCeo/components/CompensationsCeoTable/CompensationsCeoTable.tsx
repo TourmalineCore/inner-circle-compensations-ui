@@ -17,10 +17,19 @@ function CompensationsCeoTable({
   let isSelected = false;
 
   return (
-    <div
-      data-cy="compensations-ceo-table"
-      className={`compensations-ceo-table ${className}`}
-    >
+    <table data-cy="compensations-ceo-table" className={`compensations-ceo-table ${className}`}>
+      <thead>
+        <tr className="compensations-ceo-table__head" data-cy="table-create-compensations-head">
+          <th className="compensations-ceo-table__column-checkbox" />
+          <th className="compensations-ceo-table__column-employee">Name</th>
+          <th className="compensations-ceo-table__column-month">Month</th>
+          <th className="compensations-ceo-table__column-date">Date</th>
+          <th className="compensations-ceo-table__column-comment">Comment</th>
+          <th className="compensations-ceo-table__column-status">Status</th>
+          <th className="compensations-ceo-table__column-amount">Amount</th>
+        </tr>
+      </thead>
+
       {compensationsCeoState.allCompensations.list.length !== 0 ? (
         <>
           {compensationsCeoState.allCompensations.list.map(({
@@ -34,7 +43,10 @@ function CompensationsCeoTable({
                 'compensations-ceo-table__row--not-selected': !isSelected,
               })}
             >
-              <span data-cy="compensations-ceo-table-row-checkbox">
+              <span
+                data-cy="compensations-ceo-table-row-checkbox"
+                className="compensations-ceo-table__column-checkbox"
+              >
                 <input
                   type="checkbox"
                   onChange={() => {
@@ -42,31 +54,50 @@ function CompensationsCeoTable({
                   }}
                 />
               </span>
-              <span data-cy="compensations-ceo-table-row-employee">{employeeFullName}</span>
-              <span data-cy="compensations-ceo-table-row-month">{moment(dateCompensation).format('MMMM YYYY')}</span>
-              <span data-cy="compensations-ceo-table-row-date">{moment(dateCreateCompensation).format('DD.MM.YYYY')}</span>
+
+              <span
+                data-cy="compensations-ceo-table-row-employee"
+                className="compensations-ceo-table__column-employee"
+              >
+                {employeeFullName}
+              </span>
+
+              <span
+                data-cy="compensations-ceo-table-row-month"
+                className="compensations-ceo-table__column-month"
+              >
+                {moment(dateCompensation).format('MMMM YYYY')}
+              </span>
+
+              <span
+                data-cy="compensations-ceo-table-row-date"
+                className="compensations-ceo-table__column-date"
+              >
+                {moment(dateCreateCompensation).format('DD.MM.YYYY')}
+              </span>
+
               <span
                 data-cy="compensations-ceo-table-row-comment"
                 className="compensations-ceo-table__column-comment"
               >
                 {comment}
               </span>
+
               <span
                 data-cy="compensations-ceo-table-row-status"
                 className={clsx('compensations-ceo-table__column-status', {
-                  'compensations-ceo-table__column-status--unpaid': !isPaid,
-                  'compensations-ceo-table__column-status--paid': isPaid,
+                  'compensations-ceo-table__column-status--content--unpaid': !isPaid,
+                  'compensations-ceo-table__column-status--content--paid': isPaid,
                 })}
               >
-                {isPaid ? 'PAID' : 'UNPAID'}
+                <span className="compensations-ceo-table__column-status--content">
+                  {isPaid ? 'PAID' : 'UNPAID'}
+                </span>
               </span>
 
               <span
                 data-cy="compensations-ceo-table-row-amount"
-                className={clsx('compensations-ceo-table__column-amount', {
-                  'compensations-ceo-table__column-amount--unpaid': !isPaid,
-                  'compensations-ceo-table__column-amount--paid': isPaid,
-                })}
+                className="compensations-ceo-table__column-amount"
               >
                 {formatMoney(amount)}
               </span>
@@ -90,7 +121,7 @@ function CompensationsCeoTable({
         </div>
       ) }
 
-    </div>
+    </table>
   );
 }
 

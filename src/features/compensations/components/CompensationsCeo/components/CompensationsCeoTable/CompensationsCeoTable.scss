@@ -1,21 +1,24 @@
 .compensations-ceo-table {
-  border: 1px solid #838383;
+  border: 1px solid var(--comp-color-gray);
   border-radius: 4px;
-  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
   font-weight: 500;
   line-height: 1.4;
+  background: var(--color-white);
 
   &__row {
     display: grid;
     align-items: center;
-    border-bottom: 1px solid #eae9e9;
+    border-bottom: 0.5px solid var(--comp-color-light-gray);
     padding: 24px;
     gap: 40px;
     grid-template-columns:
+      minmax(min-content, 16px)
       minmax(min-content, 150px)
       minmax(min-content, 150px)
+      minmax(min-content, 100px)
       minmax(150px, 1fr)
-      minmax(min-content, 150px);
+      minmax(min-content, 100px)
+      minmax(min-content, 100px);
 
     &:last-child {
       border-bottom: none;
@@ -28,20 +31,34 @@
 
   &__column-amount {
     text-align: end;
-
-    &--paid {
-      color: #1ed400;
-    }
-
-    &--unpaid {
-      color: #da2228;
-    }
   }
 
   &__column-comment {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+
+  &__column-status {
+    &--content {
+      display: flex;
+      padding: 8px;
+      font-size: 20px;
+
+      &--unpaid {
+        border-radius: 10px;
+        max-width: 99px;
+        color: #a45e5b;
+        background: #f9e5e5;
+      }
+
+      &--paid {
+        border-radius: 10px;
+        max-width: 51px;
+        color: #618d7d;
+        background: #e5f8ed;
+      }
+    }
   }
 
   &__no-data {
