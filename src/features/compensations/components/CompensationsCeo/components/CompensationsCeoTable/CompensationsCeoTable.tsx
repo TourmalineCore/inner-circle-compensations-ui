@@ -57,7 +57,10 @@ function CompensationsCeoTable({
                   'compensations-ceo-table__column-status--unpaid': !isPaid,
                   'compensations-ceo-table__column-status--paid': isPaid,
                 })}
-              />
+              >
+                {isPaid ? 'PAID' : 'UNPAID'}
+              </span>
+
               <span
                 data-cy="compensations-ceo-table-row-amount"
                 className={clsx('compensations-ceo-table__column-amount', {
