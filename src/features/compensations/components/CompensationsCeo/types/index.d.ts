@@ -1,15 +1,14 @@
 type CompensationsCeoItemType = {
   id?: number;
-  dateCreateCompensation: string;
+  employeeFullName: string;
   dateCompensation: string;
+  dateCreateCompensation: string;
   comment: string;
   amount: number;
   isPaid: boolean;
-  employeeId: number;
-  EmployeeFullName: string;
 };
 
 type CompensationsCeoType = {
   list: CompensationsCeoItemType[],
-  totalUnpaidAmount: number;
+  totalAmount: number;
 };

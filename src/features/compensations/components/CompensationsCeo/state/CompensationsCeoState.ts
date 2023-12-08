@@ -3,7 +3,7 @@ import { makeAutoObservable } from 'mobx';
 class CompensationsCeoState {
   private _compensations: CompensationsCeoType = {
     list: [],
-    totalUnpaidAmount: 0,
+    totalAmount: 0,
   };
 
   private _filterTerm = 'unpaid';
@@ -19,7 +19,7 @@ class CompensationsCeoState {
   get allCompensations() {
     return {
       list: this._compensations.list.filter((item) => getFiltering(item, this._filterTerm)), // .filter((item) => getSearch(Number(item.employeeId), this._searchTerm)),
-      totalUnpaidAmount: this._compensations.totalUnpaidAmount,
+      totalAmount: this._compensations.totalAmount,
     };
   }
 

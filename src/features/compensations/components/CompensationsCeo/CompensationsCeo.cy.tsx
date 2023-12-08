@@ -9,23 +9,25 @@ const GET_COMPENSATIONS = `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}all`;
 const initialData = {
   list: [
     {
-      dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
+      id: 1,
+      employeeFullName: 'Ceo Ceo I',
       dateCompensation: '2023-06-08T11:42:04.467165Z',
+      dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
       comment: 'I bought milk',
       amount: 760,
       isPaid: false,
-      employeeId: 1,
     },
     {
-      dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
+      id: 2,
+      employeeFullName: 'Ceo Ceo 2',
       dateCompensation: '2023-06-08T11:42:04.467165Z',
-      comment: 'I bought milk milk',
+      dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
+      comment: 'I bought milk',
       amount: 760,
-      isPaid: true,
-      employeeId: 1,
+      isPaid: false,
     },
   ],
-  totalUnpaidAmount: 1520,
+  totalAmount: 1520,
 };
 
 describe('CompensationsCeo', () => {

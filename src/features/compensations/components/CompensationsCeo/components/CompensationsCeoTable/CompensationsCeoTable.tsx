@@ -24,7 +24,7 @@ function CompensationsCeoTable({
       {compensationsCeoState.allCompensations.list.length !== 0 ? (
         <>
           {compensationsCeoState.allCompensations.list.map(({
-            EmployeeFullName, dateCompensation, dateCreateCompensation, amount, comment, isPaid,
+            employeeFullName, dateCompensation, dateCreateCompensation, amount, comment, isPaid,
           }) => (
             <div
               data-cy="compensations-ceo-table-row"
@@ -42,7 +42,7 @@ function CompensationsCeoTable({
                   }}
                 />
               </span>
-              <span data-cy="compensations-ceo-table-row-employee">{EmployeeFullName}</span>
+              <span data-cy="compensations-ceo-table-row-employee">{employeeFullName}</span>
               <span data-cy="compensations-ceo-table-row-month">{moment(dateCompensation).format('MMMM YYYY')}</span>
               <span data-cy="compensations-ceo-table-row-date">{moment(dateCreateCompensation).format('DD.MM.YYYY')}</span>
               <span
@@ -75,7 +75,7 @@ function CompensationsCeoTable({
             className="compensations-ceo-table__row compensations-ceo-table__row-total"
           >
             <span>Total compensations per month</span>
-            <span className="compensations-ceo-table__total-amount">{formatMoney(compensationsCeoState.allCompensations.totalUnpaidAmount)}</span>
+            <span className="compensations-ceo-table__total-amount">{formatMoney(compensationsCeoState.allCompensations.totalAmount)}</span>
           </div>
         </>
       ) : (
