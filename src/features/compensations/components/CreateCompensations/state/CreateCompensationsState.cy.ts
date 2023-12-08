@@ -225,7 +225,10 @@ describe('CreateCompensationsState', () => {
 
     createCompensationsState.setIsTriedToSubmit(true);
 
-    console.log(createCompensationsState.isFilled);
+    expect(createCompensationsState.allCompensations[1].typeId).eq(0);
+    expect(createCompensationsState.allCompensations[1].amount).eq(0);
+
+    console.log(createCompensationsState.isFilled); //= true
     expect(createCompensationsState.isFilled).eq(true);
   });
 
@@ -244,7 +247,10 @@ describe('CreateCompensationsState', () => {
 
     createCompensationsState.setIsTriedToSubmit(true);
 
+    expect(createCompensationsState.allCompensations[1].typeId).eq(2);
+    expect(createCompensationsState.allCompensations[1].amount).eq(100);
+
     console.log(createCompensationsState.isFilled);
-    expect(createCompensationsState.isFilled).eq(false);
+    expect(createCompensationsState.isFilled).eq(false); //= true
   });
 });
