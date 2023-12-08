@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import CompensationsCeoActions from './components/CompensationsCeoActions/CompensationsCeoActions';
 import CompensationsCeoTable from './components/CompensationsCeoTable/CompensationsCeoTable';
 import { api } from '../../../../common/api';
-import { LINK_TO_COMPENSATIONS_SERVICE } from '../../../../common/config/config';
+import { LINK_TO_COMPENSATIONS_SERVICE, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
 import CompensationsCeoStateContext from './state/CompensationsCeoStateContext';
 
 function CompensationsCeoContent() {
@@ -22,7 +22,7 @@ function CompensationsCeoContent() {
 
   async function loadCompensations() {
     try {
-      const { data } = await api.get(`${LINK_TO_COMPENSATIONS_SERVICE}all`);
+      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}//${LINK_TO_COMPENSATIONS_SERVICE}all`);
 
       compensationsCeoState.initialize({
         loadedCompensations: data,
