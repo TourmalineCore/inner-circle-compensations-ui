@@ -18,37 +18,37 @@ function TableCreateCompensations() {
       </thead>
       <tbody>
         {createCompensationState.allCompensations.map(({
-          id, type, comment, amount,
+          id, typeId, comment, amount,
         }) => (
           <tr key={id} className="table-create-compensations__item" data-cy="table-create-compensations-item">
             <td
               data-cy="table-create-compensations-td-select"
               className={clsx('table-create-compensations__column-type', {
-                'table-create-compensations__column-type--invalid': type === '' && createCompensationState.isTriedToSubmit,
+                'table-create-compensations__column-type--invalid': typeId === 0 && createCompensationState.isTriedToSubmit,
               })}
             >
               <select
                 data-cy="table-create-compensations-select"
                 className={clsx('table-create-compensations__column-type__select', {
-                  'table-create-compensations__column-type__select--default': type === '',
+                  'table-create-compensations__column-type__select--default': typeId === 0,
                 })}
-                value={type}
+                value={typeId}
                 onChange={(event) => createCompensationState.updateCompensation({
                   id,
-                  type: event.target.value,
+                  typeId: Number(event.target.value),
                   comment,
                   amount,
                 })}
               >
-                {createCompensationState.allTypes.map(({ value, label }) => (
+                {createCompensationState.allTypes.map(({ label, typeId: type }) => (
                   <option
-                    key={value}
-                    value={value}
+                    key={type}
+                    value={type}
                   >
                     {label}
                   </option>
                 ))}
-                <option value="" disabled selected hidden>type</option>
+                <option value={0} disabled selected hidden>type</option>
               </select>
             </td>
             <td className="table-create-compensations__column-comment">
@@ -59,7 +59,7 @@ function TableCreateCompensations() {
                 data-cy="table-create-compensations-comment"
                 onChange={(event) => createCompensationState.updateCompensation({
                   id,
-                  type,
+                  typeId,
                   comment: event.target.value,
                   amount,
                 })}
@@ -81,7 +81,7 @@ function TableCreateCompensations() {
                 value={amount === 0 ? '' : amount}
                 onChange={(event) => createCompensationState.updateCompensation({
                   id,
-                  type,
+                  typeId,
                   comment,
                   amount: Number(event.target.value),
                 })}

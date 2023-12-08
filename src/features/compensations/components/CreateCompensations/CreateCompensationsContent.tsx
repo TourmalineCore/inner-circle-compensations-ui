@@ -5,57 +5,12 @@ import TableCreateCompensations from './components/TableCreateCompensations/Tabl
 import ListTypesCompensations from './components/ListTypesCompensations/ListTypesCompensations';
 import DatePickerCompensations from './components/DateCompensations/DatePickerCompensations';
 import { api } from '../../../../common/api';
-import { LINK_TO_COMPENSATIONS_SERVICE } from '../../../../common/config/config';
-
-const INITIAL_TYPES = [
-  {
-    label: 'English',
-    value: 'english',
-  },
-  {
-    label: 'German',
-    value: 'german',
-  },
-  {
-    label: 'Swimming',
-    value: 'swimming',
-  },
-  {
-    label: 'Water',
-    value: 'water',
-  },
-  {
-    label: 'Coworking',
-    value: 'coworking',
-  },
-  {
-    label: 'Massage',
-    value: 'massage',
-  },
-  {
-    label: 'Products',
-    value: 'products',
-  },
-  {
-    label: 'Consumables',
-    value: 'consumables',
-  },
-  {
-    label: 'Periphery',
-    value: 'periphery',
-  },
-  {
-    label: 'Business trip',
-    value: 'businessTrip',
-  },
-  {
-    label: 'Other',
-    value: 'other',
-  },
-];
+import { LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
+import CompensationsStateContext from '../Compensations/state/CompensationsStateContext';
 
 function CreateCompensationsContent() {
   const createCompensationState = useContext(CreateCompensationsStateContext);
+  const compensationsState = useContext(CompensationsStateContext);
 
   useEffect(() => {
     loadCompensationTypes();
@@ -83,12 +38,11 @@ function CreateCompensationsContent() {
 
   async function loadCompensationTypes() {
     try {
-      const { data } = await api.get(`${LINK_TO_COMPENSATIONS_SERVICE}types`);
+      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}/compensations/types`);
 
       createCompensationState.initializeTypes({ loadedTypes: data });
     } catch {
       console.log('error');
-      createCompensationState.initializeTypes({ loadedTypes: INITIAL_TYPES });
     }
   }
 
@@ -97,12 +51,21 @@ function CreateCompensationsContent() {
 
     try {
       await api.post(
-        `${LINK_TO_COMPENSATIONS_SERVICE}create`,
-        createCompensationState.allCompensations,
+        `${LINK_TO_SALARY_SERVICE}/compensations/create`,
+        {
+          compensations: createCompensationState.allCompensations,
+          dateCompensation: createCompensationState.dateCompensation,
+        },
       );
 
       createCompensationState.removeCompensationsFromList();
       createCompensationState.setIsTriedToSubmit(false);
+
+      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}/compensations/all`);
+
+      compensationsState.initialize({
+        loadedCompensations: data,
+      });
     } catch {
       console.log(createCompensationState.isFilled);
     }

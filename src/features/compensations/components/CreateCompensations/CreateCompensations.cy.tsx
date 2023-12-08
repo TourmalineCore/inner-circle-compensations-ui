@@ -1,52 +1,56 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../cypress/support/commands';
-import { API_ROOT, LINK_TO_COMPENSATIONS_SERVICE } from '../../../../common/config/config';
+import { API_ROOT, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
 import CreateCompensations from './CreateCompensations';
 
 const INITIAL_TYPES = [
   {
+    typeId: 1,
     label: 'English',
-    value: 'english',
   },
   {
+    typeId: 2,
     label: 'German',
-    value: 'german',
   },
   {
+    typeId: 3,
     label: 'Swimming',
-    value: 'swimming',
   },
   {
+    typeId: 4,
     label: 'Water',
-    value: 'water',
   },
   {
+    typeId: 5,
     label: 'Coworking',
-    value: 'coworking',
   },
   {
+    typeId: 6,
     label: 'Massage',
-    value: 'massage',
   },
   {
+    typeId: 7,
     label: 'Products',
-    value: 'products',
   },
   {
+    typeId: 8,
     label: 'Consumables',
-    value: 'consumables',
   },
   {
+    typeId: 9,
     label: 'Periphery',
-    value: 'periphery',
   },
   {
+    typeId: 10,
     label: 'Business trip',
-    value: 'businessTrip',
   },
   {
+    typeId: 11,
+    label: 'Psychotherapy',
+  },
+  {
+    typeId: 12,
     label: 'Other',
-    value: 'other',
   },
 ];
 
@@ -54,7 +58,7 @@ describe('TableCreateCompensations', () => {
   it('SHOULD render compensation types WHEN visit page', () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
       INITIAL_TYPES,
     );
 
@@ -62,13 +66,13 @@ describe('TableCreateCompensations', () => {
 
     cy.getByData('list-types-compensations')
       .children()
-      .should('have.length', 11);
+      .should('have.length', 12);
   });
 
   it('SHOULD render date picker WHEN visit page', () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
       INITIAL_TYPES,
     );
 
@@ -81,7 +85,7 @@ describe('TableCreateCompensations', () => {
   it('SHOULD render create compensations table WHEN visit page', () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
       INITIAL_TYPES,
     );
 
@@ -107,7 +111,7 @@ describe('TableCreateCompensations', () => {
   it('SHOULD not show validation on newly created compensation WHEN submit of the previous one was successful', () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
       INITIAL_TYPES,
     ).as('call-1');
 
@@ -115,7 +119,7 @@ describe('TableCreateCompensations', () => {
 
     cy.intercept(
       'POST',
-      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}create`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/create`,
       {
         statusCode: 400,
       },
@@ -133,16 +137,17 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-amount')
       .type('800');
 
+    // english
     cy.getByData('table-create-compensations-select')
-      .select('english');
+      .select('1');
 
     cy.intercept(
       'POST',
-      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}create`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/create`,
       {
         compensations: [
           {
-            type: 'English',
+            typeId: 1,
             comment: '',
             amount: 800,
           },

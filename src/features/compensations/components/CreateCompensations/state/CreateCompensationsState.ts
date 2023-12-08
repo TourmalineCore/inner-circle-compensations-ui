@@ -2,8 +2,8 @@ import { makeAutoObservable } from 'mobx';
 
 class CreateCompensationsState {
   private _types: {
+    typeId: number;
     label: string;
-    value: string;
   }[] = [];
 
   private _dateCompensation: Date | string = new Date();
@@ -14,13 +14,13 @@ class CreateCompensationsState {
 
   private _compensations: {
     id: number;
-    type: string;
+    typeId: number;
     comment: string;
     amount: number
   }[] = [
       {
         id: 0,
-        type: '',
+        typeId: 0,
         comment: '',
         amount: 0,
       },
@@ -33,7 +33,7 @@ class CreateCompensationsState {
   }
 
   get isFilled() {
-    return this._compensations.some((item) => item.type.length === 0 || item.amount === 0);
+    return this._compensations.some((item) => item.typeId === 0 || item.amount === 0);
   }
 
   get allTypes() {
@@ -60,8 +60,8 @@ class CreateCompensationsState {
     loadedTypes,
   }: {
     loadedTypes: {
+      typeId: number;
       label: string;
-      value: string;
     }[]
   }) {
     this._types = loadedTypes;
@@ -75,10 +75,10 @@ class CreateCompensationsState {
     this._dateCompensation = newDate;
   }
 
-  addCompensation(type?: string) {
+  addCompensation(type?: number) {
     this._compensations.push({
       id: this._nextCompensationId,
-      type: type || '',
+      typeId: type || 0,
       comment: '',
       amount: 0,
     });
@@ -94,7 +94,7 @@ class CreateCompensationsState {
     this._compensations = [
       {
         id: 0,
-        type: '',
+        typeId: 0,
         comment: '',
         amount: 0,
       },
@@ -103,18 +103,17 @@ class CreateCompensationsState {
 
   updateCompensation({
     id,
-    type,
+    typeId,
     comment,
     amount,
   }: {
     id: number;
-    type: string;
+    typeId: number;
     comment: string;
     amount: number
   }) {
     const compensationItem = this._compensations.find((compensation) => compensation.id === id);
-
-    compensationItem!.type = type;
+    compensationItem!.typeId = Number(typeId);
     compensationItem!.comment = comment;
     compensationItem!.amount = amount;
   }

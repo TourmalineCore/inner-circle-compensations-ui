@@ -8,48 +8,52 @@ import ListTypesCompensations from './ListTypesCompensations';
 
 const INITIAL_TYPES = [
   {
+    typeId: 1,
     label: 'English',
-    value: 'english',
   },
   {
+    typeId: 2,
     label: 'German',
-    value: 'german',
   },
   {
+    typeId: 3,
     label: 'Swimming',
-    value: 'swimming',
   },
   {
+    typeId: 4,
     label: 'Water',
-    value: 'water',
   },
   {
+    typeId: 5,
     label: 'Coworking',
-    value: 'coworking',
   },
   {
+    typeId: 6,
     label: 'Massage',
-    value: 'massage',
   },
   {
+    typeId: 7,
     label: 'Products',
-    value: 'products',
   },
   {
+    typeId: 8,
     label: 'Consumables',
-    value: 'consumables',
   },
   {
+    typeId: 9,
     label: 'Periphery',
-    value: 'periphery',
   },
   {
+    typeId: 10,
     label: 'Business trip',
-    value: 'businessTrip',
   },
   {
+    typeId: 11,
+    label: 'Psychotherapy',
+  },
+  {
+    typeId: 12,
     label: 'Other',
-    value: 'other',
   },
 ];
 
@@ -66,13 +70,13 @@ describe('ListTypesCompensations', () => {
 
     cy.getByData('list-types-compensations')
       .children()
-      .should('have.length', 11);
+      .should('have.length', 12);
   });
 
-  it('SHOULD have focused element "english" WHEN click on type "english"', () => {
+  it('SHOULD have focused element "1" WHEN click on type "1"', () => {
     mountComponent();
 
-    cy.getByData('type-compensation-english')
+    cy.getByData('type-compensation-1')
       .click()
       .focused();
   });
