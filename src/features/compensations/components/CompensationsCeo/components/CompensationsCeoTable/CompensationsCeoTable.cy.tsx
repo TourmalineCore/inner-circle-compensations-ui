@@ -65,6 +65,9 @@ describe('CompensationsCeoTable', () => {
       compensations: initialData,
     });
 
+    cy.getByData('compensations-ceo-table-row-employee')
+      .should('have.text', 'Ceo Ceo I');
+
     cy.getByData('compensations-ceo-table-row-month')
       .should('have.text', 'June 2023');
 

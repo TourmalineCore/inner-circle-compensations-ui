@@ -18,7 +18,7 @@ function CompensationsCeoTable({
 
   return (
     <div
-      data-cy="compensations-table"
+      data-cy="compensations-ceo-table"
       className={`compensations-ceo-table ${className}`}
     >
       {compensationsCeoState.allCompensations.list.length !== 0 ? (

@@ -14,7 +14,7 @@ function CompensationsCeoContent() {
   }, []);
 
   return (
-    <section data-cy="compensations">
+    <section data-cy="compensations-ceo">
       <CompensationsCeoActions />
       <CompensationsCeoTable />
     </section>

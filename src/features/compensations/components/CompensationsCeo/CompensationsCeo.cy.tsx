@@ -24,7 +24,7 @@ const initialData = {
       dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
       comment: 'I bought milk',
       amount: 760,
-      isPaid: false,
+      isPaid: true,
     },
   ],
   totalAmount: 1520,
@@ -36,7 +36,7 @@ describe('CompensationsCeo', () => {
 
     mountComponent();
 
-    cy.getByData('compensations')
+    cy.getByData('compensations-ceo')
       .should('exist');
   });
 
@@ -45,7 +45,7 @@ describe('CompensationsCeo', () => {
 
     mountComponent();
 
-    cy.getByData('compensations-table-row')
+    cy.getByData('compensations-ceo-table-row')
       .should('have.length', 1);
   });
 
@@ -54,11 +54,11 @@ describe('CompensationsCeo', () => {
 
     mountComponent();
 
-    cy.getByData('compensations-filter')
+    cy.getByData('compensations-ceo-filter')
       .first()
       .click();
 
-    cy.getByData('compensations-table-row')
+    cy.getByData('compensations-ceo-table-row')
       .should('have.length', 2);
   });
 });
