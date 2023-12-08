@@ -22,9 +22,9 @@ function CreateCompensationsContent() {
       <ListTypesCompensations />
       <DatePickerCompensations />
       <TableCreateCompensations />
-      <div className="create-compensations__error-message">
-        {createCompensationState.isFilled && createCompensationState.isTriedToSubmit && ('Please fill required field. ')}
-        {createCompensationState.isNegative && createCompensationState.isTriedToSubmit && ('Amount can not be zero or negative')}
+      <div className="create-compensations__error-message" data-cy="create-compensations-error-message">
+        {createCompensationState.isFilled && createCompensationState.isTriedToSubmit && ('Please fill required field')}
+        {!createCompensationState.isFilled && createCompensationState.isNegative && createCompensationState.isTriedToSubmit && ('Amount can not be negative')}
       </div>
       <button
         className="create-compensations__button"

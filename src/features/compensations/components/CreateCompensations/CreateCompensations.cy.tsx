@@ -166,11 +166,10 @@ describe('TableCreateCompensations', () => {
       .should('not.have.class', 'table-create-compensations__column-type--invalid');
   });
 
-  it.skip('SHOULD render error messages WHEN click send button with empty inputs required', () => {
+  it('SHOULD render error messages WHEN click send button with empty inputs required', () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations-select')
-      .select('0');
+    cy.getByData('table-create-compensations-select').eq(0);
 
     cy.getByData('table-create-compensations-amount')
       .type('0');
@@ -178,14 +177,23 @@ describe('TableCreateCompensations', () => {
     cy.getByData('create-compensations-submit')
       .click();
 
-    cy.contains('Please fill required field. ').should('exist');
+    cy.getByData('create-compensations-error-message')
+      .should('exist');
   });
 
-  it.skip('SHOULD not render error messages WHEN click send button with not empty inputs required', () => {
+  it('SHOULD not render error messages WHEN click send button with not empty inputs required', () => {
+    cy.intercept(
+      'GET',
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
+      INITIAL_TYPES,
+    ).as('call-9');
+
     mountComponent();
 
+    cy.wait('@call-9');
+
     cy.getByData('table-create-compensations-select')
-      .select('2');
+      .select('1');
 
     cy.getByData('table-create-compensations-amount')
       .type('200');
@@ -193,11 +201,24 @@ describe('TableCreateCompensations', () => {
     cy.getByData('create-compensations-submit')
       .click();
 
-    cy.contains('Please fill required field. ').should('not.exist');
+    cy.getByData('create-compensations-error-message')
+      .should('not.include.text', 'Please fill required field')
+      .should('not.include.text', 'Amount can not be negative');
   });
 
   it('SHOULD render error messages WHEN click send button with negative amount required', () => {
+    cy.intercept(
+      'GET',
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
+      INITIAL_TYPES,
+    ).as('call-10');
+
     mountComponent();
+
+    cy.wait('@call-10');
+
+    cy.getByData('table-create-compensations-select')
+      .select('2');
 
     cy.getByData('table-create-compensations-amount')
       .type('-2');
@@ -205,11 +226,38 @@ describe('TableCreateCompensations', () => {
     cy.getByData('create-compensations-submit')
       .click();
 
-    cy.contains('Amount can not be zero or negative' || 'Please fill required field. Amount can not be zero or negative').should('exist');
+    cy.getByData('create-compensations-error-message')
+      .should('exist');
+  });
+
+  it('SHOULD render error messages WHEN click send button with negative amount and empty select', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-select').eq(0);
+
+    cy.getByData('table-create-compensations-amount')
+      .type('-2');
+
+    cy.getByData('create-compensations-submit')
+      .click();
+
+    cy.getByData('create-compensations-error-message')
+      .should('exist');
   });
 
   it('SHOULD not render error messages WHEN click send button with not negative amount required', () => {
+    cy.intercept(
+      'GET',
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
+      INITIAL_TYPES,
+    ).as('call-11');
+
     mountComponent();
+
+    cy.wait('@call-11');
+
+    cy.getByData('table-create-compensations-select')
+      .select('2');
 
     cy.getByData('table-create-compensations-amount')
       .type('2');
@@ -217,7 +265,9 @@ describe('TableCreateCompensations', () => {
     cy.getByData('create-compensations-submit')
       .click();
 
-    cy.contains('Amount can not be zero or negative' || 'Please fill required field. Amount can not be zero or negative').should('not.exist');
+    cy.getByData('create-compensations-error-message')
+      .should('not.include.text', 'Please fill required field')
+      .should('not.include.text', 'Amount can not be negative');
   });
 });
 
