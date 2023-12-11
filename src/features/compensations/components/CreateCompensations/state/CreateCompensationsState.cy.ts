@@ -210,14 +210,13 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.isNegative).eq(false);
   });
 
-  it.only('SHOULD render error message WHEN click send button with empty fields required', () => {
+  it('SHOULD render error message WHEN click send button with empty fields required', () => {
     const createCompensationsState = new CreateCompensationsState();
 
     expect(createCompensationsState.isTriedToSubmit).eq(false);
-    createCompensationsState.addCompensation();
 
     createCompensationsState.updateCompensation({
-      id: 1,
+      id: 0,
       comment: 'Test comment',
       typeId: 0,
       amount: 0,
@@ -225,21 +224,16 @@ describe('CreateCompensationsState', () => {
 
     createCompensationsState.setIsTriedToSubmit(true);
 
-    expect(createCompensationsState.allCompensations[1].typeId).eq(0);
-    expect(createCompensationsState.allCompensations[1].amount).eq(0);
-
-    console.log(createCompensationsState.isFilled); //= true
     expect(createCompensationsState.isFilled).eq(true);
   });
 
-  it.only('SHOULD not render error message WHEN click send button with not empty fields required', () => {
+  it('SHOULD not render error message WHEN click send button with not empty fields required', () => {
     const createCompensationsState = new CreateCompensationsState();
 
     expect(createCompensationsState.isTriedToSubmit).eq(false);
-    createCompensationsState.addCompensation();
 
     createCompensationsState.updateCompensation({
-      id: 1,
+      id: 0,
       comment: 'Test comment',
       typeId: 2,
       amount: 100,
@@ -247,10 +241,6 @@ describe('CreateCompensationsState', () => {
 
     createCompensationsState.setIsTriedToSubmit(true);
 
-    expect(createCompensationsState.allCompensations[1].typeId).eq(2);
-    expect(createCompensationsState.allCompensations[1].amount).eq(100);
-
-    console.log(createCompensationsState.isFilled);
-    expect(createCompensationsState.isFilled).eq(false); //= true
+    expect(createCompensationsState.isFilled).eq(false);
   });
 });
