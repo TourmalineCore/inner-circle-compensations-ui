@@ -163,6 +163,11 @@
       &--default {
         color: var(--comp-color-dark-gray);
       }
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        appearance: none;
+      }
     }
 
     &__input-rub {

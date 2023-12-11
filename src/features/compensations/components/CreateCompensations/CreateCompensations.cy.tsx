@@ -165,6 +165,110 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-td-select')
       .should('not.have.class', 'table-create-compensations__column-type--invalid');
   });
+
+  it('SHOULD render error messages WHEN click send button with empty inputs required', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-select').eq(0);
+
+    cy.getByData('table-create-compensations-amount')
+      .type('0');
+
+    cy.getByData('create-compensations-submit')
+      .click();
+
+    cy.getByData('create-compensations-error-message')
+      .should('exist');
+  });
+
+  it('SHOULD not render error messages WHEN click send button with not empty inputs required', () => {
+    cy.intercept(
+      'GET',
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
+      INITIAL_TYPES,
+    ).as('call-9');
+
+    mountComponent();
+
+    cy.wait('@call-9');
+
+    cy.getByData('table-create-compensations-select')
+      .select('1');
+
+    cy.getByData('table-create-compensations-amount')
+      .type('200');
+
+    cy.getByData('create-compensations-submit')
+      .click();
+
+    cy.getByData('create-compensations-error-message')
+      .should('not.include.text', 'Please fill required field')
+      .should('not.include.text', 'Amount can not be negative');
+  });
+
+  it('SHOULD render error messages WHEN click send button with negative amount required', () => {
+    cy.intercept(
+      'GET',
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
+      INITIAL_TYPES,
+    ).as('call-10');
+
+    mountComponent();
+
+    cy.wait('@call-10');
+
+    cy.getByData('table-create-compensations-select')
+      .select('2');
+
+    cy.getByData('table-create-compensations-amount')
+      .type('-2');
+
+    cy.getByData('create-compensations-submit')
+      .click();
+
+    cy.getByData('create-compensations-error-message')
+      .should('exist');
+  });
+
+  it('SHOULD render error messages WHEN click send button with negative amount and empty select', () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-select').eq(0);
+
+    cy.getByData('table-create-compensations-amount')
+      .type('-2');
+
+    cy.getByData('create-compensations-submit')
+      .click();
+
+    cy.getByData('create-compensations-error-message')
+      .should('exist');
+  });
+
+  it('SHOULD not render error messages WHEN click send button with not negative amount required', () => {
+    cy.intercept(
+      'GET',
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
+      INITIAL_TYPES,
+    ).as('call-11');
+
+    mountComponent();
+
+    cy.wait('@call-11');
+
+    cy.getByData('table-create-compensations-select')
+      .select('2');
+
+    cy.getByData('table-create-compensations-amount')
+      .type('2');
+
+    cy.getByData('create-compensations-submit')
+      .click();
+
+    cy.getByData('create-compensations-error-message')
+      .should('not.include.text', 'Please fill required field')
+      .should('not.include.text', 'Amount can not be negative');
+  });
 });
 
 function mountComponent() {

@@ -138,7 +138,7 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allCompensations[1].amount).eq(100);
   });
 
-  it('SHOULD return total sum WHEN enter ammount', () => {
+  it('SHOULD return total sum WHEN enter amount', () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.addCompensation();
@@ -174,5 +174,73 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allCompensations).to.has.lengthOf(3);
     createCompensationsState.removeCompensationsFromList();
     expect(createCompensationsState.allCompensations).to.has.lengthOf(1);
+  });
+
+  it('SHOULD render error message WHEN click send button with negative amount', () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    expect(createCompensationsState.isTriedToSubmit).eq(false);
+    createCompensationsState.addCompensation();
+
+    createCompensationsState.updateCompensation({
+      id: 1,
+      comment: 'Test comment',
+      typeId: 1,
+      amount: -100,
+    });
+
+    createCompensationsState.setIsTriedToSubmit(true);
+    expect(createCompensationsState.isNegative).eq(true);
+  });
+
+  it('SHOULD not render error message WHEN click send button with not negative amount', () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    expect(createCompensationsState.isTriedToSubmit).eq(false);
+    createCompensationsState.addCompensation();
+
+    createCompensationsState.updateCompensation({
+      id: 1,
+      comment: 'Test comment',
+      typeId: 1,
+      amount: 100,
+    });
+
+    createCompensationsState.setIsTriedToSubmit(true);
+    expect(createCompensationsState.isNegative).eq(false);
+  });
+
+  it('SHOULD render error message WHEN click send button with empty fields required', () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    expect(createCompensationsState.isTriedToSubmit).eq(false);
+
+    createCompensationsState.updateCompensation({
+      id: 0,
+      comment: 'Test comment',
+      typeId: 0,
+      amount: 0,
+    });
+
+    createCompensationsState.setIsTriedToSubmit(true);
+
+    expect(createCompensationsState.isFilled).eq(true);
+  });
+
+  it('SHOULD not render error message WHEN click send button with not empty fields required', () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    expect(createCompensationsState.isTriedToSubmit).eq(false);
+
+    createCompensationsState.updateCompensation({
+      id: 0,
+      comment: 'Test comment',
+      typeId: 2,
+      amount: 100,
+    });
+
+    createCompensationsState.setIsTriedToSubmit(true);
+
+    expect(createCompensationsState.isFilled).eq(false);
   });
 });
