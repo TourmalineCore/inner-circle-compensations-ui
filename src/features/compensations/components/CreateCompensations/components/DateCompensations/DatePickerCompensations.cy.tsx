@@ -6,7 +6,7 @@ import CreateCompensationsStateContext from '../../state/CreateCompensationsStat
 
 import DatePickerCompensations from './DatePickerCompensations';
 
-describe('ListTypesCompensations', () => {
+describe('DatePickerCompensations', () => {
   it('SHOULD render component WHEN visit compensations page', () => {
     mountComponent();
 

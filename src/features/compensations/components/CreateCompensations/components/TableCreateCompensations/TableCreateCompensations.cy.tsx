@@ -83,8 +83,8 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-comment')
       .should('have.value', '');
 
-    /* cy.getByData('table-create-compensations-amount')
-      .should('have.value', 0); */
+    cy.getByData('table-create-compensations-amount')
+      .should('have.value', '');
 
     cy.getByData('table-create-compensations-remove-button')
       .should('exist');
