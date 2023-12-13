@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite';
 import CompensationsAllFilter from './components/CompensationsAllFilter/CompensationsAllFilter';
 import DateCompensationsAll from './components/DateCompensationsAll/DatePickerCompensationsAll';
 import MarkAsPaidButton from './components/MarkAsPaidButton/MarkAsPaidButton';
@@ -14,4 +15,4 @@ function CompensationsAllActions() {
   );
 }
 
-export default CompensationsAllActions;
+export default observer(CompensationsAllActions);

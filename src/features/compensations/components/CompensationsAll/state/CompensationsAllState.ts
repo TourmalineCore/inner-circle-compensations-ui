@@ -6,11 +6,13 @@ class CompensationsAllState {
     totalAmount: 0,
   };
 
+  private _isSelected: boolean = false;
+
   private _filterTerm = 'unpaid';
 
   private _searchTerm = '';
 
-  private _dateCompensation: Date | string = new Date();
+  _dateCompensation: Date | string = new Date();
 
   constructor() {
     makeAutoObservable(this);
@@ -40,6 +42,10 @@ class CompensationsAllState {
   }: {
     loadedCompensations: CompensationsAllType,
   }) {
+    this._compensations = {
+      list: [],
+      totalAmount: 0,
+    };
     this._compensations = loadedCompensations;
   }
 
@@ -57,14 +63,14 @@ class CompensationsAllState {
 }
 
 export function getFiltering(
-  employee: CompensationsAllItemType,
+  compensations: CompensationsAllItemType,
   filterTerm: string,
 ) {
   if (filterTerm === 'unpaid') {
-    return !employee.isPaid;
+    return !compensations.isPaid;
   }
 
-  return employee;
+  return compensations;
 }
 
 export function getSearch(searchElement: string, searchTerm: string) {

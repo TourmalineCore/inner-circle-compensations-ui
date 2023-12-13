@@ -11,7 +11,7 @@ function CompensationsAllContent() {
 
   useEffect(() => {
     loadCompensations();
-  }, []);
+  }, [compensationsAllState._dateCompensation]);
 
   return (
     <section data-cy="compensations-all">
@@ -22,7 +22,11 @@ function CompensationsAllContent() {
 
   async function loadCompensations() {
     try {
-      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}//${LINK_TO_COMPENSATIONS_SERVICE}all`);
+      const dateCompensation = compensationsAllState._dateCompensation as Date;
+      const month = dateCompensation.getMonth();
+      const year = dateCompensation.getFullYear();
+
+      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}//${LINK_TO_COMPENSATIONS_SERVICE}/admin/all?year=${year}&month=${month + 1}`);
 
       compensationsAllState.initialize({
         loadedCompensations: data,

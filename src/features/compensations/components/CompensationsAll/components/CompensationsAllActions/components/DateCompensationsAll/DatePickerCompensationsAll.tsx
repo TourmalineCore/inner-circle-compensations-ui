@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import { HTMLProps, forwardRef, useContext } from 'react';
+import {
+  HTMLProps, forwardRef, useContext,
+} from 'react';
 import DatePicker from 'react-datepicker';
 import { observer } from 'mobx-react-lite';
 import CompensationsAllStateContext from '../../../../state/CompensationsAllStateContext';
-
 import logoData from '../../../../../../../../assets/icons/logo-data-picker.svg';
 
 const DatePickerCompensationsCustomElement = forwardRef<HTMLButtonElement, HTMLProps<HTMLButtonElement>>(({ value, onClick }, ref) => (
