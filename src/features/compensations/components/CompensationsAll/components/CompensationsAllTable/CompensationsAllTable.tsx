@@ -14,10 +14,6 @@ function CompensationsAllTable({
 }) {
   const compensationsAllState = useContext(CompensationsAllStateContext);
 
-  console.log(compensationsAllState.allCompensations.list);
-
-  let isSelected = false;
-
   return (
     <table data-cy="compensations-all-table" className={`compensations-all-table ${className}`}>
       <thead>
@@ -35,7 +31,7 @@ function CompensationsAllTable({
         {compensationsAllState.allCompensations.list.length !== 0 ? (
           <>
             {compensationsAllState.allCompensations.list.map(({
-              id, employeeFullName, dateCompensation, dateCreateCompensation, amount, comment, isPaid,
+              id, employeeFullName, dateCompensation, dateCreateCompensation, amount, comment, isPaid, isSelected,
             }) => (
               <tr
                 data-cy="compensations-all-table-item"
@@ -51,9 +47,7 @@ function CompensationsAllTable({
                 >
                   <input
                     type="checkbox"
-                    onChange={() => {
-                      isSelected = !isSelected;
-                    }}
+                    onChange={() => compensationsAllState.setIsSelected(!isSelected, id)}
                   />
                 </td>
 

@@ -6,13 +6,17 @@ class CompensationsAllState {
     totalAmount: 0,
   };
 
-  private _isSelected: boolean = false;
-
   private _filterTerm = 'unpaid';
 
   private _searchTerm = '';
 
+  _isChange = false;
+
   _dateCompensation: Date | string = new Date();
+
+  get allSelectedCompensations() {
+    return this._compensations.list.filter((compensation) => compensation.isSelected);
+  }
 
   constructor() {
     makeAutoObservable(this);
@@ -25,6 +29,10 @@ class CompensationsAllState {
     };
   }
 
+  get isSelected() {
+    return this._compensations.list.some((item) => item.isSelected === true);
+  }
+
   get totalCount() {
     return this._compensations.totalAmount;
   }
@@ -35,6 +43,15 @@ class CompensationsAllState {
 
   get dateCompensation() {
     return this._dateCompensation;
+  }
+
+  setIsSelected(isSelected: boolean, id: number) {
+    this._compensations.list.map((item) => {
+      if (item.id === id) {
+        return item.isSelected = isSelected;
+      }
+      return item;
+    });
   }
 
   initialize({

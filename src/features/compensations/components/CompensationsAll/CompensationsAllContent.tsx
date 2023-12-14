@@ -11,7 +11,7 @@ function CompensationsAllContent() {
 
   useEffect(() => {
     loadCompensations();
-  }, [compensationsAllState._dateCompensation]);
+  }, [compensationsAllState._dateCompensation, compensationsAllState._isChange]);
 
   return (
     <section data-cy="compensations-all">

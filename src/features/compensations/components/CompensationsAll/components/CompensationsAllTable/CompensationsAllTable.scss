@@ -82,20 +82,21 @@
     color: var(--color-black);
 
     &--content {
-      display: flex;
+      display: grid;
       padding: 8px;
       font-size: 20px;
+      text-align: center;
 
       &--unpaid {
         border-radius: 10px;
-        max-width: 99px;
+        max-width: 100px;
         color: #a45e5b;
         background: #f9e5e5;
       }
 
       &--paid {
         border-radius: 10px;
-        max-width: 51px;
+        max-width: 100px;
         color: #618d7d;
         background: #e5f8ed;
       }
