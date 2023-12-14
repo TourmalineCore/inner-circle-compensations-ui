@@ -35,7 +35,7 @@ describe('CompensationsAllTable', () => {
       compensations: initialData,
     });
 
-    cy.getByData('compensations-all-table-row')
+    cy.getByData('compensations-all-table-item')
       .should('exist');
   });
 
@@ -44,7 +44,7 @@ describe('CompensationsAllTable', () => {
       compensations: initialData,
     });
 
-    cy.getByData('compensations-all-table-row-total')
+    cy.getByData('compensations-all-table-total')
       .should('exist');
   });
 
@@ -69,7 +69,7 @@ describe('CompensationsAllTable', () => {
       .should('have.text', 'Ceo Ceo I');
 
     cy.getByData('compensations-all-table-row-month')
-      .should('have.text', 'June 2023');
+      .should('have.text', 'Jun 2023');
 
     cy.getByData('compensations-all-table-row-date')
       .should('have.text', '08.06.2023');
@@ -78,29 +78,7 @@ describe('CompensationsAllTable', () => {
       .should('have.text', 'I bought milk');
 
     cy.getByData('compensations-all-table-row-amount')
-      .should('have.class', 'compensations-all-table__column-amount--unpaid');
-  });
-
-  it('SHOULD render valid amount in row WHEN element has unpaid amount', () => {
-    mountComponent({
-      compensations: {
-        list: [
-          {
-            id: 1,
-            employeeFullName: 'Ceo Ceo I',
-            dateCompensation: '2023-06-08T11:42:04.467165Z',
-            dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
-            comment: 'I bought milk',
-            amount: 760,
-            isPaid: false,
-          },
-        ],
-        totalAmount: 760,
-      },
-    });
-
-    cy.getByData('compensations-all-table-row-amount')
-      .should('have.class', 'compensations-all-table__column-amount--unpaid');
+      .should('have.text', '760 ₽');
   });
 });
 
