@@ -5,6 +5,7 @@ type CompensationsItemType = {
   comment: string;
   amount: number;
   isPaid: boolean;
+  employeeId: number;
 };
 
 type CompensationsType = {

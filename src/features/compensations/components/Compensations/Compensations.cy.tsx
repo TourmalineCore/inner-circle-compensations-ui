@@ -16,6 +16,7 @@ const initialData = {
       comment: 'I bought milk',
       amount: 760,
       isPaid: false,
+      employeeId: 1,
     },
     {
       dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
@@ -23,6 +24,7 @@ const initialData = {
       comment: 'I bought milk milk',
       amount: 760,
       isPaid: true,
+      employeeId: 1,
     },
   ],
   totalUnpaidAmount: 1520,

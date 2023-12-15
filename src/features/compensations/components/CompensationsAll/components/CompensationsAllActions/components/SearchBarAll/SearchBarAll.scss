@@ -1,0 +1,21 @@
+.search-bar {
+  margin: 0;
+  border: 2px solid var(--comp-color-gray);
+  border-radius: 12px;
+  padding: 8px 30px 8px 8px;
+  max-width: 400px;
+  max-height: 40px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.25;
+  background: var(--color-white);
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover,
+  &:active {
+    opacity: 0.75;
+  }
+}

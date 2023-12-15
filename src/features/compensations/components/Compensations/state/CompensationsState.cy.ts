@@ -15,6 +15,7 @@ describe('CompensationsState', () => {
             comment: 'I bought milk',
             amount: 760,
             isPaid: false,
+            employeeId: 1,
           },
         ],
         totalUnpaidAmount: 760,
