@@ -111,7 +111,7 @@ describe('CompensationsAllTable', () => {
     //   .should('have.text', 'I bought milk');
 
     cy.getByData('compensations-all-table-row-amount')
-      .should('have.text', '3520.45 ₽');
+      .should('have.text', '3,520.45 ₽');
   });
 });
 
