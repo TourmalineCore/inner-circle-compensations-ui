@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import moment from 'moment';
 import { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
@@ -21,10 +20,10 @@ function CompensationsAllTable({
         <tr className="compensations-all-table__head" data-cy="compensations-all-table-head">
           <th className="compensations-all-table__column-checkbox" />
           <th className="compensations-all-table__column-employee">Name</th>
-          <th className="compensations-all-table__column-month">Month</th>
+          {/* <th className="compensations-all-table__column-month">Month</th>
           <th className="compensations-all-table__column-date">Date</th>
           <th className="compensations-all-table__column-type">Type</th>
-          <th className="compensations-all-table__column-comment">Comment</th>
+          <th className="compensations-all-table__column-comment">Comment</th> */}
           <th className="compensations-all-table__column-status">Status</th>
           <th className="compensations-all-table__column-amount">Amount</th>
         </tr>
@@ -33,7 +32,7 @@ function CompensationsAllTable({
         {compensationsAllState.allCompensations.items.length !== 0 ? (
           <>
             {compensationsAllState.allCompensations.items.map(({
-              itemId, employeeFullName, dateCompensation, totalAmount, isSelected, isPaid,
+              itemId, employeeFullName, totalAmount, isSelected, isPaid,
               // itemId, employeeFullName, dateCompensation, totalAmount, compensations, isSelected, isPaid,
             }) => (
               <tr
@@ -60,7 +59,7 @@ function CompensationsAllTable({
                 >
                   {employeeFullName}
                 </td>
-
+                {/*
                 <td
                   data-cy="compensations-all-table-row-month"
                   className="compensations-all-table__column-month"
@@ -72,22 +71,22 @@ function CompensationsAllTable({
                   data-cy="compensations-all-table-row-date"
                   className="compensations-all-table__column-date"
                 >
-                  {/* {moment(dateCreateCompensation).format('DD.MM.YYYY')} */}
+                  {moment(dateCreateCompensation).format('DD.MM.YYYY')}
                 </td>
 
                 <td
                   data-cy="compensations-all-table-row-type"
                   className="compensations-all-table__column-type"
                 >
-                  {/* {compensationType} */}
+                  {compensationType}
                 </td>
 
                 <td
                   data-cy="compensations-all-table-row-comment"
                   className="compensations-all-table__column-comment"
                 >
-                  {/* {comment} */}
-                </td>
+                  {comment}
+                </td> */}
 
                 <td
                   data-cy="compensations-all-table-row-status"
@@ -106,14 +105,6 @@ function CompensationsAllTable({
                   className="compensations-all-table__column-amount"
                 >
                   <span className="compensations-tooltip">
-                    {/* <button
-                      className="compensations-tooltip--button"
-                      type="button"
-                      onMouseEnter={() => compensationsAllState.setIsHover(true)}
-                      onMouseLeave={() => compensationsAllState.setIsHover(false)}
-                    >
-                      {formatMoney(totalAmount)}
-                    </button> */}
                     {formatMoney(totalAmount)}
                     <div className="tooltip">
                       <ToolTipTable />
@@ -135,7 +126,7 @@ function CompensationsAllTable({
       <tfoot>
         <tr className="compensations-all-table__total" data-cy="compensations-all-table-total">
           <td className="compensations-all-table__column-checkbox" />
-          <td className="compensations-all-table__column-employee" colSpan={3}>Total compensations per month</td>
+          <td className="compensations-all-table__column-total" colSpan={3}>Total compensations per month</td>
           <td className="compensations-all-table__column-amount__sum" data-cy="compensations-all-table-sum">{`${compensationsAllState.totalCount} ₽`}</td>
         </tr>
       </tfoot>

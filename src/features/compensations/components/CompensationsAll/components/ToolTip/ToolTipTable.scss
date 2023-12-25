@@ -4,7 +4,7 @@
   border-collapse: collapse;
   padding: 8px;
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.4;
@@ -24,31 +24,24 @@
     border-bottom: 0.5px solid var(--comp-color-light-gray);
   }
 
-  &__column-date {
-    padding: 8px 16px;
-    width: 15%;
-    max-width: 100px;
-    font-weight: 500;
-  }
-
   &__column-type {
     padding: 8px 16px;
-    width: 20%;
-    max-width: 150px;
+    width: 26%;
+    max-width: 130px;
     font-weight: 500;
   }
 
   &__column-comment {
     padding: 8px 16px;
-    width: 40%;
+    width: 50%;
     max-width: 250px;
     font-weight: 500;
   }
 
   &__column-amount {
     padding: 8px 16px;
-    width: 20%;
-    max-width: 150px;
+    width: 24%;
+    max-width: 120px;
     font-weight: 500;
     text-align: end;
     color: var(--color-black);
