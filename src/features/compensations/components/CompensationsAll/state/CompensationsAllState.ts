@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx';
 
 class CompensationsAllState {
   private _compensations: CompensationsAllType = {
-    list: [],
+    items: [],
     totalAmount: 0,
   };
 
@@ -12,10 +12,12 @@ class CompensationsAllState {
 
   _isChange = false;
 
+  _isHover = false;
+
   _dateCompensation: Date | string = new Date();
 
   get allSelectedCompensations() {
-    return this._compensations.list.filter((compensation) => compensation.isSelected);
+    return this._compensations.items.filter((compensation) => compensation.isSelected);
   }
 
   constructor() {
@@ -24,13 +26,17 @@ class CompensationsAllState {
 
   get allCompensations() {
     return {
-      list: this._compensations.list.filter((item) => getFiltering(item, this._filterTerm)),
+      items: this._compensations.items.filter((item) => getFiltering(item, this._filterTerm)),
       totalAmount: this._compensations.totalAmount,
     };
   }
 
+  get employeeCompensations() {
+    return this._compensations.items.flatMap((item) => item.compensations);
+  }
+
   get isSelected() {
-    return this._compensations.list.some((item) => item.isSelected === true);
+    return this._compensations.items.some((item) => item.isSelected === true);
   }
 
   get totalCount() {
@@ -45,9 +51,13 @@ class CompensationsAllState {
     return this._dateCompensation;
   }
 
+  setIsHover(value: boolean) {
+    this._isHover = value;
+  }
+
   setIsSelected(isSelected: boolean, id: number) {
-    this._compensations.list.map((item) => {
-      if (item.id === id) {
+    this._compensations.items.map((item) => {
+      if (item.itemId === id) {
         return item.isSelected = isSelected;
       }
       return item;
@@ -60,7 +70,7 @@ class CompensationsAllState {
     loadedCompensations: CompensationsAllType,
   }) {
     this._compensations = {
-      list: [],
+      items: [],
       totalAmount: 0,
     };
     this._compensations = loadedCompensations;

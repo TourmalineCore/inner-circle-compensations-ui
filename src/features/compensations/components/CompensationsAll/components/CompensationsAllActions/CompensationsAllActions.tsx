@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import CompensationsAllFilter from './components/CompensationsAllFilter/CompensationsAllFilter';
+// import CompensationsAllFilter from './components/CompensationsAllFilter/CompensationsAllFilter';
 import DateCompensationsAll from './components/DateCompensationsAll/DatePickerCompensationsAll';
 // import MarkAsPaidButton from './components/MarkAsPaidButton/MarkAsPaidButton';
 // import SearchBarAll from './components/SearchBarAll/SearchBarAll';
@@ -10,7 +10,7 @@ function CompensationsAllActions() {
       {/* /<SearchBarAll /> */}
       <div className="compensation-actions--div--left" />
       <DateCompensationsAll />
-      <CompensationsAllFilter />
+      {/* <CompensationsAllFilter /> */}
       {/* <MarkAsPaidButton /> */}
       <div className="compensation-actions--div--right" />
     </div>

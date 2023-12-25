@@ -1,15 +1,26 @@
-type CompensationsAllItemType = {
+type EmployeeCompensationsAllItemType = {
   id: number;
-  employeeFullName: string;
-  dateCompensation: string;
-  dateCreateCompensation: string;
+  // employeeFullName: string;
+  // dateCompensation: string;
+  compensationType: string;
   comment: string;
   amount: number;
-  isPaid: boolean;
+  dateCreateCompensation: string;
+  // isPaid: boolean;
+  // isSelected?: bollean;
+};
+
+type CompensationsAllItemType = {
+  itemId: number;
+  employeeFullName: string;
+  dateCompensation: string;
+  totalAmount: number;
+  compensations: EmployeeCompensationsAllItemType[];
   isSelected?: bollean;
+  isPaid: boolean;
 };
 
 type CompensationsAllType = {
-  list: CompensationsAllItemType[],
+  items: CompensationsAllItemType[],
   totalAmount: number;
 };

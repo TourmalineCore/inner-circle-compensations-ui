@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
 import CompensationsAllStateContext from '../../state/CompensationsAllStateContext';
+import ToolTipTable from '../ToolTip/ToolTipTable';
 
 const NO_DATA = 'No records in this month';
 
@@ -22,20 +23,22 @@ function CompensationsAllTable({
           <th className="compensations-all-table__column-employee">Name</th>
           <th className="compensations-all-table__column-month">Month</th>
           <th className="compensations-all-table__column-date">Date</th>
+          <th className="compensations-all-table__column-type">Type</th>
           <th className="compensations-all-table__column-comment">Comment</th>
           <th className="compensations-all-table__column-status">Status</th>
           <th className="compensations-all-table__column-amount">Amount</th>
         </tr>
       </thead>
       <tbody>
-        {compensationsAllState.allCompensations.list.length !== 0 ? (
+        {compensationsAllState.allCompensations.items.length !== 0 ? (
           <>
-            {compensationsAllState.allCompensations.list.map(({
-              id, employeeFullName, dateCompensation, dateCreateCompensation, amount, comment, isPaid, isSelected,
+            {compensationsAllState.allCompensations.items.map(({
+              itemId, employeeFullName, dateCompensation, totalAmount, isSelected, isPaid,
+              // itemId, employeeFullName, dateCompensation, totalAmount, compensations, isSelected, isPaid,
             }) => (
               <tr
                 data-cy="compensations-all-table-item"
-                key={id}
+                key={itemId}
                 className={clsx('compensations-all-table__item', {
                   'compensations-all-table__item--selected': isSelected,
                   'compensations-all-table__item--not-selected': !isSelected,
@@ -47,7 +50,7 @@ function CompensationsAllTable({
                 >
                   <input
                     type="checkbox"
-                    onChange={() => compensationsAllState.setIsSelected(!isSelected, id)}
+                    onChange={() => compensationsAllState.setIsSelected(!isSelected, itemId)}
                   />
                 </td>
 
@@ -69,14 +72,21 @@ function CompensationsAllTable({
                   data-cy="compensations-all-table-row-date"
                   className="compensations-all-table__column-date"
                 >
-                  {moment(dateCreateCompensation).format('DD.MM.YYYY')}
+                  {/* {moment(dateCreateCompensation).format('DD.MM.YYYY')} */}
+                </td>
+
+                <td
+                  data-cy="compensations-all-table-row-type"
+                  className="compensations-all-table__column-type"
+                >
+                  {/* {compensationType} */}
                 </td>
 
                 <td
                   data-cy="compensations-all-table-row-comment"
                   className="compensations-all-table__column-comment"
                 >
-                  {comment}
+                  {/* {comment} */}
                 </td>
 
                 <td
@@ -95,7 +105,29 @@ function CompensationsAllTable({
                   data-cy="compensations-all-table-row-amount"
                   className="compensations-all-table__column-amount"
                 >
-                  {formatMoney(amount)}
+                  <span className="compensations-tooltip">
+                    <button
+                      className="compensations-tooltip--button"
+                      type="button"
+                      onMouseEnter={() => compensationsAllState.setIsHover(true)}
+                      onMouseLeave={() => compensationsAllState.setIsHover(false)}
+                    >
+                      <td
+                        data-cy="compensations-all-table-row-amount"
+                        className="compensations-all-table__column-amount"
+                      >
+                        {formatMoney(totalAmount)}
+                      </td>
+                    </button>
+                    <div
+                      className={clsx('tooltip', {
+                        'tooltip--nothover': !compensationsAllState._isHover,
+                        'tooltip--hover': compensationsAllState._isHover,
+                      })}
+                    >
+                      <ToolTipTable />
+                    </div>
+                  </span>
                 </td>
               </tr>
             ))}

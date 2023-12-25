@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import CompensationsAllActions from './components/CompensationsAllActions/CompensationsAllActions';
 import CompensationsAllTable from './components/CompensationsAllTable/CompensationsAllTable';
 import { api } from '../../../../common/api';
-import { LINK_TO_COMPENSATIONS_SERVICE, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
+// import { LINK_TO_COMPENSATIONS_SERVICE, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
 import CompensationsAllStateContext from './state/CompensationsAllStateContext';
 
 function CompensationsAllContent() {
@@ -26,7 +26,8 @@ function CompensationsAllContent() {
       const month = dateCompensation.getMonth();
       const year = dateCompensation.getFullYear();
 
-      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}//${LINK_TO_COMPENSATIONS_SERVICE}/admin/all?year=${year}&month=${month + 1}`);
+      // const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}//${LINK_TO_COMPENSATIONS_SERVICE}/admin/all?year=${year}&month=${month + 1}`);
+      const { data } = await api.get(`http://localhost:5000/api/compensations/admin/all?year=${year}&month=${month + 1}`);
 
       compensationsAllState.initialize({
         loadedCompensations: data,

@@ -5,19 +5,49 @@ import CompensationsAllStateContext from '../../state/CompensationsAllStateConte
 
 import CompensationsAllTable from './CompensationsAllTable';
 
+// const initialData = {
+//   list: [
+//     {
+//       id: 1,
+//       employeeFullName: 'Ceo Ceo I',
+//       dateCompensation: '2023-06-08T11:42:04.467165Z',
+//       dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
+//       compensationType: 'English',
+//       comment: 'I bought milk',
+//       amount: 760,
+//       isPaid: false,
+//     },
+//   ],
+//   totalAmount: 760,
+// };
+
 const initialData = {
-  list: [
+  items: [
     {
-      id: 1,
-      employeeFullName: 'Ceo Ceo I',
-      dateCompensation: '2023-06-08T11:42:04.467165Z',
-      dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
-      comment: 'I bought milk',
-      amount: 760,
+      employeeFullName: 'Ceo Ceo Ceo',
+      itemId: 55,
+      dateCompensation: '2023-12-01T05:00:00Z',
+      totalAmount: 3520.45,
       isPaid: false,
+      compensations: [
+        {
+          id: 55,
+          compensationType: 'English',
+          comment: 'I bought milk',
+          amount: 760,
+          dateCreateCompensation: '2023-12-19T06:56:49Z',
+        },
+        {
+          id: 56,
+          compensationType: 'German',
+          comment: 'I bought this',
+          amount: 2760.45,
+          dateCreateCompensation: '2023-12-19T06:56:49Z',
+        },
+      ],
     },
   ],
-  totalAmount: 760,
+  totalAmount: 3520.45,
 };
 
 describe('CompensationsAllTable', () => {
@@ -51,7 +81,7 @@ describe('CompensationsAllTable', () => {
   it('SHOULD render compensations table with no data message WHEN there is no data', () => {
     mountComponent({
       compensations: {
-        list: [],
+        items: [],
         totalAmount: 0,
       },
     });
@@ -66,19 +96,22 @@ describe('CompensationsAllTable', () => {
     });
 
     cy.getByData('compensations-all-table-row-employee')
-      .should('have.text', 'Ceo Ceo I');
+      .should('have.text', 'Ceo Ceo Ceo');
 
     cy.getByData('compensations-all-table-row-month')
-      .should('have.text', 'Jun 2023');
+      .should('have.text', 'Dec 2023');
 
-    cy.getByData('compensations-all-table-row-date')
-      .should('have.text', '08.06.2023');
+    // cy.getByData('compensations-all-table-row-date')
+    //   .should('have.text', '08.06.2023');
 
-    cy.getByData('compensations-all-table-row-comment')
-      .should('have.text', 'I bought milk');
+    // cy.getByData('compensations-all-table-row-type')
+    //   .should('have.text', 'English');
+
+    // cy.getByData('compensations-all-table-row-comment')
+    //   .should('have.text', 'I bought milk');
 
     cy.getByData('compensations-all-table-row-amount')
-      .should('have.text', '760 ₽');
+      .should('have.text', '3520.45 ₽');
   });
 });
 

@@ -8,23 +8,37 @@ describe('CompensationsAllState', () => {
 
     compensationsAllState.initialize({
       loadedCompensations: {
-        list: [
+        items: [
           {
-            id: 1,
-            employeeFullName: 'Ceo Ceo I',
-            dateCompensation: '2023-06-08T11:42:04.467165Z',
-            dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
-            comment: 'I bought milk',
-            amount: 760,
+            employeeFullName: 'Ceo Ceo Ceo',
+            itemId: 55,
+            dateCompensation: '2023-12-01T05:00:00Z',
+            totalAmount: 3520.45,
             isPaid: false,
+            compensations: [
+              {
+                id: 55,
+                compensationType: 'English',
+                comment: 'I bought milk',
+                amount: 760,
+                dateCreateCompensation: '2023-12-19T06:56:49Z',
+              },
+              {
+                id: 56,
+                compensationType: 'German',
+                comment: 'I bought this',
+                amount: 2760.45,
+                dateCreateCompensation: '2023-12-19T06:56:49Z',
+              },
+            ],
           },
         ],
-        totalAmount: 760,
+        totalAmount: 3520.45,
       },
     });
 
-    expect(compensationsAllState.allCompensations.list).to.has.lengthOf(1);
-    expect(compensationsAllState.allCompensations.totalAmount).eq(760);
+    expect(compensationsAllState.allCompensations.items).to.has.lengthOf(1);
+    expect(compensationsAllState.allCompensations.totalAmount).eq(3520.45);
   });
 
   it('SHOULD get value filter WHEN called update', () => {

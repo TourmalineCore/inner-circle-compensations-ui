@@ -33,7 +33,7 @@ function MarkAsPaidButton() {
 
     if (selectedCompensations.length !== 0) {
       try {
-        const compensationsIds = selectedCompensations.map((compensation) => compensation.id);
+        const compensationsIds = selectedCompensations.map((compensation) => compensation.itemId);
 
         const status = selectedCompensations.some((item) => !item.isPaid)
           ? 'paid'
