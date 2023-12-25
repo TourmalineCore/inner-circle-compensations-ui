@@ -106,25 +106,16 @@ function CompensationsAllTable({
                   className="compensations-all-table__column-amount"
                 >
                   <span className="compensations-tooltip">
-                    <button
+                    {/* <button
                       className="compensations-tooltip--button"
                       type="button"
                       onMouseEnter={() => compensationsAllState.setIsHover(true)}
                       onMouseLeave={() => compensationsAllState.setIsHover(false)}
                     >
-                      <td
-                        data-cy="compensations-all-table-row-amount"
-                        className="compensations-all-table__column-amount"
-                      >
-                        {formatMoney(totalAmount)}
-                      </td>
-                    </button>
-                    <div
-                      className={clsx('tooltip', {
-                        'tooltip--nothover': !compensationsAllState._isHover,
-                        'tooltip--hover': compensationsAllState._isHover,
-                      })}
-                    >
+                      {formatMoney(totalAmount)}
+                    </button> */}
+                    {formatMoney(totalAmount)}
+                    <div className="tooltip">
                       <ToolTipTable />
                     </div>
                   </span>
