@@ -100,12 +100,11 @@ function CompensationsAllTable({
                   </span>
                 </td>
 
-                <td
-                  data-cy="compensations-all-table-row-amount"
-                  className="compensations-all-table__column-amount"
-                >
+                <td className="compensations-all-table__column-amount">
                   <span className="compensations-tooltip">
-                    {formatMoney(totalAmount)}
+                    <span data-cy="compensations-all-table-row-amount">
+                      {formatMoney(totalAmount)}
+                    </span>
                     <div className="tooltip">
                       <ToolTipTable />
                     </div>
