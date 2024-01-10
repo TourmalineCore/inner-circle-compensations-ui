@@ -5,8 +5,6 @@ import { observer } from 'mobx-react-lite';
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
 import CompensationsStateContext from '../../state/CompensationsStateContext';
 
-// const NO_DATA = 'No records in this month';
-
 function CompensationsTable({
   className = '',
 }: {

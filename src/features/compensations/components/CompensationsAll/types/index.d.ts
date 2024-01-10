@@ -1,13 +1,9 @@
 type EmployeeCompensationsAllItemType = {
   id: number;
-  // employeeFullName: string;
-  // dateCompensation: string;
   compensationType: string;
   comment: string;
   amount: number;
   dateCreateCompensation: string;
-  // isPaid: boolean;
-  // isSelected?: bollean;
 };
 
 type CompensationsAllItemType = {

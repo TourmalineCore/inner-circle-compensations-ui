@@ -1,7 +1,11 @@
 import { observer } from 'mobx-react-lite';
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
 
-function ToolTipTable({ compensations }: { compensations: EmployeeCompensationsAllItemType[] }) {
+function ToolTipTable({
+  compensations,
+}: {
+  compensations: EmployeeCompensationsAllItemType[]
+}) {
   return (
     <div className="compensations-tooltip-item">
       <table data-cy="compensations-tooltip-table" className="compensations-tooltip-table">

@@ -5,8 +5,6 @@ import { formatMoney } from '../../../../../../common/utils/formatMoney';
 import CompensationsAllStateContext from '../../state/CompensationsAllStateContext';
 import ToolTipTable from '../ToolTip/ToolTipTable';
 
-// const NO_DATA = 'No records in this month';
-
 function CompensationsAllTable({
   className = '',
 }: {
@@ -20,10 +18,6 @@ function CompensationsAllTable({
         <tr className="compensations-all-table__head" data-cy="compensations-all-table-head">
           <th className="compensations-all-table__column-checkbox" />
           <th className="compensations-all-table__column-employee">Name</th>
-          {/* <th className="compensations-all-table__column-month">Month</th>
-          <th className="compensations-all-table__column-date">Date</th>
-          <th className="compensations-all-table__column-type">Type</th>
-          <th className="compensations-all-table__column-comment">Comment</th> */}
           <th className="compensations-all-table__column-status">Status</th>
           <th className="compensations-all-table__column-amount">Amount</th>
         </tr>
@@ -33,7 +27,6 @@ function CompensationsAllTable({
           <>
             {compensationsAllState.allCompensations.items.map(({
               employeeId, employeeFullName, totalAmount, isSelected, isPaid, compensations,
-              // employeeId, employeeFullName, dateCompensation, totalAmount, compensations, isSelected, isPaid,
             }) => (
               <tr
                 data-cy="compensations-all-table-item"
@@ -59,34 +52,6 @@ function CompensationsAllTable({
                 >
                   {employeeFullName}
                 </td>
-                {/*
-                <td
-                  data-cy="compensations-all-table-row-month"
-                  className="compensations-all-table__column-month"
-                >
-                  {moment(dateCompensation).format('MMM YYYY')}
-                </td>
-
-                <td
-                  data-cy="compensations-all-table-row-date"
-                  className="compensations-all-table__column-date"
-                >
-                  {moment(dateCreateCompensation).format('DD.MM.YYYY')}
-                </td>
-
-                <td
-                  data-cy="compensations-all-table-row-type"
-                  className="compensations-all-table__column-type"
-                >
-                  {compensationType}
-                </td>
-
-                <td
-                  data-cy="compensations-all-table-row-comment"
-                  className="compensations-all-table__column-comment"
-                >
-                  {comment}
-                </td> */}
 
                 <td
                   data-cy="compensations-all-table-row-status"

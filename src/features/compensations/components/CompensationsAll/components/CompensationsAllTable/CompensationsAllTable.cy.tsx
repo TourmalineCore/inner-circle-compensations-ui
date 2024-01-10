@@ -5,22 +5,6 @@ import CompensationsAllStateContext from '../../state/CompensationsAllStateConte
 
 import CompensationsAllTable from './CompensationsAllTable';
 
-// const initialData = {
-//   list: [
-//     {
-//       id: 1,
-//       employeeFullName: 'Ceo Ceo I',
-//       dateCompensation: '2023-06-08T11:42:04.467165Z',
-//       dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
-//       compensationType: 'English',
-//       comment: 'I bought milk',
-//       amount: 760,
-//       isPaid: false,
-//     },
-//   ],
-//   totalAmount: 760,
-// };
-
 const initialData = {
   items: [
     {
