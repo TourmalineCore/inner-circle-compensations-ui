@@ -25,7 +25,7 @@ const initialData = {
   items: [
     {
       employeeFullName: 'Ceo Ceo Ceo',
-      itemId: 55,
+      employeeId: 55,
       dateCompensation: '2023-12-01T05:00:00Z',
       totalAmount: 3520.45,
       isPaid: false,

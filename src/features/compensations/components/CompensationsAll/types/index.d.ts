@@ -11,7 +11,7 @@ type EmployeeCompensationsAllItemType = {
 };
 
 type CompensationsAllItemType = {
-  itemId: number;
+  employeeId: number;
   employeeFullName: string;
   dateCompensation: string;
   totalAmount: number;

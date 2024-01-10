@@ -1,11 +1,7 @@
-import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
-import CompensationsAllStateContext from '../../state/CompensationsAllStateContext';
 
-function ToolTipTable() {
-  const compensationsAllState = useContext(CompensationsAllStateContext);
-
+function ToolTipTable({ compensations }: { compensations: EmployeeCompensationsAllItemType[] }) {
   return (
     <div className="compensations-tooltip-item">
       <table data-cy="compensations-tooltip-table" className="compensations-tooltip-table">
@@ -17,8 +13,8 @@ function ToolTipTable() {
           </tr>
         </thead>
         <tbody>
-          {compensationsAllState.employeeCompensations.map(({
-            id, amount, compensationType, comment,
+          {compensations.map(({
+            id, compensationType, comment, amount,
           }) => (
             <tr
               data-cy="compensations-tooltip-table-item"

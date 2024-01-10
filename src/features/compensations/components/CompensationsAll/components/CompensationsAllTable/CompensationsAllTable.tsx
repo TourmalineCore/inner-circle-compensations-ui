@@ -32,12 +32,12 @@ function CompensationsAllTable({
         {compensationsAllState.allCompensations.items.length !== 0 ? (
           <>
             {compensationsAllState.allCompensations.items.map(({
-              itemId, employeeFullName, totalAmount, isSelected, isPaid,
-              // itemId, employeeFullName, dateCompensation, totalAmount, compensations, isSelected, isPaid,
+              employeeId, employeeFullName, totalAmount, isSelected, isPaid, compensations,
+              // employeeId, employeeFullName, dateCompensation, totalAmount, compensations, isSelected, isPaid,
             }) => (
               <tr
                 data-cy="compensations-all-table-item"
-                key={itemId}
+                key={employeeId}
                 className={clsx('compensations-all-table__item', {
                   'compensations-all-table__item--selected': isSelected,
                   'compensations-all-table__item--not-selected': !isSelected,
@@ -49,7 +49,7 @@ function CompensationsAllTable({
                 >
                   <input
                     type="checkbox"
-                    onChange={() => compensationsAllState.setIsSelected(!isSelected, itemId)}
+                    onChange={() => compensationsAllState.setIsSelected(!isSelected, employeeId)}
                   />
                 </td>
 
@@ -106,7 +106,7 @@ function CompensationsAllTable({
                       {formatMoney(totalAmount)}
                     </span>
                     <div className="tooltip">
-                      <ToolTipTable />
+                      <ToolTipTable compensations={compensations} />
                     </div>
                   </span>
                 </td>

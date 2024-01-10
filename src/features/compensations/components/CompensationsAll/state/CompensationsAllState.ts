@@ -31,10 +31,6 @@ class CompensationsAllState {
     };
   }
 
-  get employeeCompensations() {
-    return this._compensations.items.flatMap((item) => item.compensations);
-  }
-
   get isSelected() {
     return this._compensations.items.some((item) => item.isSelected === true);
   }
@@ -57,7 +53,7 @@ class CompensationsAllState {
 
   setIsSelected(isSelected: boolean, id: number) {
     this._compensations.items.map((item) => {
-      if (item.itemId === id) {
+      if (item.employeeId === id) {
         return item.isSelected = isSelected;
       }
       return item;
