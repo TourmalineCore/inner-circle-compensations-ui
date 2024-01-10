@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite';
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
 import CompensationsStateContext from '../../state/CompensationsStateContext';
 
-const NO_DATA = 'No records in this month';
+// const NO_DATA = 'No records in this month';
 
 function CompensationsTable({
   className = '',
@@ -62,7 +62,7 @@ function CompensationsTable({
           data-cy="compensations-table-no-data"
           className="compensations-table__no-data"
         >
-          {NO_DATA}
+          {compensationsState.filterTerm === 'paid' ? 'No records in this month' : 'No unpaid compensation in this month'}
         </div>
       ) }
 
