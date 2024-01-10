@@ -5,7 +5,7 @@ import { formatMoney } from '../../../../../../common/utils/formatMoney';
 import CompensationsAllStateContext from '../../state/CompensationsAllStateContext';
 import ToolTipTable from '../ToolTip/ToolTipTable';
 
-const NO_DATA = 'No records in this month';
+// const NO_DATA = 'No records in this month';
 
 function CompensationsAllTable({
   className = '',
@@ -118,7 +118,7 @@ function CompensationsAllTable({
             data-cy="compensations-all-table-no-data"
             className="compensations-all-table__no-data"
           >
-            {NO_DATA}
+            {compensationsAllState.filterTerm === 'paid' ? 'No records in this month' : 'No unpaid compensation in this month'}
           </div>
         )}
       </tbody>
