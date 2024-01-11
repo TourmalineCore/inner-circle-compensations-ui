@@ -13,7 +13,9 @@ import {
   rolesSidebarRoutes,
   sidebarAccountManagement,
 } from '../features/account-management/routers';
-import { compensationsRoutes, compensationsSidebarRoutes } from '../features/compensations/routes';
+import {
+  compensationAllRoutes, compensationPersonalRoutes, compensationsAllAccessSidebarRoutes, getRouteForCompensations,
+} from '../features/compensations/routes';
 
 export function getAdminRoutes(accessPermissions: Map<keyof typeof Permission, boolean>) {
   const routes: {
@@ -22,10 +24,13 @@ export function getAdminRoutes(accessPermissions: Map<keyof typeof Permission, b
     Component: () => JSX.Element;
   }[] = [];
 
-  routes.push(...compensationsRoutes);
+  if (accessPermissions.get('ViewPersonalCompensations')) {
+    routes.push(...compensationPersonalRoutes);
+  }
 
-  // ToDo
-  console.log('accessPermissions', accessPermissions);
+  if (accessPermissions.get('CanManageCompensations')) {
+    routes.push(...compensationAllRoutes);
+  }
 
   return routes;
 }
@@ -47,7 +52,17 @@ export function getSidebarRoutes(accessPermissions: Map<keyof typeof Permission,
     routes.push(...employeesSidebarRoutes);
   }
 
-  routes.push(...compensationsSidebarRoutes);
+  if (accessPermissions.get('ViewPersonalCompensations') && accessPermissions.get('CanManageCompensations')) {
+    routes.push(...compensationsAllAccessSidebarRoutes);
+  }
+
+  if (accessPermissions.get('ViewPersonalCompensations') && !accessPermissions.get('CanManageCompensations')) {
+    routes.push(...getRouteForCompensations('ViewPersonalCompensations'));
+  }
+
+  if (accessPermissions.get('CanManageCompensations') && !accessPermissions.get('ViewPersonalCompensations')) {
+    routes.push(...getRouteForCompensations('CanManageCompensations'));
+  }
 
   if (accessPermissions.get('ViewAccounts') && accessPermissions.get('ViewRoles')) {
     copyAccountManagement.routes = [accountsSidebarRoutes, rolesSidebarRoutes];

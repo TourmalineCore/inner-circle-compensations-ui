@@ -1,43 +1,16 @@
-import { observer } from 'mobx-react-lite';
-import { useContext, useMemo } from 'react';
-import Compensations from './components/Compensations/Compensations';
-import CompensationsAll from './components/CompensationsAll/CompensationsAll';
-import CreateCompensations from './components/CreateCompensations/CreateCompensations';
-import CompensationsStateContext from './components/Compensations/state/CompensationsStateContext';
-import CompensationsState from './components/Compensations/state/CompensationsState';
-import CompensationsAllState from './components/CompensationsAll/state/CompensationsAllState';
-import CompensationsAllStateContext from './components/CompensationsAll/state/CompensationsAllStateContext';
-import AccessBasedOnPemissionsStateContext from '../../routes/state/AccessBasedOnPemissionsStateContext';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function CompensationsPage() {
-  const compensationsState = useMemo(
-    () => new CompensationsState(),
-    [],
-  );
-  const compensationsAllState = useMemo(
-    () => new CompensationsAllState(),
-    [],
-  );
+  const navigate = useNavigate();
 
-  const accessBasedOnPemissionsState = useContext(AccessBasedOnPemissionsStateContext);
+  useEffect(() => {
+    navigate('/compensations/personal');
+  }, []);
 
   return (
-    <CompensationsAllStateContext.Provider value={compensationsAllState}>
-      <CompensationsStateContext.Provider value={compensationsState}>
-        <div className="compensations-page">
-          { accessBasedOnPemissionsState.accessPermissions.get('ViewPersonalCompensations') && (
-            <div className="compensations-page__employee">
-              <Compensations />
-              <CreateCompensations />
-            </div>
-          )}
-
-          { accessBasedOnPemissionsState.accessPermissions.get('CanManageCompensations') && <CompensationsAll />}
-        </div>
-      </CompensationsStateContext.Provider>
-    </CompensationsAllStateContext.Provider>
-
+    <div>CompensationsPage</div>
   );
 }
 
-export default observer(CompensationsPage);
+export default CompensationsPage;
