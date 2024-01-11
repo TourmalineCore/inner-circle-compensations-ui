@@ -6,8 +6,8 @@ import CompensationsPage from './CompensationsPage';
 
 export const compensationPersonalRoutes = [
   {
-    path: '/personal',
-    breadcrumb: 'Personal',
+    path: '/my',
+    breadcrumb: 'My',
     Component: CompensationsPersonalPage,
   },
   {
@@ -29,7 +29,7 @@ export function getRouteForCompensations(permission: string) {
   if (permission === 'ViewPersonalCompensations') {
     return [{
       isWindowRedirectNecessary: true,
-      path: '/compensations/personal',
+      path: '/compensations/my',
       label: 'Compensations',
       icon: <IconAnalytics />,
       iconActive: <IconAnalyticsActive />,
@@ -55,8 +55,8 @@ export const compensationsAllAccessSidebarRoutes = [
     routes: [
       {
         isWindowRedirectNecessary: true,
-        path: '/compensations/personal',
-        label: 'Personal',
+        path: '/compensations/my',
+        label: 'My',
         iconMini: <IconAnalytics />,
       },
       {
