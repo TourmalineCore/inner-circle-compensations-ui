@@ -1,11 +1,9 @@
 import clsx from 'clsx';
-import moment from 'moment';
 import { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
 import CompensationsAllStateContext from '../../state/CompensationsAllStateContext';
-
-const NO_DATA = 'No records in this month';
+import ToolTipTable from '../ToolTip/ToolTipTable';
 
 function CompensationsAllTable({
   className = '',
@@ -20,22 +18,19 @@ function CompensationsAllTable({
         <tr className="compensations-all-table__head" data-cy="compensations-all-table-head">
           <th className="compensations-all-table__column-checkbox" />
           <th className="compensations-all-table__column-employee">Name</th>
-          <th className="compensations-all-table__column-month">Month</th>
-          <th className="compensations-all-table__column-date">Date</th>
-          <th className="compensations-all-table__column-comment">Comment</th>
           <th className="compensations-all-table__column-status">Status</th>
           <th className="compensations-all-table__column-amount">Amount</th>
         </tr>
       </thead>
       <tbody>
-        {compensationsAllState.allCompensations.list.length !== 0 ? (
+        {compensationsAllState.allCompensations.items.length !== 0 ? (
           <>
-            {compensationsAllState.allCompensations.list.map(({
-              id, employeeFullName, dateCompensation, dateCreateCompensation, amount, comment, isPaid, isSelected,
+            {compensationsAllState.allCompensations.items.map(({
+              employeeId, employeeFullName, totalAmount, isSelected, isPaid, compensations,
             }) => (
               <tr
                 data-cy="compensations-all-table-item"
-                key={id}
+                key={employeeId}
                 className={clsx('compensations-all-table__item', {
                   'compensations-all-table__item--selected': isSelected,
                   'compensations-all-table__item--not-selected': !isSelected,
@@ -47,7 +42,7 @@ function CompensationsAllTable({
                 >
                   <input
                     type="checkbox"
-                    onChange={() => compensationsAllState.setIsSelected(!isSelected, id)}
+                    onChange={() => compensationsAllState.setIsSelected(!isSelected, employeeId)}
                   />
                 </td>
 
@@ -56,27 +51,6 @@ function CompensationsAllTable({
                   className="compensations-all-table__column-employee"
                 >
                   {employeeFullName}
-                </td>
-
-                <td
-                  data-cy="compensations-all-table-row-month"
-                  className="compensations-all-table__column-month"
-                >
-                  {moment(dateCompensation).format('MMM YYYY')}
-                </td>
-
-                <td
-                  data-cy="compensations-all-table-row-date"
-                  className="compensations-all-table__column-date"
-                >
-                  {moment(dateCreateCompensation).format('DD.MM.YYYY')}
-                </td>
-
-                <td
-                  data-cy="compensations-all-table-row-comment"
-                  className="compensations-all-table__column-comment"
-                >
-                  {comment}
                 </td>
 
                 <td
@@ -91,11 +65,15 @@ function CompensationsAllTable({
                   </span>
                 </td>
 
-                <td
-                  data-cy="compensations-all-table-row-amount"
-                  className="compensations-all-table__column-amount"
-                >
-                  {formatMoney(amount)}
+                <td className="compensations-all-table__column-amount">
+                  <span className="compensations-tooltip">
+                    <span data-cy="compensations-all-table-row-amount">
+                      {formatMoney(totalAmount)}
+                    </span>
+                    <div className="tooltip">
+                      <ToolTipTable compensations={compensations} />
+                    </div>
+                  </span>
                 </td>
               </tr>
             ))}
@@ -105,14 +83,14 @@ function CompensationsAllTable({
             data-cy="compensations-all-table-no-data"
             className="compensations-all-table__no-data"
           >
-            {NO_DATA}
+            {compensationsAllState.filterTerm === 'paid' ? 'No records in this month' : 'No unpaid compensation in this month'}
           </div>
         )}
       </tbody>
       <tfoot>
         <tr className="compensations-all-table__total" data-cy="compensations-all-table-total">
           <td className="compensations-all-table__column-checkbox" />
-          <td className="compensations-all-table__column-employee" colSpan={3}>Total compensations per month</td>
+          <td className="compensations-all-table__column-total" colSpan={3}>Total compensations per month</td>
           <td className="compensations-all-table__column-amount__sum" data-cy="compensations-all-table-sum">{`${compensationsAllState.totalCount} ₽`}</td>
         </tr>
       </tfoot>

@@ -3,8 +3,8 @@ import { observer } from 'mobx-react-lite';
 import CompensationsAllActions from './components/CompensationsAllActions/CompensationsAllActions';
 import CompensationsAllTable from './components/CompensationsAllTable/CompensationsAllTable';
 import { api } from '../../../../common/api';
-import { LINK_TO_COMPENSATIONS_SERVICE, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
 import CompensationsAllStateContext from './state/CompensationsAllStateContext';
+import { LINK_TO_COMPENSATIONS_SERVICE, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
 
 function CompensationsAllContent() {
   const compensationsAllState = useContext(CompensationsAllStateContext);
