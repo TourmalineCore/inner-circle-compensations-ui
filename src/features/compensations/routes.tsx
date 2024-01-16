@@ -23,6 +23,11 @@ export const compensationAllRoutes = [
     breadcrumb: 'All',
     Component: CompensationsAllPage,
   },
+  {
+    path: '/',
+    breadcrumb: 'Compensations',
+    Component: CompensationsPage,
+  },
 ];
 
 export function getRouteForCompensations(permission: string) {

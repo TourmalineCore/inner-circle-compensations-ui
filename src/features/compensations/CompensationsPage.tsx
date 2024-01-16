@@ -1,11 +1,17 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AccessBasedOnPemissionsStateContext from '../../routes/state/AccessBasedOnPemissionsStateContext';
 
 function CompensationsPage() {
   const navigate = useNavigate();
+  const access = useContext(AccessBasedOnPemissionsStateContext);
 
   useEffect(() => {
-    navigate('/compensations/personal');
+    if (access.accessPermissions.get('ViewPersonalCompensations')) {
+      navigate('/compensations/my');
+      return;
+    }
+    navigate('/compensations/all');
   }, []);
 
   return (

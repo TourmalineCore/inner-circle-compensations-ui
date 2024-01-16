@@ -13,11 +13,9 @@ function CompensationsPersonalPage() {
 
   return (
     <CompensationsStateContext.Provider value={compensationsState}>
-      <div className="compensations-page">
-        <div className="compensations-page__employee">
-          <Compensations />
-          <CreateCompensations />
-        </div>
+      <div className="compensations-page__employee">
+        <Compensations />
+        <CreateCompensations />
       </div>
     </CompensationsStateContext.Provider>
 

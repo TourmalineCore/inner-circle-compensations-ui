@@ -12,9 +12,7 @@ function CompensationsAllPage() {
 
   return (
     <CompensationsAllStateContext.Provider value={compensationsAllState}>
-      <div className="compensations-page">
-        <CompensationsAll />
-      </div>
+      <CompensationsAll />
     </CompensationsAllStateContext.Provider>
 
   );
