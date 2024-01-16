@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import CompensationsAllStateContext from './state/CompensationsAllStateContext';
 import CompensationsAllState from './state/CompensationsAllState';
-import CompensationsAllContent from './CompensationsAllContent';
+import CompensationsAllContainer from './CompensationsAllContainer';
 
 function CompensationsAll() {
   const compensationsAllState = useMemo(
@@ -11,9 +11,9 @@ function CompensationsAll() {
 
   return (
     <CompensationsAllStateContext.Provider value={compensationsAllState}>
-      <CompensationsAllContent />
+      <CompensationsAllContainer />
     </CompensationsAllStateContext.Provider>
   );
 }
 
-export default CompensationsAll;
+export { CompensationsAll };

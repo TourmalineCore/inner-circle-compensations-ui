@@ -2,7 +2,7 @@
 import '../../../../../cypress/support/commands';
 import { API_ROOT, LINK_TO_COMPENSATIONS_SERVICE, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
 
-import CompensationsAll from './CompensationsAll';
+import { CompensationsAll } from './CompensationsAll';
 
 const GET_COMPENSATIONS = `${API_ROOT}${LINK_TO_SALARY_SERVICE}//${LINK_TO_COMPENSATIONS_SERVICE}/admin/all?year=2023&month=06`;
 

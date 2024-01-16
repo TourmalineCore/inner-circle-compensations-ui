@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import { useMemo } from 'react';
-import CompensationsAll from './components/CompensationsAll/CompensationsAll';
+import { CompensationsAll } from './components/CompensationsAll/CompensationsAll';
 import CompensationsAllState from './components/CompensationsAll/state/CompensationsAllState';
 import CompensationsAllStateContext from './components/CompensationsAll/state/CompensationsAllStateContext';
 
