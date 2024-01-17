@@ -12,6 +12,7 @@
   font-size: 20px;
   line-height: 1.4;
   background: var(--color-white);
+  text-wrap: nowrap;
 
   &__disable {
     opacity: 0.35;

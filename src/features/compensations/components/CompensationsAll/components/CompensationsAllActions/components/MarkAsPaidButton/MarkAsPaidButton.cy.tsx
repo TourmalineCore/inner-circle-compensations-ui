@@ -6,15 +6,40 @@ import CompensationsAllStateContext from '../../../../state/CompensationsAllStat
 
 import MarkAsPaidButton from './MarkAsPaidButton';
 
+const initialData = [
+  {
+    id: 55,
+    compensationType: 'English',
+    comment: 'I bought milk',
+    amount: 760,
+    dateCreateCompensation: '2023-12-19T06:56:49Z',
+  },
+  {
+    id: 56,
+    compensationType: 'German',
+    comment: 'I bought this',
+    amount: 2760.45,
+    dateCreateCompensation: '2023-12-19T06:56:49Z',
+  },
+];
+
 describe('MarkAsPaidButton', () => {
-  it('SHOULD render component WHEN visit compensations page', () => {
+  it(`
+  GIVEN compensations all page 
+  WHEN visit compensations page
+  THEN render component
+  `, () => {
     mountComponent();
 
     cy.getByData('mark-as-paid-button-submit')
       .should('exist');
   });
 
-  it('SHOULD be in focus WHEN  click on it', () => {
+  it(`
+  GIVEN compensations all page
+  WHEN click on button
+  THEN this button should be in focus
+  `, () => {
     mountComponent();
 
     cy.getByData('mark-as-paid-button-submit')
@@ -32,7 +57,7 @@ function mountComponent() {
 
   cy.mount(
     <CompensationsAllStateContext.Provider value={compensationsAllState}>
-      <MarkAsPaidButton />
+      <MarkAsPaidButton compensations={initialData} />
     </CompensationsAllStateContext.Provider>,
   );
 }
