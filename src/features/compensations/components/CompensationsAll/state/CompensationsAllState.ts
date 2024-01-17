@@ -2,8 +2,24 @@ import { makeAutoObservable } from 'mobx';
 
 class CompensationsAllState {
   private _compensations: CompensationsAllType = {
-    items: [],
+    items: [{
+      employeeId: 0,
+      employeeFullName: 'string',
+      dateCompensation: 'string',
+      totalAmount: 100,
+      compensations: [],
+      isPaid: false,
+    }],
     totalAmount: 0,
+  };
+
+  private _compensationsItem: CompensationsAllItemType = {
+    employeeId: 0,
+    employeeFullName: 'string',
+    dateCompensation: 'string',
+    totalAmount: 100,
+    compensations: [],
+    isPaid: false,
   };
 
   private _filterTerm = 'unpaid';
@@ -31,8 +47,16 @@ class CompensationsAllState {
     };
   }
 
+  getCompensationIds() {
+    return this._compensationsItem.compensations.map((compensation) => compensation.id);
+  }
+
   get isSelected() {
     return this._compensations.items.some((item) => item.isSelected === true);
+  }
+
+  get employeeId() {
+    return this._compensations.items.find((item) => item.employeeId);
   }
 
   get totalCount() {
@@ -45,6 +69,10 @@ class CompensationsAllState {
 
   get dateCompensation() {
     return this._dateCompensation;
+  }
+
+  get isChange() {
+    return this._isChange;
   }
 
   setIsHover(value: boolean) {
@@ -82,6 +110,10 @@ class CompensationsAllState {
 
   updateDate(newDate: Date | string) {
     this._dateCompensation = newDate;
+  }
+
+  updateStatus(newStatus: boolean) {
+    this._isChange = newStatus;
   }
 }
 

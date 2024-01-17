@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
 import CompensationsAllStateContext from '../../state/CompensationsAllStateContext';
 import ToolTipTable from '../ToolTip/ToolTipTable';
+import MarkAsPaidButton from '../CompensationsAllActions/components/MarkAsPaidButton/MarkAsPaidButton';
 
 function CompensationsAllTable({
   className = '',
@@ -19,6 +20,7 @@ function CompensationsAllTable({
           <th className="compensations-all-table__column-checkbox" />
           <th className="compensations-all-table__column-employee">Name</th>
           <th className="compensations-all-table__column-status">Status</th>
+          <th className="compensations-all-table__column-action" />
           <th className="compensations-all-table__column-amount">Amount</th>
         </tr>
       </thead>
@@ -63,6 +65,13 @@ function CompensationsAllTable({
                   <span className="compensations-all-table__column-status--content">
                     {isPaid ? 'PAID' : 'UNPAID'}
                   </span>
+                </td>
+
+                <td
+                  data-cy="compensations-all-table-row-action"
+                  className="compensations-all-table__column-action"
+                >
+                  <MarkAsPaidButton compensations={compensations} />
                 </td>
 
                 <td className="compensations-all-table__column-amount">

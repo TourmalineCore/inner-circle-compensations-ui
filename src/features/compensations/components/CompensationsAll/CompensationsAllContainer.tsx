@@ -10,7 +10,11 @@ function CompensationsAllContainer() {
 
   useEffect(() => {
     loadCompensations();
-  }, [compensationsAllState._dateCompensation, compensationsAllState._isChange]);
+  }, [compensationsAllState._dateCompensation]);
+
+  useEffect(() => {
+    loadCompensations();
+  }, [compensationsAllState._isChange]);
 
   return (
     <CompensationsAllContent />

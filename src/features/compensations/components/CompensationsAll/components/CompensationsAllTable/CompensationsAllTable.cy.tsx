@@ -35,7 +35,11 @@ const initialData = {
 };
 
 describe('CompensationsAllTable', () => {
-  it('SHOULD render compensations table WHEN visit compensations page', () => {
+  it(`
+  GIVEN compensations all page 
+  WHEN visit compensations page
+  THEN render compensations table
+  `, () => {
     mountComponent({
       compensations: initialData,
     });
@@ -44,7 +48,11 @@ describe('CompensationsAllTable', () => {
       .should('exist');
   });
 
-  it('SHOULD render compensations table row WHEN there is data', () => {
+  it(`
+  GIVEN compensations all page 
+  WHEN there is data
+  THEN render compensations table row 
+  `, () => {
     mountComponent({
       compensations: initialData,
     });
@@ -53,7 +61,11 @@ describe('CompensationsAllTable', () => {
       .should('exist');
   });
 
-  it('SHOULD render compensations table row total WHEN there is data', () => {
+  it(`
+  GIVEN compensations all page 
+  WHEN there is data
+  THEN render compensations table row total
+  `, () => {
     mountComponent({
       compensations: initialData,
     });
@@ -62,7 +74,11 @@ describe('CompensationsAllTable', () => {
       .should('exist');
   });
 
-  it('SHOULD render compensations table with no data message WHEN there is no data', () => {
+  it(`
+  GIVEN compensations all page 
+  WHEN there is no data
+  THEN render compensations table with no data message
+  `, () => {
     mountComponent({
       compensations: {
         items: [],
@@ -74,7 +90,11 @@ describe('CompensationsAllTable', () => {
       .should('exist');
   });
 
-  it('SHOULD render valid data for all elements in row WHEN there s data', () => {
+  it(`
+  GIVEN compensations all page 
+  WHEN there is data
+  THEN render valid data for all elements in row
+  `, () => {
     mountComponent({
       compensations: initialData,
     });
@@ -82,17 +102,11 @@ describe('CompensationsAllTable', () => {
     cy.getByData('compensations-all-table-row-employee')
       .should('have.text', 'Ceo Ceo Ceo');
 
-    // cy.getByData('compensations-all-table-row-month')
-    //   .should('have.text', 'Dec 2023');
+    cy.getByData('compensations-all-table-row-status')
+      .should('have.text', 'UNPAID');
 
-    // cy.getByData('compensations-all-table-row-date')
-    //   .should('have.text', '08.06.2023');
-
-    // cy.getByData('compensations-all-table-row-type')
-    //   .should('have.text', 'English');
-
-    // cy.getByData('compensations-all-table-row-comment')
-    //   .should('have.text', 'I bought milk');
+    cy.getByData('compensations-all-table-row-action')
+      .should('exist');
 
     cy.getByData('compensations-all-table-row-amount')
       .should('have.text', '3,520.45 ₽');
