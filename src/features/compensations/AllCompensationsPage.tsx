@@ -14,7 +14,6 @@ function AllCompensationsPage() {
     <AllCompensationsStateContext.Provider value={allCompensationsState}>
       <AllCompensations />
     </AllCompensationsStateContext.Provider>
-
   );
 }
 

@@ -17,7 +17,6 @@ function AllCompensationsTable({
     <table data-cy="compensations-all-table" className={`compensations-all-table ${className}`}>
       <thead>
         <tr className="compensations-all-table__head" data-cy="compensations-all-table-head">
-          <th className="compensations-all-table__column-checkbox" />
           <th className="compensations-all-table__column-employee">Name</th>
           <th className="compensations-all-table__column-status">Status</th>
           <th className="compensations-all-table__column-action" />
@@ -38,15 +37,6 @@ function AllCompensationsTable({
                   'compensations-all-table__item--not-selected': !isSelected,
                 })}
               >
-                <td
-                  data-cy="compensations-all-table-row-checkbox"
-                  className="compensations-all-table__column-checkbox"
-                >
-                  <input
-                    type="checkbox"
-                    onChange={() => allCompensationsState.setIsSelected(!isSelected, employeeId)}
-                  />
-                </td>
 
                 <td
                   data-cy="compensations-all-table-row-employee"
@@ -98,7 +88,6 @@ function AllCompensationsTable({
       </tbody>
       <tfoot>
         <tr className="compensations-all-table__total" data-cy="compensations-all-table-total">
-          <td className="compensations-all-table__column-checkbox" />
           <td className="compensations-all-table__column-total" colSpan={3}>Total compensations per month</td>
           <td className="compensations-all-table__column-amount__sum" data-cy="compensations-all-table-sum">{`${allCompensationsState.totalCount} ₽`}</td>
         </tr>
