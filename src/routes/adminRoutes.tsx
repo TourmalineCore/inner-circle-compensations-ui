@@ -14,7 +14,7 @@ import {
   sidebarAccountManagement,
 } from '../features/account-management/routers';
 import {
-  compensationAllRoutes, compensationPersonalRoutes, compensationsAllAccessSidebarRoutes, getRouteForCompensations,
+  compensationAllRoutes, compensationPersonalRoutes, allCompensationsAccessSidebarRoutes, getRouteForCompensations,
 } from '../features/compensations/routes';
 
 export function getAdminRoutes(accessPermissions: Map<keyof typeof Permission, boolean>) {
@@ -53,7 +53,7 @@ export function getSidebarRoutes(accessPermissions: Map<keyof typeof Permission,
   }
 
   if (accessPermissions.get('ViewPersonalCompensations') && accessPermissions.get('CanManageCompensations')) {
-    routes.push(...compensationsAllAccessSidebarRoutes);
+    routes.push(...allCompensationsAccessSidebarRoutes);
   }
 
   if (accessPermissions.get('ViewPersonalCompensations') && !accessPermissions.get('CanManageCompensations')) {

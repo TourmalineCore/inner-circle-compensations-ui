@@ -17,19 +17,19 @@
 @import "../features/compensations/components/Compensations/components/CompensationsTable/CompensationsTable";
 @import "../features/compensations/components/Compensations/components/CompensationsFilter/CompensationsFilter";
 @import "../features/compensations/components/Compensations/Compensations";
-@import "../features/compensations/components/CompensationsAll/components/CompensationsAllTable/CompensationsAllTable";
-@import "../features/compensations/components/CompensationsAll/components/CompensationsAllActions/CompensationsAllActions";
-@import "../features/compensations/components/CompensationsAll/components/CompensationsAllActions/components/CompensationsAllFilter/CompensationsAllFilter";
-@import "../features/compensations/components/CompensationsAll/components/CompensationsAllActions/components/DateCompensationsAll/DatePickerCompensationsAll";
-@import "../features/compensations/components/CompensationsAll/components/CompensationsAllActions/components/SearchBarAll/SearchBarAll";
-@import "../features/compensations/components/CompensationsAll/components/CompensationsAllActions/components/MarkAsPaidButton/MarkAsPaidButton";
-@import "../features/compensations/components/CompensationsAll/CompensationsAll";
+@import "../features/compensations/components/AllCompensations/components/AllCompensationsTable/AllCompensationsTable";
+@import "../features/compensations/components/AllCompensations/components/AllCompensationsActions/AllCompensationsActions";
+@import "../features/compensations/components/AllCompensations/components/AllCompensationsActions/components/AllCompensationsFilter/AllCompensationsFilter";
+@import "../features/compensations/components/AllCompensations/components/AllCompensationsActions/components/DateAllCompensations/DatePickerAllCompensations";
+@import "../features/compensations/components/AllCompensations/components/AllCompensationsActions/components/SearchBarAll/SearchBarAll";
+@import "../features/compensations/components/AllCompensations/components/AllCompensationsActions/components/MarkAsPaidButton/MarkAsPaidButton";
+@import "../features/compensations/components/AllCompensations/AllCompensations";
 @import "../features/compensations/components/CreateCompensations/components/ListTypesCompensations/ListTypesCompensations";
 @import "../features/compensations/components/CreateCompensations/components/DateCompensations/DatePickerCompensations";
 @import "../features/compensations/components/CreateCompensations/components/TableCreateCompensations/TableCreateCompensations";
 @import "../features/compensations/components/CreateCompensations/CreateCompensations.scss";
 @import "../features/compensations/CompensationsPage";
-@import "../features/compensations/components/CompensationsAll/components/ToolTip/ToolTipTable";
+@import "../features/compensations/components/AllCompensations/components/ToolTip/ToolTipTable";
 
 // Template
 @import "../template/components/Breadcrumbs/Breadcrumbs";

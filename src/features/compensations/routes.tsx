@@ -1,7 +1,7 @@
 import { ReactComponent as IconAnalytics } from '../../assets/icons/icon-analytics.svg';
 import { ReactComponent as IconAnalyticsActive } from '../../assets/icons/icon-analytics-active.svg';
 import CompensationsPersonalPage from './CompensationsPersonalPage';
-import CompensationsAllPage from './CompensationsAllPage';
+import AllCompensationsPage from './AllCompensationsPage';
 import CompensationsPage from './CompensationsPage';
 
 export const compensationPersonalRoutes = [
@@ -21,7 +21,7 @@ export const compensationAllRoutes = [
   {
     path: '/all',
     breadcrumb: 'All',
-    Component: CompensationsAllPage,
+    Component: AllCompensationsPage,
   },
   {
     path: '/',
@@ -50,7 +50,7 @@ export function getRouteForCompensations(permission: string) {
   }];
 }
 
-export const compensationsAllAccessSidebarRoutes = [
+export const allCompensationsAccessSidebarRoutes = [
   {
     isWindowRedirectNecessary: true,
     path: '/compensations',
