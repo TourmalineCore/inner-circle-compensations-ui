@@ -59,7 +59,10 @@ function AllCompensationsTable({
 
                 <td
                   data-cy="compensations-all-table-row-action"
-                  className="compensations-all-table__column-action"
+                  className={clsx('compensations-all-table__column-action', {
+                    'compensations-all-table__column-action--unpaid': !isPaid,
+                    'compensations-all-table__column-action--paid': isPaid,
+                  })}
                 >
                   <MarkAsPaidButton compensations={compensations} />
                 </td>

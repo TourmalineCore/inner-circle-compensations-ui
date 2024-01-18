@@ -33,28 +33,17 @@
     align-items: center;
     border-top: 1px solid var(--comp-color-light-gray);
     width: 100%;
-    max-width: 1600px;
-  }
-
-  &__column-checkbox {
-    padding: 16px;
-    width: 5%;
-    width: 80px;
-    font-weight: 500;
-    color: var(--color-black);
   }
 
   &__column-employee {
     padding: 16px;
     width: 50%;
-    max-width: 800px;
     font-weight: 500;
     color: var(--color-black);
   }
 
   &__column-status {
-    width: 10%;
-    max-width: 160px;
+    width: 15%;
     font-weight: 500;
     text-align: center;
     color: var(--color-black);
@@ -67,24 +56,31 @@
 
       &--unpaid {
         border-radius: 10px;
-        max-width: 160px;
         color: #a45e5b;
         background: #f9e5e5;
       }
 
       &--paid {
         border-radius: 10px;
-        max-width: 160px;
         color: #618d7d;
         background: #e5f8ed;
       }
     }
   }
 
+  &__column-action {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+
+    &--paid {
+      visibility: hidden;
+    }
+  }
+
   &__column-amount {
     padding: 16px;
-    width: 35%;
-    max-width: 560px;
+    width: 15%;
     font-weight: 500;
     text-align: end;
     color: var(--color-black);
@@ -92,7 +88,6 @@
     &__sum {
       padding: 16px;
       width: 35%;
-      max-width: 560px;
       font-weight: 600;
       text-align: end;
     }
@@ -108,8 +103,7 @@
 
   &__column-total {
     padding: 16px;
-    width: 60%;
-    max-width: 960px;
+    width: 85%;
     font-weight: 500;
     text-align: start;
     color: var(--color-black);
