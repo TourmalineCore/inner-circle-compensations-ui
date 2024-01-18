@@ -3,9 +3,9 @@ import { observer } from 'mobx-react-lite';
 import { api } from '../../../../common/api';
 import CompensationsAllStateContext from './state/CompensationsAllStateContext';
 import { LINK_TO_COMPENSATIONS_SERVICE, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
-import CompensationsAllContent from './CompensationsAllContent';
+import { CompensationsAllContent } from './CompensationsAllContent';
 
-function CompensationsAllContainer() {
+const CompensationsAllContainer = observer(() => {
   const compensationsAllState = useContext(CompensationsAllStateContext);
 
   useEffect(() => {
@@ -35,6 +35,6 @@ function CompensationsAllContainer() {
       console.log('CompensationsAllContainer ', e);
     }
   }
-}
+});
 
-export default observer(CompensationsAllContainer);
+export { CompensationsAllContainer };

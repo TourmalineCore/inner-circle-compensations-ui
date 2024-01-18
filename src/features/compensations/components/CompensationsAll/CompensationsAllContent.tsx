@@ -1,4 +1,3 @@
-import { observer } from 'mobx-react-lite';
 import CompensationsAllActions from './components/CompensationsAllActions/CompensationsAllActions';
 import CompensationsAllTable from './components/CompensationsAllTable/CompensationsAllTable';
 
@@ -11,4 +10,4 @@ function CompensationsAllContent() {
   );
 }
 
-export default observer(CompensationsAllContent);
+export { CompensationsAllContent };
