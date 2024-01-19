@@ -3,14 +3,14 @@ import { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
 import AllCompensationsStateContext from '../../state/AllCompensationsStateContext';
-import ToolTipTable from '../ToolTip/ToolTipTable';
-import MarkAsPaidButton from '../AllCompensationsActions/components/MarkAsPaidButton/MarkAsPaidButton';
+import { ToolTipTable } from '../ToolTip/ToolTipTable';
+import { MarkAsPaidButton } from '../AllCompensationsActions/components/MarkAsPaidButton/MarkAsPaidButton';
 
-function AllCompensationsTable({
+const AllCompensationsTable = ({
   className = '',
 }: {
   className?: string;
-}) {
+}) => {
   const allCompensationsState = useContext(AllCompensationsStateContext);
 
   return (
@@ -97,6 +97,10 @@ function AllCompensationsTable({
       </tfoot>
     </table>
   );
-}
+};
 
-export default observer(AllCompensationsTable);
+const ObservedAllCompensationsTable = observer(AllCompensationsTable);
+
+export {
+  ObservedAllCompensationsTable as AllCompensationsTable,
+};

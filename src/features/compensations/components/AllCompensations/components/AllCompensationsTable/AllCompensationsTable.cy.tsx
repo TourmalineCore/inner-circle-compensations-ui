@@ -2,8 +2,7 @@
 import '../../../../../../../cypress/support/commands';
 import AllCompensationsState from '../../state/AllCompensationsState';
 import AllCompensationsStateContext from '../../state/AllCompensationsStateContext';
-
-import AllCompensationsTable from './AllCompensationsTable';
+import { AllCompensationsTable } from './AllCompensationsTable';
 
 const initialData = {
   items: [

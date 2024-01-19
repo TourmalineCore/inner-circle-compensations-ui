@@ -1,17 +1,18 @@
-import { observer } from 'mobx-react-lite';
-import DateAllCompensations from './components/DateAllCompensations/DatePickerAllCompensations';
-import AllCompensationsFilter from './components/AllCompensationsFilter/AllCompensationsFilter';
+import { AllCompensationsFilter } from './components/AllCompensationsFilter/AllCompensationsFilter';
+import { DatePickerAllCompensations } from './components/DateAllCompensations/DatePickerAllCompensations';
 
 // TODO add SearchBarAll
 function AllCompensationsActions() {
   return (
     <div className="compensation-actions" data-cy="compensation-actions">
       <div className="compensation-actions--div--left" />
-      <DateAllCompensations />
+      <DatePickerAllCompensations />
       <AllCompensationsFilter />
       <div className="compensation-actions--div--right" />
     </div>
   );
 }
 
-export default observer(AllCompensationsActions);
+export {
+  AllCompensationsActions,
+};

@@ -1,5 +1,5 @@
-import AllCompensationsActions from './components/AllCompensationsActions/AllCompensationsActions';
-import AllCompensationsTable from './components/AllCompensationsTable/AllCompensationsTable';
+import { AllCompensationsActions } from './components/AllCompensationsActions/AllCompensationsActions';
+import { AllCompensationsTable } from './components/AllCompensationsTable/AllCompensationsTable';
 
 function AllCompensationsContent() {
   return (
@@ -10,4 +10,6 @@ function AllCompensationsContent() {
   );
 }
 
-export { AllCompensationsContent };
+export {
+  AllCompensationsContent,
+};

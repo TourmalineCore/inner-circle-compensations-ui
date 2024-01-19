@@ -16,4 +16,6 @@ function AllCompensations() {
   );
 }
 
-export { AllCompensations };
+export {
+  AllCompensations,
+};

@@ -2,8 +2,7 @@
 import '../../../../../../../cypress/support/commands';
 import AllCompensationsState from '../../state/AllCompensationsState';
 import AllCompensationsStateContext from '../../state/AllCompensationsStateContext';
-
-import ToolTipTable from './ToolTipTable';
+import { ToolTipTable } from './ToolTipTable';
 
 const initialData = {
   compensations: [

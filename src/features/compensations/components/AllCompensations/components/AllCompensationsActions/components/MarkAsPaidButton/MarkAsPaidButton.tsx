@@ -4,11 +4,11 @@ import { LINK_TO_COMPENSATIONS_SERVICE, LINK_TO_SALARY_SERVICE } from '../../../
 import { api } from '../../../../../../../../common/api';
 import AllCompensationsStateContext from '../../../../state/AllCompensationsStateContext';
 
-function MarkAsPaidButton({
+const MarkAsPaidButton = ({
   compensations,
 }: {
   compensations: EmployeeAllCompensationsItemType[]
-}) {
+}) => {
   const allCompensationsState = useContext(AllCompensationsStateContext);
 
   return (
@@ -29,6 +29,10 @@ function MarkAsPaidButton({
     const compensationsIds = list.map((compensation) => compensation.id);
     await api.put(`${LINK_TO_SALARY_SERVICE}${LINK_TO_COMPENSATIONS_SERVICE}admin/update`, compensationsIds);
   }
-}
+};
 
-export default observer(MarkAsPaidButton);
+const ObservedMarkAsPaidButton = observer(MarkAsPaidButton);
+
+export {
+  ObservedMarkAsPaidButton as MarkAsPaidButton,
+};

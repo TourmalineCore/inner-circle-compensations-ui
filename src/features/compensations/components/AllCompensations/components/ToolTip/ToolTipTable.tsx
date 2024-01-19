@@ -1,4 +1,3 @@
-import { observer } from 'mobx-react-lite';
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
 
 function ToolTipTable({
@@ -55,4 +54,6 @@ function ToolTipTable({
   );
 }
 
-export default observer(ToolTipTable);
+export {
+  ToolTipTable,
+};

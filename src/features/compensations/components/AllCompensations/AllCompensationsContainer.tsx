@@ -5,7 +5,7 @@ import AllCompensationsStateContext from './state/AllCompensationsStateContext';
 import { LINK_TO_COMPENSATIONS_SERVICE, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
 import { AllCompensationsContent } from './AllCompensationsContent';
 
-const AllCompensationsContainer = observer(() => {
+const AllCompensationsContainer = () => {
   const allCompensationsState = useContext(AllCompensationsStateContext);
 
   useEffect(() => {
@@ -35,6 +35,10 @@ const AllCompensationsContainer = observer(() => {
       console.log('AllCompensationsContainer ', e);
     }
   }
-});
+};
 
-export { AllCompensationsContainer };
+const ObservedAllCompensationsContainer = observer(AllCompensationsContainer);
+
+export {
+  ObservedAllCompensationsContainer as AllCompensationsContainer,
+};
