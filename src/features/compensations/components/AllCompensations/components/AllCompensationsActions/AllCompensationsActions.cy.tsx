@@ -6,7 +6,11 @@ import AllCompensationsStateContext from '../../state/AllCompensationsStateConte
 import AllCompensationsActions from './AllCompensationsActions';
 
 describe('AllCompensationsActions', () => {
-  it('SHOULD render actions WHEN visit compensations page', () => {
+  it(`
+  GIVEN compensations all page 
+  WHEN visit compensations page
+  THEN render actions
+  `, () => {
     mountComponent();
 
     cy.getByData('compensation-actions')
