@@ -110,6 +110,21 @@ describe('AllCompensationsTable', () => {
     cy.getByData('all-compensations-table-row-amount')
       .should('have.text', '3,520.45 ₽');
   });
+
+  it(`
+  GIVEN compensations all page 
+  WHEN amount is hover 
+  THEN render tooltip table 
+  `, () => {
+    mountComponent({
+      compensations: initialData,
+    });
+
+    cy.getByData('compensations-tooltip').trigger('mouseover');
+
+    cy.getByData('tooltip')
+      .should('exist');
+  });
 });
 
 function mountComponent({

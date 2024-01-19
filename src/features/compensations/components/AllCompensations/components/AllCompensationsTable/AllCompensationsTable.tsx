@@ -68,11 +68,11 @@ const AllCompensationsTable = ({
                 </td>
 
                 <td className="all-compensations-table__column-amount">
-                  <span className="compensations-tooltip">
+                  <span className="compensations-tooltip" data-cy="compensations-tooltip">
                     <span data-cy="all-compensations-table-row-amount">
                       {formatMoney(totalAmount)}
                     </span>
-                    <div className="tooltip">
+                    <div className="tooltip" data-cy="tooltip">
                       <ToolTipTable compensations={compensations} />
                     </div>
                   </span>
