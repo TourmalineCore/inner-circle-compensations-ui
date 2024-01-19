@@ -14,13 +14,13 @@ function AllCompensationsTable({
   const allCompensationsState = useContext(AllCompensationsStateContext);
 
   return (
-    <table data-cy="compensations-all-table" className={`compensations-all-table ${className}`}>
+    <table data-cy="all-compensations-table" className={`all-compensations-table ${className}`}>
       <thead>
-        <tr className="compensations-all-table__head" data-cy="compensations-all-table-head">
-          <th className="compensations-all-table__column-employee">Name</th>
-          <th className="compensations-all-table__column-status">Status</th>
-          <th className="compensations-all-table__column-action" />
-          <th className="compensations-all-table__column-amount">Amount</th>
+        <tr className="all-compensations-table__head" data-cy="all-compensations-table-head">
+          <th className="all-compensations-table__column-employee">Name</th>
+          <th className="all-compensations-table__column-status">Status</th>
+          <th className="all-compensations-table__column-action" />
+          <th className="all-compensations-table__column-amount">Amount</th>
         </tr>
       </thead>
       <tbody>
@@ -30,46 +30,46 @@ function AllCompensationsTable({
               employeeId, employeeFullName, totalAmount, isSelected, isPaid, compensations,
             }) => (
               <tr
-                data-cy="compensations-all-table-item"
+                data-cy="all-compensations-table-item"
                 key={employeeId}
-                className={clsx('compensations-all-table__item', {
-                  'compensations-all-table__item--selected': isSelected,
-                  'compensations-all-table__item--not-selected': !isSelected,
+                className={clsx('all-compensations-table__item', {
+                  'all-compensations-table__item--selected': isSelected,
+                  'all-compensations-table__item--not-selected': !isSelected,
                 })}
               >
 
                 <td
-                  data-cy="compensations-all-table-row-employee"
-                  className="compensations-all-table__column-employee"
+                  data-cy="all-compensations-table-row-employee"
+                  className="all-compensations-table__column-employee"
                 >
                   {employeeFullName}
                 </td>
 
                 <td
-                  data-cy="compensations-all-table-row-status"
-                  className={clsx('compensations-all-table__column-status', {
-                    'compensations-all-table__column-status--content--unpaid': !isPaid,
-                    'compensations-all-table__column-status--content--paid': isPaid,
+                  data-cy="all-compensations-table-row-status"
+                  className={clsx('all-compensations-table__column-status', {
+                    'all-compensations-table__column-status--content--unpaid': !isPaid,
+                    'all-compensations-table__column-status--content--paid': isPaid,
                   })}
                 >
-                  <span className="compensations-all-table__column-status--content">
+                  <span className="all-compensations-table__column-status--content">
                     {isPaid ? 'PAID' : 'UNPAID'}
                   </span>
                 </td>
 
                 <td
-                  data-cy="compensations-all-table-row-action"
-                  className={clsx('compensations-all-table__column-action', {
-                    'compensations-all-table__column-action--unpaid': !isPaid,
-                    'compensations-all-table__column-action--paid': isPaid,
+                  data-cy="all-compensations-table-row-action"
+                  className={clsx('all-compensations-table__column-action', {
+                    'all-compensations-table__column-action--unpaid': !isPaid,
+                    'all-compensations-table__column-action--paid': isPaid,
                   })}
                 >
                   <MarkAsPaidButton compensations={compensations} />
                 </td>
 
-                <td className="compensations-all-table__column-amount">
+                <td className="all-compensations-table__column-amount">
                   <span className="compensations-tooltip">
-                    <span data-cy="compensations-all-table-row-amount">
+                    <span data-cy="all-compensations-table-row-amount">
                       {formatMoney(totalAmount)}
                     </span>
                     <div className="tooltip">
@@ -82,17 +82,17 @@ function AllCompensationsTable({
           </>
         ) : (
           <div
-            data-cy="compensations-all-table-no-data"
-            className="compensations-all-table__no-data"
+            data-cy="all-compensations-table-no-data"
+            className="all-compensations-table__no-data"
           >
             {allCompensationsState.filterTerm === 'paid' ? 'No records in this month' : 'No unpaid compensation in this month'}
           </div>
         )}
       </tbody>
       <tfoot>
-        <tr className="compensations-all-table__total" data-cy="compensations-all-table-total">
-          <td className="compensations-all-table__column-total" colSpan={3}>Total compensations per month</td>
-          <td className="compensations-all-table__column-amount__sum" data-cy="compensations-all-table-sum">{`${allCompensationsState.totalCount} ₽`}</td>
+        <tr className="all-compensations-table__total" data-cy="all-compensations-table-total">
+          <td className="all-compensations-table__column-total" colSpan={3}>Total compensations per month</td>
+          <td className="all-compensations-table__column-amount__sum" data-cy="all-compensations-table-sum">{`${allCompensationsState.totalCount} ₽`}</td>
         </tr>
       </tfoot>
     </table>

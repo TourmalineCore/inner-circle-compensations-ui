@@ -14,11 +14,11 @@ describe('AllCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('compensations-all-table')
+    cy.getByData('all-compensations-table')
       .should('exist');
     cy.getByData('compensation-actions')
       .should('exist');
-    cy.getByData('compensations-all')
+    cy.getByData('all-compensations')
       .should('exist');
   });
 });

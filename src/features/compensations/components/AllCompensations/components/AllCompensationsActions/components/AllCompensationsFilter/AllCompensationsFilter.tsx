@@ -25,13 +25,13 @@ function AllCompensationsFilter({
   const allCompensationsState = useContext(AllCompensationsStateContext);
 
   return (
-    <div className={`compensations-all-filter ${className}`} data-cy="compensations-all-filter-inner">
+    <div className={`all-compensations-filter ${className}`} data-cy="all-compensations-filter-inner">
       {filterElements.map((item) => (
         <button
           type="button"
-          data-cy="compensations-all-filter"
-          className={clsx('compensations-all-filter__button', {
-            'compensations-all-filter__button--active': item.id === allCompensationsState.filterTerm,
+          data-cy="all-compensations-filter"
+          className={clsx('all-compensations-filter__button', {
+            'all-compensations-filter__button--active': item.id === allCompensationsState.filterTerm,
           })}
           key={item.id}
           id={item.id}

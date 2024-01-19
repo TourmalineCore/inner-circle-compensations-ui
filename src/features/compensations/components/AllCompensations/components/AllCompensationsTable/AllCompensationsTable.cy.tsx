@@ -44,7 +44,7 @@ describe('AllCompensationsTable', () => {
       compensations: initialData,
     });
 
-    cy.getByData('compensations-all-table')
+    cy.getByData('all-compensations-table')
       .should('exist');
   });
 
@@ -57,7 +57,7 @@ describe('AllCompensationsTable', () => {
       compensations: initialData,
     });
 
-    cy.getByData('compensations-all-table-item')
+    cy.getByData('all-compensations-table-item')
       .should('exist');
   });
 
@@ -70,7 +70,7 @@ describe('AllCompensationsTable', () => {
       compensations: initialData,
     });
 
-    cy.getByData('compensations-all-table-total')
+    cy.getByData('all-compensations-table-total')
       .should('exist');
   });
 
@@ -86,7 +86,7 @@ describe('AllCompensationsTable', () => {
       },
     });
 
-    cy.getByData('compensations-all-table-no-data')
+    cy.getByData('all-compensations-table-no-data')
       .should('exist');
   });
 
@@ -99,16 +99,16 @@ describe('AllCompensationsTable', () => {
       compensations: initialData,
     });
 
-    cy.getByData('compensations-all-table-row-employee')
+    cy.getByData('all-compensations-table-row-employee')
       .should('have.text', 'Ceo Ceo Ceo');
 
-    cy.getByData('compensations-all-table-row-status')
+    cy.getByData('all-compensations-table-row-status')
       .should('have.text', 'UNPAID');
 
-    cy.getByData('compensations-all-table-row-action')
+    cy.getByData('all-compensations-table-row-action')
       .should('exist');
 
-    cy.getByData('compensations-all-table-row-amount')
+    cy.getByData('all-compensations-table-row-amount')
       .should('have.text', '3,520.45 ₽');
   });
 });

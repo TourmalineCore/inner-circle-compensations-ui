@@ -14,7 +14,7 @@ describe('DatePickerAllCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('date-picker-compensations-all')
+    cy.getByData('date-picker-all-compensations')
       .should('exist');
   });
 
@@ -25,7 +25,7 @@ describe('DatePickerAllCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('date-picker-compensations-all-select')
+    cy.getByData('date-picker-all-compensations-select')
       .click();
 
     cy.get('[aria-label="Next Year"]')
@@ -34,7 +34,7 @@ describe('DatePickerAllCompensations', () => {
     cy.contains('Jan')
       .click();
 
-    cy.getByData('date-picker-compensations-all-result')
+    cy.getByData('date-picker-all-compensations-result')
       .should('have.text', 'Jan 2024');
   });
 
@@ -45,7 +45,7 @@ describe('DatePickerAllCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('date-picker-compensations-all-select')
+    cy.getByData('date-picker-all-compensations-select')
       .click();
 
     cy.get('[aria-label="Previous Year"]')
@@ -54,7 +54,7 @@ describe('DatePickerAllCompensations', () => {
     cy.contains('Feb')
       .click();
 
-    cy.getByData('date-picker-compensations-all-result')
+    cy.getByData('date-picker-all-compensations-result')
       .should('have.text', 'Feb 2022');
   });
 });

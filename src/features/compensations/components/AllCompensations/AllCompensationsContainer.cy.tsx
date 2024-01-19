@@ -38,7 +38,7 @@ describe('AllCompensations', () => {
 
     mountComponent();
 
-    cy.getByData('compensations-all-table-item')
+    cy.getByData('all-compensations-table-item')
       .should('have.length', 1);
   });
 
@@ -47,11 +47,11 @@ describe('AllCompensations', () => {
 
     mountComponent();
 
-    cy.getByData('compensations-all-filter')
+    cy.getByData('all-compensations-filter')
       .first()
       .click();
 
-    cy.getByData('compensations-all-table-item')
+    cy.getByData('all-compensations-table-item')
       .should('have.length', 2);
   });
 });
