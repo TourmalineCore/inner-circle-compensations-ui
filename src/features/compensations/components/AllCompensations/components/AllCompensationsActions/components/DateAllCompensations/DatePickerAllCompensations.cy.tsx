@@ -7,14 +7,22 @@ import AllCompensationsStateContext from '../../../../state/AllCompensationsStat
 import DatePickerAllCompensations from './DatePickerAllCompensations';
 
 describe('DatePickerAllCompensations', () => {
-  it('SHOULD render component WHEN visit compensations page', () => {
+  it(`
+  GIVEN compensations all page 
+  WHEN visit compensations page
+  THEN render data picker component
+  `, () => {
     mountComponent();
 
     cy.getByData('date-picker-compensations-all')
       .should('exist');
   });
 
-  it('SHOULD render correct date WHEN select next year', () => {
+  it(`
+  GIVEN compensations all page 
+  WHEN select next year
+  THEN render correct date
+  `, () => {
     mountComponent();
 
     cy.getByData('date-picker-compensations-all-select')
@@ -30,7 +38,11 @@ describe('DatePickerAllCompensations', () => {
       .should('have.text', 'Jan 2024');
   });
 
-  it('SHOULD render correct date WHEN select next year', () => {
+  it(`
+  GIVEN compensations all page 
+  WHEN select next year
+  THEN render correct date
+  `, () => {
     mountComponent();
 
     cy.getByData('date-picker-compensations-all-select')
