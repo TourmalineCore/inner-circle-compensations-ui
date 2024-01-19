@@ -7,22 +7,42 @@ import AllCompensationsStateContext from '../../../../state/AllCompensationsStat
 import AllCompensationsFilter from './AllCompensationsFilter';
 
 describe('AllCompensationsFilter', () => {
-  it('SHOULD render compensations filter WHEN visit compensations page', () => {
+  it(`
+  GIVEN compensations all page 
+  WHEN visit compensations page 
+  THEN render compensations filter
+  `, () => {
     mountComponent();
 
     cy.getByData('compensations-all-filter-inner')
       .should('exist');
   });
 
-  it('SHOULD render elements in component WHEN have data about filters', () => {
+  it(`
+  GIVEN compensations all page 
+  WHEN have data about filters 
+  THEN render elements in component
+  `, () => {
     mountComponent();
 
     cy.getByData('compensations-all-filter-inner')
       .children()
       .should('have.length', 2);
+
+    cy.getByData('compensations-all-filter')
+      .first()
+      .should('have.text', 'All');
+
+    cy.getByData('compensations-all-filter')
+      .last()
+      .should('have.text', 'Unpaid');
   });
 
-  it('SHOULD be in focus WHEN  click on it', () => {
+  it(`
+  GIVEN compensations all page 
+  WHEN click on it filter
+  THEN filter have a focus
+  `, () => {
     mountComponent();
 
     cy.getByData('compensations-all-filter')
