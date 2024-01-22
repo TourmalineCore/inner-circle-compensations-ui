@@ -10,11 +10,7 @@ export const AllCompensationsContainer = observer(() => {
 
   useEffect(() => {
     loadCompensations();
-  }, [allCompensationsState.dateCompensation]);
-
-  useEffect(() => {
-    loadCompensations();
-  }, [allCompensationsState.isChange]);
+  }, [allCompensationsState.isChange, allCompensationsState.dateCompensation]);
 
   return (
     <AllCompensationsContent />
@@ -30,7 +26,5 @@ export const AllCompensationsContainer = observer(() => {
     allCompensationsState.initialize({
       loadedCompensations: data,
     });
-
-    allCompensationsState.updateStatus(!allCompensationsState.isChange);
   }
 });
