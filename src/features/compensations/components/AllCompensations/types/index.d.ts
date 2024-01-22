@@ -11,6 +11,7 @@ type AllCompensationsItemType = {
   employeeFullName: string;
   dateCompensation: string;
   totalAmount: number;
+  unpaidAmount: number;
   compensations: EmployeeAllCompensationsItemType[];
   isSelected?: bollean;
   isPaid: boolean;
@@ -19,4 +20,5 @@ type AllCompensationsItemType = {
 type AllCompensationsType = {
   items: AllCompensationsItemType[],
   totalAmount: number;
+  totalUnpaidAmount: number;
 };

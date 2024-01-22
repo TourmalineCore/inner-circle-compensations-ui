@@ -13,6 +13,7 @@ describe('AllCompensationsState', () => {
             employeeId: 55,
             dateCompensation: '2023-12-01T05:00:00Z',
             totalAmount: 3520.45,
+            unpaidAmount: 3520.45,
             isPaid: false,
             compensations: [
               {
@@ -33,6 +34,7 @@ describe('AllCompensationsState', () => {
           },
         ],
         totalAmount: 3520.45,
+        totalUnpaidAmount: 3520.45,
       },
     });
 

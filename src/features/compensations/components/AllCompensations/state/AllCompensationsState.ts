@@ -7,10 +7,12 @@ export class AllCompensationsState {
       employeeFullName: 'string',
       dateCompensation: 'string',
       totalAmount: 100,
+      unpaidAmount: 100,
       compensations: [],
       isPaid: false,
     }],
     totalAmount: 0,
+    totalUnpaidAmount: 0,
   };
 
   private _compensationsItem: AllCompensationsItemType = {
@@ -18,6 +20,7 @@ export class AllCompensationsState {
     employeeFullName: 'string',
     dateCompensation: 'string',
     totalAmount: 100,
+    unpaidAmount: 100,
     compensations: [],
     isPaid: false,
   };
@@ -61,6 +64,10 @@ export class AllCompensationsState {
     return this._compensations.totalAmount;
   }
 
+  get totalUnpaidCount() {
+    return this._compensations.totalUnpaidAmount;
+  }
+
   get filterTerm() {
     return this._filterTerm;
   }
@@ -96,6 +103,7 @@ export class AllCompensationsState {
     this._compensations = {
       items: [],
       totalAmount: 0,
+      totalUnpaidAmount: 0,
     };
     this._compensations = loadedCompensations;
   }

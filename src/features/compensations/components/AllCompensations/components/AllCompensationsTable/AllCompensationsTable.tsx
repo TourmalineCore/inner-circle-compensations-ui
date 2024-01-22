@@ -20,6 +20,7 @@ export const AllCompensationsTable = observer(({
           <th className="all-compensations-table__column-employee">Name</th>
           <th className="all-compensations-table__column-status">Status</th>
           <th className="all-compensations-table__column-action" />
+          <th className="all-compensations-table__column-unpaid">Unpaid</th>
           <th className="all-compensations-table__column-amount">Amount</th>
         </tr>
       </thead>
@@ -27,7 +28,7 @@ export const AllCompensationsTable = observer(({
         {allCompensationsState.allCompensations.items.length !== 0 ? (
           <>
             {allCompensationsState.allCompensations.items.map(({
-              employeeId, employeeFullName, totalAmount, isSelected, isPaid, compensations,
+              employeeId, employeeFullName, totalAmount, unpaidAmount, isSelected, isPaid, compensations,
             }) => (
               <tr
                 data-cy="all-compensations-table-item"
@@ -67,6 +68,12 @@ export const AllCompensationsTable = observer(({
                   <MarkAsPaidButton compensations={compensations} />
                 </td>
 
+                <td className="all-compensations-table__column-unpaid">
+                  <span data-cy="all-compensations-table-row-unpaid">
+                    {formatMoney(unpaidAmount)}
+                  </span>
+                </td>
+
                 <td className="all-compensations-table__column-amount">
                   <span className="compensations-tooltip" data-cy="compensations-tooltip">
                     <span data-cy="all-compensations-table-row-amount">
@@ -92,6 +99,7 @@ export const AllCompensationsTable = observer(({
       <tfoot>
         <tr className="all-compensations-table__total" data-cy="all-compensations-table-total">
           <td className="all-compensations-table__column-total" colSpan={3}>Total compensations per month</td>
+          <th className="all-compensations-table__column-unpaid__sum" data-cy="all-compensations-table-unpaid-sum">{`${allCompensationsState.totalUnpaidCount} ₽`}</th>
           <td className="all-compensations-table__column-amount__sum" data-cy="all-compensations-table-sum">{`${allCompensationsState.totalCount} ₽`}</td>
         </tr>
       </tfoot>

@@ -11,6 +11,7 @@ const initialData = {
       employeeId: 55,
       dateCompensation: '2023-12-01T05:00:00Z',
       totalAmount: 3520.45,
+      unpaidAmount: 760,
       isPaid: false,
       compensations: [
         {
@@ -31,6 +32,7 @@ const initialData = {
     },
   ],
   totalAmount: 3520.45,
+  totalUnpaidAmount: 760,
 };
 
 describe('AllCompensationsTable', () => {
@@ -69,8 +71,13 @@ describe('AllCompensationsTable', () => {
       compensations: initialData,
     });
 
-    cy.getByData('all-compensations-table-total')
-      .should('exist');
+    cy.getByData('all-compensations-table-sum')
+      .should('exist')
+      .should('have.text', '3520.45 ₽');
+
+    cy.getByData('all-compensations-table-unpaid-sum')
+      .should('exist')
+      .should('have.text', '760 ₽');
   });
 
   it(`
@@ -82,6 +89,7 @@ describe('AllCompensationsTable', () => {
       compensations: {
         items: [],
         totalAmount: 0,
+        totalUnpaidAmount: 0,
       },
     });
 
@@ -106,6 +114,9 @@ describe('AllCompensationsTable', () => {
 
     cy.getByData('all-compensations-table-row-action')
       .should('exist');
+
+    cy.getByData('all-compensations-table-row-unpaid')
+      .should('have.text', '760 ₽');
 
     cy.getByData('all-compensations-table-row-amount')
       .should('have.text', '3,520.45 ₽');
