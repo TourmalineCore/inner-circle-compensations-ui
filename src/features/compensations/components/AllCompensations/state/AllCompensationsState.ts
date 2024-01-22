@@ -28,7 +28,7 @@ export class AllCompensationsState {
 
   private _isChange = false;
 
-  private _dateCompensation: Date | string = new Date();
+  private _dateCompensation: Date = new Date();
 
   get allSelectedCompensations() {
     return this._compensations.items.filter((compensation) => compensation.isSelected);
@@ -69,6 +69,12 @@ export class AllCompensationsState {
     return this._dateCompensation;
   }
 
+  get monthYearDate() {
+    const month = this._dateCompensation.getMonth() + 1;
+    const year = this._dateCompensation.getFullYear();
+    return { month, year };
+  }
+
   get isChange() {
     return this._isChange;
   }
@@ -102,7 +108,7 @@ export class AllCompensationsState {
     this._searchTerm = newSearchTerm;
   }
 
-  updateDate(newDate: Date | string) {
+  updateDate(newDate: Date) {
     this._dateCompensation = newDate;
   }
 
