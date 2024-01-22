@@ -1,3 +1,7 @@
+/* eslint-disable no-var */
+/* eslint-disable vars-on-top */
+/* eslint-disable import/no-mutable-exports */
+/* eslint-disable no-use-before-define */
 import { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { api } from '../../../../common/api';
@@ -5,7 +9,13 @@ import AllCompensationsStateContext from './state/AllCompensationsStateContext';
 import { LINK_TO_COMPENSATIONS_SERVICE, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
 import { AllCompensationsContent } from './AllCompensationsContent';
 
-const AllCompensationsContainer = () => {
+export {
+  ObservedAllCompensationsContainer as AllCompensationsContainer,
+};
+
+var ObservedAllCompensationsContainer = observer(AllCompensationsContainer);
+
+function AllCompensationsContainer() {
   const allCompensationsState = useContext(AllCompensationsStateContext);
 
   useEffect(() => {
@@ -21,24 +31,16 @@ const AllCompensationsContainer = () => {
   );
 
   async function loadCompensations() {
-    try {
-      const dateCompensation = allCompensationsState._dateCompensation as Date;
-      const month = dateCompensation.getMonth();
-      const year = dateCompensation.getFullYear();
+    const dateCompensation = allCompensationsState._dateCompensation as Date;
+    const month = dateCompensation.getMonth();
+    const year = dateCompensation.getFullYear();
 
-      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}//${LINK_TO_COMPENSATIONS_SERVICE}/admin/all?year=${year}&month=${month + 1}`);
+    const {
+      data,
+    } = await api.get(`${LINK_TO_SALARY_SERVICE}//${LINK_TO_COMPENSATIONS_SERVICE}/admin/all?year=${year}&month=${month + 1}`);
 
-      allCompensationsState.initialize({
-        loadedCompensations: data,
-      });
-    } catch (e) {
-      console.log('AllCompensationsContainer ', e);
-    }
+    allCompensationsState.initialize({
+      loadedCompensations: data,
+    });
   }
-};
-
-const ObservedAllCompensationsContainer = observer(AllCompensationsContainer);
-
-export {
-  ObservedAllCompensationsContainer as AllCompensationsContainer,
-};
+}
