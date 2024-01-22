@@ -1,8 +1,8 @@
 import { ReactComponent as IconAnalytics } from '../../assets/icons/icon-analytics.svg';
 import { ReactComponent as IconAnalyticsActive } from '../../assets/icons/icon-analytics-active.svg';
 import CompensationsPersonalPage from './CompensationsPersonalPage';
-import AllCompensationsPage from './AllCompensationsPage';
 import CompensationsPage from './CompensationsPage';
+import { AllCompensationsPage } from './AllCompensationsPage';
 
 export const compensationPersonalRoutes = [
   {

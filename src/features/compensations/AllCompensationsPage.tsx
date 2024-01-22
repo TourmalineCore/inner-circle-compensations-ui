@@ -4,7 +4,7 @@ import { AllCompensations } from './components/AllCompensations/AllCompensations
 import { AllCompensationsStateContext } from './components/AllCompensations/state/AllCompensationsStateContext';
 import { AllCompensationsState } from './components/AllCompensations/state/AllCompensationsState';
 
-function AllCompensationsPage() {
+export const AllCompensationsPage = observer(() => {
   const allCompensationsState = useMemo(
     () => new AllCompensationsState(),
     [],
@@ -15,6 +15,4 @@ function AllCompensationsPage() {
       <AllCompensations />
     </AllCompensationsStateContext.Provider>
   );
-}
-
-export default observer(AllCompensationsPage);
+});
