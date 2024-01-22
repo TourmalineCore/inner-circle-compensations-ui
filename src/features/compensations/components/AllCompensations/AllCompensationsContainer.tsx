@@ -10,18 +10,18 @@ export const AllCompensationsContainer = observer(() => {
 
   useEffect(() => {
     loadCompensations();
-  }, [allCompensationsState._dateCompensation]);
+  }, [allCompensationsState.dateCompensation]);
 
   useEffect(() => {
     loadCompensations();
-  }, [allCompensationsState._isChange]);
+  }, [allCompensationsState.isChange]);
 
   return (
     <AllCompensationsContent />
   );
 
   async function loadCompensations() {
-    const dateCompensation = allCompensationsState._dateCompensation as Date;
+    const dateCompensation = allCompensationsState.dateCompensation as Date;
     const month = dateCompensation.getMonth();
     const year = dateCompensation.getFullYear();
 
@@ -32,5 +32,7 @@ export const AllCompensationsContainer = observer(() => {
     allCompensationsState.initialize({
       loadedCompensations: data,
     });
+
+    allCompensationsState.updateStatus(!allCompensationsState.isChange);
   }
 });

@@ -26,11 +26,9 @@ export class AllCompensationsState {
 
   private _searchTerm = '';
 
-  _isChange = false;
+  private _isChange = false;
 
-  _isHover = false;
-
-  _dateCompensation: Date | string = new Date();
+  private _dateCompensation: Date | string = new Date();
 
   get allSelectedCompensations() {
     return this._compensations.items.filter((compensation) => compensation.isSelected);
@@ -73,10 +71,6 @@ export class AllCompensationsState {
 
   get isChange() {
     return this._isChange;
-  }
-
-  setIsHover(value: boolean) {
-    this._isHover = value;
   }
 
   setIsSelected(isSelected: boolean, id: number) {
