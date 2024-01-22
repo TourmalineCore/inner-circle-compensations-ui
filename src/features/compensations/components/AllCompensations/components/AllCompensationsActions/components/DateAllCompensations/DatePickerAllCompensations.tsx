@@ -4,8 +4,8 @@ import {
 } from 'react';
 import DatePicker from 'react-datepicker';
 import { observer } from 'mobx-react-lite';
-import AllCompensationsStateContext from '../../../../state/AllCompensationsStateContext';
 import logoData from '../../../../../../../../assets/icons/logo-data-picker.svg';
+import { AllCompensationsStateContext } from '../../../../state/AllCompensationsStateContext';
 
 const DatePickerCompensationsCustomElement = forwardRef<HTMLButtonElement, HTMLProps<HTMLButtonElement>>(({ value, onClick }, ref) => (
   <button

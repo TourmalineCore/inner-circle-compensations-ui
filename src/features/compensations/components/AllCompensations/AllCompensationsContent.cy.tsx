@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../cypress/support/commands';
 import { AllCompensationsContent } from './AllCompensationsContent';
-import AllCompensationsState from './state/AllCompensationsState';
-import AllCompensationsStateContext from './state/AllCompensationsStateContext';
+import { AllCompensationsState } from './state/AllCompensationsState';
+import { AllCompensationsStateContext } from './state/AllCompensationsStateContext';
 
 const allCompensationsState = new AllCompensationsState();
 

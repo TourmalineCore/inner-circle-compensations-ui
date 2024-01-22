@@ -1,6 +1,5 @@
 import '../../../../../../cypress/support/commands';
-
-import AllCompensationsState from './AllCompensationsState';
+import { AllCompensationsState } from './AllCompensationsState';
 
 describe('AllCompensationsState', () => {
   it('SHOULD return all compensations WHEN initialized', () => {

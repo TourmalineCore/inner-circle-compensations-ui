@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import AllCompensationsStateContext from './state/AllCompensationsStateContext';
-import AllCompensationsState from './state/AllCompensationsState';
 import { AllCompensationsContainer } from './AllCompensationsContainer';
+import { AllCompensationsStateContext } from './state/AllCompensationsStateContext';
+import { AllCompensationsState } from './state/AllCompensationsState';
 
 export function AllCompensations() {
   const allCompensationsState = useMemo(

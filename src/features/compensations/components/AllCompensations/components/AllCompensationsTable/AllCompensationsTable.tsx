@@ -2,9 +2,9 @@ import clsx from 'clsx';
 import { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
-import AllCompensationsStateContext from '../../state/AllCompensationsStateContext';
 import { ToolTipTable } from '../ToolTipTable/ToolTipTable';
 import { MarkAsPaidButton } from '../AllCompensationsActions/components/MarkAsPaidButton/MarkAsPaidButton';
+import { AllCompensationsStateContext } from '../../state/AllCompensationsStateContext';
 
 export const AllCompensationsTable = observer(({
   className = '',

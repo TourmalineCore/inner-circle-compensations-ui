@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../../../../../cypress/support/commands';
-import AllCompensationsState from '../../../../state/AllCompensationsState';
-import AllCompensationsStateContext from '../../../../state/AllCompensationsStateContext';
+import { AllCompensationsState } from '../../../../state/AllCompensationsState';
+import { AllCompensationsStateContext } from '../../../../state/AllCompensationsStateContext';
 import { MarkAsPaidButton } from './MarkAsPaidButton';
 
 const initialData = [

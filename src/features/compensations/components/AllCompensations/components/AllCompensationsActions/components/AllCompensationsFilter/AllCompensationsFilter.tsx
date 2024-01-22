@@ -3,7 +3,7 @@ import {
 } from 'react';
 import clsx from 'clsx';
 import { observer } from 'mobx-react-lite';
-import AllCompensationsStateContext from '../../../../state/AllCompensationsStateContext';
+import { AllCompensationsStateContext } from '../../../../state/AllCompensationsStateContext';
 
 const filterElements = [
   {

@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import { ChangeEvent, useContext } from 'react';
-import AllCompensationsStateContext from '../../../../state/AllCompensationsStateContext';
+import { AllCompensationsStateContext } from '../../../../state/AllCompensationsStateContext';
 
 export const SearchBarAll = observer(() => {
   const allCompensationsState = useContext(AllCompensationsStateContext);

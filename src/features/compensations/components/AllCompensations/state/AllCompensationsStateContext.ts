@@ -1,6 +1,4 @@
 import { createContext } from 'react';
-import AllCompensationsState from './AllCompensationsState';
+import { AllCompensationsState } from './AllCompensationsState';
 
-const AllCompensationsStateContext = createContext<AllCompensationsState>(null as unknown as AllCompensationsState);
-
-export default AllCompensationsStateContext;
+export const AllCompensationsStateContext = createContext<AllCompensationsState>(null as unknown as AllCompensationsState);

@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 
-class AllCompensationsState {
+export class AllCompensationsState {
   private _compensations: AllCompensationsType = {
     items: [{
       employeeId: 0,
@@ -131,5 +131,3 @@ export function getFiltering(
 export function getSearch(searchElement: string, searchTerm: string) {
   return searchElement.toLowerCase().includes(searchTerm.toLowerCase().trim());
 }
-
-export default AllCompensationsState;
