@@ -2,7 +2,7 @@ import { AllCompensationsFilter } from './components/AllCompensationsFilter/AllC
 import { DatePickerAllCompensations } from './components/DateAllCompensations/DatePickerAllCompensations';
 
 // TODO add SearchBarAll
-function AllCompensationsActions() {
+export function AllCompensationsActions() {
   return (
     <div className="compensation-actions" data-cy="compensation-actions">
       <div className="compensation-actions--div--left" />
@@ -12,7 +12,3 @@ function AllCompensationsActions() {
     </div>
   );
 }
-
-export {
-  AllCompensationsActions,
-};

@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import { ChangeEvent, useContext } from 'react';
 import AllCompensationsStateContext from '../../../../state/AllCompensationsStateContext';
 
-function SearchBarAll() {
+export const SearchBarAll = observer(() => {
   const allCompensationsState = useContext(AllCompensationsStateContext);
 
   return (
@@ -18,6 +18,4 @@ function SearchBarAll() {
   function searchHandler(event: ChangeEvent<HTMLInputElement>) {
     allCompensationsState.updateSearchTerm(event.target.value);
   }
-}
-
-export default observer(SearchBarAll);
+});

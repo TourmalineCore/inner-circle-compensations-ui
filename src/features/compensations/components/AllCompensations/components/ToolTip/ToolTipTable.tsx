@@ -1,6 +1,6 @@
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
 
-function ToolTipTable({
+export function ToolTipTable({
   compensations,
 }: {
   compensations: EmployeeAllCompensationsItemType[]
@@ -53,7 +53,3 @@ function ToolTipTable({
     </div>
   );
 }
-
-export {
-  ToolTipTable,
-};

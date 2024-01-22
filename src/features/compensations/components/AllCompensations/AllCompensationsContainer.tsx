@@ -1,7 +1,3 @@
-/* eslint-disable no-var */
-/* eslint-disable vars-on-top */
-/* eslint-disable import/no-mutable-exports */
-/* eslint-disable no-use-before-define */
 import { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { api } from '../../../../common/api';
@@ -9,13 +5,7 @@ import AllCompensationsStateContext from './state/AllCompensationsStateContext';
 import { LINK_TO_COMPENSATIONS_SERVICE, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
 import { AllCompensationsContent } from './AllCompensationsContent';
 
-export {
-  ObservedAllCompensationsContainer as AllCompensationsContainer,
-};
-
-var ObservedAllCompensationsContainer = observer(AllCompensationsContainer);
-
-function AllCompensationsContainer() {
+export const AllCompensationsContainer = observer(() => {
   const allCompensationsState = useContext(AllCompensationsStateContext);
 
   useEffect(() => {
@@ -43,4 +33,4 @@ function AllCompensationsContainer() {
       loadedCompensations: data,
     });
   }
-}
+});

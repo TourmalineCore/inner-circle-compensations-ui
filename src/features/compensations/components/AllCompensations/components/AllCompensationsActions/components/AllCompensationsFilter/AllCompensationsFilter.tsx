@@ -16,7 +16,7 @@ const filterElements = [
   },
 ];
 
-const AllCompensationsFilter = ({
+export const AllCompensationsFilter = observer(({
   className = '',
 }: {
   className?: string;
@@ -41,10 +41,4 @@ const AllCompensationsFilter = ({
       ))}
     </div>
   );
-};
-
-const ObservedAllCompensationsFilter = observer(AllCompensationsFilter);
-
-export {
-  ObservedAllCompensationsFilter as AllCompensationsFilter,
-};
+});

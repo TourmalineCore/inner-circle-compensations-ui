@@ -21,7 +21,7 @@ const DatePickerCompensationsCustomElement = forwardRef<HTMLButtonElement, HTMLP
   </button>
 ));
 
-const DatePickerAllCompensations = () => {
+export const DatePickerAllCompensations = observer(() => {
   const allCompensationsState = useContext(AllCompensationsStateContext);
 
   return (
@@ -38,10 +38,4 @@ const DatePickerAllCompensations = () => {
       />
     </div>
   );
-};
-
-const ObservedDatePickerAllCompensations = observer(DatePickerAllCompensations);
-
-export {
-  ObservedDatePickerAllCompensations as DatePickerAllCompensations,
-};
+});

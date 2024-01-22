@@ -3,7 +3,7 @@ import AllCompensationsStateContext from './state/AllCompensationsStateContext';
 import AllCompensationsState from './state/AllCompensationsState';
 import { AllCompensationsContainer } from './AllCompensationsContainer';
 
-function AllCompensations() {
+export function AllCompensations() {
   const allCompensationsState = useMemo(
     () => new AllCompensationsState(),
     [],
@@ -15,7 +15,3 @@ function AllCompensations() {
     </AllCompensationsStateContext.Provider>
   );
 }
-
-export {
-  AllCompensations,
-};

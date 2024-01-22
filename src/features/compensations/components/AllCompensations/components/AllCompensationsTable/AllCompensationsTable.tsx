@@ -6,7 +6,7 @@ import AllCompensationsStateContext from '../../state/AllCompensationsStateConte
 import { ToolTipTable } from '../ToolTip/ToolTipTable';
 import { MarkAsPaidButton } from '../AllCompensationsActions/components/MarkAsPaidButton/MarkAsPaidButton';
 
-const AllCompensationsTable = ({
+export const AllCompensationsTable = observer(({
   className = '',
 }: {
   className?: string;
@@ -97,10 +97,4 @@ const AllCompensationsTable = ({
       </tfoot>
     </table>
   );
-};
-
-const ObservedAllCompensationsTable = observer(AllCompensationsTable);
-
-export {
-  ObservedAllCompensationsTable as AllCompensationsTable,
-};
+});
