@@ -6,7 +6,7 @@ import Compensations from './Compensations';
 import CompensationsState from './state/CompensationsState';
 import CompensationsStateContext from './state/CompensationsStateContext';
 
-const GET_COMPENSATIONS = `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/all`;
+const GET_COMPENSATIONS = `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/all`;
 
 const initialData = {
   list: [

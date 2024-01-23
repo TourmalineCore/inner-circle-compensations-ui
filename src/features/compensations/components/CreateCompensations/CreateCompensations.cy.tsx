@@ -58,7 +58,7 @@ describe('TableCreateCompensations', () => {
   it('SHOULD render compensation types WHEN visit page', () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
       INITIAL_TYPES,
     );
 
@@ -72,7 +72,7 @@ describe('TableCreateCompensations', () => {
   it('SHOULD render date picker WHEN visit page', () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
       INITIAL_TYPES,
     );
 
@@ -85,7 +85,7 @@ describe('TableCreateCompensations', () => {
   it('SHOULD render create compensations table WHEN visit page', () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
       INITIAL_TYPES,
     );
 
@@ -111,7 +111,7 @@ describe('TableCreateCompensations', () => {
   it('SHOULD not show validation on newly created compensation WHEN submit of the previous one was successful', () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
       INITIAL_TYPES,
     ).as('call-1');
 
@@ -119,7 +119,7 @@ describe('TableCreateCompensations', () => {
 
     cy.intercept(
       'POST',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/create`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/create`,
       {
         statusCode: 400,
       },
@@ -143,7 +143,7 @@ describe('TableCreateCompensations', () => {
 
     cy.intercept(
       'POST',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/create`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/create`,
       {
         compensations: [
           {
@@ -184,7 +184,7 @@ describe('TableCreateCompensations', () => {
   it('SHOULD not render error messages WHEN click send button with not empty inputs required', () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
       INITIAL_TYPES,
     ).as('call-9');
 
@@ -209,7 +209,7 @@ describe('TableCreateCompensations', () => {
   it('SHOULD render error messages WHEN click send button with negative amount required', () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
       INITIAL_TYPES,
     ).as('call-10');
 
@@ -248,7 +248,7 @@ describe('TableCreateCompensations', () => {
   it('SHOULD not render error messages WHEN click send button with not negative amount required', () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}/compensations/types`,
+      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
       INITIAL_TYPES,
     ).as('call-11');
 

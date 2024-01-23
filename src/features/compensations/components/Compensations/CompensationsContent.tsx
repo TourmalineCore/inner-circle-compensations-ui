@@ -22,7 +22,7 @@ function CompensationsContent() {
 
   async function loadCompensations() {
     try {
-      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}/compensations/all`);
+      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}compensations/all`);
 
       compensationsState.initialize({
         loadedCompensations: data,

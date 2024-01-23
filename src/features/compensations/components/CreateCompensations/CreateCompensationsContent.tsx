@@ -39,7 +39,7 @@ function CreateCompensationsContent() {
 
   async function loadCompensationTypes() {
     try {
-      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}/compensations/types`);
+      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}compensations/types`);
 
       createCompensationState.initializeTypes({ loadedTypes: data });
     } catch {
@@ -52,7 +52,7 @@ function CreateCompensationsContent() {
 
     try {
       await api.post(
-        `${LINK_TO_SALARY_SERVICE}/compensations/create`,
+        `${LINK_TO_SALARY_SERVICE}compensations/create`,
         {
           compensations: createCompensationState.allCompensations,
           dateCompensation: createCompensationState.dateCompensation,
@@ -62,7 +62,7 @@ function CreateCompensationsContent() {
       createCompensationState.removeCompensationsFromList();
       createCompensationState.setIsTriedToSubmit(false);
 
-      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}/compensations/all`);
+      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}compensations/all`);
 
       compensationsState.initialize({
         loadedCompensations: data,
