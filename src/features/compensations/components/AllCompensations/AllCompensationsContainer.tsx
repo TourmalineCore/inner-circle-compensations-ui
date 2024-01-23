@@ -10,7 +10,7 @@ export const AllCompensationsContainer = observer(() => {
 
   useEffect(() => {
     loadCompensations();
-  }, [allCompensationsState.isChange, allCompensationsState.dateCompensation]);
+  }, [allCompensationsState.isChange, allCompensationsState.selectedDate]);
 
   return (
     <AllCompensationsContent />

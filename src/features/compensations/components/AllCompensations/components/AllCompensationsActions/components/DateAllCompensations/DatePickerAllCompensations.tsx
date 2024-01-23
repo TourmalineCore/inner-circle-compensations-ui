@@ -30,7 +30,7 @@ export const DatePickerAllCompensations = observer(() => {
       data-cy="date-picker-all-compensations"
     >
       <DatePicker
-        selected={allCompensationsState.dateCompensation}
+        selected={allCompensationsState.selectedDate}
         onChange={(date: Date) => allCompensationsState.updateDate(date)}
         showMonthYearPicker
         dateFormat="MMM yyyy"

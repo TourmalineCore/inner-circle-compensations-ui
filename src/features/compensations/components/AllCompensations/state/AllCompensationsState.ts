@@ -31,11 +31,7 @@ export class AllCompensationsState {
 
   private _isChange = false;
 
-  private _dateCompensation: Date = new Date();
-
-  get allSelectedCompensations() {
-    return this._compensations.items.filter((compensation) => compensation.isSelected);
-  }
+  private _selectedDate: Date = new Date();
 
   constructor() {
     makeAutoObservable(this);
@@ -45,19 +41,8 @@ export class AllCompensationsState {
     return {
       items: this._compensations.items.filter((item) => getFiltering(item, this._filterTerm)),
       totalAmount: this._compensations.totalAmount,
+      totalUnpaidAmount: this._compensations.totalUnpaidAmount,
     };
-  }
-
-  getCompensationIds() {
-    return this._compensationsItem.compensations.map((compensation) => compensation.id);
-  }
-
-  get isSelected() {
-    return this._compensations.items.some((item) => item.isSelected === true);
-  }
-
-  get employeeId() {
-    return this._compensations.items.find((item) => item.employeeId);
   }
 
   get totalCount() {
@@ -72,27 +57,18 @@ export class AllCompensationsState {
     return this._filterTerm;
   }
 
-  get dateCompensation() {
-    return this._dateCompensation;
+  get selectedDate() {
+    return this._selectedDate;
   }
 
   get monthYearDate() {
-    const month = this._dateCompensation.getMonth() + 1;
-    const year = this._dateCompensation.getFullYear();
+    const month = this._selectedDate.getMonth() + 1;
+    const year = this._selectedDate.getFullYear();
     return { month, year };
   }
 
   get isChange() {
     return this._isChange;
-  }
-
-  setIsSelected(isSelected: boolean, id: number) {
-    this._compensations.items.map((item) => {
-      if (item.employeeId === id) {
-        return item.isSelected = isSelected;
-      }
-      return item;
-    });
   }
 
   initialize({
@@ -117,7 +93,7 @@ export class AllCompensationsState {
   }
 
   updateDate(newDate: Date) {
-    this._dateCompensation = newDate;
+    this._selectedDate = newDate;
   }
 
   updateStatus(newStatus: boolean) {
