@@ -1,10 +1,6 @@
 import { observer } from 'mobx-react-lite';
-import CompensationsContent from './CompensationsContent';
+import { CompensationsContainer } from './CompensationsContainer';
 
-function Compensations() {
-  return (
-    <CompensationsContent />
-  );
-}
-
-export default observer(Compensations);
+export const Compensations = observer(() => (
+  <CompensationsContainer />
+));

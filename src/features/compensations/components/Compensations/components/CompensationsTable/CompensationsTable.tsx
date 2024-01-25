@@ -3,13 +3,13 @@ import moment from 'moment';
 import { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
-import CompensationsStateContext from '../../state/CompensationsStateContext';
+import { CompensationsStateContext } from '../../state/CompensationsStateContext';
 
-function CompensationsTable({
+export const CompensationsTable = observer(({
   className = '',
 }: {
   className?: string;
-}) {
+}) => {
   const compensationsState = useContext(CompensationsStateContext);
 
   return (
@@ -66,6 +66,4 @@ function CompensationsTable({
 
     </div>
   );
-}
-
-export default observer(CompensationsTable);
+});

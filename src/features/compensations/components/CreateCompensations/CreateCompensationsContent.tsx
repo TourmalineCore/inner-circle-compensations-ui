@@ -6,7 +6,7 @@ import ListTypesCompensations from './components/ListTypesCompensations/ListType
 import DatePickerCompensations from './components/DateCompensations/DatePickerCompensations';
 import { api } from '../../../../common/api';
 import { LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
-import CompensationsStateContext from '../Compensations/state/CompensationsStateContext';
+import { CompensationsStateContext } from '../Compensations/state/CompensationsStateContext';
 
 function CreateCompensationsContent() {
   const createCompensationState = useContext(CreateCompensationsStateContext);

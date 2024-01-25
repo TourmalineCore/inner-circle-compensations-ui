@@ -1,11 +1,11 @@
 import { observer } from 'mobx-react-lite';
 import { useMemo } from 'react';
-import Compensations from './components/Compensations/Compensations';
 import CreateCompensations from './components/CreateCompensations/CreateCompensations';
-import CompensationsStateContext from './components/Compensations/state/CompensationsStateContext';
-import CompensationsState from './components/Compensations/state/CompensationsState';
+import { Compensations } from './components/Compensations/Compensations';
+import { CompensationsStateContext } from './components/Compensations/state/CompensationsStateContext';
+import { CompensationsState } from './components/Compensations/state/CompensationsState';
 
-function CompensationsPersonalPage() {
+export const CompensationsPersonalPage = observer(() => {
   const compensationsState = useMemo(
     () => new CompensationsState(),
     [],
@@ -18,8 +18,5 @@ function CompensationsPersonalPage() {
         <CreateCompensations />
       </div>
     </CompensationsStateContext.Provider>
-
   );
-}
-
-export default observer(CompensationsPersonalPage);
+});

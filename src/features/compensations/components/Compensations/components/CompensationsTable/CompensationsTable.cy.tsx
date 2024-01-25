@@ -1,9 +1,8 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../../../cypress/support/commands';
-import CompensationsState from '../../state/CompensationsState';
-import CompensationsStateContext from '../../state/CompensationsStateContext';
-
-import CompensationsTable from './CompensationsTable';
+import { CompensationsState } from '../../state/CompensationsState';
+import { CompensationsStateContext } from '../../state/CompensationsStateContext';
+import { CompensationsTable } from './CompensationsTable';
 
 const initialData = {
   list: [

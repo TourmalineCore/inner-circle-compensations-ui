@@ -1,10 +1,9 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../cypress/support/commands';
 import { API_ROOT, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
-
-import Compensations from './Compensations';
-import CompensationsState from './state/CompensationsState';
-import CompensationsStateContext from './state/CompensationsStateContext';
+import { Compensations } from './Compensations';
+import { CompensationsState } from './state/CompensationsState';
+import { CompensationsStateContext } from './state/CompensationsStateContext';
 
 const GET_COMPENSATIONS = `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/all`;
 

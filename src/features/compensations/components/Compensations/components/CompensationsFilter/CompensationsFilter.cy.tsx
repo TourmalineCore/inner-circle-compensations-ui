@@ -1,10 +1,8 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../../../cypress/support/commands';
-
-import CompensationsState from '../../state/CompensationsState';
-import CompensationsStateContext from '../../state/CompensationsStateContext';
-
-import CompensationsFilter from './CompensationsFilter';
+import { CompensationsState } from '../../state/CompensationsState';
+import { CompensationsStateContext } from '../../state/CompensationsStateContext';
+import { CompensationsFilter } from './CompensationsFilter';
 
 describe('CompensationsFilter', () => {
   it('SHOULD render compensations filter WHEN visit compensations page', () => {
