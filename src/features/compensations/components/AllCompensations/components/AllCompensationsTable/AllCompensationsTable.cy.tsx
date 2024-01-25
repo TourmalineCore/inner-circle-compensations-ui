@@ -94,7 +94,8 @@ describe('AllCompensationsTable', () => {
     });
 
     cy.getByData('all-compensations-table-no-data')
-      .should('exist');
+      .should('exist')
+      .should('have.text', 'No unpaid compensation in this month');
   });
 
   it(`

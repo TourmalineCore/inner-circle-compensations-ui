@@ -2,15 +2,7 @@ import { makeAutoObservable } from 'mobx';
 
 export class AllCompensationsState {
   private _compensations: AllCompensationsType = {
-    items: [{
-      employeeId: 0,
-      employeeFullName: 'string',
-      dateCompensation: 'string',
-      totalAmount: 100,
-      unpaidAmount: 100,
-      compensations: [],
-      isPaid: false,
-    }],
+    items: [],
     totalAmount: 0,
     totalUnpaidAmount: 0,
   };

@@ -19,7 +19,11 @@ const initialData = {
 };
 
 describe('CompensationsTable', () => {
-  it('SHOULD render compensations table WHEN visit compensations page', () => {
+  it(`
+  GIVEN compensations personal page 
+  WHEN visit compensations page
+  THEN render compensations table
+  `, () => {
     mountComponent({
       compensations: initialData,
     });
@@ -28,7 +32,11 @@ describe('CompensationsTable', () => {
       .should('exist');
   });
 
-  it('SHOULD render compensations table row WHEN there is data', () => {
+  it(`
+  GIVEN compensations personal page 
+  WHEN there is data
+  THEN render compensations table row 
+  `, () => {
     mountComponent({
       compensations: initialData,
     });
@@ -37,16 +45,25 @@ describe('CompensationsTable', () => {
       .should('exist');
   });
 
-  it('SHOULD render compensations table row total WHEN there is data', () => {
+  it(`
+  GIVEN compensations all page 
+  WHEN there is data
+  THEN render compensations table row total
+  `, () => {
     mountComponent({
       compensations: initialData,
     });
 
-    cy.getByData('compensations-table-row-total')
-      .should('exist');
+    cy.getByData('compensations-table-sum')
+      .should('exist')
+      .should('have.text', '760 ₽');
   });
 
-  it('SHOULD render compensations table with no data message WHEN there is no data', () => {
+  it(`
+  GIVEN compensations personal page 
+  WHEN there is no data
+  THEN render compensations table with no data message
+  `, () => {
     mountComponent({
       compensations: {
         list: [],
@@ -55,10 +72,15 @@ describe('CompensationsTable', () => {
     });
 
     cy.getByData('compensations-table-no-data')
-      .should('exist');
+      .should('exist')
+      .should('have.text', 'No unpaid compensation in this month');
   });
 
-  it('SHOULD render valid data for all elements in row WHEN there s data', () => {
+  it(`
+  GIVEN compensations personal page 
+  WHEN there is data
+  THEN render valid data for all elements in row
+  `, () => {
     mountComponent({
       compensations: initialData,
     });
@@ -73,28 +95,7 @@ describe('CompensationsTable', () => {
       .should('have.text', 'I bought milk');
 
     cy.getByData('compensations-table-row-amount')
-      .should('have.class', 'compensations-table__column-amount--unpaid');
-  });
-
-  it('SHOULD render valid amount in row WHEN element has unpaid amount', () => {
-    mountComponent({
-      compensations: {
-        list: [
-          {
-            dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
-            dateCompensation: '2023-06-08T11:42:04.467165Z',
-            comment: 'I bought milk',
-            amount: 760,
-            isPaid: false,
-            employeeId: 1,
-          },
-        ],
-        totalUnpaidAmount: 760,
-      },
-    });
-
-    cy.getByData('compensations-table-row-amount')
-      .should('have.class', 'compensations-table__column-amount--unpaid');
+      .should('have.text', '760 ₽');
   });
 });
 

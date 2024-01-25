@@ -52,7 +52,7 @@ export const CompensationsTable = observer(({
             className="compensations-table__row compensations-table__row-total"
           >
             <span>Unpaid</span>
-            <span className="compensations-table__total-amount">{formatMoney(compensationsState.allCompensations.totalUnpaidAmount)}</span>
+            <span className="compensations-table__total-amount" data-cy="compensations-table-sum">{formatMoney(compensationsState.allCompensations.totalUnpaidAmount)}</span>
           </div>
         </>
       ) : (
@@ -60,7 +60,7 @@ export const CompensationsTable = observer(({
           data-cy="compensations-table-no-data"
           className="compensations-table__no-data"
         >
-          {compensationsState.filterTerm === 'paid' ? 'No records in this month' : 'No unpaid compensation in this month'}
+          {compensationsState.filterTerm === 'unpaid' ? 'No unpaid compensation in this month' : 'No records in this month' }
         </div>
       ) }
 
