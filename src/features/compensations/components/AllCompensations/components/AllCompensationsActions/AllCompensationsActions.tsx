@@ -5,10 +5,10 @@ import { DatePickerAllCompensations } from './components/DateAllCompensations/Da
 export function AllCompensationsActions() {
   return (
     <div className="compensation-actions" data-cy="compensation-actions">
-      <div className="compensation-actions--div--left" />
+      <div className="compensation-actions--left" />
       <DatePickerAllCompensations />
       <AllCompensationsFilter />
-      <div className="compensation-actions--div--right" />
+      <div className="compensation-actions--right" />
     </div>
   );
 }

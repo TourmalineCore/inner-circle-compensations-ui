@@ -5,17 +5,15 @@
   margin-bottom: 16px;
   max-width: 1630px;
 
-  &--div {
-    &--left {
-      padding: 8px 100px 8px 8px;
-      max-width: 400px;
-      max-height: 40px;
-    }
+  &--left {
+    padding: 8px 100px 8px 8px;
+    max-width: 400px;
+    max-height: 40px;
+  }
 
-    &--right {
-      padding: 10px 100px;
-      max-width: 250px;
-      max-height: 48px;
-    }
+  &--right {
+    padding: 10px 100px;
+    max-width: 250px;
+    max-height: 48px;
   }
 }
