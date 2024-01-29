@@ -14,9 +14,9 @@ describe('AllCompensations', () => {
 
     cy.getByData('all-compensations-table')
       .should('exist');
-    cy.getByData('compensation-actions')
+    cy.getByData('all-compensations-actions')
       .should('exist');
-    cy.getByData('all-compensations')
+    cy.getByData('all-compensations-content')
       .should('exist');
   });
 
@@ -31,7 +31,7 @@ describe('AllCompensations', () => {
       .should('exist')
       .should('have.text', 'No unpaid compensation in this month');
 
-    cy.getByData('all-compensations-filter')
+    cy.getByData('all-compensations-filter-button')
       .first()
       .click();
 

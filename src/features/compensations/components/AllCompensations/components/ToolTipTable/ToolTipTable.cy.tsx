@@ -26,7 +26,7 @@ describe('ToolTipTable', () => {
       compensations: initialData.compensations,
     });
 
-    cy.getByData('compensations-tooltip-table')
+    cy.getByData('tooltip-table')
       .should('exist');
   });
 
@@ -39,13 +39,13 @@ describe('ToolTipTable', () => {
       compensations: initialData.compensations,
     });
 
-    cy.getByData('compensations-tooltip-table-row-type')
+    cy.getByData('tooltip-table-column-type')
       .should('have.text', 'Products');
 
-    cy.getByData('compensations-tooltip-table-row-comment')
+    cy.getByData('tooltip-table-column-comment')
       .should('have.text', 'milk');
 
-    cy.getByData('compensations-tooltip-table-row-amount')
+    cy.getByData('tooltip-table-column-amount')
       .should('have.text', '100 ₽');
   });
 });

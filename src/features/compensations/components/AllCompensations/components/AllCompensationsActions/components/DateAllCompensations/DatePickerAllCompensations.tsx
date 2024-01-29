@@ -7,7 +7,7 @@ import { observer } from 'mobx-react-lite';
 import logoData from '../../../../../../../../assets/icons/logo-data-picker.svg';
 import { AllCompensationsStateContext } from '../../../../state/AllCompensationsStateContext';
 
-const DatePickerCompensationsCustomElement = forwardRef<HTMLButtonElement, HTMLProps<HTMLButtonElement>>(({ value, onClick }, ref) => (
+const DatePickerAllCompensationsCustomElement = forwardRef<HTMLButtonElement, HTMLProps<HTMLButtonElement>>(({ value, onClick }, ref) => (
   <button
     type="button"
     onClick={onClick}
@@ -34,7 +34,7 @@ export const DatePickerAllCompensations = observer(() => {
         onChange={(date: Date) => allCompensationsState.updateDate(date)}
         showMonthYearPicker
         dateFormat="MMM yyyy"
-        customInput={<DatePickerCompensationsCustomElement />}
+        customInput={<DatePickerAllCompensationsCustomElement />}
       />
     </div>
   );

@@ -40,14 +40,14 @@ export const AllCompensationsTable = observer(({
               >
 
                 <td
-                  data-cy="all-compensations-table-row-employee"
+                  data-cy="all-compensations-table-column-employee"
                   className="all-compensations-table__column-employee"
                 >
                   {employeeFullName}
                 </td>
 
                 <td
-                  data-cy="all-compensations-table-row-status"
+                  data-cy="all-compensations-table-column-status"
                   className={clsx('all-compensations-table__column-status', {
                     'all-compensations-table__column-status--content--unpaid': !isPaid,
                     'all-compensations-table__column-status--content--paid': isPaid,
@@ -59,7 +59,7 @@ export const AllCompensationsTable = observer(({
                 </td>
 
                 <td
-                  data-cy="all-compensations-table-row-action"
+                  data-cy="all-compensations-table-column-action"
                   className={clsx('all-compensations-table__column-action', {
                     'all-compensations-table__column-action--unpaid': !isPaid,
                     'all-compensations-table__column-action--paid': isPaid,
@@ -69,17 +69,17 @@ export const AllCompensationsTable = observer(({
                 </td>
 
                 <td className="all-compensations-table__column-unpaid">
-                  <span data-cy="all-compensations-table-row-unpaid">
+                  <span data-cy="all-compensations-table-column-unpaid">
                     {formatMoney(unpaidAmount)}
                   </span>
                 </td>
 
                 <td className="all-compensations-table__column-amount">
-                  <span className="compensations-tooltip" data-cy="compensations-tooltip">
-                    <span data-cy="all-compensations-table-row-amount">
+                  <span className="all-compensations-table__tooltip" data-cy="all-compensations-table-tooltip">
+                    <span data-cy="all-compensations-table-column-amount">
                       {formatMoney(totalAmount)}
                     </span>
-                    <div className="tooltip" data-cy="tooltip">
+                    <div className="all-compensations-table__tooltip__item" data-cy="all-compensations-table-tooltip-item">
                       <ToolTipTable compensations={compensations} />
                     </div>
                   </span>

@@ -12,7 +12,7 @@ describe('AllCompensationsActions', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('compensation-actions')
+    cy.getByData('all-compensations-actions')
       .should('exist');
   });
 });

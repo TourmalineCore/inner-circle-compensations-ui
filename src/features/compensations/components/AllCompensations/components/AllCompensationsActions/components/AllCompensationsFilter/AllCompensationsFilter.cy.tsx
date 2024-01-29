@@ -12,7 +12,7 @@ describe('AllCompensationsFilter', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('all-compensations-filter-inner')
+    cy.getByData('all-compensations-filter')
       .should('exist');
   });
 
@@ -23,15 +23,15 @@ describe('AllCompensationsFilter', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('all-compensations-filter-inner')
+    cy.getByData('all-compensations-filter')
       .children()
       .should('have.length', 2);
 
-    cy.getByData('all-compensations-filter')
+    cy.getByData('all-compensations-filter-button')
       .first()
       .should('have.text', 'All');
 
-    cy.getByData('all-compensations-filter')
+    cy.getByData('all-compensations-filter-button')
       .last()
       .should('have.text', 'Unpaid');
   });
@@ -43,11 +43,11 @@ describe('AllCompensationsFilter', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('all-compensations-filter')
+    cy.getByData('all-compensations-filter-button')
       .last()
       .click();
 
-    cy.getByData('all-compensations-filter')
+    cy.getByData('all-compensations-filter-button')
       .last()
       .focused();
   });

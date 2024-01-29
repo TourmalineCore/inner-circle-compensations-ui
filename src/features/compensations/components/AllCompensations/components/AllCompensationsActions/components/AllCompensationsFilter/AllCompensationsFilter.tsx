@@ -24,11 +24,11 @@ export const AllCompensationsFilter = observer(({
   const allCompensationsState = useContext(AllCompensationsStateContext);
 
   return (
-    <div className={`all-compensations-filter ${className}`} data-cy="all-compensations-filter-inner">
+    <div className={`all-compensations-filter ${className}`} data-cy="all-compensations-filter">
       {filterElements.map((item) => (
         <button
           type="button"
-          data-cy="all-compensations-filter"
+          data-cy="all-compensations-filter-button"
           className={clsx('all-compensations-filter__button', {
             'all-compensations-filter__button--active': item.id === allCompensationsState.filterTerm,
           })}

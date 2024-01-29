@@ -123,20 +123,22 @@
     text-align: start;
     color: var(--color-black);
   }
-}
 
-.tooltip {
-  position: absolute;
-  display: none;
-  border-radius: 2px;
-  padding: 8px;
-  width: 100%;
-  max-width: 500px;
-  box-shadow: 0 4px 14px rgb(0 0 0 / 15%);
-  background-color: var(--color-white);
-  transform: translate(-90%, -75%); // move an element
-}
+  &__tooltip {
+    &__item {
+      position: absolute;
+      display: none;
+      border-radius: 2px;
+      padding: 8px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 4px 14px rgb(0 0 0 / 15%);
+      background-color: var(--color-white);
+      transform: translate(-90%, -75%); // move an element
+    }
 
-.compensations-tooltip:hover > .tooltip {
-  display: block;
+    &:hover > &__item {
+      display: block;
+    }
+  }
 }

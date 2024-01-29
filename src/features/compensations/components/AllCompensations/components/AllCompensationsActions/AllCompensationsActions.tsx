@@ -4,11 +4,11 @@ import { DatePickerAllCompensations } from './components/DateAllCompensations/Da
 // TODO add SearchBarAll
 export function AllCompensationsActions() {
   return (
-    <div className="compensation-actions" data-cy="compensation-actions">
-      <div className="compensation-actions--left" />
+    <div className="all-compensations-actions" data-cy="all-compensations-actions">
+      <div className="all-compensations-actions--left" />
       <DatePickerAllCompensations />
       <AllCompensationsFilter />
-      <div className="compensation-actions--right" />
+      <div className="all-compensations-actions--right" />
     </div>
   );
 }

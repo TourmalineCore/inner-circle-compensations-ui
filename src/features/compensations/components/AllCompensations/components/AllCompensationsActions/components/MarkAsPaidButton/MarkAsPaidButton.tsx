@@ -14,7 +14,7 @@ export const MarkAsPaidButton = observer(({
   return (
     <button
       className="mark-as-paid-button"
-      data-cy="mark-as-paid-button-submit"
+      data-cy="mark-as-paid-button"
       type="button"
       onClick={() => {
         markAsPaid(compensations);

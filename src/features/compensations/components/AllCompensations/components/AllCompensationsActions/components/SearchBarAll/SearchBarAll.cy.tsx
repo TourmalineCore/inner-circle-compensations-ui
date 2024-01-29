@@ -5,7 +5,11 @@ import { AllCompensationsStateContext } from '../../../../state/AllCompensations
 import { SearchBarAll } from './SearchBarAll';
 
 describe('SearchBarAll', () => {
-  it('SHOULD render component WHEN visit compensations page', () => {
+  it(`
+  GIVEN compensations all page 
+  WHEN visit compensations page 
+  THEN render component
+  `, () => {
     mountComponent();
 
     cy.getByData('search-bar')

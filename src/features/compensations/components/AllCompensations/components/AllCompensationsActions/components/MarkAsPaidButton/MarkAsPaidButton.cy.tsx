@@ -29,7 +29,7 @@ describe('MarkAsPaidButton', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('mark-as-paid-button-submit')
+    cy.getByData('mark-as-paid-button')
       .should('exist');
   });
 
@@ -40,11 +40,11 @@ describe('MarkAsPaidButton', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('mark-as-paid-button-submit')
+    cy.getByData('mark-as-paid-button')
       .last()
       .click();
 
-    cy.getByData('mark-as-paid-button-submit')
+    cy.getByData('mark-as-paid-button')
       .last()
       .focused();
   });

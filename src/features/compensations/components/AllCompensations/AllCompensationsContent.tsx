@@ -3,7 +3,7 @@ import { AllCompensationsTable } from './components/AllCompensationsTable/AllCom
 
 export function AllCompensationsContent() {
   return (
-    <section data-cy="all-compensations">
+    <section data-cy="all-compensations-content">
       <AllCompensationsActions />
       <AllCompensationsTable />
     </section>

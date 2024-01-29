@@ -107,19 +107,19 @@ describe('AllCompensationsTable', () => {
       compensations: initialData,
     });
 
-    cy.getByData('all-compensations-table-row-employee')
+    cy.getByData('all-compensations-table-column-employee')
       .should('have.text', 'Ceo Ceo Ceo');
 
-    cy.getByData('all-compensations-table-row-status')
+    cy.getByData('all-compensations-table-column-status')
       .should('have.text', 'UNPAID');
 
-    cy.getByData('all-compensations-table-row-action')
+    cy.getByData('all-compensations-table-column-action')
       .should('exist');
 
-    cy.getByData('all-compensations-table-row-unpaid')
+    cy.getByData('all-compensations-table-column-unpaid')
       .should('have.text', '760 ₽');
 
-    cy.getByData('all-compensations-table-row-amount')
+    cy.getByData('all-compensations-table-column-amount')
       .should('have.text', '3,520.45 ₽');
   });
 
@@ -132,9 +132,9 @@ describe('AllCompensationsTable', () => {
       compensations: initialData,
     });
 
-    cy.getByData('compensations-tooltip').trigger('mouseover');
+    cy.getByData('all-compensations-table-tooltip').trigger('mouseover');
 
-    cy.getByData('tooltip')
+    cy.getByData('all-compensations-table-tooltip-item')
       .should('exist');
   });
 });
