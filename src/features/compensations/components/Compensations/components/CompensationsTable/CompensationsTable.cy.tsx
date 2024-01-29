@@ -35,20 +35,20 @@ describe('CompensationsTable', () => {
   it(`
   GIVEN compensations personal page 
   WHEN there is data
-  THEN render compensations table row 
+  THEN render compensations table column 
   `, () => {
     mountComponent({
       compensations: initialData,
     });
 
-    cy.getByData('compensations-table-row')
+    cy.getByData('compensations-table-column')
       .should('exist');
   });
 
   it(`
   GIVEN compensations all page 
   WHEN there is data
-  THEN render compensations table row total
+  THEN render compensations table column total
   `, () => {
     mountComponent({
       compensations: initialData,
@@ -79,22 +79,22 @@ describe('CompensationsTable', () => {
   it(`
   GIVEN compensations personal page 
   WHEN there is data
-  THEN render valid data for all elements in row
+  THEN render valid data for all elements in column
   `, () => {
     mountComponent({
       compensations: initialData,
     });
 
-    cy.getByData('compensations-table-row-month')
+    cy.getByData('compensations-table-column-month')
       .should('have.text', 'June 2023');
 
-    cy.getByData('compensations-table-row-date')
+    cy.getByData('compensations-table-column-date')
       .should('have.text', '08.06.2023');
 
-    cy.getByData('compensations-table-row-comment')
+    cy.getByData('compensations-table-column-comment')
       .should('have.text', 'I bought milk');
 
-    cy.getByData('compensations-table-row-amount')
+    cy.getByData('compensations-table-column-amount')
       .should('have.text', '760 ₽');
   });
 });

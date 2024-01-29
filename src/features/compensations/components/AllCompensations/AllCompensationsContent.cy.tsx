@@ -4,7 +4,7 @@ import { AllCompensationsContent } from './AllCompensationsContent';
 import { AllCompensationsState } from './state/AllCompensationsState';
 import { AllCompensationsStateContext } from './state/AllCompensationsStateContext';
 
-describe('AllCompensations', () => {
+describe('AllCompensationsContent', () => {
   it(`
   GIVEN compensations all page 
   WHEN visit compensations page 

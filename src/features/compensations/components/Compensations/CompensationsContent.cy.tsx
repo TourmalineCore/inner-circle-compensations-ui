@@ -4,7 +4,7 @@ import { Compensations } from './Compensations';
 import { CompensationsState } from './state/CompensationsState';
 import { CompensationsStateContext } from './state/CompensationsStateContext';
 
-describe('Compensations', () => {
+describe('CompensationsContent', () => {
   it(`
   GIVEN compensations personal page 
   WHEN visit compensations page 
@@ -16,7 +16,7 @@ describe('Compensations', () => {
       .should('exist');
     cy.getByData('compensations-filter')
       .should('exist');
-    cy.getByData('compensations')
+    cy.getByData('compensations-content')
       .should('exist');
   });
 
@@ -31,7 +31,7 @@ describe('Compensations', () => {
       .should('exist')
       .should('have.text', 'No unpaid compensation in this month');
 
-    cy.getByData('compensations-filter')
+    cy.getByData('compensations-filter-button')
       .first()
       .click();
 

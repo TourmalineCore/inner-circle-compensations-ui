@@ -52,7 +52,7 @@ describe('AllCompensationsTable', () => {
   it(`
   GIVEN compensations all page 
   WHEN there is data
-  THEN render compensations table row 
+  THEN render compensations table column 
   `, () => {
     mountComponent({
       compensations: initialData,
@@ -65,7 +65,7 @@ describe('AllCompensationsTable', () => {
   it(`
   GIVEN compensations all page 
   WHEN there is data
-  THEN render compensations table row total
+  THEN render compensations table column total
   `, () => {
     mountComponent({
       compensations: initialData,
@@ -101,7 +101,7 @@ describe('AllCompensationsTable', () => {
   it(`
   GIVEN compensations all page 
   WHEN there is data
-  THEN render valid data for all elements in row
+  THEN render valid data for all elements in column
   `, () => {
     mountComponent({
       compensations: initialData,

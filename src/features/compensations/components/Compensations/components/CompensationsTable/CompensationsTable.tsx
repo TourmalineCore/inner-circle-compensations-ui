@@ -23,20 +23,20 @@ export const CompensationsTable = observer(({
             dateCompensation, dateCreateCompensation, amount, comment, isPaid,
           }) => (
             <div
-              data-cy="compensations-table-row"
-              className="compensations-table__row"
+              data-cy="compensations-table-column"
+              className="compensations-table__column"
               key={dateCreateCompensation}
             >
-              <span data-cy="compensations-table-row-month">{moment(dateCompensation).format('MMMM YYYY')}</span>
-              <span data-cy="compensations-table-row-date">{moment(dateCreateCompensation).format('DD.MM.YYYY')}</span>
+              <span data-cy="compensations-table-column-month">{moment(dateCompensation).format('MMMM YYYY')}</span>
+              <span data-cy="compensations-table-column-date">{moment(dateCreateCompensation).format('DD.MM.YYYY')}</span>
               <span
-                data-cy="compensations-table-row-comment"
+                data-cy="compensations-table-column-comment"
                 className="compensations-table__column-comment"
               >
                 {comment}
               </span>
               <span
-                data-cy="compensations-table-row-amount"
+                data-cy="compensations-table-column-amount"
                 className={clsx('compensations-table__column-amount', {
                   'compensations-table__column-amount--unpaid': !isPaid,
                   'compensations-table__column-amount--paid': isPaid,
@@ -48,8 +48,8 @@ export const CompensationsTable = observer(({
           ))}
 
           <div
-            data-cy="compensations-table-row-total"
-            className="compensations-table__row compensations-table__row-total"
+            data-cy="compensations-table-column-total"
+            className="compensations-table__column compensations-table__column-total"
           >
             <span>Unpaid</span>
             <span className="compensations-table__total-amount" data-cy="compensations-table-sum">{formatMoney(compensationsState.allCompensations.totalUnpaidAmount)}</span>

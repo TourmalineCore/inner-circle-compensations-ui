@@ -3,9 +3,9 @@ import { CompensationsTable } from './components/CompensationsTable/Compensation
 
 export function CompensationsContent() {
   return (
-    <section data-cy="compensations">
-      <CompensationsFilter className="compensations__filter" data-cy="compensations-filter" />
-      <CompensationsTable className="compensations__table" data-cy="compensations-table" />
+    <section data-cy="compensations-content">
+      <CompensationsFilter />
+      <CompensationsTable />
     </section>
   );
 }
