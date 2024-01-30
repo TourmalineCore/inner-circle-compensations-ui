@@ -53,10 +53,12 @@ describe('CompensationsContent', () => {
     });
 
     cy.getByData('compensations-table-column-amount')
+      .should('have.length', 1);
+
+    cy.getByData('compensations-table-column-amount')
       .should('have.text', '760 ₽');
 
     cy.getByData('compensations-table-sum')
-      .should('exist')
       .should('have.text', '760 ₽');
 
     cy.getByData('compensations-filter-button')
@@ -67,7 +69,6 @@ describe('CompensationsContent', () => {
       .should('have.length', 2);
 
     cy.getByData('compensations-table-sum')
-      .should('exist')
       .should('have.text', '760 ₽');
   });
 
