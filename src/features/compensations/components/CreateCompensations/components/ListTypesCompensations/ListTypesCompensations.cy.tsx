@@ -1,10 +1,8 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../../../cypress/support/commands';
-
-import CreateCompensationsState from '../../state/CreateCompensationsState';
-import CreateCompensationsStateContext from '../../state/CreateCompensationsStateContext';
-
-import ListTypesCompensations from './ListTypesCompensations';
+import { CreateCompensationsState } from '../../state/CreateCompensationsState';
+import { CreateCompensationsStateContext } from '../../state/CreateCompensationsStateContext';
+import { ListTypesCompensations } from './ListTypesCompensations';
 
 const INITIAL_TYPES = [
   {

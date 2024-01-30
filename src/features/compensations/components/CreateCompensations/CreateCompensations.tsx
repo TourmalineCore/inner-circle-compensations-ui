@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { observer } from 'mobx-react-lite';
-import CreateCompensationsStateContext from './state/CreateCompensationsStateContext';
-import CreateCompensationsState from './state/CreateCompensationsState';
-import CreateCompensationsContent from './CreateCompensationsContent';
+import { CreateCompensationsState } from './state/CreateCompensationsState';
+import { CreateCompensationsStateContext } from './state/CreateCompensationsStateContext';
+import { CreateCompensationsContainer } from './CreateCompensationsContainer';
 
-function CreateCompensations() {
+export const CreateCompensations = observer(() => {
   const compensationsCreateState = useMemo(
     () => new CreateCompensationsState(),
     [],
@@ -12,9 +12,7 @@ function CreateCompensations() {
 
   return (
     <CreateCompensationsStateContext.Provider value={compensationsCreateState}>
-      <CreateCompensationsContent />
+      <CreateCompensationsContainer />
     </CreateCompensationsStateContext.Provider>
   );
-}
-
-export default observer(CreateCompensations);
+});

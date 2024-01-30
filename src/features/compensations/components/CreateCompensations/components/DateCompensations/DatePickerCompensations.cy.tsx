@@ -1,10 +1,8 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../../../cypress/support/commands';
-
-import CreateCompensationsState from '../../state/CreateCompensationsState';
-import CreateCompensationsStateContext from '../../state/CreateCompensationsStateContext';
-
-import DatePickerCompensations from './DatePickerCompensations';
+import { CreateCompensationsState } from '../../state/CreateCompensationsState';
+import { CreateCompensationsStateContext } from '../../state/CreateCompensationsStateContext';
+import { DatePickerCompensations } from './DatePickerCompensations';
 
 describe('DatePickerCompensations', () => {
   it('SHOULD render component WHEN visit compensations page', () => {

@@ -2,7 +2,7 @@
 import { HTMLProps, forwardRef, useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import { observer } from 'mobx-react-lite';
-import CreateCompensationsStateContext from '../../state/CreateCompensationsStateContext';
+import { CreateCompensationsStateContext } from '../../state/CreateCompensationsStateContext';
 
 const DatePickerCompensationsCustomElement = forwardRef<HTMLButtonElement, HTMLProps<HTMLButtonElement>>(({ value, onClick }, ref) => (
   <button
@@ -17,7 +17,7 @@ const DatePickerCompensationsCustomElement = forwardRef<HTMLButtonElement, HTMLP
   </button>
 ));
 
-function DatePickerCompensations() {
+export const DatePickerCompensations = observer(() => {
   const createCompensationsState = useContext(CreateCompensationsStateContext);
 
   return (
@@ -35,6 +35,4 @@ function DatePickerCompensations() {
       />
     </div>
   );
-}
-
-export default observer(DatePickerCompensations);
+});

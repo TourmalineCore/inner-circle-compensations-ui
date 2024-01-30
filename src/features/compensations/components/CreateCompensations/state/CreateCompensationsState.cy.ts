@@ -1,6 +1,5 @@
 import '../../../../../../cypress/support/commands';
-
-import CreateCompensationsState from './CreateCompensationsState';
+import { CreateCompensationsState } from './CreateCompensationsState';
 
 const INITIAL_TYPES = [
   {

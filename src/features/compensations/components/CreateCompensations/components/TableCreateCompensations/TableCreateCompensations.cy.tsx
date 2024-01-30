@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import CreateCompensationsState from '../../state/CreateCompensationsState';
-import CreateCompensationsStateContext from '../../state/CreateCompensationsStateContext';
-import TableCreateCompensations from './TableCreateCompensations';
+import { CreateCompensationsState } from '../../state/CreateCompensationsState';
+import { CreateCompensationsStateContext } from '../../state/CreateCompensationsStateContext';
+import { TableCreateCompensations } from './TableCreateCompensations';
 
 const INITIAL_TYPES = [
   {

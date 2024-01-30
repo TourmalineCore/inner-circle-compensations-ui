@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 
-class CreateCompensationsState {
+export class CreateCompensationsState {
   private _types: {
     typeId: number;
     label: string;
@@ -122,5 +122,3 @@ class CreateCompensationsState {
     compensationItem!.amount = amount;
   }
 }
-
-export default CreateCompensationsState;

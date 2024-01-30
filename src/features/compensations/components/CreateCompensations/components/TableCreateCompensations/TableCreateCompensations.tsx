@@ -1,9 +1,9 @@
 import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
 import clsx from 'clsx';
-import CreateCompensationsStateContext from '../../state/CreateCompensationsStateContext';
+import { CreateCompensationsStateContext } from '../../state/CreateCompensationsStateContext';
 
-function TableCreateCompensations() {
+export const TableCreateCompensations = observer(() => {
   const createCompensationState = useContext(CreateCompensationsStateContext);
 
   return (
@@ -132,6 +132,4 @@ function TableCreateCompensations() {
       </tfoot>
     </table>
   );
-}
-
-export default observer(TableCreateCompensations);
+});
