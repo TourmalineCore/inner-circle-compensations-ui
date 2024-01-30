@@ -20,12 +20,12 @@ export const CompensationsTable = observer(({
       {compensationsState.allCompensations.list.length !== 0 ? (
         <>
           {compensationsState.allCompensations.list.map(({
-            dateCompensation, dateCreateCompensation, amount, comment, isPaid,
+            dateCompensation, dateCreateCompensation, amount, comment, isPaid, id,
           }) => (
             <div
               data-cy="compensations-table-column"
               className="compensations-table__column"
-              key={dateCreateCompensation}
+              key={id}
             >
               <span data-cy="compensations-table-column-month">{moment(dateCompensation).format('MMMM YYYY')}</span>
               <span data-cy="compensations-table-column-date">{moment(dateCreateCompensation).format('DD.MM.YYYY')}</span>
