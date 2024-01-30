@@ -80,7 +80,7 @@ describe('AllCompensationsContent', () => {
   it(`
   GIVEN compensations all page 
   WHEN change filter item
-  THEN change no data text
+  THEN change data
   `, () => {
     mountComponent({
       compensations: initialData,
