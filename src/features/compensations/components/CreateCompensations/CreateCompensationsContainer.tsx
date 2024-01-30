@@ -15,16 +15,16 @@ export const CreateCompensationsContainer = observer(() => {
   }, []);
 
   return (
-    <div className="create-compensations">
-      <h2 className="create-compensations__header">New compensation</h2>
+    <div className="create-compensations-container">
+      <h2 className="create-compensations-container__header">New compensation</h2>
       <CreateCompensationsContent />
-      <div className="create-compensations__error-message" data-cy="create-compensations-error-message">
+      <div className="create-compensations-container__error-message" data-cy="create-compensations-container-error-message">
         {createCompensationState.isFilled && createCompensationState.isTriedToSubmit && ('Please fill required field')}
         {!createCompensationState.isFilled && createCompensationState.isNegative && createCompensationState.isTriedToSubmit && ('Amount can not be negative')}
       </div>
       <button
-        className="create-compensations__button"
-        data-cy="create-compensations-submit"
+        className="create-compensations-container__button"
+        data-cy="create-compensations-container-submit"
         type="button"
         onClick={() => createCompensation()}
       >

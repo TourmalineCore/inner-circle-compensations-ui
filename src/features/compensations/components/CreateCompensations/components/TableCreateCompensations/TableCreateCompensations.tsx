@@ -22,7 +22,7 @@ export const TableCreateCompensations = observer(() => {
         }) => (
           <tr key={id} className="table-create-compensations__item" data-cy="table-create-compensations-item">
             <td
-              data-cy="table-create-compensations-td-select"
+              data-cy="table-create-compensations-column-select"
               className={clsx('table-create-compensations__column-type', {
                 'table-create-compensations__column-type--invalid': typeId === 0 && createCompensationState.isTriedToSubmit,
               })}
@@ -66,7 +66,7 @@ export const TableCreateCompensations = observer(() => {
               />
             </td>
             <td
-              data-cy="table-create-compensations-td-amount"
+              data-cy="table-create-compensations-column-amount"
               className={clsx('table-create-compensations__column-amount', {
                 'table-create-compensations__column-amount--invalid': amount <= 0 && createCompensationState.isTriedToSubmit,
               })}

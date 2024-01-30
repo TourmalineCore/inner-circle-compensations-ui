@@ -98,13 +98,13 @@ describe('TableCreateCompensations', () => {
   it('SHOULD validate that all required fields are filled WHEN call submit', () => {
     mountComponent();
 
-    cy.getByData('create-compensations-submit')
+    cy.getByData('create-compensations-container-submit')
       .click();
 
-    cy.getByData('table-create-compensations-td-amount')
+    cy.getByData('table-create-compensations-column-amount')
       .should('have.class', 'table-create-compensations__column-amount--invalid');
 
-    cy.getByData('table-create-compensations-td-select')
+    cy.getByData('table-create-compensations-column-select')
       .should('have.class', 'table-create-compensations__column-type--invalid');
   });
 
@@ -125,13 +125,13 @@ describe('TableCreateCompensations', () => {
       },
     ).as('call-2');
 
-    cy.getByData('create-compensations-submit')
+    cy.getByData('create-compensations-container-submit')
       .click();
 
-    cy.getByData('table-create-compensations-td-amount')
+    cy.getByData('table-create-compensations-column-amount')
       .should('have.class', 'table-create-compensations__column-amount--invalid');
 
-    cy.getByData('table-create-compensations-td-select')
+    cy.getByData('table-create-compensations-column-select')
       .should('have.class', 'table-create-compensations__column-type--invalid');
 
     cy.getByData('table-create-compensations-amount')
@@ -156,13 +156,13 @@ describe('TableCreateCompensations', () => {
       },
     ).as('call-3');
 
-    cy.getByData('create-compensations-submit')
+    cy.getByData('create-compensations-container-submit')
       .click();
 
     cy.getByData('table-create-compensations-add-button')
       .click();
 
-    cy.getByData('table-create-compensations-td-select')
+    cy.getByData('table-create-compensations-column-select')
       .should('not.have.class', 'table-create-compensations__column-type--invalid');
   });
 
@@ -174,10 +174,10 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-amount')
       .type('0');
 
-    cy.getByData('create-compensations-submit')
+    cy.getByData('create-compensations-container-submit')
       .click();
 
-    cy.getByData('create-compensations-error-message')
+    cy.getByData('create-compensations-container-error-message')
       .should('exist');
   });
 
@@ -198,10 +198,10 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-amount')
       .type('200');
 
-    cy.getByData('create-compensations-submit')
+    cy.getByData('create-compensations-container-submit')
       .click();
 
-    cy.getByData('create-compensations-error-message')
+    cy.getByData('create-compensations-container-error-message')
       .should('not.include.text', 'Please fill required field')
       .should('not.include.text', 'Amount can not be negative');
   });
@@ -223,10 +223,10 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-amount')
       .type('-2');
 
-    cy.getByData('create-compensations-submit')
+    cy.getByData('create-compensations-container-submit')
       .click();
 
-    cy.getByData('create-compensations-error-message')
+    cy.getByData('create-compensations-container-error-message')
       .should('exist');
   });
 
@@ -238,10 +238,10 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-amount')
       .type('-2');
 
-    cy.getByData('create-compensations-submit')
+    cy.getByData('create-compensations-container-submit')
       .click();
 
-    cy.getByData('create-compensations-error-message')
+    cy.getByData('create-compensations-container-error-message')
       .should('exist');
   });
 
@@ -262,10 +262,10 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-amount')
       .type('2');
 
-    cy.getByData('create-compensations-submit')
+    cy.getByData('create-compensations-container-submit')
       .click();
 
-    cy.getByData('create-compensations-error-message')
+    cy.getByData('create-compensations-container-error-message')
       .should('not.include.text', 'Please fill required field')
       .should('not.include.text', 'Amount can not be negative');
   });
