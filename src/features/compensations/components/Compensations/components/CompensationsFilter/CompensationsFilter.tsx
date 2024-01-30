@@ -1,10 +1,9 @@
 import {
   MouseEvent, useContext,
 } from 'react';
-
 import clsx from 'clsx';
 import { observer } from 'mobx-react-lite';
-import CompensationsStateContext from '../../state/CompensationsStateContext';
+import { CompensationsStateContext } from '../../state/CompensationsStateContext';
 
 const filterElements = [
   {
@@ -17,19 +16,19 @@ const filterElements = [
   },
 ];
 
-function CompensationsFilter({
+export const CompensationsFilter = observer(({
   className = '',
 }: {
   className?: string;
-}) {
+}) => {
   const compensationsState = useContext(CompensationsStateContext);
 
   return (
-    <div className={`compensations-filter ${className}`} data-cy="compensations-filter-inner">
+    <div className={`compensations-filter ${className}`} data-cy="compensations-filter">
       {filterElements.map((item) => (
         <button
           type="button"
-          data-cy="compensations-filter"
+          data-cy="compensations-filter-button"
           className={clsx('compensations-filter__button', {
             'compensations-filter__button--active': item.id === compensationsState.filterTerm,
           })}
@@ -42,6 +41,4 @@ function CompensationsFilter({
       ))}
     </div>
   );
-}
-
-export default observer(CompensationsFilter);
+});

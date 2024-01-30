@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 
-class CompensationsState {
+export class CompensationsState {
   private _compensations: CompensationsType = {
     list: [],
     totalUnpaidAmount: 0,
@@ -46,5 +46,3 @@ export function getFiltering(
 
   return compensation;
 }
-
-export default CompensationsState;

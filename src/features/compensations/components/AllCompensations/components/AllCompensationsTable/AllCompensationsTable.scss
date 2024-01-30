@@ -1,0 +1,144 @@
+.all-compensations-table {
+  border: 1px solid var(--comp-color-gray);
+  border-radius: 4px;
+  border-collapse: collapse;
+  padding: 16px;
+  width: 100%;
+  max-width: 1600px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.4;
+  text-align: left;
+  background: var(--color-white);
+
+  &__head {
+    display: flex;
+    align-items: center;
+    border-bottom: 0.5px solid var(--comp-color-light-gray);
+    color: var(--color-black);
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    border-bottom: 0.5px solid var(--comp-color-light-gray);
+
+    &--selected {
+      background: var(--comp-color-light-gray);
+    }
+  }
+
+  &__total {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid var(--comp-color-light-gray);
+    width: 100%;
+  }
+
+  &__column-employee {
+    padding: 16px;
+    width: 40%;
+    font-weight: 500;
+    color: var(--color-black);
+  }
+
+  &__column-status {
+    width: 10%;
+    font-weight: 500;
+    text-align: center;
+    color: var(--color-black);
+
+    &--content {
+      display: grid;
+      padding: 8px;
+      font-size: 20px;
+      text-align: center;
+
+      &--unpaid {
+        border-radius: 10px;
+        color: #a45e5b;
+        background: #f9e5e5;
+      }
+
+      &--paid {
+        border-radius: 10px;
+        color: #618d7d;
+        background: #e5f8ed;
+      }
+    }
+  }
+
+  &__column-action {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+
+    &--paid {
+      visibility: hidden;
+    }
+  }
+
+  &__column-amount {
+    padding: 16px;
+    width: 15%;
+    font-weight: 500;
+    text-align: end;
+    color: var(--color-black);
+
+    &__sum {
+      padding: 16px;
+      width: 15%;
+      font-weight: 600;
+      text-align: end;
+    }
+  }
+
+  &__column-unpaid {
+    padding: 16px;
+    width: 15%;
+    font-weight: 500;
+    text-align: end;
+    color: var(--color-black);
+
+    &__sum {
+      padding: 16px;
+      width: 15%;
+      font-weight: 600;
+      text-align: end;
+    }
+  }
+
+  &__no-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    color: #aaa;
+  }
+
+  &__column-total {
+    padding: 16px;
+    width: 80%;
+    font-weight: 500;
+    text-align: start;
+    color: var(--color-black);
+  }
+
+  &__tooltip {
+    &__item {
+      position: absolute;
+      display: none;
+      border-radius: 2px;
+      padding: 8px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 4px 14px rgb(0 0 0 / 15%);
+      background-color: var(--color-white);
+      transform: translate(-90%, -75%); // move an element
+    }
+
+    &:hover > &__item {
+      display: block;
+    }
+  }
+}
