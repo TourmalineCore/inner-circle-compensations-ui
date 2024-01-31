@@ -23,7 +23,7 @@ const initialData = [
 
 describe('MarkAsPaidButton', () => {
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN visit compensations page
   THEN render component
   `, () => {
@@ -34,7 +34,7 @@ describe('MarkAsPaidButton', () => {
   });
 
   it(`
-  GIVEN compensations all page
+  GIVEN all compensations page 
   WHEN click on button
   THEN this button should be in focus
   `, () => {

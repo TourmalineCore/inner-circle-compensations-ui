@@ -6,7 +6,7 @@ import { AllCompensationsActions } from './AllCompensationsActions';
 
 describe('AllCompensationsActions', () => {
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN visit compensations page
   THEN render actions
   `, () => {

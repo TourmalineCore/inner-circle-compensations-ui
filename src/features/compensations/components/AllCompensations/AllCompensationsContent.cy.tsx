@@ -61,7 +61,7 @@ const initialData = {
 
 describe('AllCompensationsContent', () => {
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN visit compensations page 
   THEN render compensations table and actions
   `, () => {
@@ -78,7 +78,7 @@ describe('AllCompensationsContent', () => {
   });
 
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN change filter item
   THEN change data
   `, () => {
@@ -110,7 +110,7 @@ describe('AllCompensationsContent', () => {
   });
 
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN change filter item
   THEN change no data text
   `, () => {

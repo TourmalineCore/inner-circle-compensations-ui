@@ -18,7 +18,7 @@ const initialData = {
 
 describe('ToolTipTable', () => {
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN user hovers over the amount 
   THEN render tooltip table
   `, () => {
@@ -31,7 +31,7 @@ describe('ToolTipTable', () => {
   });
 
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN user hovers over the amount 
   THEN render valid data for all elements
   `, () => {

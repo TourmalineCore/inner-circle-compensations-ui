@@ -6,7 +6,7 @@ import { SearchBarAll } from './SearchBarAll';
 
 describe('SearchBarAll', () => {
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN visit compensations page 
   THEN render component
   `, () => {

@@ -38,7 +38,7 @@ allCompensationsState.initialize({
 
 describe('AllCompensationsState', () => {
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN initialized
   THEN return all compensations
   `, () => {
@@ -48,7 +48,7 @@ describe('AllCompensationsState', () => {
   });
 
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN called update filter
   THEN get value filter
   `, () => {
@@ -60,7 +60,7 @@ describe('AllCompensationsState', () => {
   });
 
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN called change status
   THEN status changed
   `, () => {
@@ -71,7 +71,7 @@ describe('AllCompensationsState', () => {
   });
 
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN called update date
   THEN get value filter
   `, () => {

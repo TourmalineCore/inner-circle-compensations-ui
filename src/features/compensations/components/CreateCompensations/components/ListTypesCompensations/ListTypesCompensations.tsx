@@ -1,8 +1,8 @@
 import { MouseEvent, useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import CreateCompensationsStateContext from '../../state/CreateCompensationsStateContext';
+import { CreateCompensationsStateContext } from '../../state/CreateCompensationsStateContext';
 
-function ListTypesCompensations() {
+export const ListTypesCompensations = observer(() => {
   const createCompensationsState = useContext(CreateCompensationsStateContext);
 
   return (
@@ -25,6 +25,4 @@ function ListTypesCompensations() {
       ))}
     </ul>
   );
-}
-
-export default observer(ListTypesCompensations);
+});

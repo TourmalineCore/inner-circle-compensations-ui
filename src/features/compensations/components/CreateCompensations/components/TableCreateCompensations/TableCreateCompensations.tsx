@@ -1,9 +1,9 @@
 import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
 import clsx from 'clsx';
-import CreateCompensationsStateContext from '../../state/CreateCompensationsStateContext';
+import { CreateCompensationsStateContext } from '../../state/CreateCompensationsStateContext';
 
-function TableCreateCompensations() {
+export const TableCreateCompensations = observer(() => {
   const createCompensationState = useContext(CreateCompensationsStateContext);
 
   return (
@@ -22,7 +22,7 @@ function TableCreateCompensations() {
         }) => (
           <tr key={id} className="table-create-compensations__item" data-cy="table-create-compensations-item">
             <td
-              data-cy="table-create-compensations-td-select"
+              data-cy="table-create-compensations-column-select"
               className={clsx('table-create-compensations__column-type', {
                 'table-create-compensations__column-type--invalid': typeId === 0 && createCompensationState.isTriedToSubmit,
               })}
@@ -66,7 +66,7 @@ function TableCreateCompensations() {
               />
             </td>
             <td
-              data-cy="table-create-compensations-td-amount"
+              data-cy="table-create-compensations-column-amount"
               className={clsx('table-create-compensations__column-amount', {
                 'table-create-compensations__column-amount--invalid': amount <= 0 && createCompensationState.isTriedToSubmit,
               })}
@@ -132,6 +132,4 @@ function TableCreateCompensations() {
       </tfoot>
     </table>
   );
-}
-
-export default observer(TableCreateCompensations);
+});

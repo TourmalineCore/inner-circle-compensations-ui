@@ -2,22 +2,22 @@
 import { HTMLProps, forwardRef, useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import { observer } from 'mobx-react-lite';
-import CreateCompensationsStateContext from '../../state/CreateCompensationsStateContext';
+import { CreateCompensationsStateContext } from '../../state/CreateCompensationsStateContext';
 
 const DatePickerCompensationsCustomElement = forwardRef<HTMLButtonElement, HTMLProps<HTMLButtonElement>>(({ value, onClick }, ref) => (
   <button
     type="button"
     onClick={onClick}
     ref={ref}
-    className="date-compensations__button"
+    className="date-picker-compensations__button"
     data-cy="date-picker-compensations-select"
   >
     <span data-cy="date-picker-compensations-result">{value}</span>
-    <span className="date-compensations__arrow">&or;</span>
+    <span className="date-picker-compensations__arrow">&or;</span>
   </button>
 ));
 
-function DatePickerCompensations() {
+export const DatePickerCompensations = observer(() => {
   const createCompensationsState = useContext(CreateCompensationsStateContext);
 
   return (
@@ -25,7 +25,7 @@ function DatePickerCompensations() {
       className="date-picker-compensations"
       data-cy="date-picker-compensations"
     >
-      <span className="date-compensations__title">Month:</span>
+      <span className="date-picker-compensations__title">Month:</span>
       <DatePicker
         selected={createCompensationsState.dateCompensation}
         onChange={(date: Date) => createCompensationsState.updateDate(date)}
@@ -35,6 +35,4 @@ function DatePickerCompensations() {
       />
     </div>
   );
-}
-
-export default observer(DatePickerCompensations);
+});

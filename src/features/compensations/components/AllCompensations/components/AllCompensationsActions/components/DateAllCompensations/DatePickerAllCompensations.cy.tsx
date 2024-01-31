@@ -6,7 +6,7 @@ import { DatePickerAllCompensations } from './DatePickerAllCompensations';
 
 describe('DatePickerAllCompensations', () => {
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN visit compensations page
   THEN render data picker component
   `, () => {
@@ -17,7 +17,7 @@ describe('DatePickerAllCompensations', () => {
   });
 
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN select next year
   THEN render correct date
   `, () => {
@@ -37,7 +37,7 @@ describe('DatePickerAllCompensations', () => {
   });
 
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN select next year
   THEN render correct date
   `, () => {

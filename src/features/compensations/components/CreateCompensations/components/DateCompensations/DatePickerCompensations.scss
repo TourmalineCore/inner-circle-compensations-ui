@@ -1,6 +1,7 @@
-.date-compensations {
+.date-picker-compensations {
   display: flex;
   align-items: center;
+  margin-top: 24px;
 
   &__button {
     border: none;
@@ -33,8 +34,4 @@
 
 .react-datepicker-wrapper {
   width: auto;
-}
-
-.date-picker-compensations {
-  margin-top: 24px;
 }
