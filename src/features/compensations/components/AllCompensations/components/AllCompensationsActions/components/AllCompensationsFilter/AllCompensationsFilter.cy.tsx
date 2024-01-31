@@ -6,7 +6,7 @@ import { AllCompensationsFilter } from './AllCompensationsFilter';
 
 describe('AllCompensationsFilter', () => {
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN visit compensations page 
   THEN render compensations filter
   `, () => {
@@ -17,7 +17,7 @@ describe('AllCompensationsFilter', () => {
   });
 
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN have data about filters 
   THEN render elements in component
   `, () => {
@@ -37,7 +37,7 @@ describe('AllCompensationsFilter', () => {
   });
 
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN click on it filter
   THEN filter have a focus
   `, () => {

@@ -37,7 +37,7 @@ const initialData = {
 
 describe('AllCompensationsTable', () => {
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN visit compensations page
   THEN render compensations table
   `, () => {
@@ -50,7 +50,7 @@ describe('AllCompensationsTable', () => {
   });
 
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN there is data
   THEN render compensations table column 
   `, () => {
@@ -63,7 +63,7 @@ describe('AllCompensationsTable', () => {
   });
 
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN there is data
   THEN render compensations table column total
   `, () => {
@@ -81,7 +81,7 @@ describe('AllCompensationsTable', () => {
   });
 
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN there is no data
   THEN render compensations table with no data message
   `, () => {
@@ -99,7 +99,7 @@ describe('AllCompensationsTable', () => {
   });
 
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN there is data
   THEN render valid data for all elements in column
   `, () => {
@@ -124,7 +124,7 @@ describe('AllCompensationsTable', () => {
   });
 
   it(`
-  GIVEN compensations all page 
+  GIVEN all compensations page 
   WHEN amount is hover 
   THEN render tooltip table 
   `, () => {
