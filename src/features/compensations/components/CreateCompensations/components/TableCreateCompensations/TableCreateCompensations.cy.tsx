@@ -55,14 +55,22 @@ const INITIAL_TYPES = [
 ];
 
 describe('TableCreateCompensations', () => {
-  it('SHOULD render component WHEN visit compensations page', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN visit compensations page
+  THEN render table create compensations component
+  `, () => {
     mountComponent();
 
     cy.getByData('table-create-compensations')
       .should('exist');
   });
 
-  it('SHOULD render table header WHEN visit compensations page', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN visit compensations page
+  THEN render table columns
+  `, () => {
     mountComponent();
 
     cy.getByData('table-create-compensations-head')
@@ -70,7 +78,11 @@ describe('TableCreateCompensations', () => {
       .should('have.length', 4);
   });
 
-  it('SHOULD render empty compensation item on table WHEN visit compensations page', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN visit compensations page
+  THEN render empty compensation item on table
+  `, () => {
     mountComponent();
 
     cy.getByData('table-create-compensations-item')
@@ -90,14 +102,22 @@ describe('TableCreateCompensations', () => {
       .should('exist');
   });
 
-  it('SHOULD render add button WHEN visit compensations page', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN visit compensations page
+  THEN render add button 
+  `, () => {
     mountComponent();
 
     cy.getByData('table-create-compensations-add-button')
       .should('exist');
   });
 
-  it('SHOULD render table total WHEN visit compensations page', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN visit compensations page
+  THEN render table total
+  `, () => {
     mountComponent();
 
     cy.getByData('table-create-compensations-total')
@@ -105,7 +125,11 @@ describe('TableCreateCompensations', () => {
       .should('have.length', 4);
   });
 
-  it('SHOULD update compensation type WHEN call onSelect', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN call onSelect
+  THEN update compensation type 
+  `, () => {
     mountComponent();
 
     cy.getByData('table-create-compensations-select')
@@ -115,7 +139,11 @@ describe('TableCreateCompensations', () => {
       .should('have.value', '1');
   });
 
-  it('SHOULD update compensation comment WHEN enter text', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN enter text
+  THEN update compensation comment
+  `, () => {
     mountComponent();
 
     cy.getByData('table-create-compensations-comment')
@@ -125,7 +153,11 @@ describe('TableCreateCompensations', () => {
       .should('have.value', 'test');
   });
 
-  it('SHOULD update compensation amount WHEN enter text', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN enter text
+  THEN update compensation amount
+  `, () => {
     mountComponent();
 
     cy.getByData('table-create-compensations-amount')
@@ -135,7 +167,11 @@ describe('TableCreateCompensations', () => {
       .should('have.value', 2);
   });
 
-  it('SHOULD add new row WHEN click add button', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN click add button
+  THEN add new row
+  `, () => {
     mountComponent();
 
     cy.getByData('table-create-compensations-add-button')
@@ -145,7 +181,11 @@ describe('TableCreateCompensations', () => {
       .should('have.length', 2);
   });
 
-  it('SHOULD remove second compensation WHEN call delete', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN call delete
+  THEN remove compensation
+  `, () => {
     mountComponent();
 
     cy.getByData('table-create-compensations-add-button')
@@ -159,7 +199,11 @@ describe('TableCreateCompensations', () => {
       .should('have.length', 1);
   });
 
-  it('SHOULD calculate correct sum total WHEN enter amount', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN enter amount
+  THEN calculate correct sum total
+  `, () => {
     mountComponent();
 
     cy.getByData('table-create-compensations-sum')

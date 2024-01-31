@@ -53,7 +53,11 @@ const INITIAL_TYPES = [
 ];
 
 describe('CreateCompensationsState', () => {
-  it('SHOULD return all types WHEN initialized', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN initialized
+  THEN return all types 
+  `, () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.initializeTypes({
@@ -63,7 +67,11 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allTypes).to.has.lengthOf(12);
   });
 
-  it('SHOULD return compensation date WHEN call update', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN call update
+  THEN return compensation date
+  `, () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.updateDate('2023-06-08T11:42:04.467165Z');
@@ -71,7 +79,11 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.dateCompensation).eq('2023-06-08T11:42:04.467165Z');
   });
 
-  it('SHOULD return compensation WHEN add compensation', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN add compensation
+  THEN return compensation
+  `, () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.addCompensation();
@@ -82,7 +94,11 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allCompensations[0].amount).eq(0);
   });
 
-  it('SHOULD return compensation of correct type WHEN add compensation of this type', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN add compensation of this type
+  THEN return compensation of correct type
+  `, () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.addCompensation(1);
@@ -93,7 +109,11 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allCompensations[1].amount).eq(0);
   });
 
-  it('SHOULD return compensation WHEN remove compensation', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN remove compensation
+  THEN return compensation
+  `, () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.addCompensation();
@@ -103,7 +123,11 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allCompensations).to.has.lengthOf(1);
   });
 
-  it('SHOULD return compensation with new data WHEN update the created compensation', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN update the created compensation
+  THEN return compensation with new data
+  `, () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.addCompensation();
@@ -120,7 +144,11 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allCompensations[1].amount).eq(100);
   });
 
-  it('SHOULD return compensation with new data WHEN update the created compensation', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN update the created compensation
+  THEN return compensation with new data
+  `, () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.addCompensation();
@@ -137,7 +165,11 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allCompensations[1].amount).eq(100);
   });
 
-  it('SHOULD return total sum WHEN enter amount', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN enter amount
+  THEN return total sum 
+  `, () => {
     const createCompensationsState = new CreateCompensationsState();
 
     createCompensationsState.addCompensation();
@@ -155,7 +187,11 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.totalCount).eq(100);
   });
 
-  it('SHOULD change isTriedToSubmit WHEN change state', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN change state
+  THEN change isTriedToSubmit
+  `, () => {
     const createCompensationsState = new CreateCompensationsState();
 
     expect(createCompensationsState.isTriedToSubmit).eq(false);
@@ -164,7 +200,11 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.isTriedToSubmit).eq(true);
   });
 
-  it('SHOULD remove compensation from the list WHEN call removal', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN call removal
+  THEN remove compensation from the list
+  `, () => {
     const createCompensationsState = new CreateCompensationsState();
 
     expect(createCompensationsState.allCompensations).to.has.lengthOf(1);
@@ -175,7 +215,11 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.allCompensations).to.has.lengthOf(1);
   });
 
-  it('SHOULD render error message WHEN click send button with negative amount', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN click send button with negative amount
+  THEN render error message
+  `, () => {
     const createCompensationsState = new CreateCompensationsState();
 
     expect(createCompensationsState.isTriedToSubmit).eq(false);
@@ -192,7 +236,11 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.isNegative).eq(true);
   });
 
-  it('SHOULD not render error message WHEN click send button with not negative amount', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN click send button with not negative amount
+  THEN not render error message
+  `, () => {
     const createCompensationsState = new CreateCompensationsState();
 
     expect(createCompensationsState.isTriedToSubmit).eq(false);
@@ -209,7 +257,11 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.isNegative).eq(false);
   });
 
-  it('SHOULD render error message WHEN click send button with empty fields required', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN click send button with empty fields required
+  THEN render error message
+  `, () => {
     const createCompensationsState = new CreateCompensationsState();
 
     expect(createCompensationsState.isTriedToSubmit).eq(false);
@@ -222,11 +274,54 @@ describe('CreateCompensationsState', () => {
     });
 
     createCompensationsState.setIsTriedToSubmit(true);
-
     expect(createCompensationsState.isFilled).eq(true);
   });
 
-  it('SHOULD not render error message WHEN click send button with not empty fields required', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN click send button with empty amount field required
+  THEN render error message
+  `, () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    expect(createCompensationsState.isTriedToSubmit).eq(false);
+
+    createCompensationsState.updateCompensation({
+      id: 0,
+      comment: 'Test comment',
+      typeId: 2,
+      amount: 0,
+    });
+
+    createCompensationsState.setIsTriedToSubmit(true);
+    expect(createCompensationsState.isFilled).eq(true);
+  });
+
+  it(`
+  GIVEN compensations page 
+  WHEN click send button with empty type field required
+  THEN render error message
+  `, () => {
+    const createCompensationsState = new CreateCompensationsState();
+
+    expect(createCompensationsState.isTriedToSubmit).eq(false);
+
+    createCompensationsState.updateCompensation({
+      id: 0,
+      comment: 'Test comment',
+      typeId: 0,
+      amount: 100,
+    });
+
+    createCompensationsState.setIsTriedToSubmit(true);
+    expect(createCompensationsState.isFilled).eq(true);
+  });
+
+  it(`
+  GIVEN compensations page 
+  WHEN click send button with not empty fields required
+  THEN not render error message
+  `, () => {
     const createCompensationsState = new CreateCompensationsState();
 
     expect(createCompensationsState.isTriedToSubmit).eq(false);
@@ -239,7 +334,6 @@ describe('CreateCompensationsState', () => {
     });
 
     createCompensationsState.setIsTriedToSubmit(true);
-
     expect(createCompensationsState.isFilled).eq(false);
   });
 });

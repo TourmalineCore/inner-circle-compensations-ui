@@ -54,8 +54,12 @@ const INITIAL_TYPES = [
   },
 ];
 
-describe('TableCreateCompensations', () => {
-  it('SHOULD render compensation types WHEN visit page', () => {
+describe('CreateCompensations', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN visit page
+  THEN render compensation types
+  `, () => {
     cy.intercept(
       'GET',
       `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
@@ -69,7 +73,11 @@ describe('TableCreateCompensations', () => {
       .should('have.length', 12);
   });
 
-  it('SHOULD render date picker WHEN visit page', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN visit page
+  THEN render date picker
+  `, () => {
     cy.intercept(
       'GET',
       `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
@@ -82,7 +90,11 @@ describe('TableCreateCompensations', () => {
       .should('exist');
   });
 
-  it('SHOULD render create compensations table WHEN visit page', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN visit page
+  THEN render create compensations table 
+  `, () => {
     cy.intercept(
       'GET',
       `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
@@ -95,7 +107,11 @@ describe('TableCreateCompensations', () => {
       .should('exist');
   });
 
-  it('SHOULD validate that all required fields are filled WHEN call submit', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN call submit
+  THEN validate that all required fields are filled 
+  `, () => {
     mountComponent();
 
     cy.getByData('create-compensations-container-submit')
@@ -108,7 +124,11 @@ describe('TableCreateCompensations', () => {
       .should('have.class', 'table-create-compensations__column-type--invalid');
   });
 
-  it('SHOULD not show validation on newly created compensation WHEN submit of the previous one was successful', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN submit of the previous one was successful
+  THEN not show validation on newly created compensation
+  `, () => {
     cy.intercept(
       'GET',
       `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
@@ -166,7 +186,11 @@ describe('TableCreateCompensations', () => {
       .should('not.have.class', 'table-create-compensations__column-type--invalid');
   });
 
-  it('SHOULD render error messages WHEN click send button with empty inputs required', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN click send button with empty inputs required
+  THEN render error messages
+  `, () => {
     mountComponent();
 
     cy.getByData('table-create-compensations-select').eq(0);
@@ -181,7 +205,11 @@ describe('TableCreateCompensations', () => {
       .should('exist');
   });
 
-  it('SHOULD not render error messages WHEN click send button with not empty inputs required', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN click send button with not empty inputs required
+  THEN not render error messages
+  `, () => {
     cy.intercept(
       'GET',
       `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
@@ -206,7 +234,11 @@ describe('TableCreateCompensations', () => {
       .should('not.include.text', 'Amount can not be negative');
   });
 
-  it('SHOULD render error messages WHEN click send button with negative amount required', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN click send button with negative amount required
+  THEN render error messages
+  `, () => {
     cy.intercept(
       'GET',
       `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
@@ -230,7 +262,11 @@ describe('TableCreateCompensations', () => {
       .should('exist');
   });
 
-  it('SHOULD render error messages WHEN click send button with negative amount and empty select', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN click send button with negative amount and empty select
+  THEN render error messages
+  `, () => {
     mountComponent();
 
     cy.getByData('table-create-compensations-select').eq(0);
@@ -245,7 +281,11 @@ describe('TableCreateCompensations', () => {
       .should('exist');
   });
 
-  it('SHOULD not render error messages WHEN click send button with not negative amount required', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN click send button with not negative amount required
+  THEN not render error messages
+  `, () => {
     cy.intercept(
       'GET',
       `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,

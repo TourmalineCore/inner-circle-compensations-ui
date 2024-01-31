@@ -56,14 +56,22 @@ const INITIAL_TYPES = [
 ];
 
 describe('ListTypesCompensations', () => {
-  it('SHOULD render component WHEN visit compensations page', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN visit compensations page
+  THEN render list types component
+  `, () => {
     mountComponent();
 
     cy.getByData('list-types-compensations')
       .should('exist');
   });
 
-  it('SHOULD render list of compensation types WHEN have types data', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN have types data
+  THEN render list of compensation types 
+  `, () => {
     mountComponent();
 
     cy.getByData('list-types-compensations')
@@ -71,7 +79,11 @@ describe('ListTypesCompensations', () => {
       .should('have.length', 12);
   });
 
-  it('SHOULD have focused element "1" WHEN click on type "1"', () => {
+  it(`
+  GIVEN compensations page 
+  WHEN click on type "1"
+  THEN have focused element "1"
+  `, () => {
     mountComponent();
 
     cy.getByData('type-compensation-1')
