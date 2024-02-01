@@ -7,7 +7,7 @@ export function CompensationsPage() {
   const access = useContext(AccessBasedOnPemissionsStateContext);
 
   useEffect(() => {
-    if (access.accessPermissions.get('ViewPersonalCompensations')) {
+    if (access.accessPermissions.get('CanRequestCompensations')) {
       navigate('/compensations/my');
       return;
     }
