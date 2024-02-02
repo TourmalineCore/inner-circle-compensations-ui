@@ -73,7 +73,7 @@ describe('CompensationsTable', () => {
 
     cy.getByData('compensations-table-no-data')
       .should('exist')
-      .should('have.text', 'No unpaid compensation in this month');
+      .should('have.text', 'No unpaid compensation');
   });
 
   it(`

@@ -60,7 +60,7 @@ export const CompensationsTable = observer(({
           data-cy="compensations-table-no-data"
           className="compensations-table__no-data"
         >
-          {compensationsState.filterTerm === 'unpaid' ? 'No unpaid compensation in this month' : 'No records in this month' }
+          {compensationsState.filterTerm === 'unpaid' ? 'No unpaid compensation' : 'No records' }
         </div>
       ) }
 
