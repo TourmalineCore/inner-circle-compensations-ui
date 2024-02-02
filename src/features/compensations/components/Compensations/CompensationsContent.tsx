@@ -3,7 +3,7 @@ import { CompensationsTable } from './components/CompensationsTable/Compensation
 
 export function CompensationsContent() {
   return (
-    <section data-cy="compensations-content">
+    <section className="compensations-content" data-cy="compensations-content">
       <CompensationsFilter />
       <CompensationsTable />
     </section>

@@ -85,7 +85,7 @@ describe('CompensationsContent', () => {
     });
     cy.getByData('compensations-table-no-data')
       .should('exist')
-      .should('have.text', 'No unpaid compensation in this month');
+      .should('have.text', 'No unpaid compensation');
 
     cy.getByData('compensations-filter-button')
       .first()
@@ -93,7 +93,7 @@ describe('CompensationsContent', () => {
 
     cy.getByData('compensations-table-no-data')
       .should('exist')
-      .should('have.text', 'No records in this month');
+      .should('have.text', 'No records');
   });
 });
 
