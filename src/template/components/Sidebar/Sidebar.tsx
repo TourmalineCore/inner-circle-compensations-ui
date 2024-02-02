@@ -36,7 +36,7 @@ function Sidebar({
   menuData: SidebarProps[];
   infoBoxData: {
     photoUrl?: string;
-    name?: string;
+    name: string;
     email?: string;
   };
   renderBottomComponent?: ({ portalTarget }: { portalTarget: HTMLDivElement | null }) => JSX.Element;

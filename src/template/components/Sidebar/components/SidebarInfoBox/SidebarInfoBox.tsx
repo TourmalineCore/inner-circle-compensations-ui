@@ -1,9 +1,9 @@
 import { ReactComponent as IconPersonalProfile } from '../../../../../assets/icons/icon-personal-profile.svg';
 
 function SidebarInfoBox({
-  name = 'Nameless User',
+  name,
 }: {
-  name?: string;
+  name: string;
 }) {
   return (
     <div className="sidebar-infobox">
