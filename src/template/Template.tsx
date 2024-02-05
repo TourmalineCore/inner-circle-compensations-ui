@@ -17,6 +17,8 @@ import { useSidebarRoutes } from './hooks/useSidebarRoutes';
 
 import { getAdminRoutes, getSidebarRoutes } from '../routes/adminRoutes';
 import AccessBasedOnPemissionsStateContext from '../routes/state/AccessBasedOnPemissionsStateContext';
+import { parseJwt } from '../common/utils/utilsForPermissions';
+import { authService } from '../common/authService';
 
 function Template() {
   const location = useLocation();
@@ -35,6 +37,10 @@ function Template() {
     ? breadcrumbs[breadcrumbs.length - 2].key
     : null;
 
+  // @ts-ignore
+  const [token] = useContext(authService.AuthContext);
+  const infoBoxDataName = parseJwt(token).corporateEmail.split('@')[0];
+
   return (
     <>
       <div
@@ -44,7 +50,7 @@ function Template() {
       >
         <div className="template__sidebar">
           <Sidebar
-            infoBoxData={{}}
+            infoBoxData={{ name: infoBoxDataName }}
             menuData={parsedSidebarRoutes}
             isCollapsed={isSidebarCollapsed}
             isMobileOpened={isMobileSidebarOpened}
