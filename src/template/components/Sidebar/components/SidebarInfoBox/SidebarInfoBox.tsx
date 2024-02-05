@@ -1,5 +1,4 @@
 import { ReactComponent as IconPersonalProfile } from '../../../../../assets/icons/icon-personal-profile.svg';
-import { capitalize } from '../../../../../common/utils/capitalize';
 
 export function SidebarInfoBox({
   name,
@@ -16,4 +15,16 @@ export function SidebarInfoBox({
       </div>
     </div>
   );
+
+  function capitalize(word: string) {
+    // TODO: it’s necessary, but if something breaks, fix it here
+    if (word.substring(0, 3) === 'ank') {
+      const firstName = word[0].toUpperCase();
+      const lastName = word.substring(2);
+      return `${lastName[0].toUpperCase() + word.slice(3)} ${firstName}.`;
+    }
+    const firstName = word[0].toUpperCase();
+    const lastName = word.substring(1);
+    return `${lastName[0].toUpperCase() + word.slice(2)} ${firstName}.`;
+  }
 }
