@@ -1,4 +1,4 @@
-import SidebarInfoBox from './SidebarInfoBox';
+import { SidebarInfoBox } from './SidebarInfoBox';
 
 const initialData = {
   name: 'nlastname',
