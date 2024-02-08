@@ -1,7 +1,6 @@
 import { CreateCompensationsState } from '../../state/CreateCompensationsState';
 import { CreateCompensationsStateContext } from '../../state/CreateCompensationsStateContext';
 import { CompensationsTypesTips } from './CompensationsTypesTips';
-import '../../../../../../../cypress/support/commands';
 
 describe('CompensationsTypesTips', () => {
   it(`
