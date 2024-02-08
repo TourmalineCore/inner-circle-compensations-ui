@@ -13,6 +13,20 @@ describe('CompensationsTypesTips', () => {
     cy.getByData('compensations-types-tips')
       .should('exist');
   });
+
+  it(`
+  GIVEN compensations page 
+  WHEN open compensations types tips
+  THEN render compensations types tips
+  `, () => {
+    mountComponent();
+
+    cy.getByData('compensations-types-tips')
+      .click();
+
+    cy.getByData('compensations-types-tips-list')
+      .should('exist');
+  });
 });
 
 function mountComponent() {
