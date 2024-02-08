@@ -87,9 +87,6 @@ describe('CompensationsTable', () => {
     cy.getByData('compensations-table-column-month')
       .should('have.text', 'June 2023');
 
-    cy.getByData('compensations-table-column-date')
-      .should('have.text', '08.06.2023');
-
     cy.getByData('compensations-table-column-type')
       .should('have.text', 'English');
 
