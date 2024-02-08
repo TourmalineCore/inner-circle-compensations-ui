@@ -1,6 +1,7 @@
 import { CreateCompensationsState } from '../../state/CreateCompensationsState';
 import { CreateCompensationsStateContext } from '../../state/CreateCompensationsStateContext';
 import { CompensationsTypesTips } from './CompensationsTypesTips';
+import '../../../../../../../cypress/support/commands';
 
 describe('CompensationsTypesTips', () => {
   it(`
@@ -17,15 +18,21 @@ describe('CompensationsTypesTips', () => {
   it(`
   GIVEN compensations page 
   WHEN open compensations types tips
-  THEN render compensations types tips
+  THEN render compensations types tips list
   `, () => {
     mountComponent();
 
     cy.getByData('compensations-types-tips')
       .click();
 
-    cy.getByData('compensations-types-tips-list')
-      .should('exist');
+    cy.get('details')
+      .should('have.attr', 'open');
+
+    cy.getByData('compensations-types-tips')
+      .click();
+
+    cy.get('details')
+      .should('not.have.attr', 'open');
   });
 });
 
