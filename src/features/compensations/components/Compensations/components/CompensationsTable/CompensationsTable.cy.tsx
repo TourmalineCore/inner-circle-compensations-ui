@@ -85,7 +85,7 @@ describe('CompensationsTable', () => {
     });
 
     cy.getByData('compensations-table-column-month')
-      .should('have.text', 'June 2023');
+      .should('have.text', 'Jun 2023');
 
     cy.getByData('compensations-table-column-type')
       .should('have.text', 'English');
