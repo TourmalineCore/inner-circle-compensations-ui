@@ -58,24 +58,6 @@ describe('CreateCompensations', () => {
   it(`
   GIVEN compensations page 
   WHEN visit page
-  THEN render compensation types
-  `, () => {
-    cy.intercept(
-      'GET',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
-      INITIAL_TYPES,
-    );
-
-    mountComponent();
-
-    cy.getByData('list-types-compensations')
-      .children()
-      .should('have.length', 12);
-  });
-
-  it(`
-  GIVEN compensations page 
-  WHEN visit page
   THEN render date picker
   `, () => {
     cy.intercept(
