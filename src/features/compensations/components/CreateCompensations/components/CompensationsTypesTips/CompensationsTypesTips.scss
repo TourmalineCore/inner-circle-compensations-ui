@@ -1,0 +1,26 @@
+.compensations-types-tips {
+  margin-top: 16px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: left;
+  background: var(--color-white);
+
+  &__list {
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  &__item {
+    & + & {
+      margin-top: 6px;
+    }
+  }
+
+  &__type {
+    font-weight: 600;
+  }
+}
