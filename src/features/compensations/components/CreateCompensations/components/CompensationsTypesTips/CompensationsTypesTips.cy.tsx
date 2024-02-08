@@ -11,7 +11,7 @@ describe('CompensationsTypesTips', () => {
     `, () => {
     mountComponent();
 
-    cy.getByData('compensations-types-tips')
+    cy.getByData('compensations-types-tips-head')
       .should('exist');
   });
 
@@ -22,13 +22,13 @@ describe('CompensationsTypesTips', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('compensations-types-tips')
+    cy.getByData('compensations-types-tips-head')
       .click();
 
     cy.get('details')
       .should('have.attr', 'open');
 
-    cy.getByData('compensations-types-tips')
+    cy.getByData('compensations-types-tips-head')
       .click();
 
     cy.get('details')

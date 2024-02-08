@@ -52,16 +52,29 @@ const ARRAY_TYPES_TIPS = [
 
 export function CompensationsTypesTips() {
   return (
-    <details>
-      <summary className="compensations-types-tips" data-cy="compensations-types-tips">Click here to show or hide details about compensation types</summary>
-      <ul className="compensations-types-tips__list" data-cy="compensations-types-tips-list">
+    <details className="compensations-types-tips">
+      <summary
+        className="compensations-types-tips__head"
+        data-cy="compensations-types-tips-head"
+      >
+        Click here to show or hide details about compensation types
+      </summary>
+      <ul
+        className="compensations-types-tips__list"
+        data-cy="compensations-types-tips-list"
+      >
         {ARRAY_TYPES_TIPS.map(({ type, description }) => (
-          <li className="compensations-types-tips__item" key={type}>
-            <span className="compensations-types-tips__type">{type}</span>
+          <li
+            className="compensations-types-tips__item"
+            key={type}
+          >
+            <span className="compensations-types-tips__type">
+              {type}
+            </span>
             {' '}
             -
             {' '}
-            <span>{description}</span>
+            {description}
           </li>
         ))}
       </ul>
