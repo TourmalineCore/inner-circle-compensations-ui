@@ -12,6 +12,7 @@ const initialData = {
       comment: 'I bought milk',
       amount: 760,
       isPaid: false,
+      compensationType: 'English',
       employeeId: 1,
     },
     {
@@ -20,6 +21,7 @@ const initialData = {
       comment: 'I bought milk',
       amount: 500,
       isPaid: true,
+      compensationType: 'English',
       employeeId: 1,
     },
   ],

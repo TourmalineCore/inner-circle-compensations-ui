@@ -20,15 +20,25 @@ export const CompensationsTable = observer(({
       {compensationsState.allCompensations.list.length !== 0 ? (
         <>
           {compensationsState.allCompensations.list.map(({
-            dateCompensation, dateCreateCompensation, amount, comment, isPaid, id,
+            dateCompensation, amount, comment, isPaid, id, compensationType,
           }) => (
             <div
               data-cy="compensations-table-column"
               className="compensations-table__column"
               key={id}
             >
-              <span data-cy="compensations-table-column-month">{moment(dateCompensation).format('MMMM YYYY')}</span>
-              <span data-cy="compensations-table-column-date">{moment(dateCreateCompensation).format('DD.MM.YYYY')}</span>
+              <span
+                data-cy="compensations-table-column-month"
+                className="compensations-table__column-month"
+              >
+                {moment(dateCompensation).format('MMM YYYY')}
+              </span>
+              <span
+                data-cy="compensations-table-column-type"
+                className="compensations-table__column-type"
+              >
+                {compensationType}
+              </span>
               <span
                 data-cy="compensations-table-column-comment"
                 className="compensations-table__column-comment"
@@ -52,7 +62,12 @@ export const CompensationsTable = observer(({
             className="compensations-table__column compensations-table__column-total"
           >
             <span>Unpaid</span>
-            <span className="compensations-table__total-amount" data-cy="compensations-table-sum">{formatMoney(compensationsState.allCompensations.totalUnpaidAmount)}</span>
+            <span
+              className="compensations-table__total-amount"
+              data-cy="compensations-table-sum"
+            >
+              {formatMoney(compensationsState.allCompensations.totalUnpaidAmount)}
+            </span>
           </div>
         </>
       ) : (

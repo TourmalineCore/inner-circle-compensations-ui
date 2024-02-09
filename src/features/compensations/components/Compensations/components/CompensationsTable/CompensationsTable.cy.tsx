@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
-import '../../../../../../../cypress/support/commands';
 import { CompensationsState } from '../../state/CompensationsState';
 import { CompensationsStateContext } from '../../state/CompensationsStateContext';
 import { CompensationsTable } from './CompensationsTable';
@@ -10,6 +8,7 @@ const initialData = {
       dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
       dateCompensation: '2023-06-08T11:42:04.467165Z',
       comment: 'I bought milk',
+      compensationType: 'English',
       amount: 760,
       isPaid: false,
       employeeId: 1,
@@ -86,10 +85,10 @@ describe('CompensationsTable', () => {
     });
 
     cy.getByData('compensations-table-column-month')
-      .should('have.text', 'June 2023');
+      .should('have.text', 'Jun 2023');
 
-    cy.getByData('compensations-table-column-date')
-      .should('have.text', '08.06.2023');
+    cy.getByData('compensations-table-column-type')
+      .should('have.text', 'English');
 
     cy.getByData('compensations-table-column-comment')
       .should('have.text', 'I bought milk');
@@ -104,6 +103,7 @@ function mountComponent({
 }: {
   compensations: CompensationsType;
 }) {
+  /* eslint-disable react/jsx-no-constructed-context-values */
   const compensationsState = new CompensationsState();
 
   compensationsState.initialize({
