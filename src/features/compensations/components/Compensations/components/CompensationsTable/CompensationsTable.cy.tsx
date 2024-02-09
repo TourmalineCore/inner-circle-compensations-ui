@@ -13,8 +13,17 @@ const initialData = {
       isPaid: false,
       employeeId: 1,
     },
+    {
+      dateCreateCompensation: '2023-06-09T11:42:04.467165Z',
+      dateCompensation: '2023-06-08T11:42:04.467165Z',
+      comment: 'I bought second',
+      compensationType: 'English',
+      amount: 760,
+      isPaid: false,
+      employeeId: 1,
+    },
   ],
-  totalUnpaidAmount: 760,
+  totalUnpaidAmount: 1520,
 };
 
 describe('CompensationsTable', () => {
@@ -55,7 +64,7 @@ describe('CompensationsTable', () => {
 
     cy.getByData('compensations-table-sum')
       .should('exist')
-      .should('have.text', '760 ₽');
+      .should('have.text', '1,520 ₽');
   });
 
   it(`
@@ -85,16 +94,38 @@ describe('CompensationsTable', () => {
     });
 
     cy.getByData('compensations-table-column-month')
+      .first()
       .should('have.text', 'Jun 2023');
 
     cy.getByData('compensations-table-column-type')
+      .first()
       .should('have.text', 'English');
 
     cy.getByData('compensations-table-column-comment')
-      .should('have.text', 'I bought milk');
+      .first()
+      .should('have.text', 'I bought second');
 
     cy.getByData('compensations-table-column-amount')
+      .first()
       .should('have.text', '760 ₽');
+  });
+
+  it(`
+  GIVEN compensations personal page 
+  WHEN there is data
+  THEN sort data by date creation compensation
+  `, () => {
+    mountComponent({
+      compensations: initialData,
+    });
+
+    cy.getByData('compensations-table-column-comment')
+      .first()
+      .should('have.text', 'I bought second');
+
+    cy.getByData('compensations-table-column-comment')
+      .last()
+      .should('have.text', 'I bought milk');
   });
 });
 

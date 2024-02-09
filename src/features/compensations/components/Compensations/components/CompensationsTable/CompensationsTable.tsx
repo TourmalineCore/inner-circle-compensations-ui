@@ -11,6 +11,8 @@ export const CompensationsTable = observer(({
   className?: string;
 }) => {
   const compensationsState = useContext(CompensationsStateContext);
+  const sortedCompensations = [...compensationsState.allCompensations.list]
+    .sort((firstElement, secondElement) => moment(secondElement.dateCreateCompensation).diff(moment(firstElement.dateCreateCompensation)));
 
   return (
     <div
@@ -19,7 +21,7 @@ export const CompensationsTable = observer(({
     >
       {compensationsState.allCompensations.list.length !== 0 ? (
         <>
-          {compensationsState.allCompensations.list.map(({
+          {sortedCompensations.map(({
             dateCompensation, amount, comment, isPaid, id, compensationType,
           }) => (
             <div
