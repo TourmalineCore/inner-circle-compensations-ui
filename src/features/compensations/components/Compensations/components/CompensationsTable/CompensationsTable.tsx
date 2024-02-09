@@ -11,8 +11,7 @@ export const CompensationsTable = observer(({
   className?: string;
 }) => {
   const compensationsState = useContext(CompensationsStateContext);
-  const sortedCompensations = compensationsState.allCompensations.list
-    .slice()
+  const sortedCompensations = [...compensationsState.allCompensations.list]
     .sort((firstElement, secondElement) => moment(secondElement.dateCreateCompensation).diff(moment(firstElement.dateCreateCompensation)));
 
   return (
