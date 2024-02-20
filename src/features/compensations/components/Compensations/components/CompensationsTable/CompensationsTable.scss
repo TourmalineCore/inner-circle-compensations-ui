@@ -1,0 +1,61 @@
+.compensations-table {
+  margin-top: 8px;
+  border: 1px solid var(--comp-color-gray);
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  background: var(--color-white);
+
+  &__column {
+    display: grid;
+    align-items: center;
+    border-bottom: 0.5px solid var(--comp-color-light-gray);
+    padding: 16px;
+    gap: 16px;
+    grid-template-columns:
+      80px
+      130px
+      minmax(150px, 1fr)
+      90px;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__column-total {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__column-amount {
+    text-align: end;
+
+    &--paid {
+      color: #1ed400;
+    }
+
+    &--unpaid {
+      color: #da2228;
+    }
+  }
+
+  &__column-comment {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__no-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    color: #aaa;
+  }
+
+  &__total-amount {
+    font-weight: 600;
+    text-align: end;
+  }
+}

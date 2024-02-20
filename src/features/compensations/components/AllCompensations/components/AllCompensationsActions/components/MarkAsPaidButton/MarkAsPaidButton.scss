@@ -1,0 +1,26 @@
+.mark-as-paid-button {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  border: 2px solid var(--comp-color-gray);
+  border-radius: 58px;
+  padding: 10px 40px;
+  max-width: 250px;
+  max-height: 48px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.4;
+  background: var(--color-white);
+  cursor: pointer;
+  text-wrap: nowrap;
+
+  &__disable {
+    opacity: 0.35;
+  }
+
+  &:hover,
+  &:active {
+    opacity: 0.75;
+  }
+}
