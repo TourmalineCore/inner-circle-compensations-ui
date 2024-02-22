@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../cypress/support/commands';
-import { API_ROOT, LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
+import { API_ROOT, LINK_TO_COMPENSATIONS_SERVICE } from '../../../../common/config/config';
 import { CreateCompensations } from './CreateCompensations';
 
 const INITIAL_TYPES = [
@@ -62,7 +62,7 @@ describe('CreateCompensations', () => {
   `, () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
+      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
       INITIAL_TYPES,
     );
 
@@ -79,7 +79,7 @@ describe('CreateCompensations', () => {
   `, () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
+      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
       INITIAL_TYPES,
     );
 
@@ -113,7 +113,7 @@ describe('CreateCompensations', () => {
   `, () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
+      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
       INITIAL_TYPES,
     ).as('call-1');
 
@@ -121,7 +121,7 @@ describe('CreateCompensations', () => {
 
     cy.intercept(
       'POST',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/create`,
+      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}create`,
       {
         statusCode: 400,
       },
@@ -145,7 +145,7 @@ describe('CreateCompensations', () => {
 
     cy.intercept(
       'POST',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/create`,
+      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}create`,
       {
         compensations: [
           {
@@ -194,7 +194,7 @@ describe('CreateCompensations', () => {
   `, () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
+      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
       INITIAL_TYPES,
     ).as('call-9');
 
@@ -223,7 +223,7 @@ describe('CreateCompensations', () => {
   `, () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
+      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
       INITIAL_TYPES,
     ).as('call-10');
 
@@ -270,7 +270,7 @@ describe('CreateCompensations', () => {
   `, () => {
     cy.intercept(
       'GET',
-      `${API_ROOT}${LINK_TO_SALARY_SERVICE}compensations/types`,
+      `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
       INITIAL_TYPES,
     ).as('call-11');
 
