@@ -1,11 +1,11 @@
 const ARRAY_TYPES_TIPS = [
   {
     type: 'English',
-    description: 'занятия по английскому. Неограниченно.',
+    description: 'занятия по английскому. 8 занятий в месяц.',
   },
   {
     type: 'German',
-    description: 'занятия по немецкому. Неограниченно.',
+    description: 'занятия по немецкому. 8 занятий в месяц.',
   },
   {
     type: 'Swimming',
