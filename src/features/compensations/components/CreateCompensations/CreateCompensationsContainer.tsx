@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { api } from '../../../../common/api';
-import { LINK_TO_SALARY_SERVICE } from '../../../../common/config/config';
+import { LINK_TO_COMPENSATIONS_SERVICE } from '../../../../common/config/config';
 import { CompensationsStateContext } from '../Compensations/state/CompensationsStateContext';
 import { CreateCompensationsStateContext } from './state/CreateCompensationsStateContext';
 import { CreateCompensationsContent } from './CreateCompensationsContent';
@@ -35,7 +35,7 @@ export const CreateCompensationsContainer = observer(() => {
 
   async function loadCompensationTypes() {
     try {
-      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}compensations/types`);
+      const { data } = await api.get(`${LINK_TO_COMPENSATIONS_SERVICE}types`);
 
       createCompensationState.initializeTypes({ loadedTypes: data });
     } catch {
@@ -48,7 +48,7 @@ export const CreateCompensationsContainer = observer(() => {
 
     try {
       await api.post(
-        `${LINK_TO_SALARY_SERVICE}compensations/create`,
+        `${LINK_TO_COMPENSATIONS_SERVICE}create`,
         {
           compensations: createCompensationState.allCompensations,
           dateCompensation: createCompensationState.dateCompensation,
@@ -58,7 +58,7 @@ export const CreateCompensationsContainer = observer(() => {
       createCompensationState.removeCompensationsFromList();
       createCompensationState.setIsTriedToSubmit(false);
 
-      const { data } = await api.get(`${LINK_TO_SALARY_SERVICE}compensations/all`);
+      const { data } = await api.get(`${LINK_TO_COMPENSATIONS_SERVICE}all`);
 
       compensationsState.initialize({
         loadedCompensations: data,

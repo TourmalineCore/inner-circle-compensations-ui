@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
-import { LINK_TO_SALARY_SERVICE } from '../../../../../../../../common/config/config';
+import { LINK_TO_COMPENSATIONS_SERVICE } from '../../../../../../../../common/config/config';
 import { api } from '../../../../../../../../common/api';
 import { AllCompensationsStateContext } from '../../../../state/AllCompensationsStateContext';
 
@@ -26,7 +26,7 @@ export const MarkAsPaidButton = observer(({
 
   async function markAsPaid(list: EmployeeAllCompensationsItemType[]) {
     const compensationsIds = list.map((compensation) => compensation.id);
-    await api.put(`${LINK_TO_SALARY_SERVICE}compensations/admin/update`, compensationsIds);
+    await api.put(`${LINK_TO_COMPENSATIONS_SERVICE}admin/update`, compensationsIds);
     allCompensationsState.updateStatus(!allCompensationsState.isChange);
   }
 });
