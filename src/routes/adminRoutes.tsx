@@ -16,6 +16,7 @@ import {
 import {
   compensationAllRoutes, compensationPersonalRoutes, allCompensationsAccessSidebarRoutes, getRouteForCompensations,
 } from '../features/compensations/routes';
+import { documentsSidebarRoutes } from '../features/documents/routes';
 
 export function getAdminRoutes(accessPermissions: Map<keyof typeof Permission, boolean>) {
   const routes: {
@@ -62,6 +63,10 @@ export function getSidebarRoutes(accessPermissions: Map<keyof typeof Permission,
 
   if (accessPermissions.get('CanManageCompensations') && !accessPermissions.get('CanRequestCompensations')) {
     routes.push(...getRouteForCompensations('CanManageCompensations'));
+  }
+
+  if (accessPermissions.get('CanManageDocuments')) {
+    routes.push(...documentsSidebarRoutes);
   }
 
   if (accessPermissions.get('ViewAccounts') && accessPermissions.get('ViewRoles')) {
