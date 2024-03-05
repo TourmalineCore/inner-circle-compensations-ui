@@ -9,7 +9,7 @@ const ARRAY_TYPES_TIPS = [
   },
   {
     type: 'Swimming',
-    description: 'бассейн. Неограниченно.',
+    description: 'бассейн. 8 занятий в месяц.',
   },
   {
     type: 'Water',
@@ -17,7 +17,7 @@ const ARRAY_TYPES_TIPS = [
   },
   {
     type: 'Coworking',
-    description: 'коворкинг. Неограниченно.',
+    description: 'коворкинг. Количество по согласованию.',
   },
   {
     type: 'Massage',
