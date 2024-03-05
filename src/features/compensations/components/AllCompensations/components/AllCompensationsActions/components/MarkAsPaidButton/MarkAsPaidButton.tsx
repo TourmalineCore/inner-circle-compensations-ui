@@ -20,7 +20,7 @@ export const MarkAsPaidButton = observer(({
         markAsPaid(compensations);
       }}
     >
-      Mark all as paid
+      Mark as paid
     </button>
   );
 
