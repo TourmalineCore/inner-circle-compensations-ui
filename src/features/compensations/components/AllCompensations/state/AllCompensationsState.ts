@@ -18,7 +18,7 @@ export class AllCompensationsState {
     isPaid: false,
   };
 
-  private _filterTerm = 'unpaid';
+  private _filterTerm = '';
 
   private _isChange = false;
 
@@ -85,6 +85,10 @@ export class AllCompensationsState {
 
   updateStatus(newStatus: boolean) {
     this._isChange = newStatus;
+  }
+
+  setFilterTerm() {
+    this._filterTerm = this._compensations.items.some((item) => !item.isPaid) ? 'unpaid' : 'all';
   }
 }
 
