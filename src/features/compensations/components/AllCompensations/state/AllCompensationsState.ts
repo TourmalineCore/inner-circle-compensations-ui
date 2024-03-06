@@ -20,8 +20,6 @@ export class AllCompensationsState {
 
   private _filterTerm = 'unpaid';
 
-  private _searchTerm = '';
-
   private _isChange = false;
 
   private _selectedDate: Date = new Date().getDate() <= 15 ? moment(new Date()).subtract(1, 'month').toDate() : new Date();
@@ -81,10 +79,6 @@ export class AllCompensationsState {
     this._filterTerm = newFilterTerm;
   }
 
-  updateSearchTerm(newSearchTerm: string) {
-    this._searchTerm = newSearchTerm;
-  }
-
   updateDate(newDate: Date) {
     this._selectedDate = newDate;
   }
@@ -103,8 +97,4 @@ export function getFiltering(
   }
 
   return compensations;
-}
-
-export function getSearch(searchElement: string, searchTerm: string) {
-  return searchElement.toLowerCase().includes(searchTerm.toLowerCase().trim());
 }
