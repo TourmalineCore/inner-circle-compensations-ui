@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import moment from 'moment';
 
 export class AllCompensationsState {
   private _compensations: AllCompensationsType = {
@@ -23,7 +24,7 @@ export class AllCompensationsState {
 
   private _isChange = false;
 
-  private _selectedDate: Date = new Date();
+  private _selectedDate: Date = new Date().getDate() <= 15 ? moment(new Date()).subtract(1, 'month').toDate() : new Date();
 
   constructor() {
     makeAutoObservable(this);

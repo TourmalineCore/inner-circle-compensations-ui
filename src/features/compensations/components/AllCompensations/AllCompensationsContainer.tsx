@@ -17,11 +17,11 @@ export const AllCompensationsContainer = observer(() => {
   );
 
   async function loadCompensations() {
-    const dateCompensation = allCompensationsState.monthYearDate;
+    const dateFilteringCompensations = allCompensationsState.monthYearDate;
 
     const {
       data,
-    } = await api.get(`${LINK_TO_COMPENSATIONS_SERVICE}admin/all?year=${dateCompensation.year}&month=${dateCompensation.month}`);
+    } = await api.get(`${LINK_TO_COMPENSATIONS_SERVICE}admin/all?year=${dateFilteringCompensations.year}&month=${dateFilteringCompensations.month}`);
 
     allCompensationsState.initialize({
       loadedCompensations: data,
