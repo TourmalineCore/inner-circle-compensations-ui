@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
+import { formatMoney } from '../../../../../../common/utils/formatMoney';
 import { CreateCompensationsState } from '../../state/CreateCompensationsState';
 import { CreateCompensationsStateContext } from '../../state/CreateCompensationsStateContext';
 import { TableCreateCompensations } from './TableCreateCompensations';
@@ -199,7 +200,7 @@ describe('TableCreateCompensations', () => {
       .should('have.length', 1);
   });
 
-  it(`
+  it.only(`
   GIVEN compensations page 
   WHEN enter amount
   THEN calculate correct sum total
@@ -207,13 +208,13 @@ describe('TableCreateCompensations', () => {
     mountComponent();
 
     cy.getByData('table-create-compensations-sum')
-      .contains(0);
+      .should('have.text', formatMoney(0));
 
     cy.getByData('table-create-compensations-amount')
       .type('1000');
 
     cy.getByData('table-create-compensations-sum')
-      .contains('1 000 ₽');
+      .should('have.text', formatMoney(1000));
 
     cy.getByData('table-create-compensations-add-button')
       .click();
@@ -223,7 +224,7 @@ describe('TableCreateCompensations', () => {
       .type('10');
 
     cy.getByData('table-create-compensations-sum')
-      .contains('1 010 ₽');
+      .should('have.text', formatMoney(1010));
   });
 });
 

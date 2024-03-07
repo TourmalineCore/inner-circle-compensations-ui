@@ -22,7 +22,7 @@ export class AllCompensationsState {
 
   private _isChange = false;
 
-  private _selectedDate: Date = new Date().getDate() <= 15 ? moment(new Date()).subtract(1, 'month').toDate() : new Date();
+  private _selectedDate: Date = getSelectedDate(new Date());
 
   constructor() {
     makeAutoObservable(this);
@@ -101,4 +101,10 @@ export function getFiltering(
   }
 
   return compensations;
+}
+
+export function getSelectedDate(
+  date: Date,
+) {
+  return date.getDate() <= 15 ? moment(new Date()).subtract(1, 'month').toDate() : new Date();
 }
