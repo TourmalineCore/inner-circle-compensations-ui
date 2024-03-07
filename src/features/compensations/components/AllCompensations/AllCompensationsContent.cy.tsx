@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../cypress/support/commands';
+import { formatMoney } from '../../../../common/utils/formatMoney';
 import { AllCompensationsContent } from './AllCompensationsContent';
 import { AllCompensationsState } from './state/AllCompensationsState';
 import { AllCompensationsStateContext } from './state/AllCompensationsStateContext';
@@ -10,17 +11,10 @@ const initialData = {
       employeeFullName: 'Ceo Ceo Ceo',
       employeeId: 1,
       dateCompensation: '2023-12-01T05:00:00Z',
-      totalAmount: 3520.45,
-      unpaidAmount: 760,
-      isPaid: false,
+      totalAmount: 2760.45,
+      unpaidAmount: 0,
+      isPaid: true,
       compensations: [
-        {
-          id: 55,
-          compensationType: 'English',
-          comment: 'I bought milk',
-          amount: 760,
-          dateCreateCompensation: '2023-12-19T06:56:49Z',
-        },
         {
           id: 56,
           compensationType: 'German',
@@ -34,9 +28,9 @@ const initialData = {
       employeeFullName: 'Admin Admin Admin',
       employeeId: 2,
       dateCompensation: '2023-12-01T05:00:00Z',
-      totalAmount: 3520.45,
-      unpaidAmount: 0,
-      isPaid: true,
+      totalAmount: 760,
+      unpaidAmount: 760,
+      isPaid: false,
       compensations: [
         {
           id: 1,
@@ -45,17 +39,10 @@ const initialData = {
           amount: 760,
           dateCreateCompensation: '2023-12-19T06:56:49Z',
         },
-        {
-          id: 2,
-          compensationType: 'German',
-          comment: 'I bought this',
-          amount: 2760.45,
-          dateCreateCompensation: '2023-12-19T06:56:49Z',
-        },
       ],
     },
   ],
-  totalAmount: 7040.9,
+  totalAmount: 3520.45,
   totalUnpaidAmount: 760,
 };
 
@@ -90,10 +77,10 @@ describe('AllCompensationsContent', () => {
       .should('have.length', 1);
 
     cy.getByData('all-compensations-table-sum')
-      .should('have.text', '7040.9 ₽');
+      .should('have.text', formatMoney(3520.45));
 
     cy.getByData('all-compensations-table-unpaid-sum')
-      .should('have.text', '760 ₽');
+      .should('have.text', formatMoney(760));
 
     cy.getByData('all-compensations-filter-button')
       .first()
@@ -103,10 +90,10 @@ describe('AllCompensationsContent', () => {
       .should('have.length', 2);
 
     cy.getByData('all-compensations-table-sum')
-      .should('have.text', '7040.9 ₽');
+      .should('have.text', formatMoney(3520.45));
 
     cy.getByData('all-compensations-table-unpaid-sum')
-      .should('have.text', '760 ₽');
+      .should('have.text', formatMoney(760));
   });
 
   it(`
@@ -124,15 +111,15 @@ describe('AllCompensationsContent', () => {
 
     cy.getByData('all-compensations-table-no-data')
       .should('exist')
-      .should('have.text', 'No unpaid compensation in this month');
+      .should('have.text', 'No records in this month');
 
     cy.getByData('all-compensations-filter-button')
-      .first()
+      .last()
       .click();
 
     cy.getByData('all-compensations-table-no-data')
       .should('exist')
-      .should('have.text', 'No records in this month');
+      .should('have.text', 'No unpaid compensation in this month');
   });
 });
 
@@ -146,6 +133,8 @@ function mountComponent({
   allCompensationsState.initialize({
     loadedCompensations: compensations,
   });
+
+  allCompensationsState.setFilterTerm();
 
   cy.mount(
     <AllCompensationsStateContext.Provider value={allCompensationsState}>

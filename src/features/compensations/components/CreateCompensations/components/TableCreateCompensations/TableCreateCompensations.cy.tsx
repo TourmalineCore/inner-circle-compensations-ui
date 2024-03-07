@@ -213,7 +213,7 @@ describe('TableCreateCompensations', () => {
       .type('1000');
 
     cy.getByData('table-create-compensations-sum')
-      .contains(1000);
+      .contains('1 000 ₽');
 
     cy.getByData('table-create-compensations-add-button')
       .click();
@@ -223,7 +223,7 @@ describe('TableCreateCompensations', () => {
       .type('10');
 
     cy.getByData('table-create-compensations-sum')
-      .contains(1010);
+      .contains('1 010 ₽');
   });
 });
 
