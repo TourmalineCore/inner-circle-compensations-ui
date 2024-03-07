@@ -89,12 +89,6 @@ export const TableCreateCompensations = observer(() => {
                   amount: Number(event.target.value),
                 })}
               />
-              <span className={clsx('table-create-compensations__column-amount__input-rub', {
-                'table-create-compensations__column-amount__input-rub--filled': amount !== 0,
-              })}
-              >
-                ₽
-              </span>
             </td>
 
             <td className="table-create-compensations__column-remove">

@@ -15,7 +15,7 @@ export const AllCompensationsTable = observer(({
 
   return (
     <table data-cy="all-compensations-table" className={`all-compensations-table ${className}`}>
-      <thead className="all-compensations-table__table-header">
+      <thead>
         <tr className="all-compensations-table__head" data-cy="all-compensations-table-head">
           <th className="all-compensations-table__column-employee">Name</th>
           <th className="all-compensations-table__column-status">Status</th>

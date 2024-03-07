@@ -16,12 +16,6 @@
     height: calc(100vh - 345px);
   }
 
-  &__table-header {
-    position: sticky;
-    top: 0;
-    background-color: var(--color-white);
-  }
-
   &__head {
     display: flex;
     align-items: center;
