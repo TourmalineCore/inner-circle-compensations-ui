@@ -11,6 +11,11 @@
   text-align: left;
   background: var(--color-white);
 
+  &__items-list {
+    overflow-y: scroll;
+    height: calc(100vh - 345px);
+  }
+
   &__head {
     display: flex;
     align-items: center;

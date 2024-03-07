@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
 import clsx from 'clsx';
+import { formatMoney } from '../../../../../../common/utils/formatMoney';
 import { CreateCompensationsStateContext } from '../../state/CreateCompensationsStateContext';
 
 export const TableCreateCompensations = observer(() => {
@@ -76,7 +77,7 @@ export const TableCreateCompensations = observer(() => {
                 data-cy="table-create-compensations-amount"
                 type="number"
                 min={0}
-                placeholder="0"
+                placeholder="0 ₽"
                 className={clsx('table-create-compensations__column-amount__input', {
                   'table-create-compensations__column-amount__input--default': amount === 0,
                 })}
@@ -88,13 +89,8 @@ export const TableCreateCompensations = observer(() => {
                   amount: Number(event.target.value),
                 })}
               />
-              <span className={clsx('table-create-compensations__column-amount__input-rub', {
-                'table-create-compensations__column-amount__input-rub--filled': amount !== 0,
-              })}
-              >
-                ₽
-              </span>
             </td>
+
             <td className="table-create-compensations__column-remove">
               <button
                 className="table-create-compensations__column-remove__button"
@@ -126,7 +122,7 @@ export const TableCreateCompensations = observer(() => {
         <tr className="table-create-compensations__total" data-cy="table-create-compensations-total">
           <td className="table-create-compensations__column-type">Total</td>
           <td className="table-create-compensations__column-comment" />
-          <td className="table-create-compensations__column-amount__sum" data-cy="table-create-compensations-sum">{`${createCompensationState.totalCount} ₽`}</td>
+          <td className="table-create-compensations__column-amount__sum" data-cy="table-create-compensations-sum">{formatMoney(createCompensationState.totalCount)}</td>
           <td className="table-create-compensations__column-remove" />
         </tr>
       </tfoot>

@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import moment from 'moment';
 
 export class AllCompensationsState {
   private _compensations: AllCompensationsType = {
@@ -17,13 +18,11 @@ export class AllCompensationsState {
     isPaid: false,
   };
 
-  private _filterTerm = 'unpaid';
-
-  private _searchTerm = '';
+  private _filterTerm = '';
 
   private _isChange = false;
 
-  private _selectedDate: Date = new Date();
+  private _selectedDate: Date = getSelectedDate(new Date());
 
   constructor() {
     makeAutoObservable(this);
@@ -80,16 +79,16 @@ export class AllCompensationsState {
     this._filterTerm = newFilterTerm;
   }
 
-  updateSearchTerm(newSearchTerm: string) {
-    this._searchTerm = newSearchTerm;
-  }
-
   updateDate(newDate: Date) {
     this._selectedDate = newDate;
   }
 
   updateStatus(newStatus: boolean) {
     this._isChange = newStatus;
+  }
+
+  setFilterTerm() {
+    this._filterTerm = this._compensations.items.some((item) => !item.isPaid) ? 'unpaid' : 'all';
   }
 }
 
@@ -104,6 +103,8 @@ export function getFiltering(
   return compensations;
 }
 
-export function getSearch(searchElement: string, searchTerm: string) {
-  return searchElement.toLowerCase().includes(searchTerm.toLowerCase().trim());
+export function getSelectedDate(
+  date: Date,
+) {
+  return date.getDate() <= 15 ? moment(new Date()).subtract(1, 'month').toDate() : new Date();
 }

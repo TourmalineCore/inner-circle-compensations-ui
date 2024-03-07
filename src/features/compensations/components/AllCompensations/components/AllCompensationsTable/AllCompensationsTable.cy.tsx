@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../../../cypress/support/commands';
+import { formatMoney } from '../../../../../../common/utils/formatMoney';
 import { AllCompensationsState } from '../../state/AllCompensationsState';
 import { AllCompensationsStateContext } from '../../state/AllCompensationsStateContext';
 import { AllCompensationsTable } from './AllCompensationsTable';
@@ -73,11 +74,11 @@ describe('AllCompensationsTable', () => {
 
     cy.getByData('all-compensations-table-sum')
       .should('exist')
-      .should('have.text', '3520.45 ₽');
+      .should('have.text', formatMoney(3520.45));
 
     cy.getByData('all-compensations-table-unpaid-sum')
       .should('exist')
-      .should('have.text', '760 ₽');
+      .should('have.text', formatMoney(760));
   });
 
   it(`
@@ -95,7 +96,7 @@ describe('AllCompensationsTable', () => {
 
     cy.getByData('all-compensations-table-no-data')
       .should('exist')
-      .should('have.text', 'No unpaid compensation in this month');
+      .should('have.text', 'No records in this month');
   });
 
   it(`
@@ -117,10 +118,10 @@ describe('AllCompensationsTable', () => {
       .should('exist');
 
     cy.getByData('all-compensations-table-column-unpaid')
-      .should('have.text', '760 ₽');
+      .should('have.text', formatMoney(760));
 
     cy.getByData('all-compensations-table-column-amount')
-      .should('have.text', '3,520.45 ₽');
+      .should('have.text', formatMoney(3520.45));
   });
 
   it(`

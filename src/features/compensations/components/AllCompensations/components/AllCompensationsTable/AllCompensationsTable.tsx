@@ -24,9 +24,10 @@ export const AllCompensationsTable = observer(({
           <th className="all-compensations-table__column-amount">Amount</th>
         </tr>
       </thead>
+
       <tbody>
         {allCompensationsState.allCompensations.items.length !== 0 ? (
-          <>
+          <div className="all-compensations-table__items-list">
             {allCompensationsState.allCompensations.items.map(({
               employeeId, employeeFullName, totalAmount, unpaidAmount, isSelected, isPaid, compensations,
             }) => (
@@ -86,7 +87,7 @@ export const AllCompensationsTable = observer(({
                 </td>
               </tr>
             ))}
-          </>
+          </div>
         ) : (
           <div
             data-cy="all-compensations-table-no-data"
@@ -96,11 +97,12 @@ export const AllCompensationsTable = observer(({
           </div>
         )}
       </tbody>
+
       <tfoot>
         <tr className="all-compensations-table__total" data-cy="all-compensations-table-total">
           <td className="all-compensations-table__column-total" colSpan={3}>Total compensations per month</td>
-          <th className="all-compensations-table__column-unpaid__sum" data-cy="all-compensations-table-unpaid-sum">{`${allCompensationsState.totalUnpaidCount} ₽`}</th>
-          <td className="all-compensations-table__column-amount__sum" data-cy="all-compensations-table-sum">{`${allCompensationsState.totalCount} ₽`}</td>
+          <th className="all-compensations-table__column-unpaid__sum" data-cy="all-compensations-table-unpaid-sum">{formatMoney(allCompensationsState.totalUnpaidCount)}</th>
+          <td className="all-compensations-table__column-amount__sum" data-cy="all-compensations-table-sum">{formatMoney(allCompensationsState.totalCount)}</td>
         </tr>
       </tfoot>
     </table>
