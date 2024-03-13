@@ -2,7 +2,7 @@
 import '../../../../../cypress/support/commands';
 import { formatMoney } from '../../../../common/utils/formatMoney';
 import { AllCompensationsContent } from './AllCompensationsContent';
-import { AllCompensationsState } from './state/AllCompensationsState';
+import { AllCompensationsState, getSelectedDate } from './state/AllCompensationsState';
 import { AllCompensationsStateContext } from './state/AllCompensationsStateContext';
 
 const initialData = {
@@ -121,6 +121,19 @@ describe('AllCompensationsContent', () => {
       .should('exist')
       .should('have.text', 'No unpaid compensation in this month');
   });
+
+  it(`
+  GIVEN all compensations page 
+  WHEN visit compensations page 
+  THEN render previous month if today date < 15
+  `, () => {
+    mountComponent({
+      compensations: initialData,
+    });
+
+    cy.getByData('date-picker-all-compensations-result')
+      .should('have.text', 'Jul 2023');
+  });
 });
 
 function mountComponent({
@@ -135,6 +148,8 @@ function mountComponent({
   });
 
   allCompensationsState.setFilterTerm();
+
+  allCompensationsState.updateDate(getSelectedDate(new Date('2023-08-10')));
 
   cy.mount(
     <AllCompensationsStateContext.Provider value={allCompensationsState}>

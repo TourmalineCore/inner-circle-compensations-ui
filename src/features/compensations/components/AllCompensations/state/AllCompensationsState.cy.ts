@@ -1,5 +1,5 @@
 import '../../../../../../cypress/support/commands';
-import { AllCompensationsState } from './AllCompensationsState';
+import { AllCompensationsState, getSelectedDate } from './AllCompensationsState';
 
 const allCompensationsState = new AllCompensationsState();
 
@@ -77,6 +77,36 @@ describe('AllCompensationsState', () => {
   `, () => {
     allCompensationsState.updateDate(new Date('2023-10-01T05:00:00Z'));
     expect(allCompensationsState.monthYearDate.month).eq(10);
+    expect(allCompensationsState.monthYearDate.year).eq(2023);
+  });
+
+  it(`
+  GIVEN correct date
+  WHEN initialized state and if today date < 15
+  THEN return previous month
+  `, () => {
+    allCompensationsState.updateDate(getSelectedDate(new Date('2023-08-10')));
+    expect(allCompensationsState.monthYearDate.month).eq(7);
+    expect(allCompensationsState.monthYearDate.year).eq(2023);
+  });
+
+  it(`
+  GIVEN correct date
+  WHEN initialized state and if today date > 15
+  THEN return current month
+  `, () => {
+    allCompensationsState.updateDate(getSelectedDate(new Date('2023-08-20')));
+    expect(allCompensationsState.monthYearDate.month).eq(8);
+    expect(allCompensationsState.monthYearDate.year).eq(2023);
+  });
+
+  it(`
+  GIVEN correct date
+  WHEN initialized state if today date < 15
+  THEN return previous month
+  `, () => {
+    allCompensationsState.updateDate(getSelectedDate(new Date('2024-01-10')));
+    expect(allCompensationsState.monthYearDate.month).eq(12);
     expect(allCompensationsState.monthYearDate.year).eq(2023);
   });
 });
