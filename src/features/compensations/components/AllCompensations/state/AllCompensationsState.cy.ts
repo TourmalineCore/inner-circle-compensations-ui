@@ -81,9 +81,9 @@ describe('AllCompensationsState', () => {
   });
 
   it(`
-  GIVEN all compensations page 
-  WHEN visit compensations page 
-  THEN render previous month if today date < 15
+  GIVEN correct date
+  WHEN initialized state and if today date < 15
+  THEN return previous month
   `, () => {
     allCompensationsState.updateDate(getSelectedDate(new Date('2023-08-10')));
     expect(allCompensationsState.monthYearDate.month).eq(7);
@@ -91,9 +91,9 @@ describe('AllCompensationsState', () => {
   });
 
   it(`
-  GIVEN all compensations page 
-  WHEN visit compensations page 
-  THEN render current month if today date > 15
+  GIVEN correct date
+  WHEN initialized state and if today date > 15
+  THEN return current month
   `, () => {
     allCompensationsState.updateDate(getSelectedDate(new Date('2023-08-20')));
     expect(allCompensationsState.monthYearDate.month).eq(8);
@@ -101,9 +101,9 @@ describe('AllCompensationsState', () => {
   });
 
   it(`
-  GIVEN all compensations page 
-  WHEN visit compensations page 
-  THEN render previous month and year if today date < 15
+  GIVEN correct date
+  WHEN initialized state if today date < 15
+  THEN return previous month
   `, () => {
     allCompensationsState.updateDate(getSelectedDate(new Date('2024-01-10')));
     expect(allCompensationsState.monthYearDate.month).eq(12);
