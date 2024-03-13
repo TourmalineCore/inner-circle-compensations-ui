@@ -1,3 +1,4 @@
+import { formatMoney } from '../../../../../../common/utils/formatMoney';
 import { CompensationsState } from '../../state/CompensationsState';
 import { CompensationsStateContext } from '../../state/CompensationsStateContext';
 import { CompensationsTable } from './CompensationsTable';
@@ -64,7 +65,7 @@ describe('CompensationsTable', () => {
 
     cy.getByData('compensations-table-sum')
       .should('exist')
-      .should('have.text', '1,520 ₽');
+      .should('have.text', formatMoney(1520));
   });
 
   it(`
@@ -107,7 +108,7 @@ describe('CompensationsTable', () => {
 
     cy.getByData('compensations-table-column-amount')
       .first()
-      .should('have.text', '760 ₽');
+      .should('have.text', formatMoney(760));
   });
 
   it(`
