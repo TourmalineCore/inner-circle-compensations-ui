@@ -12,6 +12,7 @@ import {
   accountsSidebarRoutes,
   rolesSidebarRoutes,
   sidebarAccountManagement,
+  tenantsSidebarRoutes,
 } from '../features/account-management/routers';
 import {
   compensationAllRoutes, compensationPersonalRoutes, allCompensationsAccessSidebarRoutes, getRouteForCompensations,
@@ -69,8 +70,8 @@ export function getSidebarRoutes(accessPermissions: Map<keyof typeof Permission,
     routes.push(...documentsSidebarRoutes);
   }
 
-  if (accessPermissions.get('ViewAccounts') && accessPermissions.get('ViewRoles')) {
-    copyAccountManagement.routes = [accountsSidebarRoutes, rolesSidebarRoutes];
+  if (accessPermissions.get('ViewAccounts') && accessPermissions.get('ViewRoles') && accessPermissions.get('CanManageTenants')) {
+    copyAccountManagement.routes = [accountsSidebarRoutes, rolesSidebarRoutes, tenantsSidebarRoutes];
 
     routes.push(copyAccountManagement);
 
@@ -86,6 +87,14 @@ export function getSidebarRoutes(accessPermissions: Map<keyof typeof Permission,
 
   if (accessPermissions.get('ViewRoles')) {
     copyAccountManagement.routes = [rolesSidebarRoutes];
+
+    routes.push(copyAccountManagement);
+
+    return routes;
+  }
+
+  if (accessPermissions.get('CanManageTenants')) {
+    copyAccountManagement.routes = [tenantsSidebarRoutes];
 
     routes.push(copyAccountManagement);
 
