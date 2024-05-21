@@ -26,7 +26,7 @@ export const MarkAsPaidButton = observer(({
 
   async function markAsPaid(list: EmployeeAllCompensationsItemType[]) {
     const compensationsIds = list.map((compensation) => compensation.id);
-    await api.put(`${LINK_TO_COMPENSATIONS_SERVICE}admin/update`, compensationsIds);
+    await api.put(`${LINK_TO_COMPENSATIONS_SERVICE}mark-as-paid`, compensationsIds);
     allCompensationsState.updateStatus(!allCompensationsState.isChange);
   }
 });
