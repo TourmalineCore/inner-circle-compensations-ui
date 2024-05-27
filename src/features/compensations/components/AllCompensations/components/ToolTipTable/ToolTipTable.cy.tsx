@@ -10,7 +10,7 @@ const initialData = {
       amount: 100,
       comment: 'milk',
       compensationType: 'Products',
-      dateCreateCompensation: '2024-01-10T11:31:25Z',
+      compensationRequestedAtUtc: '2024-01-10T11:31:25Z',
       id: 57,
     },
   ],

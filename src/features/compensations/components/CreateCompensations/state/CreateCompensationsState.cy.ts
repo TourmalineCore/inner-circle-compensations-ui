@@ -76,7 +76,7 @@ describe('CreateCompensationsState', () => {
 
     createCompensationsState.updateDate('2023-06-08T11:42:04.467165Z');
 
-    expect(createCompensationsState.dateCompensation).eq('2023-06-08T11:42:04.467165Z');
+    expect(createCompensationsState.compensationRequestedForYearAndMonth).eq('2023-06-08T11:42:04.467165Z');
   });
 
   it(`

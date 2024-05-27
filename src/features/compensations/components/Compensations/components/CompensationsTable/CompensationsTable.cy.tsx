@@ -6,8 +6,8 @@ import { CompensationsTable } from './CompensationsTable';
 const initialData = {
   list: [
     {
-      dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
-      dateCompensation: '2023-06-08T11:42:04.467165Z',
+      compensationRequestedAtUtc: '2023-06-08T11:42:04.467165Z',
+      compensationRequestedForYearAndMonth: '2023-06-08T11:42:04.467165Z',
       comment: 'I bought milk',
       compensationType: 'English',
       amount: 760,
@@ -15,8 +15,8 @@ const initialData = {
       employeeId: 1,
     },
     {
-      dateCreateCompensation: '2023-06-09T11:42:04.467165Z',
-      dateCompensation: '2023-06-08T11:42:04.467165Z',
+      compensationRequestedAtUtc: '2023-06-09T11:42:04.467165Z',
+      compensationRequestedForYearAndMonth: '2023-06-08T11:42:04.467165Z',
       comment: 'I bought second',
       compensationType: 'English',
       amount: 760,

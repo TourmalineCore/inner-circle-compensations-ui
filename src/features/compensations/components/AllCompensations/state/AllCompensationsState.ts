@@ -11,7 +11,7 @@ export class AllCompensationsState {
   private _compensationsItem: AllCompensationsItemType = {
     employeeId: 0,
     employeeFullName: 'string',
-    dateCompensation: 'string',
+    compensationRequestedForYearAndMonth: 'string',
     totalAmount: 100,
     unpaidAmount: 100,
     compensations: [],

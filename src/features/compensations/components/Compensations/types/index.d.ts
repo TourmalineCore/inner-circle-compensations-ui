@@ -1,7 +1,7 @@
 type CompensationsItemType = {
   id?: number;
-  dateCreateCompensation: string;
-  dateCompensation: string;
+  compensationRequestedAtUtc: string;
+  compensationRequestedForYearAndMonth: string;
   comment: string;
   amount: number;
   isPaid: boolean;

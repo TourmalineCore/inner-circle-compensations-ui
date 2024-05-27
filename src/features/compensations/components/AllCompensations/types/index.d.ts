@@ -3,13 +3,13 @@ type EmployeeAllCompensationsItemType = {
   compensationType: string;
   comment: string;
   amount: number;
-  dateCreateCompensation: string;
+  compensationRequestedAtUtc: string;
 };
 
 type AllCompensationsItemType = {
   employeeId: number;
   employeeFullName: string;
-  dateCompensation: string;
+  compensationRequestedForYearAndMonth: string;
   totalAmount: number;
   unpaidAmount: number;
   compensations: EmployeeAllCompensationsItemType[];

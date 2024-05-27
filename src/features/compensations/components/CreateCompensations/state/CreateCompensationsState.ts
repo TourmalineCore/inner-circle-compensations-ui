@@ -6,7 +6,7 @@ export class CreateCompensationsState {
     label: string;
   }[] = [];
 
-  private _dateCompensation: Date | string = new Date();
+  private _compensationRequestedForYearAndMonth: Date | string = new Date();
 
   private _nextCompensationId: number = 1;
 
@@ -44,8 +44,8 @@ export class CreateCompensationsState {
     return this._types;
   }
 
-  get dateCompensation() {
-    return this._dateCompensation;
+  get compensationRequestedForYearAndMonth() {
+    return this._compensationRequestedForYearAndMonth;
   }
 
   get allCompensations() {
@@ -76,7 +76,7 @@ export class CreateCompensationsState {
   }
 
   updateDate(newDate: Date | string) {
-    this._dateCompensation = newDate;
+    this._compensationRequestedForYearAndMonth = newDate;
   }
 
   addCompensation(type?: number) {

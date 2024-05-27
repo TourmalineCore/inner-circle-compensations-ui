@@ -51,7 +51,7 @@ export const CreateCompensationsContainer = observer(() => {
         `${LINK_TO_COMPENSATIONS_SERVICE}create`,
         {
           compensations: createCompensationState.allCompensations,
-          dateCompensation: createCompensationState.dateCompensation,
+          compensationRequestedForYearAndMonth: createCompensationState.compensationRequestedForYearAndMonth,
         },
       );
 
