@@ -27,7 +27,7 @@ export const DatePickerCompensations = observer(() => {
     >
       <span className="date-picker-compensations__title">Month:</span>
       <DatePicker
-        selected={createCompensationsState.dateCompensation}
+        selected={createCompensationsState.compensationRequestedForYearAndMonth}
         onChange={(date: Date) => createCompensationsState.updateDate(date)}
         showMonthYearPicker
         dateFormat="MMMM yyyy"

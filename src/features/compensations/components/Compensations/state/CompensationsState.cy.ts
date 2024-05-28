@@ -13,8 +13,8 @@ describe('CompensationsState', () => {
       loadedCompensations: {
         list: [
           {
-            dateCreateCompensation: '2023-06-08T11:42:04.467165Z',
-            dateCompensation: '2023-06-08T11:42:04.467165Z',
+            compensationRequestedAtUtc: '2023-06-08T11:42:04.467165Z',
+            compensationRequestedForYearAndMonth: '2023-06-08T11:42:04.467165Z',
             comment: 'I bought milk',
             amount: 760,
             isPaid: false,

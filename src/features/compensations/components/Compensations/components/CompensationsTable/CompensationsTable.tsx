@@ -12,7 +12,7 @@ export const CompensationsTable = observer(({
 }) => {
   const compensationsState = useContext(CompensationsStateContext);
   const sortedCompensations = [...compensationsState.allCompensations.list]
-    .sort((firstElement, secondElement) => moment(secondElement.dateCreateCompensation).diff(moment(firstElement.dateCreateCompensation)));
+    .sort((firstElement, secondElement) => moment(secondElement.compensationRequestedAtUtc).diff(moment(firstElement.compensationRequestedAtUtc)));
 
   return (
     <div
@@ -22,7 +22,7 @@ export const CompensationsTable = observer(({
       {compensationsState.allCompensations.list.length !== 0 ? (
         <>
           {sortedCompensations.map(({
-            dateCompensation, amount, comment, isPaid, id, compensationType,
+            compensationRequestedForYearAndMonth, amount, comment, isPaid, id, compensationType,
           }) => (
             <div
               data-cy="compensations-table-column"
@@ -33,7 +33,7 @@ export const CompensationsTable = observer(({
                 data-cy="compensations-table-column-month"
                 className="compensations-table__column-month"
               >
-                {moment(dateCompensation).format('MMM YYYY')}
+                {moment(compensationRequestedForYearAndMonth).format('MMM YYYY')}
               </span>
               <span
                 data-cy="compensations-table-column-type"

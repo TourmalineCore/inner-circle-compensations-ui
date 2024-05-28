@@ -10,14 +10,14 @@ const initialData = [
     compensationType: 'English',
     comment: 'I bought milk',
     amount: 760,
-    dateCreateCompensation: '2023-12-19T06:56:49Z',
+    compensationRequestedAtUtc: '2023-12-19T06:56:49Z',
   },
   {
     id: 56,
     compensationType: 'German',
     comment: 'I bought this',
     amount: 2760.45,
-    dateCreateCompensation: '2023-12-19T06:56:49Z',
+    compensationRequestedAtUtc: '2023-12-19T06:56:49Z',
   },
 ];
 
