@@ -1,5 +1,7 @@
 import clsx from 'clsx';
-import { useContext } from 'react';
+import {
+  useContext, useEffect, useRef, useState,
+} from 'react';
 import { observer } from 'mobx-react-lite';
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
 import { ToolTipTable } from '../ToolTipTable/ToolTipTable';
@@ -12,6 +14,35 @@ export const AllCompensationsTable = observer(({
   className?: string;
 }) => {
   const allCompensationsState = useContext(AllCompensationsStateContext);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const rowRefs = useRef<(HTMLTableRowElement | null)[]>([]);
+  const tooltipRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    if (showTooltip && rowRefs.current) {
+      rowRefs.current.forEach((rowRef, index) => {
+        if (rowRef) {
+          const rowRect = rowRef.getBoundingClientRect();
+          const scrollTop = window.scrollY;
+
+          if (tooltipRefs.current[index]) {
+            tooltipRefs.current[index]!.style.position = 'absolute';
+            tooltipRefs.current[index]!.style.top = `${rowRect.top + scrollTop}px`;
+          }
+        }
+      });
+    }
+  }, [showTooltip, allCompensationsState.allCompensations.items]);
+
+  const handleTooltipShow = (row: HTMLTableRowElement, index: number) => {
+    setShowTooltip(true);
+    rowRefs.current[index] = row;
+  };
+
+  const handleTooltipHide = (index: number) => {
+    setShowTooltip(false);
+    rowRefs.current[index] = null;
+  };
 
   return (
     <table data-cy="all-compensations-table" className={`all-compensations-table ${className}`}>
@@ -39,7 +70,6 @@ export const AllCompensationsTable = observer(({
                   'all-compensations-table__item--not-selected': !isSelected,
                 })}
               >
-
                 <td
                   data-cy="all-compensations-table-column-employee"
                   className="all-compensations-table__column-employee"
@@ -76,12 +106,24 @@ export const AllCompensationsTable = observer(({
                 </td>
 
                 <td className="all-compensations-table__column-amount">
-                  <span className="all-compensations-table__tooltip" data-cy="all-compensations-table-tooltip">
+                  <span
+                    className="all-compensations-table__tooltip"
+                    data-cy="all-compensations-table-tooltip"
+                    onMouseEnter={(e) => handleTooltipShow(e.currentTarget as HTMLTableRowElement, employeeId)}
+                    onMouseLeave={() => handleTooltipHide(employeeId)}
+                    ref={(el) => (rowRefs.current[employeeId] = el as HTMLTableRowElement | null)}
+                  >
                     <span data-cy="all-compensations-table-column-amount">
                       {formatMoney(totalAmount)}
                     </span>
-                    <div className="all-compensations-table__tooltip__item" data-cy="all-compensations-table-tooltip-item">
-                      <ToolTipTable compensations={compensations} />
+                    <div
+                      className="all-compensations-table__tooltip__item"
+                      data-cy="all-compensations-table-tooltip-item"
+                      ref={(el) => (tooltipRefs.current[employeeId] = el as HTMLDivElement | null)}
+                    >
+                      {showTooltip && (
+                        <ToolTipTable compensations={compensations} />
+                      )}
                     </div>
                   </span>
                 </td>
