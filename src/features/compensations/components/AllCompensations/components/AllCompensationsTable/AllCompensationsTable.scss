@@ -20,6 +20,7 @@
     display: flex;
     align-items: center;
     border-bottom: 0.5px solid var(--comp-color-light-gray);
+    padding-right: 16px;
     color: var(--color-black);
   }
 
@@ -84,7 +85,6 @@
   }
 
   &__column-amount {
-    padding: 16px;
     width: 15%;
     font-weight: 500;
     text-align: end;
@@ -130,6 +130,8 @@
   }
 
   &__tooltip {
+    padding: 16px;
+
     &__item {
       position: absolute;
       display: none;
@@ -139,7 +141,7 @@
       max-width: 500px;
       box-shadow: 0 4px 14px rgb(0 0 0 / 15%);
       background-color: var(--color-white);
-      transform: translate(-90%, -75%); // move an element
+      transform: translate(-87%, -75%); // move an element
     }
 
     &:hover > &__item {
