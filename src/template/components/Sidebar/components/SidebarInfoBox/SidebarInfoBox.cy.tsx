@@ -60,7 +60,7 @@ describe('SidebarInfoBox', () => {
   });
 
   it(`
-  GIVEN exception email starts at snl and then last name without first letter
+    GIVEN exception email starts at snl and then last name without first letter
     WHEN open sidebar
     THEN render correct user fullName
     `, () => {
