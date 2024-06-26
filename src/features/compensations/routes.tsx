@@ -4,14 +4,16 @@ import { AllCompensationsPage } from './AllCompensationsPage';
 import { CompensationsPersonalPage } from './CompensationsPersonalPage';
 import { CompensationsPage } from './CompensationsPage';
 
+const DEFAULT_PATH = '/compensations';
+
 export const compensationPersonalRoutes = [
   {
-    path: '/my',
-    breadcrumb: 'My',
+    path: `${DEFAULT_PATH}/my`,
+    breadcrumb: 'My Compensations',
     Component: CompensationsPersonalPage,
   },
   {
-    path: '/',
+    path: `${DEFAULT_PATH}/`,
     breadcrumb: 'Compensations',
     Component: CompensationsPage,
   },
@@ -19,12 +21,12 @@ export const compensationPersonalRoutes = [
 
 export const compensationAllRoutes = [
   {
-    path: '/all',
-    breadcrumb: 'All',
+    path: `${DEFAULT_PATH}/all`,
+    breadcrumb: 'All Compensations',
     Component: AllCompensationsPage,
   },
   {
-    path: '/',
+    path: `${DEFAULT_PATH}/`,
     breadcrumb: 'Compensations',
     Component: CompensationsPage,
   },
@@ -34,7 +36,7 @@ export function getRouteForCompensations(permission: string) {
   if (permission === 'CanRequestCompensations') {
     return [{
       isWindowRedirectNecessary: true,
-      path: '/compensations/my',
+      path: `${DEFAULT_PATH}/my`,
       label: 'Compensations',
       icon: <IconCompensations />,
       iconActive: <IconCompensationsActive />,
@@ -43,7 +45,7 @@ export function getRouteForCompensations(permission: string) {
 
   return [{
     isWindowRedirectNecessary: true,
-    path: '/compensations/all',
+    path: `${DEFAULT_PATH}/all`,
     label: 'Compensations',
     icon: <IconCompensations />,
     iconActive: <IconCompensationsActive />,
@@ -53,20 +55,20 @@ export function getRouteForCompensations(permission: string) {
 export const allCompensationsAccessSidebarRoutes = [
   {
     isWindowRedirectNecessary: true,
-    path: '/compensations',
+    path: `${DEFAULT_PATH}`,
     label: 'Compensations',
     icon: <IconCompensations />,
     iconActive: <IconCompensationsActive />,
     routes: [
       {
         isWindowRedirectNecessary: true,
-        path: '/compensations/my',
+        path: `${DEFAULT_PATH}/my`,
         label: 'My',
         iconMini: <IconCompensations />,
       },
       {
         isWindowRedirectNecessary: true,
-        path: '/compensations/all',
+        path: `${DEFAULT_PATH}/all`,
         label: 'All',
         iconMini: <IconCompensations />,
       }],
