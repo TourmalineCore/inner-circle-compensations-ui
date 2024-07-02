@@ -50,6 +50,10 @@ const INITIAL_TYPES = [
   },
   {
     typeId: 12,
+    label: 'Medical consultation',
+  },
+  {
+    typeId: 13,
     label: 'Other',
   },
 ];

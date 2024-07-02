@@ -48,6 +48,10 @@ const INITIAL_TYPES = [
   },
   {
     typeId: 12,
+    label: 'Medical consultation',
+  },
+  {
+    typeId: 13,
     label: 'Other',
   },
 ];
@@ -64,7 +68,7 @@ describe('CreateCompensationsState', () => {
       loadedTypes: INITIAL_TYPES,
     });
 
-    expect(createCompensationsState.allTypes).to.has.lengthOf(12);
+    expect(createCompensationsState.allTypes).to.has.lengthOf(13);
   });
 
   it(`
