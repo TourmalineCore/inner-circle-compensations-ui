@@ -143,7 +143,6 @@ describe('CreateCompensations', () => {
     cy.getByData('table-create-compensations-amount')
       .type('800');
 
-    // english
     cy.getByData('table-create-compensations-select')
       .select('1');
 
