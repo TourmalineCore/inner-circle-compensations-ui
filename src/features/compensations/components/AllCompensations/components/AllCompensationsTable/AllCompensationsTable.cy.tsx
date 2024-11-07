@@ -17,14 +17,14 @@ const initialData = {
       compensations: [
         {
           id: 55,
-          compensationType: 'English',
+          compensationType: 'Massage',
           comment: 'I bought milk',
           amount: 760,
           compensationRequestedAtUtc: '2023-12-19T06:56:49Z',
         },
         {
           id: 56,
-          compensationType: 'German',
+          compensationType: 'Water',
           comment: 'I bought this',
           amount: 2760.45,
           compensationRequestedAtUtc: '2023-12-19T06:56:49Z',

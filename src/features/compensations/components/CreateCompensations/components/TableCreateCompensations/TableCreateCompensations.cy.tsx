@@ -7,11 +7,11 @@ import { TableCreateCompensations } from './TableCreateCompensations';
 const INITIAL_TYPES = [
   {
     typeId: 1,
-    label: 'English',
+    label: 'Other',
   },
   {
     typeId: 2,
-    label: 'German',
+    label: 'Medical consultation',
   },
   {
     typeId: 3,
@@ -48,14 +48,6 @@ const INITIAL_TYPES = [
   {
     typeId: 11,
     label: 'Psychotherapy',
-  },
-  {
-    typeId: 12,
-    label: 'Medical consultation',
-  },
-  {
-    typeId: 13,
-    label: 'Other',
   },
 ];
 

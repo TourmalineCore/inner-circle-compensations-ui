@@ -18,7 +18,7 @@ describe('CompensationsState', () => {
             comment: 'I bought milk',
             amount: 760,
             isPaid: false,
-            compensationType: 'English',
+            compensationType: 'Massage',
             employeeId: 1,
           },
         ],

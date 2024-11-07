@@ -4,11 +4,11 @@ import { CreateCompensationsState } from './CreateCompensationsState';
 const INITIAL_TYPES = [
   {
     typeId: 1,
-    label: 'English',
+    label: 'Other',
   },
   {
     typeId: 2,
-    label: 'German',
+    label: 'Medical consultation',
   },
   {
     typeId: 3,
@@ -46,14 +46,6 @@ const INITIAL_TYPES = [
     typeId: 11,
     label: 'Psychotherapy',
   },
-  {
-    typeId: 12,
-    label: 'Medical consultation',
-  },
-  {
-    typeId: 13,
-    label: 'Other',
-  },
 ];
 
 describe('CreateCompensationsState', () => {
@@ -68,7 +60,7 @@ describe('CreateCompensationsState', () => {
       loadedTypes: INITIAL_TYPES,
     });
 
-    expect(createCompensationsState.allTypes).to.has.lengthOf(13);
+    expect(createCompensationsState.allTypes).to.has.lengthOf(11);
   });
 
   it(`

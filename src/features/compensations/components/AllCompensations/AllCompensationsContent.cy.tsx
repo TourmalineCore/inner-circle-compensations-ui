@@ -17,7 +17,7 @@ const initialData = {
       compensations: [
         {
           id: 56,
-          compensationType: 'German',
+          compensationType: 'Water',
           comment: 'I bought this',
           amount: 2760.45,
           compensationRequestedAtUtc: '2023-12-19T06:56:49Z',
@@ -34,7 +34,7 @@ const initialData = {
       compensations: [
         {
           id: 1,
-          compensationType: 'English',
+          compensationType: 'Massage',
           comment: 'I bought milk',
           amount: 760,
           compensationRequestedAtUtc: '2023-12-19T06:56:49Z',
