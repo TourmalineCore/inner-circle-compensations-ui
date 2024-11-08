@@ -4,11 +4,11 @@ import { CreateCompensationsState } from './CreateCompensationsState';
 const INITIAL_TYPES = [
   {
     typeId: 1,
-    label: 'Other',
+    label: 'English',
   },
   {
     typeId: 2,
-    label: 'Medical consultation',
+    label: 'German',
   },
   {
     typeId: 3,
@@ -45,6 +45,14 @@ const INITIAL_TYPES = [
   {
     typeId: 11,
     label: 'Psychotherapy',
+  },
+  {
+    typeId: 12,
+    label: 'Medical consultation',
+  },
+  {
+    typeId: 13,
+    label: 'Other',
   },
 ];
 
