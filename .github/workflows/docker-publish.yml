@@ -1,0 +1,24 @@
+name: build and push COMPENSATIONS
+
+on:
+  push:
+    branches:
+      - feature/remove-unnecessary-types
+
+env:
+  GITHUB_REGISTRY: ghcr.io
+
+jobs:
+  build-image:
+    name: Build and push service image  
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: Build and push image
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+          docker build -t $GITHUB_REGISTRY/tourmalinecore/inner-circle/compensations:latest -t $GITHUB_REGISTRY/tourmalinecore/inner-circle/compensations:${{ github.sha }} .
+          docker push $GITHUB_REGISTRY/tourmalinecore/inner-circle/compensations:latest
+          docker push $GITHUB_REGISTRY/tourmalinecore/inner-circle/compensations:${{ github.sha }}
+  
