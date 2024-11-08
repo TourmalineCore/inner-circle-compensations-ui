@@ -138,10 +138,10 @@ describe('TableCreateCompensations', () => {
     mountComponent();
 
     cy.getByData('table-create-compensations-select')
-      .select('1');
+      .select('5');
 
     cy.getByData('table-create-compensations-select')
-      .should('have.value', '1');
+      .should('have.value', '5');
   });
 
   it(`

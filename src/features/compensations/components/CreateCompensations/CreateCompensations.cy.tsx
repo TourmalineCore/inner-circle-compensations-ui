@@ -6,11 +6,11 @@ import { CreateCompensations } from './CreateCompensations';
 const INITIAL_TYPES = [
   {
     typeId: 1,
-    label: 'Other',
+    label: 'English',
   },
   {
     typeId: 2,
-    label: 'Medical consultation',
+    label: 'German',
   },
   {
     typeId: 3,
@@ -47,6 +47,14 @@ const INITIAL_TYPES = [
   {
     typeId: 11,
     label: 'Psychotherapy',
+  },
+  {
+    typeId: 12,
+    label: 'Medical consultation',
+  },
+  {
+    typeId: 13,
+    label: 'Other',
   },
 ];
 
@@ -136,7 +144,7 @@ describe('CreateCompensations', () => {
       .type('800');
 
     cy.getByData('table-create-compensations-select')
-      .select('1');
+      .select('5');
 
     cy.intercept(
       'POST',
@@ -198,7 +206,7 @@ describe('CreateCompensations', () => {
     cy.wait('@call-9');
 
     cy.getByData('table-create-compensations-select')
-      .select('1');
+      .select('5');
 
     cy.getByData('table-create-compensations-amount')
       .type('200');
@@ -227,7 +235,7 @@ describe('CreateCompensations', () => {
     cy.wait('@call-10');
 
     cy.getByData('table-create-compensations-select')
-      .select('2');
+      .select('5');
 
     cy.getByData('table-create-compensations-amount')
       .type('-2');
@@ -274,7 +282,7 @@ describe('CreateCompensations', () => {
     cy.wait('@call-11');
 
     cy.getByData('table-create-compensations-select')
-      .select('2');
+      .select('5');
 
     cy.getByData('table-create-compensations-amount')
       .type('2');
