@@ -143,9 +143,8 @@ describe('CreateCompensations', () => {
     cy.getByData('table-create-compensations-amount')
       .type('800');
 
-    // english
     cy.getByData('table-create-compensations-select')
-      .select('1');
+      .select('5');
 
     cy.intercept(
       'POST',
@@ -207,7 +206,7 @@ describe('CreateCompensations', () => {
     cy.wait('@call-9');
 
     cy.getByData('table-create-compensations-select')
-      .select('1');
+      .select('5');
 
     cy.getByData('table-create-compensations-amount')
       .type('200');
@@ -236,7 +235,7 @@ describe('CreateCompensations', () => {
     cy.wait('@call-10');
 
     cy.getByData('table-create-compensations-select')
-      .select('2');
+      .select('5');
 
     cy.getByData('table-create-compensations-amount')
       .type('-2');
@@ -283,7 +282,7 @@ describe('CreateCompensations', () => {
     cy.wait('@call-11');
 
     cy.getByData('table-create-compensations-select')
-      .select('2');
+      .select('5');
 
     cy.getByData('table-create-compensations-amount')
       .type('2');

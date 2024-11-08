@@ -138,10 +138,10 @@ describe('TableCreateCompensations', () => {
     mountComponent();
 
     cy.getByData('table-create-compensations-select')
-      .select('1');
+      .select('5');
 
     cy.getByData('table-create-compensations-select')
-      .should('have.value', '1');
+      .should('have.value', '5');
   });
 
   it(`
@@ -204,7 +204,7 @@ describe('TableCreateCompensations', () => {
       .should('have.length', 1);
   });
 
-  it.only(`
+  it(`
   GIVEN compensations page 
   WHEN enter amount
   THEN calculate correct sum total
@@ -229,6 +229,32 @@ describe('TableCreateCompensations', () => {
 
     cy.getByData('table-create-compensations-sum')
       .should('have.text', formatMoney(1010));
+  });
+
+  it(`
+  GIVEN compensations page 
+  WHEN choose compensation type
+  THEN see all types except English and German
+  `, () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-column-select')
+      .click();
+
+    cy.getByData('table-create-compensations-select-option')
+      .should('have.length', 11);
+
+    cy.getByData('table-create-compensations-select-option')
+      .contains('English')
+      .should('not.exist');
+
+    cy.getByData('table-create-compensations-select-option')
+      .contains('German')
+      .should('not.exist');
+
+    cy.getByData('table-create-compensations-select-option')
+      .contains('Massage')
+      .should('exist');
   });
 });
 

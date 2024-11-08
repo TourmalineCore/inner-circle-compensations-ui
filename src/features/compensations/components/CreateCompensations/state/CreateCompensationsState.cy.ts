@@ -68,7 +68,7 @@ describe('CreateCompensationsState', () => {
       loadedTypes: INITIAL_TYPES,
     });
 
-    expect(createCompensationsState.allTypes).to.has.lengthOf(13);
+    expect(createCompensationsState.allTypes).to.has.lengthOf(11);
   });
 
   it(`

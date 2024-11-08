@@ -9,7 +9,7 @@ const initialData = {
       compensationRequestedAtUtc: '2023-06-08T11:42:04.467165Z',
       compensationRequestedForYearAndMonth: '2023-06-08T11:42:04.467165Z',
       comment: 'I bought milk',
-      compensationType: 'English',
+      compensationType: 'Massage',
       amount: 760,
       isPaid: false,
       employeeId: 1,
@@ -18,7 +18,7 @@ const initialData = {
       compensationRequestedAtUtc: '2023-06-09T11:42:04.467165Z',
       compensationRequestedForYearAndMonth: '2023-06-08T11:42:04.467165Z',
       comment: 'I bought second',
-      compensationType: 'English',
+      compensationType: 'Massage',
       amount: 760,
       isPaid: false,
       employeeId: 1,
@@ -100,7 +100,7 @@ describe('CompensationsTable', () => {
 
     cy.getByData('compensations-table-column-type')
       .first()
-      .should('have.text', 'English');
+      .should('have.text', 'Massage');
 
     cy.getByData('compensations-table-column-comment')
       .first()
