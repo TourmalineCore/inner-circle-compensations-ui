@@ -7,11 +7,11 @@ import { TableCreateCompensations } from './TableCreateCompensations';
 const INITIAL_TYPES = [
   {
     typeId: 1,
-    label: 'Other',
+    label: 'English',
   },
   {
     typeId: 2,
-    label: 'Medical consultation',
+    label: 'German',
   },
   {
     typeId: 3,
@@ -48,6 +48,14 @@ const INITIAL_TYPES = [
   {
     typeId: 11,
     label: 'Psychotherapy',
+  },
+  {
+    typeId: 12,
+    label: 'Medical consultation',
+  },
+  {
+    typeId: 13,
+    label: 'Other',
   },
 ];
 
@@ -196,7 +204,7 @@ describe('TableCreateCompensations', () => {
       .should('have.length', 1);
   });
 
-  it.only(`
+  it(`
   GIVEN compensations page 
   WHEN enter amount
   THEN calculate correct sum total
@@ -221,6 +229,32 @@ describe('TableCreateCompensations', () => {
 
     cy.getByData('table-create-compensations-sum')
       .should('have.text', formatMoney(1010));
+  });
+
+  it(`
+  GIVEN compensations page 
+  WHEN choose compensation type
+  THEN see all types except English and German
+  `, () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-column-select')
+      .click();
+
+    cy.getByData('table-create-compensations-select-option')
+      .should('have.length', 11);
+
+    cy.getByData('table-create-compensations-select-option')
+      .contains('English')
+      .should('not.exist');
+
+    cy.getByData('table-create-compensations-select-option')
+      .contains('German')
+      .should('not.exist');
+
+    cy.getByData('table-create-compensations-select-option')
+      .contains('Massage')
+      .should('exist');
   });
 });
 

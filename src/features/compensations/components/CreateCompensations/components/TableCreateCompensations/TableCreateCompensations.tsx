@@ -43,6 +43,7 @@ export const TableCreateCompensations = observer(() => {
               >
                 {createCompensationState.allTypes.map(({ label, typeId: type }) => (
                   <option
+                    data-cy="table-create-compensations-select-option"
                     key={type}
                     value={type}
                   >
