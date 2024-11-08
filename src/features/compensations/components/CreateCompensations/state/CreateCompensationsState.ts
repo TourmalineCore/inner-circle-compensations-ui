@@ -41,7 +41,7 @@ export class CreateCompensationsState {
   }
 
   get allTypes() {
-    return this._types;
+    return this._types.filter((item) => item.typeId !== 1 && item.typeId !== 2);
   }
 
   get compensationRequestedForYearAndMonth() {
