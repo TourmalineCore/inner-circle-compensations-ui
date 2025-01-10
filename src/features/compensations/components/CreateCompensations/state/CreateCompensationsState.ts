@@ -41,7 +41,13 @@ export class CreateCompensationsState {
   }
 
   get allTypes() {
-    return this._types.filter((item) => item.typeId !== 1 && item.typeId !== 2);
+    return this._types.filter((item) => item.typeId !== 1
+    && item.typeId !== 2
+    && item.typeId !== 3
+    && item.typeId !== 4
+    && item.typeId !== 7
+    && item.typeId !== 8
+    && item.typeId !== 9);
   }
 
   get compensationRequestedForYearAndMonth() {

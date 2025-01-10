@@ -2,61 +2,7 @@
 import '../../../../../cypress/support/commands';
 import { API_ROOT, LINK_TO_COMPENSATIONS_SERVICE } from '../../../../common/config/config';
 import { CreateCompensations } from './CreateCompensations';
-
-const INITIAL_TYPES = [
-  {
-    typeId: 1,
-    label: 'English',
-  },
-  {
-    typeId: 2,
-    label: 'German',
-  },
-  {
-    typeId: 3,
-    label: 'Swimming',
-  },
-  {
-    typeId: 4,
-    label: 'Water',
-  },
-  {
-    typeId: 5,
-    label: 'Coworking',
-  },
-  {
-    typeId: 6,
-    label: 'Massage',
-  },
-  {
-    typeId: 7,
-    label: 'Products',
-  },
-  {
-    typeId: 8,
-    label: 'Consumables',
-  },
-  {
-    typeId: 9,
-    label: 'Periphery',
-  },
-  {
-    typeId: 10,
-    label: 'Business trip',
-  },
-  {
-    typeId: 11,
-    label: 'Psychotherapy',
-  },
-  {
-    typeId: 12,
-    label: 'Medical consultation',
-  },
-  {
-    typeId: 13,
-    label: 'Other',
-  },
-];
+import { INITIAL_TYPES } from './types/InitialTypes';
 
 describe('CreateCompensations', () => {
   it(`

@@ -2,62 +2,8 @@
 import { formatMoney } from '../../../../../../common/utils/formatMoney';
 import { CreateCompensationsState } from '../../state/CreateCompensationsState';
 import { CreateCompensationsStateContext } from '../../state/CreateCompensationsStateContext';
+import { INITIAL_TYPES } from '../../types/InitialTypes';
 import { TableCreateCompensations } from './TableCreateCompensations';
-
-const INITIAL_TYPES = [
-  {
-    typeId: 1,
-    label: 'English',
-  },
-  {
-    typeId: 2,
-    label: 'German',
-  },
-  {
-    typeId: 3,
-    label: 'Swimming',
-  },
-  {
-    typeId: 4,
-    label: 'Water',
-  },
-  {
-    typeId: 5,
-    label: 'Coworking',
-  },
-  {
-    typeId: 6,
-    label: 'Massage',
-  },
-  {
-    typeId: 7,
-    label: 'Products',
-  },
-  {
-    typeId: 8,
-    label: 'Consumables',
-  },
-  {
-    typeId: 9,
-    label: 'Periphery',
-  },
-  {
-    typeId: 10,
-    label: 'Business trip',
-  },
-  {
-    typeId: 11,
-    label: 'Psychotherapy',
-  },
-  {
-    typeId: 12,
-    label: 'Medical consultation',
-  },
-  {
-    typeId: 13,
-    label: 'Other',
-  },
-];
 
 describe('TableCreateCompensations', () => {
   it(`
@@ -235,25 +181,67 @@ describe('TableCreateCompensations', () => {
   GIVEN compensations page 
   WHEN choose compensation type
   THEN see all types except English and German
+  AND except Swimming, Water, Products, Consumables, Periphery
+  AND including Sport and Office expenses
   `, () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations-column-select')
+    cy
+      .getByData('table-create-compensations-column-select')
       .click();
 
-    cy.getByData('table-create-compensations-select-option')
-      .should('have.length', 11);
+    cy
+      .getByData('table-create-compensations-select-option')
+      .should('have.length', 8);
 
-    cy.getByData('table-create-compensations-select-option')
+    cy
+      .getByData('table-create-compensations-select-option')
       .contains('English')
       .should('not.exist');
 
-    cy.getByData('table-create-compensations-select-option')
+    cy
+      .getByData('table-create-compensations-select-option')
       .contains('German')
       .should('not.exist');
 
-    cy.getByData('table-create-compensations-select-option')
+    cy
+      .getByData('table-create-compensations-select-option')
       .contains('Massage')
+      .should('exist');
+
+    cy
+      .getByData('table-create-compensations-select-option')
+      .contains('Swimming')
+      .should('not.exist');
+
+    cy
+      .getByData('table-create-compensations-select-option')
+      .contains('Water')
+      .should('not.exist');
+
+    cy
+      .getByData('table-create-compensations-select-option')
+      .contains('Products')
+      .should('not.exist');
+
+    cy
+      .getByData('table-create-compensations-select-option')
+      .contains('Consumables')
+      .should('not.exist');
+
+    cy
+      .getByData('table-create-compensations-select-option')
+      .contains('Periphery')
+      .should('not.exist');
+
+    cy
+      .getByData('table-create-compensations-select-option')
+      .contains('Sport')
+      .should('exist');
+
+    cy
+      .getByData('table-create-compensations-select-option')
+      .contains('Office expenses')
       .should('exist');
   });
 });
