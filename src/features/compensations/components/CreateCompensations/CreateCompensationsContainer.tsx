@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
+import { toast } from 'react-toastify';
 import { api } from '../../../../common/api';
 import { LINK_TO_COMPENSATIONS_SERVICE } from '../../../../common/config/config';
 import { CompensationsStateContext } from '../Compensations/state/CompensationsStateContext';
@@ -38,8 +39,8 @@ export const CreateCompensationsContainer = observer(() => {
       const { data } = await api.get(`${LINK_TO_COMPENSATIONS_SERVICE}types`);
 
       createCompensationState.initializeTypes({ loadedTypes: data });
-    } catch {
-      console.log('error');
+    } catch (e:any) {
+      toast.error(e.message);
     }
   }
 
@@ -64,7 +65,7 @@ export const CreateCompensationsContainer = observer(() => {
         loadedCompensations: data,
       });
     } catch {
-      console.log(createCompensationState.isFilled);
+      toast.error(createCompensationState.isFilled);
     }
   }
 });
