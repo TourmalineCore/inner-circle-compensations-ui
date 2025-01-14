@@ -9,6 +9,6 @@
   }, 
   "include": [
     "**/*.ts",
-    "**/*.tsx",
+    "**/*.tsx", "../cypress.config.local.ts",
   ]  
 } 

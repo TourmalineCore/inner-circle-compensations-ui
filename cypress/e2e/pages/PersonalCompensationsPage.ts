@@ -8,6 +8,10 @@ export class PersonalCompensationsPage {
       .getByData('compensations-table')
       .contains(comment)
       .parent()
-      .should('contain', status);
+      .within(() => {
+        cy
+          .getByData('compensations-table-column-amount')
+          .should('have.class', `compensations-table__column-amount--${status}`);
+      });
   }
 }

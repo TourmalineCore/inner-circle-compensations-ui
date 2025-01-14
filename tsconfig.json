@@ -23,6 +23,7 @@
     "**/*.d.ts",
     "./.eslintrc.json",
     "cypress",
-    "local-config-builder.js"
+    "local-config-builder.js", 
+    "cypress.config.local.ts"  
   ]
 }

@@ -4,14 +4,22 @@ import { PersonalCompensationsPage } from './pages/PersonalCompensationsPage';
 const E2E_SMOKE_COMMENT_PREFIX = '[E2E-SMOKE]';
 
 describe('Compensations Smoke', () => {
+  beforeEach('Authorize', () => {
+    cy.authByApi();
+  });
+
+  beforeEach('Cleanup', cy.removeCompensations);
+  afterEach('Cleanup', cy.removeCompensations);
+
   it(`
-  GIVEN personal compensations page
+  GIVEN compensations flow
   WHEN add a new compensation
-  SHOULD see it as unpaid in the personal list
-  GIVEN all compensations page
-  WHEN click MarkAsPaid for a new compensation
-  SHOULD see it as paid in the personal list at personal compensations page
+  SHOULD see it as unpaid in the personal list 
+  AND click MarkAsPaid for a new compensation
+  SHOULD see it as paid in the personal list
   `, () => {
+    cy.authByUI();
+
     PersonalCompensationsPage.visit();
 
     const newCompensationComment = `${E2E_SMOKE_COMMENT_PREFIX} ${new Date()}`;
@@ -36,18 +44,19 @@ describe('Compensations Smoke', () => {
       .getByData('create-compensations-container-submit')
       .click();
 
-    PersonalCompensationsPage.checkStatus(newCompensationComment, 'Unpaid');
+    PersonalCompensationsPage.checkStatus(newCompensationComment, 'unpaid');
 
     AllCompensationsPage.visit();
-
+    AllCompensationsPage.findCompensation(newCompensationComment);
     cy
-      .contains(newCompensationComment)
-      .parents('tr')
-      .find('mark-as-paid-button')
+      .getByData('mark-as-paid-button')
       .click();
 
     PersonalCompensationsPage.visit();
+    cy
+      .get('#all')
+      .click();
 
-    PersonalCompensationsPage.checkStatus(newCompensationComment, 'Paid');
+    PersonalCompensationsPage.checkStatus(newCompensationComment, 'paid');
   });
 });
