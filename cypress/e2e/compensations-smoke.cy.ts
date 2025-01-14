@@ -9,6 +9,11 @@ describe('Compensations Smoke', () => {
   });
 
   beforeEach('Cleanup', cy.removeCompensations);
+
+  afterEach('Authorize', () => {
+    cy.authByApi();
+  });
+
   afterEach('Cleanup', cy.removeCompensations);
 
   it(`
@@ -18,6 +23,7 @@ describe('Compensations Smoke', () => {
   AND click MarkAsPaid for a new compensation
   SHOULD see it as paid in the personal list
   `, () => {
+    cy.clearAuthToken();
     cy.authByUI();
 
     PersonalCompensationsPage.visit();
@@ -26,6 +32,7 @@ describe('Compensations Smoke', () => {
 
     cy
       .getByData('compensations-table')
+      .should('be.visible')
       .should('not.contain', newCompensationComment);
 
     cy
@@ -48,13 +55,17 @@ describe('Compensations Smoke', () => {
 
     AllCompensationsPage.visit();
     AllCompensationsPage.findCompensation(newCompensationComment);
+
     cy
       .getByData('mark-as-paid-button')
+      .should('be.visible')
       .click();
 
     PersonalCompensationsPage.visit();
+
     cy
       .get('#all')
+      .should('be.visible')
       .click();
 
     PersonalCompensationsPage.checkStatus(newCompensationComment, 'paid');

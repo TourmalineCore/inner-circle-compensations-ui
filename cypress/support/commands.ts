@@ -63,6 +63,7 @@ Cypress.Commands.add('authByApi', () => {
 });
 
 Cypress.Commands.add('authByUI', () => {
+  cy.intercept('POST', '/api/auth/login').as('authRequest');
   cy.visit('/auth').then(() => {
     cy.url().then((url) => {
       if (url.includes('/auth')) {
@@ -77,6 +78,7 @@ Cypress.Commands.add('authByUI', () => {
       }
     });
   });
+  cy.wait('@authRequest');
 });
 
 Cypress.Commands.add('removeCompensations', () => {
@@ -117,4 +119,11 @@ Cypress.Commands.add('removeCompensations', () => {
       });
     });
   });
+});
+
+Cypress.Commands.add('clearAuthToken', () => {
+  cy.clearLocalStorage();
+  cy.clearAllSessionStorage();
+
+  Cypress.env('accessToken', null);
 });
