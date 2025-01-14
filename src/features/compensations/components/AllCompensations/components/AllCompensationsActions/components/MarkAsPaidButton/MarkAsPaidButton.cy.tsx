@@ -14,7 +14,7 @@ const initialData = [
   },
   {
     id: 56,
-    compensationType: 'Water',
+    compensationType: 'Massage',
     comment: 'I bought this',
     amount: 2760.45,
     compensationRequestedAtUtc: '2023-12-19T06:56:49Z',

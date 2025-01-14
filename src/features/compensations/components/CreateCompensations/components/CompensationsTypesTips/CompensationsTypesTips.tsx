@@ -1,48 +1,35 @@
 const ARRAY_TYPES_TIPS = [
   {
-    type: 'Swimming',
-    description: 'бассейн. 8 занятий в месяц.',
-  },
-  {
-    type: 'Water',
-    description: 'покупка воды в офис. Cтарайтесь брать по офисной карте. Покупайте за свой счёт только если на офисной карте закончились деньги.',
-  },
-  {
     type: 'Coworking',
-    description: 'коворкинг. Количество по согласованию.',
+    description: 'the number of times in the co-working space are payable in consultation with the manager.',
   },
   {
     type: 'Massage',
-    description: 'массаж спины. 10 сеансов в год.',
+    description: '10 back massage sessions per year. 1 session - max 2000 rubles.',
   },
   {
     type: 'Psychotherapy',
-    description: 'сессии с психотерапевтом. 1 сессия в месяц.',
+    description: '1 psychotherapy session per month. 1 session - max 3000 rubles.',
   },
   {
-    type: 'Products',
-    description: 'покупка продуктов в офис. Cтарайтесь брать по офисной карте. Покупайте за свой счёт только если на офисной карте закончились деньги.',
-  },
-  {
-    type: 'Consumables',
-    description: 'покупка расходников в офис: бумага для принтера и т.д.',
-  },
-  {
-    type: 'Periphery',
-    description: `покупка оборудования для техники: мышки, коврики, провода и т.д. Cтарайтесь покупать через Юлю. 
-    Покупайте за свой счёт только если их нет на месте или нужно купить быстрее.`,
+    type: 'Office expenses',
+    description: 'buy something for the company. These things can include, for example, peripherals for technology, groceries, water, printer paper.',
   },
   {
     type: 'Business trip',
-    description: 'расходы на командировку и во время неё: авиа/жд билеты, аренда жилья, другие расходы по согласованию.',
+    description: 'the list of compensated expences during business trip are announced by manager before the trip.',
   },
   {
     type: 'Medical consultation',
-    description: 'консультация у узкого мед специалиста (не терапевт) в платных клиниках. Максимум 3600 руб. за одну консультацию. 2 консультации в год. Стоматология не входит.',
+    description: '2 consultations per year with narrow profile doctors. 1 consultation - max 3600 rubles. Dentistry is not included.',
+  },
+  {
+    type: 'Sport',
+    description: 'any kind of paid sport trainings. 1 month - max 3000 rubles.',
   },
   {
     type: 'Other',
-    description: 'расходы не подходящие под другие тэги.',
+    description: 'expenses that don\'t fit under other tags.',
   },
 ];
 
