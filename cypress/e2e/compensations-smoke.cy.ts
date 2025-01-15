@@ -1,3 +1,4 @@
+/* test to launch locally */
 import { AllCompensationsPage } from './pages/AllCompensationsPage';
 import { PersonalCompensationsPage } from './pages/PersonalCompensationsPage';
 
