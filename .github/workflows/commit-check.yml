@@ -1,4 +1,4 @@
-name: Check lint and cypress components test 
+name: Check lint and cypress tests
 
 on:
   push:
@@ -107,6 +107,7 @@ jobs:
       - name: E2E test
         uses: cypress-io/github-action@v5
         with:
+          start: npm run start:local
           # wait-on: "http://localhost:4003" 
           spec: "cypress/e2e/smoke-with-mocks.cy.ts"
           browser: chrome
