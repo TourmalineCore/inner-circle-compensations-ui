@@ -101,8 +101,8 @@ jobs:
           name: build
           path: build
 
-      - name: Start application
-        run: npm run start:local &
+      # - name: Start application
+      #   run: npm run start:local &
 
       - name: E2E test
         uses: cypress-io/github-action@v5
