@@ -29,7 +29,6 @@ describe('Compensations Smoke', () => {
     PersonalCompensationsPage.visit();
 
     // check that the table doesn`t contain new compensation
-    cy.log('Waiting for getAllCompensations_1...');
     cy.wait('@getAllCompensations_1');
 
     cy
