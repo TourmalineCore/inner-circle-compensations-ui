@@ -28,7 +28,11 @@ For e2e tests you must to ask your colleagues for the `cypress.config.local.ts` 
 
 #### smoke-with-mocks.cy.ts
 
-To run this test you must to delete file `cypress/env-config.js` or create local config, using `npm run create-config:local`
+To run this test you must to start app using 
+
+```
+npm run start:local
+```
 
 and run test in console
 
