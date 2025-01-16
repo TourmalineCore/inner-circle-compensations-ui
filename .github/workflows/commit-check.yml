@@ -101,9 +101,6 @@ jobs:
           name: build
           path: build
 
-      # - name: Start application
-      #   run: npm run start:local &
-
       - name: E2E test
         uses: cypress-io/github-action@v5
         with:
@@ -112,6 +109,8 @@ jobs:
           spec: "cypress/e2e/smoke-with-mocks.cy.ts"
           browser: chrome
           record: true
+          parallel: true
+          group: "Chrome e2e"
         env: 
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
