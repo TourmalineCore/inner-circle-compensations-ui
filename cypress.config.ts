@@ -5,7 +5,11 @@ export default defineConfig({
     viewportWidth: 1200,
     viewportHeight: 660,
     specPattern: 'cypress/e2e/**/*.cy.ts',
-    baseUrl: 'https://tourmalinecore.github.io/React-Admin-Template',
+    baseUrl: 'http://localhost:4003',
+    env: {
+      API_ROOT: process.env.API_ROOT || 'http://localhost:5030/api',
+      LINK_TO_COMPENSATIONS_SERVICE: process.env.LINK_TO_COMPENSATIONS_SERVICE || '/',
+    },
     video: false,
     setupNodeEvents(on, config) {},
   },
