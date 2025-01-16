@@ -32,6 +32,7 @@ export {};
 // }
 
 Cypress.Commands.add('getByData', (selector) => cy.get(`[data-cy=${selector}]`));
+
 Cypress.Commands.add('authByApi', () => {
   let accessToken: string;
   const authService = createAuthService({

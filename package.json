@@ -23,7 +23,8 @@
     "prepare": "husky install",
     "cy:run": "cypress run --component",
     "cy:component": "cypress open --component --browser chrome",
-    "cy:e2e": "cypress open --e2e --browser chrome --config-file cypress.config.local.ts"
+    "cy:e2e": "cypress open --e2e --browser chrome --config-file cypress.config.local.ts",
+    "cy:run:e2e": "cypress run --e2e --spec cypress/e2e/smoke-with-mocks.cy.ts --config-file cypress.config.local.ts"
   },
   "dependencies": {
     "@commitlint/cli": "^17.1.2",
