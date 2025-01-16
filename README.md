@@ -26,6 +26,12 @@ npm run cy:open
 
 For e2e tests you must to ask your colleagues for the `cypress.config.local.ts` file
 
+to open cypress use this command
+
+```
+npm run cy:e2e
+```
+
 #### smoke-with-mocks.cy.ts
 
 To run this test you must to start app using 
@@ -37,10 +43,13 @@ npm run start:local
 and run test in console
 
 ```
-npm run cy:run:e2e
+npm run cy:run:e2e:mock
 ```
 
-or open it in cypress
+#### compensations-smoke.cy.ts
+
+run this test in console
+
 ```
-npm run cy:e2e
+npm run cy:run:e2e
 ```
