@@ -75,7 +75,7 @@ jobs:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_BASE_URL: ${{ secrets.DEV_BASE_URL }}
           API_ROOT: ${{ secrets.DEV_LINK_TO_API_SERVICE }}
-          API_ROOT_AUTH: ${{ secrets.DEV_LINK_TO_API_ROOT_AUTH }}
+          API_ROOT_AUTH: ${{ secrets.TEST_LINK_TO_API_ROOT_AUTH }}
           LINK_TO_COMPENSATIONS_SERVICE: ${{ secrets.DEV_LINK_TO_COMPENSATIONS_SERVICE }}
           USER_LOGIN: ${{ secrets.DEV_USER_LOGIN }}
           USER_PASSWORD: ${{ secrets.DEV_USER_PASSWORD }}
