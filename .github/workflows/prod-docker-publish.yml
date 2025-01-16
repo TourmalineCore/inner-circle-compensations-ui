@@ -61,12 +61,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Download the build folders
-        uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: build
-
       - name: E2E test on prod
         uses: cypress-io/github-action@v5
         with:
