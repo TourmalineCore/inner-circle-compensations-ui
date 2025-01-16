@@ -5,17 +5,15 @@ import { PersonalCompensationsPage } from './pages/PersonalCompensationsPage';
 const E2E_SMOKE_COMMENT_PREFIX = '[E2E-SMOKE]';
 
 describe('Compensations Smoke', () => {
-  beforeEach('Authorize', () => {
+  beforeEach('Authorize and cleanup', () => {
     cy.authByApi();
+    cy.removeCompensations();
   });
 
-  beforeEach('Cleanup', cy.removeCompensations);
-
-  afterEach('Authorize', () => {
+  afterEach('Authorize and cleanup', () => {
     cy.authByApi();
+    cy.removeCompensations();
   });
-
-  afterEach('Cleanup', cy.removeCompensations);
 
   it(`
   GIVEN compensations flow
