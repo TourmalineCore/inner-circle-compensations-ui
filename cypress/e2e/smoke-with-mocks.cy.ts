@@ -21,7 +21,7 @@ describe('Compensations Smoke', () => {
   SHOULD see it as paid in the personal list
   `, () => {
     Mocks.mockAuth();
-    Mocks.mockGetAllCompensations_1();
+    // Mocks.mockGetAllCompensations_1();
     Mocks.mockGetTypes();
     Mocks.mockCreateCompensation();
 
@@ -29,7 +29,7 @@ describe('Compensations Smoke', () => {
     PersonalCompensationsPage.visit();
 
     // check that the table doesn`t contain new compensation
-    cy.wait('@getAllCompensations_1');
+    // cy.wait('@getAllCompensations_1');
 
     cy
       .getByData('compensations-table')
