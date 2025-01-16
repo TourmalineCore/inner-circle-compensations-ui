@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - feature/*
   pull_request:
 
 env:
@@ -22,6 +23,7 @@ jobs:
           docker build -t $GITHUB_REGISTRY/tourmalinecore/inner-circle/compensations:latest -t $GITHUB_REGISTRY/tourmalinecore/inner-circle/compensations:${{ github.sha }} .
           docker push $GITHUB_REGISTRY/tourmalinecore/inner-circle/compensations:latest
           docker push $GITHUB_REGISTRY/tourmalinecore/inner-circle/compensations:${{ github.sha }}
+  
   deploy-to-prod-k8s:
     needs: build-image
     name: Deploy service to k8s for prod environment  
@@ -49,3 +51,37 @@ jobs:
             "${RELEASE_NAME}" \
             bitnami/nginx --version 15.0.2
           kubeconfig: "${{ secrets.DEV_KUBECONFIG }}"
+
+  e2e-test-prod:
+  runs-on: ubuntu-22.04
+  container: cypress/browsers:node-18.14.1-chrome-111.0.5563.146-1-ff-111.0.1-edge-111.0.1661.54-1
+  needs: deploy-to-prod-k8s
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Download the build folders
+      uses: actions/download-artifact@v3
+      with:
+        name: build
+        path: build
+
+    - name: E2E test on prod
+      uses: cypress-io/github-action@v5
+      with:
+        start: npm run start
+        spec: "cypress/e2e/compensations-smoke.cy.ts"
+        browser: chrome
+        record: true
+        parallel: true
+        group: "Chrome e2e prod"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+        CYPRESS_BASE_URL: ${{ secrets.DEV_HOST }}
+        API_ROOT: ${{ secrets.DEV_LINK_TO_API_SERVICE }}
+        API_ROOT_AUTH: ${{ secrets.DEV_LINK_TO_API_ROOT_AUTH }}
+        LINK_TO_COMPENSATIONS_SERVICE: ${{ secrets.DEV_LINK_TO_COMPENSATIONS_SERVICE }}
+        USER_LOGIN: ${{ secrets.DEV_USER_LOGIN }}
+        USER_PASSWORD: ${{ secrets.DEV_USER_PASSWORD }}
