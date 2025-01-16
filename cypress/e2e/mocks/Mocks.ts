@@ -23,6 +23,8 @@ export class Mocks {
   }
 
   static mockGetAllCompensations_1() {
+    cy.log(`1111${Cypress.env('API_ROOT')}${Cypress.env('LINK_TO_COMPENSATIONS_SERVICE')}/all`);
+
     cy.intercept('GET', `${Cypress.env('API_ROOT')}${Cypress.env('LINK_TO_COMPENSATIONS_SERVICE')}/all`, {
       statusCode: 200,
       body: {

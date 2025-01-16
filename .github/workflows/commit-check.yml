@@ -106,7 +106,6 @@ jobs:
         with:
           start: npm run start:local
           wait-on: "http://localhost:4003"
-          wait-on-timeout: 120
           spec: "cypress/e2e/smoke-with-mocks.cy.ts"
           browser: chrome
           record: true

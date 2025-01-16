@@ -25,19 +25,12 @@ describe('Compensations Smoke', () => {
     Mocks.mockGetTypes();
     Mocks.mockCreateCompensation();
 
-    // // visit personal page
-    // PersonalCompensationsPage.visit();
-
-    // // check that the table doesn`t contain new compensation
-    // cy.wait('@getAllCompensations_1');
-
-    cy.log('Visiting PersonalCompensationsPage...');
+    // visit personal page
     PersonalCompensationsPage.visit();
 
+    // check that the table doesn`t contain new compensation
     cy.log('Waiting for getAllCompensations_1...');
-    cy.wait('@getAllCompensations_1', { timeout: 10000 }).then((interception) => {
-      cy.log('getAllCompensations_1 intercepted:', interception);
-    });
+    cy.wait('@getAllCompensations_1');
 
     cy
       .getByData('compensations-table')
