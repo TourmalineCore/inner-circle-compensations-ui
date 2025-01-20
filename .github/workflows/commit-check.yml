@@ -107,7 +107,7 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
           runCmd: |
-            cd ../inner-circle-local-env
+            cd ../../inner-circle-local-env
             ls -a
             kind create cluster --name inner-circe --config kind-local-config.yaml --kubeconfig ./.inner-circe-cluster-kubeconfig
             echo -e "\nimage:\n  tag: \"${{ github.sha }}\"" >> ./deploy/values-compensations-ui.yaml.gotmpl 
