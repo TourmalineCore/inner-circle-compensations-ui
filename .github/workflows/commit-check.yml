@@ -92,29 +92,45 @@ jobs:
     container: cypress/browsers:node-18.14.1-chrome-111.0.5563.146-1-ff-111.0.1-edge-111.0.1661.54-1
     needs: install
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Checkout ui
+        uses: actions/checkout@v4
 
-      - name: Download the build folders
-        uses: actions/download-artifact@v3
+      - name: Checkout local-env
+        uses: actions/checkout@v4
         with:
-          name: build
-          path: build
+          repository: TourmalineCore/inner-circle-local-env
 
-      - name: E2E test
-        uses: cypress-io/github-action@v5
+      - name: Deploy Local Env to Kind k8s
+        uses: devcontainers/ci@v0.3
         with:
-          start: npm run start:local
-          wait-on: "http://localhost:4003"
-          spec: "cypress/e2e/smoke-with-mocks.cy.ts"
+          runCmd: |
+            cd ../inner-circle-local-env
+            ls -a
+            kind create cluster --name inner-circe --config kind-local-config.yaml --kubeconfig ./.inner-circe-cluster-kubeconfig
+            echo -e "\nimage:\n  tag: \"${{ github.sha }}\"" >> ./deploy/values-compensations-ui.yaml.gotmpl 
+            helmfile cache cleanup && helmfile --environment local --namespace local -f deploy/helmfile.yaml apply
+          # we don't need to push docker image that was built using our Dev Container
+          push: never
+
+      # currently there's a risk that when we run this step the cluster is already destroyed since it was created in a previous step
+      # for the sake of simlicity it is kept like this here
+      # however, in production with longer pipelines: more services and more tests it will most likely start causing issues
+      # creation of the cluster and deployment to it should be in the same step as the e2e tests running 
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          spec: "cypress/e2e/compensations-smoke.cy.ts"
           browser: chrome
           record: true
           parallel: true
-          group: "Chrome e2e"
-        env: 
+          group: "Chrome e2e local-env"
+        env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-          CYPRESS_BASE_URL: 'http://localhost:4003'
-          API_ROOT: 'http://localhost:5030/api'
-          LINK_TO_COMPENSATIONS_SERVICE: '/'
+          CYPRESS_BASE_URL: http://localhost:40100
+          API_ROOT: /api
+          API_ROOT_AUTH: /api/auth,
+          LINK_TO_COMPENSATIONS_SERVICE: /compensations
+          USER_LOGIN: ceo@tourmalinecore.com,
+          USER_PASSWORD: cEoPa$$wo1d,
