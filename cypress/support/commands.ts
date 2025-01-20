@@ -31,8 +31,6 @@ export {};
 //   }
 // }
 
-Cypress.Commands.add('getByData', (selector) => cy.get(`[data-cy=${selector}]`));
-
 Cypress.Commands.add('authByApi', () => {
   let accessToken: string;
   const authService = createAuthService({
@@ -58,28 +56,18 @@ Cypress.Commands.add('authByApi', () => {
         authService.setLoggedIn(loginResponseBody);
 
         accessToken = authService.getAuthToken();
+
+        cy.window().then((window) => {
+          window.localStorage.setItem('accessToken', accessToken);
+        });
+
+        cy.window().then((window) => {
+          window.sessionStorage.setItem('accessToken', accessToken);
+        });
+
         Cypress.env('accessToken', accessToken);
       });
     });
-});
-
-Cypress.Commands.add('authByUI', () => {
-  cy.intercept('POST', '/api/auth/login').as('authRequest');
-  cy.visit('/auth').then(() => {
-    cy.url().then((url) => {
-      if (url.includes('/auth')) {
-        const INPUT_LOGIN = '#login';
-        const INPUT_PASSWORD = '#password';
-        const LOG_IN_BUTTON = 'Log In';
-
-        cy.get(INPUT_LOGIN).type(Cypress.env('USER_LOGIN'));
-        cy.get(INPUT_PASSWORD).type(Cypress.env('USER_PASSWORD'));
-
-        cy.contains(LOG_IN_BUTTON).click();
-      }
-    });
-  });
-  cy.wait('@authRequest');
 });
 
 Cypress.Commands.add('removeCompensations', () => {
@@ -120,11 +108,4 @@ Cypress.Commands.add('removeCompensations', () => {
       });
     });
   });
-});
-
-Cypress.Commands.add('clearAuthToken', () => {
-  cy.clearLocalStorage();
-  cy.clearAllSessionStorage();
-
-  Cypress.env('accessToken', null);
 });
