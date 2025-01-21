@@ -110,11 +110,12 @@ jobs:
             kind create cluster --name inner-circle --config kind-local-config.yaml --kubeconfig ./.inner-circle-cluster-kubeconfig
             export KUBECONFIG=$(pwd)/.inner-circle-cluster-kubeconfig
             cat ./.inner-circle-cluster-kubeconfig
-            sleep 30
+            sleep 100
             docker ps
             kubectl config use-context kind-inner-circle
             kubectl config current-context
             kind export logs --name inner-circle
+            docker logs inner-circle-control-plane
             echo -e "\nimage:\n  tag: \"${{ github.sha }}\"" >> ./deploy/values-compensations-ui.yaml.gotmpl 
             helmfile cache cleanup && helmfile --kubeconfig $(pwd)/.inner-circle-cluster-kubeconfig --environment local --namespace local -f deploy/helmfile.yaml apply
           # we don't need to push docker image that was built using our Dev Container
