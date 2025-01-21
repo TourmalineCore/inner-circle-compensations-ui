@@ -108,6 +108,7 @@ jobs:
         with:
           runCmd: |
             kind create cluster --name inner-circle --config kind-local-config.yaml --kubeconfig ./.inner-circle-cluster-kubeconfig
+            export KUBECONFIG=$(pwd)/.inner-circle-cluster-kubeconfig
             cat ./.inner-circle-cluster-kubeconfig
             sleep 30
             docker ps
