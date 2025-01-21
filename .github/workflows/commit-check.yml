@@ -102,6 +102,18 @@ jobs:
       - name: Set up Docker
         uses: docker/setup-docker-action@v2
 
+      - name: Install Helm
+        run: |
+          curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+      - name: Install Helmfile
+        run: |
+          # Установка Helmfile
+          curl -Lo helmfile.tar.gz https://github.com/helmfile/helmfile/releases/download/v0.156.0/helmfile_0.156.0_linux_amd64.tar.gz
+          tar -xzf helmfile.tar.gz
+          sudo mv helmfile /usr/local/bin/
+          rm helmfile.tar.gz
+
       - name: Deploy Local Env to Kind k8s
         run: |
           kind create cluster --name inner-circle --config kind-local-config.yaml --kubeconfig ./.inner-circle-cluster-kubeconfig
