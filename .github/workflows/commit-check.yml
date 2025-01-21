@@ -108,12 +108,11 @@ jobs:
 
       - name: Install Helmfile
         run: |
-          # Установка Helmfile
           curl -Lo helmfile.tar.gz https://github.com/helmfile/helmfile/releases/download/v0.156.0/helmfile_0.156.0_linux_amd64.tar.gz
           tar -xzf helmfile.tar.gz
           sudo mv helmfile /usr/local/bin/
           rm helmfile.tar.gz
-          
+
       - name: Install Helm Diff plugin
         run: |
           helm plugin install https://github.com/databus23/helm-diff
@@ -124,7 +123,7 @@ jobs:
           export KUBECONFIG=$(pwd)/.inner-circle-cluster-kubeconfig
 
           echo "Waiting for cluster to be ready..."
-          kubectl wait --for=condition=Ready nodes --all --timeout=120s
+          kubectl wait --for=condition=Ready nodes --all --timeout=300s
 
           echo "Cluster info:"
           kubectl cluster-info
@@ -136,7 +135,7 @@ jobs:
           echo "Setting up Helmfile..."
           echo -e "\nimage:\n  tag: \"${{ github.sha }}\"" >> ./deploy/values-compensations-ui.yaml.gotmpl
           helmfile cache cleanup
-          helmfile --environment local --namespace local -f deploy/helmfile.yaml apply
+          helmfile --environment local --namespace local -f deploy/helmfile.yaml apply --timeout 300s
 
       # currently there's a risk that when we run this step the cluster is already destroyed since it was created in a previous step
       # for the sake of simlicity it is kept like this here
