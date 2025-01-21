@@ -111,6 +111,7 @@ jobs:
             cat ./.inner-circle-cluster-kubeconfig
             sleep 30
             docker ps
+            kubectl config use-context kind-inner-circle
             kubectl config current-context
             echo -e "\nimage:\n  tag: \"${{ github.sha }}\"" >> ./deploy/values-compensations-ui.yaml.gotmpl 
             helmfile cache cleanup && helmfile --kubeconfig $(pwd)/.inner-circle-cluster-kubeconfig --environment local --namespace local -f deploy/helmfile.yaml apply
