@@ -98,6 +98,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: TourmalineCore/inner-circle-local-env
+          ref: local-env-for-compensations-ui-e2e
 
       - name: Set up Docker
         uses: docker/setup-docker-action@v2
