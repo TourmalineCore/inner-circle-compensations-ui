@@ -112,7 +112,7 @@ jobs:
           tar -xzf helmfile.tar.gz
           sudo mv helmfile /usr/local/bin/
           rm helmfile.tar.gz
-
+          
       - name: Install Helm Diff plugin
         run: |
           helm plugin install https://github.com/databus23/helm-diff
@@ -135,7 +135,7 @@ jobs:
           echo "Setting up Helmfile..."
           echo -e "\nimage:\n  tag: \"${{ github.sha }}\"" >> ./deploy/values-compensations-ui.yaml.gotmpl
           helmfile cache cleanup
-          helmfile --environment local --namespace local -f deploy/helmfile.yaml apply --timeout 300s
+          helmfile --environment local --namespace local -f deploy/helmfile.yaml apply
 
       # currently there's a risk that when we run this step the cluster is already destroyed since it was created in a previous step
       # for the sake of simlicity it is kept like this here
