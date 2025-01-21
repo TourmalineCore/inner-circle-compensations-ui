@@ -117,6 +117,7 @@ jobs:
             kind export logs --name inner-circle
             docker logs inner-circle-control-plane
             echo -e "\nimage:\n  tag: \"${{ github.sha }}\"" >> ./deploy/values-compensations-ui.yaml.gotmpl 
+            kubectl get nodes
             helmfile cache cleanup && helmfile --kubeconfig $(pwd)/.inner-circle-cluster-kubeconfig --environment local --namespace local -f deploy/helmfile.yaml apply
           # we don't need to push docker image that was built using our Dev Container
           push: never
