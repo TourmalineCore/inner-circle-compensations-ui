@@ -88,8 +88,7 @@ jobs:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
 
   e2e-test:
-    runs-on: ubuntu-22.04 
-    # container: cypress/browsers:node-18.14.1-chrome-111.0.5563.146-1-ff-111.0.1-edge-111.0.1661.54-1
+    runs-on: ubuntu-22.04
     needs: install
     steps:
       - name: Checkout ui
@@ -104,23 +103,24 @@ jobs:
         uses: docker/setup-docker-action@v2
 
       - name: Deploy Local Env to Kind k8s
-        uses: devcontainers/ci@v0.3
-        with:
-          runCmd: |
-            kind create cluster --name inner-circle --config kind-local-config.yaml --kubeconfig ./.inner-circle-cluster-kubeconfig
-            export KUBECONFIG=$(pwd)/.inner-circle-cluster-kubeconfig
-            cat ./.inner-circle-cluster-kubeconfig
-            sleep 100
-            docker ps
-            kubectl config use-context kind-inner-circle
-            kubectl config current-context
-            kind export logs --name inner-circle
-            docker logs inner-circle-control-plane
-            echo -e "\nimage:\n  tag: \"${{ github.sha }}\"" >> ./deploy/values-compensations-ui.yaml.gotmpl 
-            kubectl get nodes
-            helmfile cache cleanup && helmfile --kubeconfig $(pwd)/.inner-circle-cluster-kubeconfig --environment local --namespace local -f deploy/helmfile.yaml apply
-          # we don't need to push docker image that was built using our Dev Container
-          push: never
+        run: |
+          kind create cluster --name inner-circle --config kind-local-config.yaml --kubeconfig ./.inner-circle-cluster-kubeconfig
+          export KUBECONFIG=$(pwd)/.inner-circle-cluster-kubeconfig
+
+          echo "Waiting for cluster to be ready..."
+          kubectl wait --for=condition=Ready nodes --all --timeout=120s
+
+          echo "Cluster info:"
+          kubectl cluster-info
+          kubectl get nodes
+
+          echo "Exporting logs for debugging..."
+          kind export logs --name inner-circle
+
+          echo "Setting up Helmfile..."
+          echo -e "\nimage:\n  tag: \"${{ github.sha }}\"" >> ./deploy/values-compensations-ui.yaml.gotmpl
+          helmfile cache cleanup
+          helmfile --kubeconfig $(pwd)/.inner-circle-cluster-kubeconfig --environment local --namespace local -f deploy/helmfile.yaml apply
 
       # currently there's a risk that when we run this step the cluster is already destroyed since it was created in a previous step
       # for the sake of simlicity it is kept like this here
