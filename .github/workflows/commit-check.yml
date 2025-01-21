@@ -113,6 +113,10 @@ jobs:
           tar -xzf helmfile.tar.gz
           sudo mv helmfile /usr/local/bin/
           rm helmfile.tar.gz
+          
+      - name: Install Helm Diff plugin
+        run: |
+          helm plugin install https://github.com/databus23/helm-diff
 
       - name: Deploy Local Env to Kind k8s
         run: |
