@@ -108,25 +108,21 @@ jobs:
             helmfile --environment local --namespace local -f deploy/helmfile.yaml apply
           push: never
 
-      # currently there's a risk that when we run this step the cluster is already destroyed since it was created in a previous step
-      # for the sake of simlicity it is kept like this here
-      # however, in production with longer pipelines: more services and more tests it will most likely start causing issues
-      # creation of the cluster and deployment to it should be in the same step as the e2e tests running 
-      # - name: Cypress run
-      #   uses: cypress-io/github-action@v6
-      #   with:
-      #     spec: "cypress/e2e/compensations-smoke.cy.ts"
-      #     browser: chrome
-      #     record: true
-      #     parallel: true
-      #     group: "Chrome e2e local-env"
-      #   env:
-      #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      #     CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-      #     CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-      #     CYPRESS_BASE_URL: http://localhost:40100
-      #     API_ROOT: /api
-      #     API_ROOT_AUTH: /api/auth,
-      #     LINK_TO_COMPENSATIONS_SERVICE: /compensations
-      #     USER_LOGIN: ceo@tourmalinecore.com,
-      #     USER_PASSWORD: cEoPa$$wo1d,
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          spec: "cypress/e2e/compensations-smoke.cy.ts"
+          browser: chrome
+          record: true
+          parallel: true
+          group: "Chrome e2e local-env"
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+          CYPRESS_BASE_URL: http://localhost:40100
+          API_ROOT: /api
+          API_ROOT_AUTH: /api/auth,
+          LINK_TO_COMPENSATIONS_SERVICE: /compensations
+          USER_LOGIN: ceo@tourmalinecore.com,
+          USER_PASSWORD: cEoPa$$wo1d,
