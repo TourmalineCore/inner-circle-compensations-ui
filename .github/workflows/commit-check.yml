@@ -121,7 +121,7 @@ jobs:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_BASE_URL: http://localhost:40100
           API_ROOT: /api
-          API_ROOT_AUTH: /api/auth,
+          API_ROOT_AUTH: /api/auth
           LINK_TO_COMPENSATIONS_SERVICE: /
-          USER_LOGIN: ceo@tourmalinecore.com,
-          USER_PASSWORD: cEoPa$$wo1d,
+          USER_LOGIN: ceo@tourmalinecore.com
+          USER_PASSWORD: cEoPa$$wo1d
