@@ -111,7 +111,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          wait-on: "http://localhost" 
+          wait-on: "http://localhost:40100" 
           spec: "cypress/e2e/compensations-smoke.cy.ts"
           browser: chrome
           record: true
@@ -121,7 +121,7 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-          CYPRESS_BASE_URL: http://localhost
+          CYPRESS_BASE_URL: http://localhost:40100
           API_ROOT: /api
           API_ROOT_AUTH: /api/auth,
           LINK_TO_COMPENSATIONS_SERVICE: /compensations
