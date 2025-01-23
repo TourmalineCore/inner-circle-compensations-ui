@@ -13,43 +13,33 @@ npm start
 To run component tests in console you need enter the command
 
 ```
-npm run cy:component
+npm run cy:run:component
 ```
 
 To open cypress to run component tests you need enter the command
 
 ```
-npm run cy:open
+npm run cy:open:component
 ```
 
 ## E2E tests
 
-For e2e tests you must to ask your colleagues for the `cypress.config.local.ts` file
+For e2e local tests you must to ask your colleagues for the `cypress.config.local.ts` file
 
 to open cypress use this command
 
 ```
-npm run cy:e2e
+npm run cy:open:e2e
 ```
 
-#### smoke-with-mocks.cy.ts
-
-To run this test you must to start app using 
-
-```
-npm run start:local
-```
-
-and run test in console
-
-```
-npm run cy:run:e2e:mock
-```
-
-#### compensations-smoke.cy.ts
-
-run this test in console
+to run it in console
 
 ```
 npm run cy:run:e2e
+```
+
+to run test in local-env you need `cypress.config.local-env.ts` file and use command
+
+```
+npm run cy:run:e2e:local-env
 ```
