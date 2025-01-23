@@ -111,6 +111,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
+          wait-on: "http://localhost" 
           spec: "cypress/e2e/compensations-smoke.cy.ts"
           browser: chrome
           record: true
