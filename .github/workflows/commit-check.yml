@@ -115,8 +115,6 @@ jobs:
           spec: "cypress/e2e/compensations-smoke.cy.ts"
           browser: chrome
           record: true
-          parallel: true
-          group: "Chrome e2e local-env"
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
