@@ -41,14 +41,15 @@ Cypress.Commands.add('authByApi', () => {
     tokenExpireAccessor: 'expiresInUtc',
   });
 
-  cy.request({
-    method: 'POST',
-    url: `${Cypress.env('API_ROOT_AUTH')}/login`,
-    body: {
-      login: Cypress.env('USER_LOGIN'),
-      password: Cypress.env('USER_PASSWORD'),
-    },
-  })
+  cy
+    .request({
+      method: 'POST',
+      url: `${Cypress.env('API_ROOT_AUTH')}/login`,
+      body: {
+        login: Cypress.env('USER_LOGIN'),
+        password: Cypress.env('USER_PASSWORD'),
+      },
+    })
     .then(({
       body: loginResponseBody,
     }) => {
