@@ -24,8 +24,8 @@
     "cy:open": "cypress open",
     "cy:run:component": "cypress run --component",
     "cy:open:component": "cypress open --component --browser chrome",
-    "cy:open:e2e": "cypress open --e2e --browser chrome --config-file cypress.config.local.ts",
-    "cy:run:e2e": "cypress run --e2e --config-file cypress.config.local.ts",
+    "cy:open:e2e": "cypress open --e2e --browser chrome --config-file cypress.config.prod.ts",
+    "cy:run:e2e": "cypress run --e2e --config-file cypress.config.prod.ts",
     "cy:run:e2e:local-env": "cypress run --e2e --config-file cypress.config.local-env.ts",
     "cy:open:e2e:local-env": "cypress open --e2e --browser chrome --config-file cypress.config.local-env.ts"
   },

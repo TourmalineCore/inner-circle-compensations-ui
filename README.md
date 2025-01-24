@@ -24,7 +24,7 @@ npm run cy:open:component
 
 ## E2E tests
 
-For e2e local tests you must to ask your colleagues for the `cypress.config.local.ts` file
+For e2e tests you must to ask your colleagues for the `cypress.config.prod.ts` file if it needs
 
 to open cypress use this command
 

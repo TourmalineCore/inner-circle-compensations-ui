@@ -28,6 +28,6 @@ yarn-debug.log*
 yarn-error.log*
 
 .eslintcache
-cypress.config.local.ts
+cypress.config.prod.ts
 
 env-config.js
