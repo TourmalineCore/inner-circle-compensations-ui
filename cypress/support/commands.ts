@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 import { createAuthService } from '@tourmalinecore/react-tc-auth';
-import { getFingerprint } from '../../src/common/utils/getFingerprint';
+// import { getFingerprint } from '../../src/common/utils/getFingerprint';
 
 Cypress.on('uncaught:exception', () => false);
 
@@ -42,33 +42,33 @@ Cypress.Commands.add('authByApi', () => {
     tokenExpireAccessor: 'expiresInUtc',
   });
 
-  cy.wrap(getFingerprint())
-    .then((fingerprint) => {
-      cy.request({
-        method: 'POST',
-        url: `${Cypress.env('API_ROOT_AUTH')}/login`,
-        body: {
-          clientFingerPrint: fingerprint,
-          login: Cypress.env('USER_LOGIN'),
-          password: Cypress.env('USER_PASSWORD'),
-        },
-      }).then(({ body: loginResponseBody }) => {
-        authService.setLoggedIn(loginResponseBody);
+  // cy.wrap(getFingerprint())
+  // .then((fingerprint) => {
+  cy.request({
+    method: 'POST',
+    url: `${Cypress.env('API_ROOT_AUTH')}/login`,
+    body: {
+      // clientFingerPrint: fingerprint,
+      login: Cypress.env('USER_LOGIN'),
+      password: Cypress.env('USER_PASSWORD'),
+    },
+  }).then(({ body: loginResponseBody }) => {
+    authService.setLoggedIn(loginResponseBody);
 
-        accessToken = authService.getAuthToken();
+    accessToken = authService.getAuthToken();
 
-        cy.window().then((window) => {
-          window.localStorage.setItem('accessToken', accessToken);
-        });
-
-        cy.window().then((window) => {
-          window.sessionStorage.setItem('accessToken', accessToken);
-        });
-
-        Cypress.env('accessToken', accessToken);
-      });
+    cy.window().then((window) => {
+      window.localStorage.setItem('accessToken', accessToken);
     });
+
+    cy.window().then((window) => {
+      window.sessionStorage.setItem('accessToken', accessToken);
+    });
+
+    Cypress.env('accessToken', accessToken);
+  });
 });
+// });
 
 Cypress.Commands.add('removeCompensations', () => {
   type CompensationsItemType = {
