@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - feature/*
   pull_request:
 
 env:
@@ -63,7 +64,6 @@ jobs:
       - name: E2E test on prod
         uses: cypress-io/github-action@v5
         with:
-          spec: "cypress/e2e/compensations-smoke.cy.ts"
           browser: chrome
           record: true
           parallel: true
