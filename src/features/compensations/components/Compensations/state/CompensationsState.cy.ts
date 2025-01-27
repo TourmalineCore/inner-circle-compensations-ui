@@ -17,6 +17,7 @@ describe('CompensationsState', () => {
             compensationRequestedForYearAndMonth: '2023-06-08T11:42:04.467165Z',
             comment: 'I bought milk',
             amount: 760,
+            quantity: 2,
             isPaid: false,
             compensationType: 'Massage',
             employeeId: 1,

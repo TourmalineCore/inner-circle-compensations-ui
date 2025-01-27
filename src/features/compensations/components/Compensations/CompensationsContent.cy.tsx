@@ -14,6 +14,7 @@ const initialData = {
       isPaid: false,
       compensationType: 'Massage',
       employeeId: 1,
+      quantity: 2,
     },
     {
       compensationRequestedAtUtc: '2023-07-08T11:42:04.467165Z',
@@ -23,9 +24,10 @@ const initialData = {
       isPaid: true,
       compensationType: 'Massage',
       employeeId: 1,
+      quantity: 1,
     },
   ],
-  totalUnpaidAmount: 760,
+  totalUnpaidAmount: 2280,
 };
 
 describe('CompensationsContent', () => {

@@ -26,7 +26,7 @@ describe('TableCreateCompensations', () => {
 
     cy.getByData('table-create-compensations-head')
       .children()
-      .should('have.length', 4);
+      .should('have.length', 6);
   });
 
   it(`
@@ -38,15 +38,21 @@ describe('TableCreateCompensations', () => {
 
     cy.getByData('table-create-compensations-item')
       .children()
-      .should('have.length', 4);
+      .should('have.length', 6);
 
     cy.getByData('table-create-compensations-select')
       .should('have.value', null);
 
+    cy.getByData('table-create-compensations-quantity')
+      .should('have.value', 1);
+
+    cy.getByData('table-create-compensations-amount')
+      .should('have.value', '');
+
     cy.getByData('table-create-compensations-comment')
       .should('have.value', '');
 
-    cy.getByData('table-create-compensations-amount')
+    cy.getByData('table-create-compensations-total-amount')
       .should('have.value', '');
 
     cy.getByData('table-create-compensations-remove-button')
@@ -73,7 +79,7 @@ describe('TableCreateCompensations', () => {
 
     cy.getByData('table-create-compensations-total')
       .children()
-      .should('have.length', 4);
+      .should('have.length', 6);
   });
 
   it(`
@@ -243,6 +249,39 @@ describe('TableCreateCompensations', () => {
       .getByData('table-create-compensations-select-option')
       .contains('Office expenses')
       .should('exist');
+  });
+
+  it(`
+  GIVEN compensations page 
+  WHEN enter text
+  THEN update compensation quantity
+  `, () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-quantity')
+      .clear()
+      .type('2');
+
+    cy.getByData('table-create-compensations-quantity')
+      .should('have.value', 2);
+  });
+
+  it(`
+  GIVEN compensations page 
+  WHEN enter quantity and amount data
+  THEN update compensation total amount
+  `, () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-quantity')
+      .clear()
+      .type('2');
+
+    cy.getByData('table-create-compensations-amount')
+      .type('20');
+
+    cy.getByData('table-create-compensations-total-amount')
+      .should('have.text', '40 ₽');
   });
 });
 

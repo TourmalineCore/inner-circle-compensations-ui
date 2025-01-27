@@ -14,8 +14,8 @@ export const CompensationsPersonalPage = observer(() => {
   return (
     <CompensationsStateContext.Provider value={compensationsState}>
       <div className="compensations-page__employee">
-        <Compensations />
         <CreateCompensations />
+        <Compensations />
       </div>
     </CompensationsStateContext.Provider>
   );

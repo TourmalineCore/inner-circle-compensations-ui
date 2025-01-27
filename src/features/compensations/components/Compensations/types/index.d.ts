@@ -4,6 +4,7 @@ type CompensationsItemType = {
   compensationRequestedForYearAndMonth: string;
   comment: string;
   amount: number;
+  quantity: number;
   isPaid: boolean;
   compensationType: string;
   employeeId: number;

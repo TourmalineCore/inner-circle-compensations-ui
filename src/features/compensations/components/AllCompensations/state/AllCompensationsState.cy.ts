@@ -10,13 +10,14 @@ allCompensationsState.initialize({
         employeeFullName: 'Ceo Ceo Ceo',
         employeeId: 55,
         compensationRequestedForYearAndMonth: '2023-12-01T05:00:00Z',
-        totalAmount: 3520.45,
-        unpaidAmount: 760,
+        totalAmount: 4280.45,
+        unpaidAmount: 1520,
         isPaid: false,
         compensations: [
           {
             id: 55,
             compensationType: 'Massage',
+            quantity: 2,
             comment: 'I bought milk',
             amount: 760,
             compensationRequestedAtUtc: '2023-12-19T06:56:49Z',
@@ -24,6 +25,7 @@ allCompensationsState.initialize({
           {
             id: 56,
             compensationType: 'Massage',
+            quantity: 1,
             comment: 'I bought this',
             amount: 2760.45,
             compensationRequestedAtUtc: '2023-12-19T06:56:49Z',
@@ -31,8 +33,8 @@ allCompensationsState.initialize({
         ],
       },
     ],
-    totalAmount: 3520.45,
-    totalUnpaidAmount: 760,
+    totalAmount: 4280.45,
+    totalUnpaidAmount: 1520,
   },
 });
 
@@ -43,8 +45,8 @@ describe('AllCompensationsState', () => {
   THEN return all compensations
   `, () => {
     expect(allCompensationsState.allCompensations.items).to.has.lengthOf(1);
-    expect(allCompensationsState.allCompensations.totalAmount).eq(3520.45);
-    expect(allCompensationsState.allCompensations.totalUnpaidAmount).eq(760);
+    expect(allCompensationsState.allCompensations.totalAmount).eq(4280.45);
+    expect(allCompensationsState.allCompensations.totalUnpaidAmount).eq(1520);
   });
 
   it(`

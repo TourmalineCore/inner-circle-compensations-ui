@@ -7,6 +7,7 @@ import { ToolTipTable } from './ToolTipTable';
 const initialData = {
   compensations: [
     {
+      quantity: 2,
       amount: 100,
       comment: 'milk',
       compensationType: 'Products',
@@ -26,7 +27,8 @@ describe('ToolTipTable', () => {
       compensations: initialData.compensations,
     });
 
-    cy.getByData('tooltip-table')
+    cy
+      .getByData('tooltip-table')
       .should('exist');
   });
 
@@ -42,11 +44,17 @@ describe('ToolTipTable', () => {
     cy.getByData('tooltip-table-column-type')
       .should('have.text', 'Products');
 
-    cy.getByData('tooltip-table-column-comment')
-      .should('have.text', 'milk');
+    cy.getByData('tooltip-table-column-quantity')
+      .should('have.text', 2);
 
     cy.getByData('tooltip-table-column-amount')
       .should('have.text', '100 ₽');
+
+    cy.getByData('tooltip-table-column-comment')
+      .should('have.text', 'milk');
+
+    cy.getByData('tooltip-table-column-total-amount')
+      .should('have.text', '200 ₽');
   });
 });
 

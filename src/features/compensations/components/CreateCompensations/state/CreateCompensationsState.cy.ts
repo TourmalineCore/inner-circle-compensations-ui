@@ -40,8 +40,9 @@ describe('CreateCompensationsState', () => {
 
     expect(createCompensationsState.allCompensations).to.has.lengthOf(2);
     expect(createCompensationsState.allCompensations[0].typeId).eq(0);
-    expect(createCompensationsState.allCompensations[0].comment).eq('');
+    expect(createCompensationsState.allCompensations[0].quantity).eq(1);
     expect(createCompensationsState.allCompensations[0].amount).eq(0);
+    expect(createCompensationsState.allCompensations[0].comment).eq('');
   });
 
   it(`
@@ -55,8 +56,9 @@ describe('CreateCompensationsState', () => {
 
     expect(createCompensationsState.allCompensations).to.has.lengthOf(2);
     expect(createCompensationsState.allCompensations[1].typeId).eq(1);
-    expect(createCompensationsState.allCompensations[1].comment).eq('');
+    expect(createCompensationsState.allCompensations[1].quantity).eq(1);
     expect(createCompensationsState.allCompensations[1].amount).eq(0);
+    expect(createCompensationsState.allCompensations[1].comment).eq('');
   });
 
   it(`
@@ -82,16 +84,12 @@ describe('CreateCompensationsState', () => {
 
     createCompensationsState.addCompensation();
 
-    createCompensationsState.updateCompensation({
-      id: 1,
-      comment: 'Test comment',
-      typeId: 1,
-      amount: 100,
-    });
+    createCompensationsState.updateCompensation(getCompensation());
 
     expect(createCompensationsState.allCompensations[1].typeId).eq(1);
-    expect(createCompensationsState.allCompensations[1].comment).eq('Test comment');
+    expect(createCompensationsState.allCompensations[1].quantity).eq(2);
     expect(createCompensationsState.allCompensations[1].amount).eq(100);
+    expect(createCompensationsState.allCompensations[1].comment).eq('Test comment');
   });
 
   it(`
@@ -103,16 +101,12 @@ describe('CreateCompensationsState', () => {
 
     createCompensationsState.addCompensation();
 
-    createCompensationsState.updateCompensation({
-      id: 1,
-      comment: 'Test comment',
-      typeId: 1,
-      amount: 100,
-    });
+    createCompensationsState.updateCompensation(getCompensation());
 
     expect(createCompensationsState.allCompensations[1].typeId).eq(1);
-    expect(createCompensationsState.allCompensations[1].comment).eq('Test comment');
+    expect(createCompensationsState.allCompensations[1].quantity).eq(2);
     expect(createCompensationsState.allCompensations[1].amount).eq(100);
+    expect(createCompensationsState.allCompensations[1].comment).eq('Test comment');
   });
 
   it(`
@@ -124,17 +118,13 @@ describe('CreateCompensationsState', () => {
 
     createCompensationsState.addCompensation();
 
-    createCompensationsState.updateCompensation({
-      id: 1,
-      comment: 'Test comment',
-      typeId: 1,
-      amount: 100,
-    });
+    createCompensationsState.updateCompensation(getCompensation());
 
     expect(createCompensationsState.allCompensations[1].typeId).eq(1);
-    expect(createCompensationsState.allCompensations[1].comment).eq('Test comment');
+    expect(createCompensationsState.allCompensations[1].quantity).eq(2);
     expect(createCompensationsState.allCompensations[1].amount).eq(100);
-    expect(createCompensationsState.totalCount).eq(100);
+    expect(createCompensationsState.allCompensations[1].comment).eq('Test comment');
+    expect(createCompensationsState.totalCount).eq(200);
   });
 
   it(`
@@ -175,12 +165,7 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.isTriedToSubmit).eq(false);
     createCompensationsState.addCompensation();
 
-    createCompensationsState.updateCompensation({
-      id: 1,
-      comment: 'Test comment',
-      typeId: 1,
-      amount: -100,
-    });
+    createCompensationsState.updateCompensation(getCompensation({ amount: -100 }));
 
     createCompensationsState.setIsTriedToSubmit(true);
     expect(createCompensationsState.isNegative).eq(true);
@@ -196,12 +181,7 @@ describe('CreateCompensationsState', () => {
     expect(createCompensationsState.isTriedToSubmit).eq(false);
     createCompensationsState.addCompensation();
 
-    createCompensationsState.updateCompensation({
-      id: 1,
-      comment: 'Test comment',
-      typeId: 1,
-      amount: 100,
-    });
+    createCompensationsState.updateCompensation(getCompensation());
 
     createCompensationsState.setIsTriedToSubmit(true);
     expect(createCompensationsState.isNegative).eq(false);
@@ -216,12 +196,12 @@ describe('CreateCompensationsState', () => {
 
     expect(createCompensationsState.isTriedToSubmit).eq(false);
 
-    createCompensationsState.updateCompensation({
+    createCompensationsState.updateCompensation(getCompensation({
       id: 0,
-      comment: 'Test comment',
       typeId: 0,
       amount: 0,
-    });
+      quantity: 1,
+    }));
 
     createCompensationsState.setIsTriedToSubmit(true);
     expect(createCompensationsState.isFilled).eq(true);
@@ -236,12 +216,12 @@ describe('CreateCompensationsState', () => {
 
     expect(createCompensationsState.isTriedToSubmit).eq(false);
 
-    createCompensationsState.updateCompensation({
+    createCompensationsState.updateCompensation(getCompensation({
       id: 0,
-      comment: 'Test comment',
       typeId: 2,
       amount: 0,
-    });
+      quantity: 1,
+    }));
 
     createCompensationsState.setIsTriedToSubmit(true);
     expect(createCompensationsState.isFilled).eq(true);
@@ -256,12 +236,11 @@ describe('CreateCompensationsState', () => {
 
     expect(createCompensationsState.isTriedToSubmit).eq(false);
 
-    createCompensationsState.updateCompensation({
+    createCompensationsState.updateCompensation(getCompensation({
       id: 0,
-      comment: 'Test comment',
       typeId: 0,
-      amount: 100,
-    });
+      quantity: 1,
+    }));
 
     createCompensationsState.setIsTriedToSubmit(true);
     expect(createCompensationsState.isFilled).eq(true);
@@ -276,14 +255,35 @@ describe('CreateCompensationsState', () => {
 
     expect(createCompensationsState.isTriedToSubmit).eq(false);
 
-    createCompensationsState.updateCompensation({
+    createCompensationsState.updateCompensation(getCompensation({
       id: 0,
-      comment: 'Test comment',
       typeId: 2,
-      amount: 100,
-    });
+      quantity: 1,
+    }));
 
     createCompensationsState.setIsTriedToSubmit(true);
     expect(createCompensationsState.isFilled).eq(false);
   });
 });
+
+function getCompensation({
+  id = 1,
+  typeId = 1,
+  quantity = 2,
+  amount = 100,
+  comment = 'Test comment',
+}: {
+  id?: number;
+  typeId?: number;
+  quantity?: number;
+  amount?: number;
+  comment?: string;
+} = {}) {
+  return {
+    id,
+    typeId,
+    quantity,
+    amount,
+    comment,
+  };
+}
