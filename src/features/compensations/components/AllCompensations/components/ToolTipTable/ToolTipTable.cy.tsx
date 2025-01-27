@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../../../cypress/support/commands';
+import { formatMoney } from '../../../../../../common/utils/formatMoney';
 import { AllCompensationsState } from '../../state/AllCompensationsState';
 import { AllCompensationsStateContext } from '../../state/AllCompensationsStateContext';
 import { ToolTipTable } from './ToolTipTable';
@@ -48,13 +49,13 @@ describe('ToolTipTable', () => {
       .should('have.text', 2);
 
     cy.getByData('tooltip-table-column-amount')
-      .should('have.text', '100 ₽');
+      .should('have.text', formatMoney(100));
 
     cy.getByData('tooltip-table-column-comment')
       .should('have.text', 'milk');
 
     cy.getByData('tooltip-table-column-total-amount')
-      .should('have.text', '200 ₽');
+      .should('have.text', formatMoney(200));
   });
 });
 

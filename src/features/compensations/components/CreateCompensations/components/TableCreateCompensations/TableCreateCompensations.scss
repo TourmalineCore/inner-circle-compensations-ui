@@ -183,7 +183,7 @@
       font-family: inherit;
       font-size: 16px;
       line-height: 1.4;
-      text-align: end;
+      text-align: left;
       color: var(--color-black);
 
       &:focus {
@@ -245,6 +245,22 @@
       &--filled {
         color: var(--color-black);
       }
+    }
+
+    &__sum {
+      padding: 8px 16px;
+      width: 100%;
+      min-width: 50px;
+      max-width: 150px;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.4;
+      text-align: end;
+      color: var(--color-black);
+    }
+
+    &--invalid {
+      border-bottom: 2px solid #da2228;
     }
   }
 

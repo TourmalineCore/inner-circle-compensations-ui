@@ -20,7 +20,7 @@ export class CreateCompensationsState {
       {
         id: 0,
         typeId: 0,
-        quantity: 0,
+        quantity: 1,
         amount: 0,
         comment: '',
       },

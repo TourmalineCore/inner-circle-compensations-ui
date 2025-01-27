@@ -175,9 +175,22 @@ describe('TableCreateCompensations', () => {
     cy.getByData('table-create-compensations-add-button')
       .click();
 
+    cy.getByData('table-create-compensations-quantity')
+      .last()
+      .clear()
+      .type('2');
+
     cy.getByData('table-create-compensations-amount')
       .last()
       .type('10');
+
+    cy.getByData('table-create-compensations-sum')
+      .should('have.text', formatMoney(1020));
+
+    cy.getByData('table-create-compensations-quantity')
+      .last()
+      .clear()
+      .type('1');
 
     cy.getByData('table-create-compensations-sum')
       .should('have.text', formatMoney(1010));
@@ -281,7 +294,7 @@ describe('TableCreateCompensations', () => {
       .type('20');
 
     cy.getByData('table-create-compensations-total-amount')
-      .should('have.text', '40 ₽');
+      .should('have.text', formatMoney(40));
   });
 });
 
