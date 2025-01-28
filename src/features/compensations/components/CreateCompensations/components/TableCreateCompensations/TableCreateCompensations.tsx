@@ -69,11 +69,11 @@ export const TableCreateCompensations = observer(() => {
                 type="number"
                 min={1}
                 placeholder="1"
+                defaultValue={1}
                 className={clsx('table-create-compensations__column-quantity__input', {
                   'table-create-compensations__column-quantity__input--default': quantity === 1,
                 })}
                 value={quantity === 0 ? '' : quantity}
-                onBlur={(e) => (e.target.value = String(quantity === 0 ? 1 : quantity))}
                 onChange={(event) => createCompensationState.updateCompensation({
                   id,
                   typeId,
