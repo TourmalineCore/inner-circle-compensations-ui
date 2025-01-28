@@ -199,6 +199,12 @@ describe('TableCreateCompensations', () => {
       .clear()
       .type('2');
 
+    // simulate loss of focus
+    cy
+      .getByData('table-create-compensations-comment')
+      .last()
+      .click();
+
     cy
       .getByData('table-create-compensations-amount')
       .last()
