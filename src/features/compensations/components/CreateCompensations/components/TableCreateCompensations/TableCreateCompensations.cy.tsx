@@ -163,36 +163,59 @@ describe('TableCreateCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations-sum')
+    cy
+      .getByData('table-create-compensations-sum')
       .should('have.text', formatMoney(0));
 
-    cy.getByData('table-create-compensations-amount')
+    cy
+      .getByData('table-create-compensations-amount')
       .type('1000');
 
-    cy.getByData('table-create-compensations-sum')
+    cy
+      .getByData('table-create-compensations-sum')
       .should('have.text', formatMoney(1000));
 
-    cy.getByData('table-create-compensations-add-button')
+    // test onblur, when clear input by default must be 1
+    cy
+      .getByData('table-create-compensations-quantity')
+      .clear();
+
+    // simulate loss of focus
+    cy
+      .getByData('table-create-compensations-comment')
       .click();
 
-    cy.getByData('table-create-compensations-quantity')
+    cy
+      .getByData('table-create-compensations-sum')
+      .should('have.text', formatMoney(1000));
+
+    cy
+      .getByData('table-create-compensations-add-button')
+      .click();
+
+    cy
+      .getByData('table-create-compensations-quantity')
       .last()
       .clear()
       .type('2');
 
-    cy.getByData('table-create-compensations-amount')
+    cy
+      .getByData('table-create-compensations-amount')
       .last()
       .type('10');
 
-    cy.getByData('table-create-compensations-sum')
+    cy
+      .getByData('table-create-compensations-sum')
       .should('have.text', formatMoney(1020));
 
-    cy.getByData('table-create-compensations-quantity')
+    cy
+      .getByData('table-create-compensations-quantity')
       .last()
       .clear()
       .type('1');
 
-    cy.getByData('table-create-compensations-sum')
+    cy
+      .getByData('table-create-compensations-sum')
       .should('have.text', formatMoney(1010));
   });
 
