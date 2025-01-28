@@ -25,6 +25,7 @@
       border-bottom: 0.5px solid var(--comp-color-light-gray);
     }
 
+    // TODO refactor like column--type etc
     &__column-type {
       overflow: hidden;
       border-right: 0.5px solid var(--comp-color-light-gray);
