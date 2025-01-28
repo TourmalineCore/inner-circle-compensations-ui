@@ -8,6 +8,7 @@ const initialData = [
   {
     id: 55,
     compensationType: 'Massage',
+    quantity: 2,
     comment: 'I bought milk',
     amount: 760,
     compensationRequestedAtUtc: '2023-12-19T06:56:49Z',
@@ -15,6 +16,7 @@ const initialData = [
   {
     id: 56,
     compensationType: 'Massage',
+    quantity: 1,
     comment: 'I bought this',
     amount: 2760.45,
     compensationRequestedAtUtc: '2023-12-19T06:56:49Z',

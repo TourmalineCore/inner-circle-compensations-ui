@@ -26,7 +26,7 @@ describe('TableCreateCompensations', () => {
 
     cy.getByData('table-create-compensations-head')
       .children()
-      .should('have.length', 4);
+      .should('have.length', 6);
   });
 
   it(`
@@ -38,15 +38,21 @@ describe('TableCreateCompensations', () => {
 
     cy.getByData('table-create-compensations-item')
       .children()
-      .should('have.length', 4);
+      .should('have.length', 6);
 
     cy.getByData('table-create-compensations-select')
       .should('have.value', null);
 
+    cy.getByData('table-create-compensations-quantity')
+      .should('have.value', 1);
+
+    cy.getByData('table-create-compensations-amount')
+      .should('have.value', '');
+
     cy.getByData('table-create-compensations-comment')
       .should('have.value', '');
 
-    cy.getByData('table-create-compensations-amount')
+    cy.getByData('table-create-compensations-total-amount')
       .should('have.value', '');
 
     cy.getByData('table-create-compensations-remove-button')
@@ -73,7 +79,7 @@ describe('TableCreateCompensations', () => {
 
     cy.getByData('table-create-compensations-total')
       .children()
-      .should('have.length', 4);
+      .should('have.length', 6);
   });
 
   it(`
@@ -157,23 +163,45 @@ describe('TableCreateCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations-sum')
+    cy
+      .getByData('table-create-compensations-sum')
       .should('have.text', formatMoney(0));
 
-    cy.getByData('table-create-compensations-amount')
+    cy
+      .getByData('table-create-compensations-amount')
       .type('1000');
 
-    cy.getByData('table-create-compensations-sum')
+    cy
+      .getByData('table-create-compensations-sum')
       .should('have.text', formatMoney(1000));
 
-    cy.getByData('table-create-compensations-add-button')
+    cy
+      .getByData('table-create-compensations-add-button')
       .click();
 
-    cy.getByData('table-create-compensations-amount')
+    cy
+      .getByData('table-create-compensations-quantity')
+      .last()
+      .clear()
+      .type('2');
+
+    cy
+      .getByData('table-create-compensations-amount')
       .last()
       .type('10');
 
-    cy.getByData('table-create-compensations-sum')
+    cy
+      .getByData('table-create-compensations-sum')
+      .should('have.text', formatMoney(1020));
+
+    cy
+      .getByData('table-create-compensations-quantity')
+      .last()
+      .clear()
+      .type('1');
+
+    cy
+      .getByData('table-create-compensations-sum')
       .should('have.text', formatMoney(1010));
   });
 
@@ -243,6 +271,60 @@ describe('TableCreateCompensations', () => {
       .getByData('table-create-compensations-select-option')
       .contains('Office expenses')
       .should('exist');
+  });
+
+  it(`
+  GIVEN compensations page 
+  WHEN enter text to quantity
+  THEN update compensation quantity
+  `, () => {
+    mountComponent();
+
+    // test onblur, when clear input by default must be 1
+    cy
+      .getByData('table-create-compensations-quantity')
+      .clear();
+
+    // simulate loss of focus
+    cy
+      .getByData('table-create-compensations-comment')
+      .click();
+
+    cy
+      .getByData('table-create-compensations-quantity')
+      .should('have.value', 1);
+
+    cy
+      .getByData('table-create-compensations-quantity')
+      .clear()
+      .type('2');
+
+    // simulate loss of focus
+    cy
+      .getByData('table-create-compensations-comment')
+      .click();
+
+    cy
+      .getByData('table-create-compensations-quantity')
+      .should('have.value', 2);
+  });
+
+  it(`
+  GIVEN compensations page 
+  WHEN enter quantity and amount data
+  THEN update compensation total amount
+  `, () => {
+    mountComponent();
+
+    cy.getByData('table-create-compensations-quantity')
+      .clear()
+      .type('2');
+
+    cy.getByData('table-create-compensations-amount')
+      .type('20');
+
+    cy.getByData('table-create-compensations-total-amount')
+      .should('have.text', formatMoney(40));
   });
 });
 

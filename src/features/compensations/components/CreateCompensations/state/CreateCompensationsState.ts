@@ -10,19 +10,19 @@ export class CreateCompensationsState {
 
   private _nextCompensationId: number = 1;
 
-  private _isFilled: boolean = false;
-
   private _compensations: {
     id: number;
     typeId: number;
+    quantity: number;
+    amount: number;
     comment: string;
-    amount: number
   }[] = [
       {
         id: 0,
         typeId: 0,
-        comment: '',
+        quantity: 1,
         amount: 0,
+        comment: '',
       },
     ];
 
@@ -59,7 +59,7 @@ export class CreateCompensationsState {
   }
 
   get totalCount() {
-    return this._compensations.reduce((accumulator, currentValue) => accumulator + currentValue.amount, 0);
+    return this._compensations.reduce((accumulator, currentValue) => accumulator + currentValue.amount * currentValue.quantity, 0);
   }
 
   get isTriedToSubmit() {
@@ -91,6 +91,7 @@ export class CreateCompensationsState {
       typeId: type || 0,
       comment: '',
       amount: 0,
+      quantity: 1,
     });
 
     this._nextCompensationId++;
@@ -107,6 +108,7 @@ export class CreateCompensationsState {
         typeId: 0,
         comment: '',
         amount: 0,
+        quantity: 1,
       },
     ];
   }
@@ -116,15 +118,18 @@ export class CreateCompensationsState {
     typeId,
     comment,
     amount,
+    quantity,
   }: {
     id: number;
     typeId: number;
     comment: string;
-    amount: number
+    amount: number;
+    quantity: number;
   }) {
     const compensationItem = this._compensations.find((compensation) => compensation.id === id);
     compensationItem!.typeId = Number(typeId);
     compensationItem!.comment = comment;
     compensationItem!.amount = amount;
+    compensationItem!.quantity = quantity;
   }
 }

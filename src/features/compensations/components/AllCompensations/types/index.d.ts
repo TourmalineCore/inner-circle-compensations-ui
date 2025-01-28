@@ -1,6 +1,7 @@
 type EmployeeAllCompensationsItemType = {
   id: number;
   compensationType: string;
+  quantity: number,
   comment: string;
   amount: number;
   compensationRequestedAtUtc: string;

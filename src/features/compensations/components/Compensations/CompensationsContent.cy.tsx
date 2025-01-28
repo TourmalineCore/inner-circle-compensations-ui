@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import '../../../../../cypress/support/commands';
+import { formatMoney } from '../../../../common/utils/formatMoney';
 import { Compensations } from './Compensations';
 import { CompensationsState } from './state/CompensationsState';
 import { CompensationsStateContext } from './state/CompensationsStateContext';
@@ -14,6 +15,7 @@ const initialData = {
       isPaid: false,
       compensationType: 'Massage',
       employeeId: 1,
+      quantity: 2,
     },
     {
       compensationRequestedAtUtc: '2023-07-08T11:42:04.467165Z',
@@ -23,9 +25,10 @@ const initialData = {
       isPaid: true,
       compensationType: 'Massage',
       employeeId: 1,
+      quantity: 1,
     },
   ],
-  totalUnpaidAmount: 760,
+  totalUnpaidAmount: 1520,
 };
 
 describe('CompensationsContent', () => {
@@ -58,10 +61,10 @@ describe('CompensationsContent', () => {
       .should('have.length', 1);
 
     cy.getByData('compensations-table-column-amount')
-      .should('have.text', '760 ₽');
+      .should('have.text', formatMoney(760));
 
     cy.getByData('compensations-table-sum')
-      .should('have.text', '760 ₽');
+      .should('have.text', formatMoney(1520));
 
     cy.getByData('compensations-filter-button')
       .first()
@@ -71,7 +74,7 @@ describe('CompensationsContent', () => {
       .should('have.length', 2);
 
     cy.getByData('compensations-table-sum')
-      .should('have.text', '760 ₽');
+      .should('have.text', formatMoney(1520));
   });
 
   it(`

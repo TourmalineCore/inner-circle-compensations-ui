@@ -4,7 +4,7 @@ import { TableCreateCompensations } from './components/TableCreateCompensations/
 
 export function CreateCompensationsContent() {
   return (
-    <div>
+    <div className="create-compensations-content">
       <CompensationsTypesTips />
       <DatePickerCompensations />
       <TableCreateCompensations />
