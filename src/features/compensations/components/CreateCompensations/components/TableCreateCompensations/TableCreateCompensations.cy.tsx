@@ -167,15 +167,6 @@ describe('TableCreateCompensations', () => {
       .getByData('table-create-compensations-sum')
       .should('have.text', formatMoney(0));
 
-    // test symbol input, it must not be exist -> return to default value
-    cy
-      .getByData('table-create-compensations-amount')
-      .type('-');
-
-    cy
-      .getByData('table-create-compensations-sum')
-      .should('have.text', formatMoney(0));
-
     cy
       .getByData('table-create-compensations-amount')
       .type('1000');
@@ -303,21 +294,6 @@ describe('TableCreateCompensations', () => {
       .getByData('table-create-compensations-quantity')
       .should('have.value', 1);
 
-    // test symbol input, it must not be exist -> return to default value
-    cy
-      .getByData('table-create-compensations-quantity')
-      .clear()
-      .type('-');
-
-    // simulate loss of focus
-    cy
-      .getByData('table-create-compensations-comment')
-      .click();
-
-    cy
-      .getByData('table-create-compensations-quantity')
-      .should('have.value', 1);
-
     cy
       .getByData('table-create-compensations-quantity')
       .clear()
@@ -349,6 +325,52 @@ describe('TableCreateCompensations', () => {
 
     cy.getByData('table-create-compensations-total-amount')
       .should('have.text', formatMoney(40));
+  });
+
+  it(`
+    GIVEN compensations page 
+    WHEN enter symbol to quantity input
+    THEN return to default value
+    `, () => {
+    mountComponent();
+
+    cy
+      .getByData('table-create-compensations-quantity')
+      .should('have.value', 1);
+
+    cy
+      .getByData('table-create-compensations-quantity')
+      .clear()
+      .type('-');
+
+    // simulate loss of focus
+    cy
+      .getByData('table-create-compensations-comment')
+      .click();
+
+    cy
+      .getByData('table-create-compensations-quantity')
+      .should('have.value', 1);
+  });
+
+  it(`
+    GIVEN compensations page 
+    WHEN enter symbol to amount input
+    THEN return to default value
+    `, () => {
+    mountComponent();
+
+    cy
+      .getByData('table-create-compensations-sum')
+      .should('have.text', formatMoney(0));
+
+    cy
+      .getByData('table-create-compensations-amount')
+      .type('-');
+
+    cy
+      .getByData('table-create-compensations-sum')
+      .should('have.text', formatMoney(0));
   });
 });
 
