@@ -38,12 +38,21 @@ describe('Compensations Smoke', () => {
       .select('5');
 
     cy
+      .getByData('table-create-compensations-quantity')
+      .clear()
+      .type('2');
+
+    cy
       .getByData('table-create-compensations-comment')
       .type(newCompensationComment);
 
     cy
       .getByData('table-create-compensations-amount')
       .type('800');
+
+    cy
+      .getByData('table-create-compensations-sum')
+      .should('have.text', '1600 ₽');
 
     cy
       .getByData('create-compensations-container-submit')
