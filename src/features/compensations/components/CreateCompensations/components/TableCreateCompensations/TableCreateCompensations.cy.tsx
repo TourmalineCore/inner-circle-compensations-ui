@@ -167,6 +167,15 @@ describe('TableCreateCompensations', () => {
       .getByData('table-create-compensations-sum')
       .should('have.text', formatMoney(0));
 
+    // test symbol input, it must not be exist -> return to default value
+    cy
+      .getByData('table-create-compensations-amount')
+      .type('-');
+
+    cy
+      .getByData('table-create-compensations-sum')
+      .should('have.text', formatMoney(0));
+
     cy
       .getByData('table-create-compensations-amount')
       .type('1000');
@@ -284,6 +293,21 @@ describe('TableCreateCompensations', () => {
     cy
       .getByData('table-create-compensations-quantity')
       .clear();
+
+    // simulate loss of focus
+    cy
+      .getByData('table-create-compensations-comment')
+      .click();
+
+    cy
+      .getByData('table-create-compensations-quantity')
+      .should('have.value', 1);
+
+    // test symbol input, it must not be exist -> return to default value
+    cy
+      .getByData('table-create-compensations-quantity')
+      .clear()
+      .type('-');
 
     // simulate loss of focus
     cy
