@@ -52,7 +52,7 @@ describe('Compensations Smoke', () => {
 
     cy
       .getByData('table-create-compensations-sum')
-      .should('have.text', '1600 ₽');
+      .should('have.text', '1 600 ₽'); // TODO use formatMoney util
 
     cy
       .getByData('create-compensations-container-submit')
