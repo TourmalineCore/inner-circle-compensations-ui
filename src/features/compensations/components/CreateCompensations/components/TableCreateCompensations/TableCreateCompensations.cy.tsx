@@ -13,7 +13,8 @@ describe('TableCreateCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations')
+    cy
+      .getByData('table-create-compensations')
       .should('exist');
   });
 
@@ -24,7 +25,8 @@ describe('TableCreateCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations-head')
+    cy
+      .getByData('table-create-compensations-head')
       .children()
       .should('have.length', 6);
   });
@@ -36,26 +38,33 @@ describe('TableCreateCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations-item')
+    cy
+      .getByData('table-create-compensations-item')
       .children()
       .should('have.length', 6);
 
-    cy.getByData('table-create-compensations-select')
+    cy
+      .getByData('table-create-compensations-select')
       .should('have.value', null);
 
-    cy.getByData('table-create-compensations-quantity')
+    cy
+      .getByData('table-create-compensations-quantity')
       .should('have.value', 1);
 
-    cy.getByData('table-create-compensations-amount')
+    cy
+      .getByData('table-create-compensations-amount')
       .should('have.value', '');
 
-    cy.getByData('table-create-compensations-comment')
+    cy
+      .getByData('table-create-compensations-comment')
       .should('have.value', '');
 
-    cy.getByData('table-create-compensations-total-amount')
+    cy
+      .getByData('table-create-compensations-total-amount')
       .should('have.value', '');
 
-    cy.getByData('table-create-compensations-remove-button')
+    cy
+      .getByData('table-create-compensations-remove-button')
       .should('exist');
   });
 
@@ -66,7 +75,8 @@ describe('TableCreateCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations-add-button')
+    cy
+      .getByData('table-create-compensations-add-button')
       .should('exist');
   });
 
@@ -77,7 +87,8 @@ describe('TableCreateCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations-total')
+    cy
+      .getByData('table-create-compensations-total')
       .children()
       .should('have.length', 6);
   });
@@ -89,10 +100,12 @@ describe('TableCreateCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations-select')
+    cy
+      .getByData('table-create-compensations-select')
       .select('5');
 
-    cy.getByData('table-create-compensations-select')
+    cy
+      .getByData('table-create-compensations-select')
       .should('have.value', '5');
   });
 
@@ -103,10 +116,12 @@ describe('TableCreateCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations-comment')
+    cy
+      .getByData('table-create-compensations-comment')
       .type('test');
 
-    cy.getByData('table-create-compensations-comment')
+    cy
+      .getByData('table-create-compensations-comment')
       .should('have.value', 'test');
   });
 
@@ -117,10 +132,12 @@ describe('TableCreateCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations-amount')
+    cy
+      .getByData('table-create-compensations-amount')
       .type('2');
 
-    cy.getByData('table-create-compensations-amount')
+    cy
+      .getByData('table-create-compensations-amount')
       .should('have.value', 2);
   });
 
@@ -131,10 +148,12 @@ describe('TableCreateCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations-add-button')
+    cy
+      .getByData('table-create-compensations-add-button')
       .click();
 
-    cy.getByData('table-create-compensations-item')
+    cy
+      .getByData('table-create-compensations-item')
       .should('have.length', 2);
   });
 
@@ -145,14 +164,17 @@ describe('TableCreateCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations-add-button')
+    cy
+      .getByData('table-create-compensations-add-button')
       .click();
 
-    cy.getByData('table-create-compensations-remove-button')
+    cy
+      .getByData('table-create-compensations-remove-button')
       .last()
       .click();
 
-    cy.getByData('table-create-compensations-item')
+    cy
+      .getByData('table-create-compensations-item')
       .should('have.length', 1);
   });
 
@@ -316,15 +338,64 @@ describe('TableCreateCompensations', () => {
   `, () => {
     mountComponent();
 
-    cy.getByData('table-create-compensations-quantity')
+    cy
+      .getByData('table-create-compensations-quantity')
       .clear()
       .type('2');
 
-    cy.getByData('table-create-compensations-amount')
+    cy
+      .getByData('table-create-compensations-amount')
       .type('20');
 
-    cy.getByData('table-create-compensations-total-amount')
+    cy
+      .getByData('table-create-compensations-total-amount')
       .should('have.text', formatMoney(40));
+  });
+
+  it(`
+  GIVEN compensations page 
+  WHEN enter symbol to quantity input
+  THEN return to default value
+  `, () => {
+    mountComponent();
+
+    cy
+      .getByData('table-create-compensations-quantity')
+      .should('have.value', 1);
+
+    cy
+      .getByData('table-create-compensations-quantity')
+      .clear()
+      .type('-');
+
+    // simulate loss of focus
+    cy
+      .getByData('table-create-compensations-comment')
+      .click();
+
+    cy
+      .getByData('table-create-compensations-quantity')
+      .should('have.value', 1);
+  });
+
+  it(`
+  GIVEN compensations page 
+  WHEN enter symbol to amount input
+  THEN return to default value
+  `, () => {
+    mountComponent();
+
+    cy
+      .getByData('table-create-compensations-amount')
+      .should('have.text', '');
+
+    cy
+      .getByData('table-create-compensations-amount')
+      .type('-');
+
+    cy
+      .getByData('table-create-compensations-amount')
+      .should('have.text', '');
   });
 });
 
