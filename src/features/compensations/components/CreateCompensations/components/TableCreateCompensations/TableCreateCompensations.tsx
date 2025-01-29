@@ -74,6 +74,11 @@ export const TableCreateCompensations = observer(() => {
                   'table-create-compensations__column-quantity__input--default': quantity === 1,
                 })}
                 value={quantity === 0 ? '' : quantity}
+                onKeyDown={(e) => {
+                  if (e.key === '-' || e.key === 'Subtract' || e.key === '+' || e.key === 'Add' || e.key === ',' || e.key === '.') {
+                    e.preventDefault();
+                  }
+                }}
                 onBlur={(e) => {
                   if (e.target.value === '') {
                     createCompensationState.updateCompensation({
@@ -110,6 +115,11 @@ export const TableCreateCompensations = observer(() => {
                   'table-create-compensations__column-amount__input--default': amount === 0,
                 })}
                 value={amount === 0 ? '' : amount}
+                onKeyDown={(e) => {
+                  if (e.key === '-' || e.key === 'Subtract' || e.key === '+' || e.key === 'Add') {
+                    e.preventDefault();
+                  }
+                }}
                 onChange={(event) => createCompensationState.updateCompensation({
                   id,
                   typeId,
