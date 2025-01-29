@@ -4,11 +4,12 @@
   border-radius: 4px;
   border-collapse: collapse;
   width: 100%;
-  max-width: 750px;
+  max-width: 1000px;
 
   &__head {
     display: flex;
     border-bottom: 0.5px solid var(--comp-color-light-gray);
+    cursor: default;
   }
 
   &__item {
@@ -21,15 +22,16 @@
     display: flex;
     align-items: center;
     border-top: 1px solid var(--comp-color-light-gray);
+    cursor: default;
   }
 
   &__column-type {
     border-right: 0.5px solid var(--comp-color-light-gray);
     padding: 16px;
-    width: 27%;
+    width: 20%;
     max-width: 200px;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.4;
     text-align: left;
 
@@ -41,7 +43,7 @@
       min-width: 100px;
       max-width: 200px;
       font-family: inherit;
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.4;
       color: var(--color-black);
       cursor: pointer;
@@ -97,10 +99,10 @@
 
   &__column-comment {
     padding: 16px;
-    width: 47%;
-    max-width: 350px;
+    width: 30%;
+    max-width: 300px;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.4;
     text-align: left;
     color: var(--color-black);
@@ -110,6 +112,7 @@
     }
 
     &__comment {
+      display: flex;
       overflow: hidden;
       border: none;
       padding: 0;
@@ -117,7 +120,7 @@
       height: 28px;
       max-width: 318px;
       font-family: inherit;
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.4;
       color: var(--color-black);
       resize: none;
@@ -132,13 +135,13 @@
     }
   }
 
-  &__column-amount {
+  &__column-total-amount {
     display: flex;
     padding: 16px;
-    width: 20%;
+    width: 15%;
     max-width: 150px;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.4;
     text-align: left;
     color: var(--color-black);
@@ -151,7 +154,73 @@
       min-width: 50px;
       max-width: 118px;
       font-family: inherit;
-      font-size: 18px;
+      font-size: 16px;
+      line-height: 1.4;
+      text-align: end;
+      color: var(--color-black);
+      cursor: default;
+    }
+  }
+
+  &__column-quantity {
+    display: flex;
+    padding: 16px;
+    width: 15%;
+    max-width: 150px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+    text-align: left;
+    color: var(--color-black);
+
+    &__input {
+      border: none;
+      padding: 0;
+      width: 100%;
+      height: 28px;
+      min-width: 50px;
+      max-width: 118px;
+      font-family: inherit;
+      font-size: 16px;
+      line-height: 1.4;
+      text-align: left;
+      color: var(--color-black);
+
+      &:focus {
+        outline: none;
+      }
+
+      &--default {
+        color: var(--color-black);
+      }
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__column-amount {
+    display: flex;
+    padding: 16px;
+    width: 15%;
+    max-width: 150px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+    text-align: left;
+    color: var(--color-black);
+
+    &__input {
+      border: none;
+      padding: 0;
+      width: 100%;
+      height: 28px;
+      min-width: 50px;
+      max-width: 118px;
+      font-family: inherit;
+      font-size: 16px;
       line-height: 1.4;
       text-align: end;
       color: var(--color-black);
@@ -180,10 +249,11 @@
 
     &__sum {
       padding: 8px 16px;
-      width: 20%;
+      width: 100%;
+      min-width: 50px;
       max-width: 150px;
       font-weight: 600;
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.4;
       text-align: end;
       color: var(--color-black);
@@ -196,7 +266,7 @@
 
   &__column-remove {
     padding: 16px 8px 22px;
-    width: 6%;
+    width: 5%;
     max-width: 50px;
 
     &__button {

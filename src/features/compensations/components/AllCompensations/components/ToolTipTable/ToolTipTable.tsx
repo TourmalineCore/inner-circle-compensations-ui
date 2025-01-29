@@ -11,13 +11,15 @@ export function ToolTipTable({
         <thead>
           <tr className="tooltip-table__table__head" data-cy="tooltip-table-head">
             <th className="tooltip-table__table__column-type">Type</th>
-            <th className="tooltip-table__table__column-comment">Comment</th>
+            <th className="tooltip-table__table__column-quantity">Quantity</th>
             <th className="tooltip-table__table__column-amount">Amount</th>
+            <th className="tooltip-table__table__column-comment">Comment</th>
+            <th className="tooltip-table__table__column-total-amount">Total</th>
           </tr>
         </thead>
         <tbody>
           {compensations.map(({
-            id, compensationType, comment, amount,
+            id, compensationType, quantity, amount, comment,
           }) => (
             <tr
               data-cy="tooltip-table-item"
@@ -33,10 +35,10 @@ export function ToolTipTable({
               </td>
 
               <td
-                data-cy="tooltip-table-column-comment"
-                className="tooltip-table__table__column-comment"
+                data-cy="tooltip-table-column-quantity"
+                className="tooltip-table__table__column-quantity"
               >
-                {comment}
+                {quantity}
               </td>
 
               <td
@@ -44,7 +46,20 @@ export function ToolTipTable({
                 className="tooltip-table__table__column-amount"
               >
                 {formatMoney(amount)}
+              </td>
 
+              <td
+                data-cy="tooltip-table-column-comment"
+                className="tooltip-table__table__column-comment"
+              >
+                {comment}
+              </td>
+
+              <td
+                data-cy="tooltip-table-column-total-amount"
+                className="tooltip-table__table__column-total-amount"
+              >
+                {formatMoney(quantity * amount)}
               </td>
             </tr>
           ))}

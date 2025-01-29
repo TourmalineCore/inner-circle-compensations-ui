@@ -13,6 +13,7 @@ const initialData = {
       amount: 760,
       isPaid: false,
       employeeId: 1,
+      quantity: 2,
     },
     {
       compensationRequestedAtUtc: '2023-06-09T11:42:04.467165Z',
@@ -22,9 +23,10 @@ const initialData = {
       amount: 760,
       isPaid: false,
       employeeId: 1,
+      quantity: 1,
     },
   ],
-  totalUnpaidAmount: 1520,
+  totalUnpaidAmount: 2280,
 };
 
 describe('CompensationsTable', () => {
@@ -65,7 +67,7 @@ describe('CompensationsTable', () => {
 
     cy.getByData('compensations-table-sum')
       .should('exist')
-      .should('have.text', formatMoney(1520));
+      .should('have.text', formatMoney(2280));
   });
 
   it(`

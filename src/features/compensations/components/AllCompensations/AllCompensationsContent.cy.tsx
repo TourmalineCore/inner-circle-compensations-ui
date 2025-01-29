@@ -18,6 +18,7 @@ const initialData = {
         {
           id: 56,
           compensationType: 'Massage',
+          quantity: 1,
           comment: 'I bought this',
           amount: 2760.45,
           compensationRequestedAtUtc: '2023-12-19T06:56:49Z',
@@ -28,13 +29,14 @@ const initialData = {
       employeeFullName: 'Admin Admin Admin',
       employeeId: 2,
       compensationRequestedForYearAndMonth: '2023-12-01T05:00:00Z',
-      totalAmount: 760,
-      unpaidAmount: 760,
+      totalAmount: 1520,
+      unpaidAmount: 1520,
       isPaid: false,
       compensations: [
         {
           id: 1,
           compensationType: 'Massage',
+          quantity: 2,
           comment: 'I bought milk',
           amount: 760,
           compensationRequestedAtUtc: '2023-12-19T06:56:49Z',
@@ -42,8 +44,8 @@ const initialData = {
       ],
     },
   ],
-  totalAmount: 3520.45,
-  totalUnpaidAmount: 760,
+  totalAmount: 4280.45,
+  totalUnpaidAmount: 1520,
 };
 
 describe('AllCompensationsContent', () => {
@@ -77,10 +79,10 @@ describe('AllCompensationsContent', () => {
       .should('have.length', 1);
 
     cy.getByData('all-compensations-table-sum')
-      .should('have.text', formatMoney(3520.45));
+      .should('have.text', formatMoney(4280.45));
 
     cy.getByData('all-compensations-table-unpaid-sum')
-      .should('have.text', formatMoney(760));
+      .should('have.text', formatMoney(1520));
 
     cy.getByData('all-compensations-filter-button')
       .first()
@@ -90,10 +92,10 @@ describe('AllCompensationsContent', () => {
       .should('have.length', 2);
 
     cy.getByData('all-compensations-table-sum')
-      .should('have.text', formatMoney(3520.45));
+      .should('have.text', formatMoney(4280.45));
 
     cy.getByData('all-compensations-table-unpaid-sum')
-      .should('have.text', formatMoney(760));
+      .should('have.text', formatMoney(1520));
   });
 
   it(`

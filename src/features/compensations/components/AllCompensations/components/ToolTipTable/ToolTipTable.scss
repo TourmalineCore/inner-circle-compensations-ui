@@ -5,7 +5,7 @@
     border-collapse: collapse;
     padding: 8px;
     width: 100%;
-    max-width: 500px;
+    max-width: 1000px;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.4;
@@ -25,24 +25,48 @@
       border-bottom: 0.5px solid var(--comp-color-light-gray);
     }
 
+    // TODO refactor like column--type etc
     &__column-type {
+      overflow: hidden;
+      border-right: 0.5px solid var(--comp-color-light-gray);
       padding: 8px 16px;
-      width: 26%;
-      max-width: 130px;
+      width: 20%;
+      max-width: 200px;
       font-weight: 500;
+      text-overflow: ellipsis;
     }
 
     &__column-comment {
+      border-right: 0.5px solid var(--comp-color-light-gray);
       padding: 8px 16px;
-      width: 50%;
+      width: 25%;
       max-width: 250px;
       font-weight: 500;
     }
 
     &__column-amount {
+      border-right: 0.5px solid var(--comp-color-light-gray);
       padding: 8px 16px;
-      width: 24%;
-      max-width: 120px;
+      width: 20%;
+      max-width: 200px;
+      font-weight: 500;
+      text-align: end;
+      color: var(--color-black);
+    }
+
+    &__column-quantity {
+      border-right: 0.5px solid var(--comp-color-light-gray);
+      padding: 8px 16px;
+      width: 15%;
+      max-width: 150px;
+      font-weight: 500;
+      text-align: end;
+    }
+
+    &__column-total-amount {
+      padding: 8px 16px;
+      width: 20%;
+      max-width: 200px;
       font-weight: 500;
       text-align: end;
       color: var(--color-black);
