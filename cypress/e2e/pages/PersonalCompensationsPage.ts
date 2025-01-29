@@ -10,8 +10,8 @@ export class PersonalCompensationsPage {
       .parent()
       .within(() => {
         cy
-          .getByData('compensations-table-column-amount')
-          .should('have.class', `compensations-table__column-amount--${status}`);
+          .getByData('compensations-table-column-total-amount')
+          .should('have.class', `compensations-table__column-total-amount--${status}`);
       });
   }
 }
