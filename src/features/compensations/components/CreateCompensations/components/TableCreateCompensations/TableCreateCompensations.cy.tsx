@@ -386,16 +386,16 @@ describe('TableCreateCompensations', () => {
     mountComponent();
 
     cy
-      .getByData('table-create-compensations-sum')
-      .should('have.text', formatMoney(0));
+      .getByData('table-create-compensations-amount')
+      .should('have.text', '');
 
     cy
       .getByData('table-create-compensations-amount')
       .type('-');
 
     cy
-      .getByData('table-create-compensations-sum')
-      .should('have.text', formatMoney(0));
+      .getByData('table-create-compensations-amount')
+      .should('have.text', '');
   });
 });
 
