@@ -1,4 +1,4 @@
-name: Check lint and cypress components test 
+name: Check lint and cypress tests
 
 on:
   push:
@@ -86,3 +86,37 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+
+  e2e-test:
+    runs-on: ubuntu-22.04
+    needs: install
+    steps:
+      - name: Checkout local-env
+        uses: actions/checkout@v4
+        with:
+          repository: TourmalineCore/inner-circle-local-env
+
+      - name: Deploy Local Env to Kind k8s
+        uses: devcontainers/ci@v0.3
+        with:
+          runCmd: |
+            kind create cluster --name inner-circle --config kind-local-config.yaml --kubeconfig ./.inner-circle-cluster-kubeconfig
+            export KUBECONFIG=$(pwd)/.inner-circle-cluster-kubeconfig
+            helmfile --environment local --namespace local -f deploy/helmfile.yaml apply
+          push: never
+
+      - name: Checkout ui
+        uses: actions/checkout@v4
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          wait-on: "http://localhost:40100" 
+          browser: chrome
+          record: true
+          config-file: cypress.config.local-env.ts
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+          
