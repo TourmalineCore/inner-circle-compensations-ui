@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import './commands'
 import '../env-config'
 

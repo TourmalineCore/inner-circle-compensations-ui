@@ -37,6 +37,8 @@ module.exports = {
     }
   },
   rules: {
+    // disable chain cy error
+    'cypress/unsafe-to-chain-command': 'off',
     "no-console": "error",
     "react-refresh/only-export-components": [
       "warn",

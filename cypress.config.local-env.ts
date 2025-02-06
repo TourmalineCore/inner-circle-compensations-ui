@@ -1,6 +1,3 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable function-paren-newline */
-/* eslint-disable @typescript-eslint/default-param-last */
 import { defineConfig } from 'cypress'
 
 // eslint-disable-next-line import/no-default-export
