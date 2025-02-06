@@ -47,12 +47,12 @@ jobs:
           runTests: false
           build: npm run build
 
-      - name: Save build folder
+      - name: Save dist folder
         uses: actions/upload-artifact@v3
         with:
-          name: build
+          name: dist
           if-no-files-found: error
-          path: build
+          path: dist
   
   components-test:
     runs-on: ubuntu-22.04 
