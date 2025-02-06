@@ -20,6 +20,7 @@ import AccessBasedOnPemissionsStateContext from '../routes/state/AccessBasedOnPe
 import { parseJwt } from '../common/utils/utilsForPermissions'
 import { authService } from '../common/authService'
 
+// eslint-disable-next-line react-refresh/only-export-components
 function Template() {
   const location = useLocation()
 
@@ -112,5 +113,5 @@ function Template() {
   )
 }
 
-// eslint-disable-next-line import/no-default-export
+// eslint-disable-next-line import/no-default-export, react-refresh/only-export-components
 export default memo(Template)

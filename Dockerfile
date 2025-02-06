@@ -9,12 +9,12 @@ RUN npm run build
 
 FROM nginx:1.16.1-alpine
 COPY /ci/nginx.conf /data/conf/nginx.conf
-COPY --from=build /build /usr/share/nginx/html
+COPY --from=dist /dist /usr/share/nginx/html
 EXPOSE 80
 
 WORKDIR /usr/share/nginx/html
 COPY ./ci/env.sh .
-COPY .config-keys .
+COPY .env-vars .
 RUN apk add --no-cache bash
 RUN chmod +x /usr/share/nginx/html/env.sh
 
