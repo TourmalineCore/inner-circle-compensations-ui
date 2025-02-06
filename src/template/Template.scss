@@ -1,3 +1,6 @@
+@use "/src/styles/variables" as *;
+@use "/src/styles/media" as *;
+
 .template {
   font-size: 16px;
   line-height: 1.17;
