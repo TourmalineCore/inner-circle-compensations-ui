@@ -15,7 +15,7 @@ EXPOSE 80
 
 WORKDIR /usr/share/nginx/html
 COPY ./ci/env.sh .
-COPY .env-vars .
+COPY .config-keys .
 RUN apk add --no-cache bash
 RUN chmod +x /usr/share/nginx/html/env.sh
 
