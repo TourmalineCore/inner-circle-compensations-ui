@@ -2,12 +2,12 @@
 
 # Based on idea from https://github.com/kunokdev/cra-runtime-environment-variables
 
-# Recreate config file
-rm -rf ./env-config.js
-touch ./env-config.js
+# Recreate config file in the desired folder (e.g., ./compensations)
+rm -rf ./compensations/env-config.js
+touch ./compensations/env-config.js
 
-# Create ./env-config.js file with a global variable which will contain env vars 
-echo "window.__ENV__ = {" >> ./env-config.js
+# Create ./compensations/env-config.js file with a global variable which will contain env vars 
+echo "window.__ENV__ = {" >> ./compensations/env-config.js
 
 # Read each line in .env-vars file
 # Each line represents an env var name
@@ -18,7 +18,7 @@ do
   value=$(printf '%s\n' "${!line}")
   
   # Append configuration property to JS file
-  echo "  $varname: $value," >> ./env-config.js
+  echo "  $varname: $value," >> ./compensations/env-config.js
 done < .config-keys
 
-echo "}" >> ./env-config.js
+echo "}" >> ./compensations/env-config.js
