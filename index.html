@@ -16,12 +16,7 @@
 
 <body>
   <div id="root"></div>
-  <script>
-    const base = window.location.origin + '/compensations/';
-    const script = document.createElement('script');
-    script.src = `${base}env-config.js`;
-    document.head.appendChild(script);
-  </script>
+  <script src="/compensations/env-config.js"></script>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
