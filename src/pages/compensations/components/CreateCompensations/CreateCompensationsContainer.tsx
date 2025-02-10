@@ -39,6 +39,12 @@ export const CreateCompensationsContainer = observer(() => {
     // eslint-disable-next-line no-console
     console.log(`LINK_TO_COMPENSATIONS_SERVICE:`, LINK_TO_COMPENSATIONS_SERVICE)
 
+    // eslint-disable-next-line no-console
+    console.log(`import.meta.env.VITE_BASE_URL:`, import.meta.env.VITE_BASE_URL)
+
+    // eslint-disable-next-line no-console
+    console.log(`process.env.BASE_URLL:`, process.env.BASE_URLL)
+
     try {
       const {
         data,
