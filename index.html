@@ -14,6 +14,10 @@
     const base = window.location.origin + '/compensations/';
     const script = document.createElement('script');
     script.src = `${base}env-config.js`;
+    script.onload = () => {
+      console.log('env-config.js загружен:', window.__ENV__);
+      window.dispatchEvent(new Event('envLoaded'));
+    };
     document.head.appendChild(script);
   </script>
   <title>Inner Circle Compensations</title>
@@ -21,6 +25,9 @@
 
 <body>
   <div id="root"></div>
+  <script>
+    console.log('Запуск приложения с:', window.__ENV__.LINK_TO_COMPENSATIONS_SERVICE);
+  </script>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
