@@ -2,8 +2,11 @@
 
 # Based on idea from https://github.com/kunokdev/cra-runtime-environment-variables
 
+# Create the ./compensations directory if it does not exist
+mkdir -p ./compensations
+
 # Recreate config file in the desired folder (e.g., ./compensations)
-rm -rf .env-config.js
+rm -rf ./compensations/env-config.js
 touch ./compensations/env-config.js
 
 # Create ./compensations/env-config.js file with a global variable which will contain env vars 
