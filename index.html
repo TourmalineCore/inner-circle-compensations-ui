@@ -10,25 +10,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script>
-    const base = window.location.origin + '/compensations/';
-    const script = document.createElement('script');
-    script.src = `${base}env-config.js`;
-    script.onload = () => {
-      console.log('env-config.js загружен:', window.__ENV__);
-      window.dispatchEvent(new Event('envLoaded'));
-    };
-    document.head.appendChild(script);
-  </script>
   <title>Inner Circle Compensations</title>
 </head>
 
 <body>
   <div id="root"></div>
-  <script>
-    console.log('Запуск приложения с:', window.__ENV__.LINK_TO_COMPENSATIONS_SERVICE);
-  </script>
-  <script type="module" src="%VITE_BASE_PATH%/src/main.tsx"></script>
+  <script src="%VITE_BASE_PATH%/env-config.js"></script>
+  <script type="module" src="/src/main.tsx"></script>
 </body>
 
 </html>
