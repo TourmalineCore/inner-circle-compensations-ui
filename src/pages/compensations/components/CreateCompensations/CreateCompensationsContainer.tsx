@@ -36,6 +36,9 @@ export const CreateCompensationsContainer = observer(() => {
   )
 
   async function loadCompensationTypes() {
+    // eslint-disable-next-line no-console
+    console.log(`LINK_TO_COMPENSATIONS_SERVICE:`, LINK_TO_COMPENSATIONS_SERVICE)
+
     try {
       const {
         data,
