@@ -15,8 +15,6 @@ export default defineConfig({
       USER_PASSWORD: process.env.USER_PASSWORD,
     },
     video: false,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    setupNodeEvents(on, config) { },
   },
   component: {
     video: false,
