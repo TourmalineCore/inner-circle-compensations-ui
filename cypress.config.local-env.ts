@@ -2,17 +2,6 @@ import { defineConfig } from 'cypress'
 
 // eslint-disable-next-line import/no-default-export
 export default defineConfig({
-  component: {
-    devServer: {
-      framework: `create-react-app`,
-      bundler: `webpack`,
-    },
-    video: false,
-    screenshotOnRunFailure: true,
-    viewportHeight: 600,
-    viewportWidth: 1000,
-  },
-
   e2e: {
     baseUrl: `http://localhost:40100`,
     env: {
@@ -23,32 +12,5 @@ export default defineConfig({
       USER_PASSWORD: `cEoPa$$wo1d`,
     },
     video: true,
-    screenshotOnRunFailure: true,
-    setupNodeEvents(on) {
-      on(
-        `before:browser:launch`,
-        (
-          browser = {
-            name: ``,
-            family: `chromium`,
-            channel: ``,
-            displayName: ``,
-            version: ``,
-            majorVersion: ``,
-            path: ``,
-            isHeaded: false,
-            isHeadless: false,
-          },
-          launchOptions,
-        ) => {
-          if (browser.family === `chromium`) {
-            launchOptions.args.push(
-            )
-          }
-
-          return launchOptions
-        },
-      )
-    },
   },
 })
