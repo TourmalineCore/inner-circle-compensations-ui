@@ -1,11 +1,9 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import 'react-datepicker/dist/react-datepicker.css'
 
 import './styles/index.scss'
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-
 import App from './App'
 
 import { ThemeProvider } from './theme/themeContext'
