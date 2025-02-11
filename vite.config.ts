@@ -14,7 +14,7 @@ export default defineConfig({
   ],
   define: {
     'import.meta.env.VITE_BASE_PATH': JSON.stringify(
-      `/compensations`,
+      process.env.NODE_ENV === `production` ? `/compensations` : ``,
     ),
   },
 })
