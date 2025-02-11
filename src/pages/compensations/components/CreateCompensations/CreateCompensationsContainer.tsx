@@ -36,15 +36,6 @@ export const CreateCompensationsContainer = observer(() => {
   )
 
   async function loadCompensationTypes() {
-    // eslint-disable-next-line no-console
-    console.log(`LINK_TO_COMPENSATIONS_SERVICE:`, LINK_TO_COMPENSATIONS_SERVICE)
-
-    // eslint-disable-next-line no-console
-    console.log(`import.meta.env:`, import.meta.env)
-
-    // eslint-disable-next-line no-console
-    console.log(`process.env.BASE_URL:`, process.env.BASE_URL)
-
     try {
       const {
         data,
