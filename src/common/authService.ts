@@ -9,8 +9,12 @@ export const authService = createAuthService({
   tokenValueAccessor: `value`,
   tokenExpireAccessor: `expiresInUtc`,
 })
+// eslint-disable-next-line no-console
+console.log(`authService: ${authService}`)
 
 export async function setLogin(payload: any) {
+  // eslint-disable-next-line no-console
+  console.log(`payload: ${payload}`)
   const {
     data,
   } = await authService.loginCall(payload)
