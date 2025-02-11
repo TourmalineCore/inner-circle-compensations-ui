@@ -10,14 +10,6 @@ export const authService = createAuthService({
   tokenExpireAccessor: `expiresInUtc`,
 })
 // eslint-disable-next-line no-console
-console.log(`authService: ${authService}`)
-
-export async function setLogin(payload: any) {
-  // eslint-disable-next-line no-console
-  console.log(`payload: ${payload}`)
-  const {
-    data,
-  } = await authService.loginCall(payload)
-
-  authService.setLoggedIn(data)
-}
+console.log(`authService1: ${JSON.stringify(authService, null, 2)}`)
+// eslint-disable-next-line no-console
+console.log(`authService2:`, authService)
