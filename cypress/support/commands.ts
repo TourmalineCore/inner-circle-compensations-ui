@@ -21,6 +21,7 @@ export { }
 
 Cypress.Commands.add(`authByApi`, () => {
   let accessToken: string
+
   const authService = createAuthService({
     authApiRoot: Cypress.env(`API_ROOT_AUTH`),
     authType: `ls`,

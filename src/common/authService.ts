@@ -9,7 +9,3 @@ export const authService = createAuthService({
   tokenValueAccessor: `value`,
   tokenExpireAccessor: `expiresInUtc`,
 })
-// eslint-disable-next-line no-console
-console.log(`authService1: ${JSON.stringify(authService, null, 2)}`)
-// eslint-disable-next-line no-console
-console.log(`authService2:`, authService)

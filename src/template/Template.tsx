@@ -54,9 +54,6 @@ function Template() {
     token,
   ] = useContext(authService.AuthContext)
 
-  // eslint-disable-next-line no-console
-  console.log(`template token: ${token}`)
-
   const infoBoxDataName = parseJwt(token).corporateEmail.split(`@`)[0]
 
   return (

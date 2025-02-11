@@ -29,9 +29,6 @@ export const withPrivateRoute = <Type extends Record<string, unknown>>(ComposedC
     token,
   ])
 
-  // eslint-disable-next-line no-console
-  console.log(`route token: ${token}`)
-
   if (token) {
     accessBasedOnPemissionsState.checkPermissionFromToken(parseJwt(token).permissions)
   }
