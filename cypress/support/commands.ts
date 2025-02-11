@@ -20,8 +20,7 @@ Cypress.Commands.add(`getByData`, (selector) => cy.get(`[data-cy=${selector}]`))
 export { }
 
 Cypress.Commands.add(`authByApi`, () => {
-  let accessToken: string
-
+  let accessToken: any
   const authService = createAuthService({
     authApiRoot: Cypress.env(`API_ROOT_AUTH`),
     authType: `ls`,
@@ -45,21 +44,14 @@ Cypress.Commands.add(`authByApi`, () => {
     }) => {
       authService.setLoggedIn(loginResponseBody)
 
-      accessToken = authService.getAuthToken()
-
+      accessToken = loginResponseBody.accessToken
       cy
         .window()
         .then((window) => {
-          window.localStorage.setItem(`accessToken`, accessToken)
+          window.localStorage.setItem(`accessToken`, JSON.stringify(accessToken))
         })
 
-      cy
-        .window()
-        .then((window) => {
-          window.sessionStorage.setItem(`accessToken`, accessToken)
-        })
-
-      Cypress.env(`accessToken`, accessToken)
+      Cypress.env(`accessToken`, accessToken.value)
     })
 })
 
