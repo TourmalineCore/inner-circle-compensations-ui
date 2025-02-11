@@ -47,12 +47,12 @@ jobs:
           runTests: false
           build: npm run build
 
-      - name: Save build folder
-        uses: actions/upload-artifact@v3
+      - name: Save dist folder
+        uses: actions/upload-artifact@v4
         with:
-          name: build
+          name: dist
           if-no-files-found: error
-          path: build
+          path: dist
   
   components-test:
     runs-on: ubuntu-22.04 
@@ -67,11 +67,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Download the build folders
-        uses: actions/download-artifact@v3
+      - name: Download the dist folders
+        uses: actions/download-artifact@v4
         with:
-          name: build
-          path: build
+          name: dist
+          path: dist
 
       - name: Components test
         uses: cypress-io/github-action@v5

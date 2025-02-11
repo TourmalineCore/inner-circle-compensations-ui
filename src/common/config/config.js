@@ -5,4 +5,4 @@ export const {
   LINK_TO_SALARY_SERVICE,
   LINK_TO_ACCOUNT_SERVICE,
   LINK_TO_COMPENSATIONS_SERVICE,
-} = window.__ENV__;
+} = (window.__ENV__ || import.meta.env)

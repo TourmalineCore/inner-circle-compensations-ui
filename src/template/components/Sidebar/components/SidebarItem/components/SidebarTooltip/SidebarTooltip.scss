@@ -1,3 +1,5 @@
+@use "/src/styles/variables" as *;
+
 .sidebar-tooltip {
   position: absolute;
   left: calc(100% + 8px);

@@ -1,24 +1,23 @@
-/* eslint-disable import/extensions */
-import './commands';
-import '../env-config';
+import './commands'
+import '../env-config'
 
 /// <reference types="cypress" />
 
 // styles
-import 'react-loading-skeleton/dist/skeleton.css';
-import 'react-datepicker/dist/react-datepicker.css';
+import 'react-datepicker/dist/react-datepicker.css'
 
-import '../../src/styles/index.scss';
+import '../../src/styles/index.scss'
 
 // commands
-import { mount } from 'cypress/react';
+import { mount } from 'cypress/react'
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
     interface Chainable {
-      mount: typeof mount
+      mount: typeof mount,
     }
   }
 }
 
-Cypress.Commands.add('mount', mount);
+Cypress.Commands.add(`mount`, mount)
