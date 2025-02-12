@@ -1,9 +1,10 @@
-FROM node:20.11.1-alpine3.19 as build
+FROM node:19.5.0-alpine as build
 ENV PATH /node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
-# COPY .npmrc ./
-RUN npm ci
+# COPY .npmrc ./ 
+# npm install -g npm@11.1.0
+RUN NODE_ENV=development npm i
 COPY . ./
 RUN npm run build
 
