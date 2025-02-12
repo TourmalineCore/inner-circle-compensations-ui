@@ -40,7 +40,8 @@ export default defineConfig({
     'import.meta.env.VITE_BASE_PATH': JSON.stringify(
       process.env.NODE_ENV === `production` ? `/compensations` : ``,
     ),
-  build: {
-    target: `chrome89`, // Setting the target browser version for the build
+    build: {
+      target: `chrome89`, // Setting the target browser version for the build
+    },
   },
 })
