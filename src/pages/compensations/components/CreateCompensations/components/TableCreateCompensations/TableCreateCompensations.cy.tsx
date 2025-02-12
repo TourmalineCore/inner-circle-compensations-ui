@@ -1,3 +1,4 @@
+/* eslint-disable cypress/unsafe-to-chain-command */
 import { formatMoney } from '../../../../../../common/utils/formatMoney'
 import { CreateCompensationsState } from '../../state/CreateCompensationsState'
 import { CreateCompensationsStateContext } from '../../state/CreateCompensationsStateContext'

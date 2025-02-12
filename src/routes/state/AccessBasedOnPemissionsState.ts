@@ -18,7 +18,7 @@ export enum Permission {
   IsCompensationsHardDeleteAllowed = `IsCompensationsHardDeleteAllowed`,
 }
 
-class AccessBasedOnPemissionsState {
+export class AccessBasedOnPemissionsState {
   private _accessPermissions = new Map<keyof typeof Permission, boolean>()
 
   constructor() {
@@ -43,5 +43,3 @@ class AccessBasedOnPemissionsState {
     })
   }
 }
-// eslint-disable-next-line import/no-default-export
-export default AccessBasedOnPemissionsState
