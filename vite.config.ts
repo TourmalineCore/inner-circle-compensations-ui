@@ -61,7 +61,6 @@ export default defineConfig({
         `react-dom`,
         `react-router-dom`,
         `react/jsx-runtime`,
-        `__mf__virtual/inner_circle_compensations_ui__mf_v__runtimeInit__mf_v__.js`,
         `/compensations/env-config.js`,
         `inner_circle_layout_ui/layout`,
       ],
