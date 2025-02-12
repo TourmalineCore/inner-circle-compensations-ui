@@ -56,11 +56,11 @@ export default defineConfig({
     target: `chrome89`, // Setting the target browser version for the build
     rollupOptions: {
       external: [
-        /^__mf__virtual\/.*/,
         `react`,
         `react-dom`,
         `react-router-dom`,
         `react/jsx-runtime`,
+        `__mf__virtual/inner_circle_compensations_ui__mf_v__runtimeInit__mf_v__.js`,
         `/compensations/env-config.js`,
         `inner_circle_layout_ui/layout`,
       ],
