@@ -1,10 +1,8 @@
-FROM node:19.5.0-alpine as build
-ENV PATH /node_modules/.bin:$PATH
+FROM node:19.5.0-alpine AS build
+ENV PATH=/node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
-# COPY .npmrc ./ 
-# npm install -g npm@11.1.0
-RUN NODE_ENV=development npm i
+RUN NODE_ENV=development npm install
 COPY . ./
 RUN npm run build
 
@@ -20,4 +18,4 @@ COPY .env-vars .
 RUN apk add --no-cache bash
 RUN chmod +x /usr/share/nginx/html/env.sh
 
-CMD /bin/bash -c "/usr/share/nginx/html/env.sh" && nginx -g "daemon off;" -c "/data/conf/nginx.conf"
+CMD ["/bin/bash", "-c", "/usr/share/nginx/html/env.sh && nginx -g 'daemon off;' -c /data/conf/nginx.conf"]
