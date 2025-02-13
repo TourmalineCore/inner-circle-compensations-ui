@@ -4,6 +4,8 @@ import svgr from 'vite-plugin-svgr'
 import { federation } from '@module-federation/vite'
 
 const PORT = process.env.NODE_ENV === `production` ? 40100 : 4003
+const LAYOUT_PORT = process.env.NODE_ENV === `production` ? 40100 : 4006
+
 // eslint-disable-next-line import/no-default-export
 export default defineConfig({
   server: {
@@ -20,25 +22,25 @@ export default defineConfig({
         inner_circle_layout_ui: {
           type: `module`,
           name: `inner_circle_layout_ui`, // The unique name of the remote application that will be used for identification
-          entry: `http://localhost:4006/layout/mf-manifest.json`, // The URL where the manifest file for the remote application can be found
+          entry: `http://localhost:${LAYOUT_PORT}/layout/mf-manifest.json`, // The URL where the manifest file for the remote application can be found
         },
       },
       shared: {
         react: {
           singleton: true,
-          requiredVersion: `18.2.0`,
+          requiredVersion: `^18.2.0`,
         },
         'react-dom': {
           singleton: true,
-          requiredVersion: `18.2.0`,
+          requiredVersion: `^18.2.0`,
         },
         'react-router-dom': {
           singleton: true,
-          requiredVersion: `6.2.2`,
+          requiredVersion: `^6.2.2`,
         },
         'react/jsx-runtime': {
           singleton: true,
-          requiredVersion: `18.2.0`,
+          requiredVersion: `^18.2.0`,
         },
       },
 
