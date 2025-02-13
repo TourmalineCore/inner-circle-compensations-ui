@@ -3,10 +3,11 @@ import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 import { federation } from '@module-federation/vite'
 
+const PORT = process.env.NODE_ENV === `production` ? 40100 : 4003
 // eslint-disable-next-line import/no-default-export
 export default defineConfig({
   server: {
-    port: 4003,
+    port: PORT,
   },
   base: `/compensations`,
   plugins: [
@@ -19,7 +20,7 @@ export default defineConfig({
         inner_circle_layout_ui: {
           type: `module`,
           name: `inner_circle_layout_ui`, // The unique name of the remote application that will be used for identification
-          entry: `http://localhost:40100/layout/mf-manifest.json`, // The URL where the manifest file for the remote application can be found
+          entry: `http://localhost:4006/layout/mf-manifest.json`, // The URL where the manifest file for the remote application can be found
         },
       },
       shared: {
