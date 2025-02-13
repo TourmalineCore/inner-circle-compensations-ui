@@ -3,13 +3,14 @@ import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 import { federation } from '@module-federation/vite'
 
-const PORT = process.env.NODE_ENV === `production` ? 40100 : 4003
-const LAYOUT_PORT = process.env.NODE_ENV === `production` ? 40100 : 4006
+const LOCAL_ENV_PORT = 40100
+const COMPENSATIONS_PORT = process.env.NODE_ENV === `production` ? LOCAL_ENV_PORT : 4003
+const LAYOUT_PORT = process.env.NODE_ENV === `production` ? LOCAL_ENV_PORT : 4006
 
 // eslint-disable-next-line import/no-default-export
 export default defineConfig({
   server: {
-    port: PORT,
+    port: COMPENSATIONS_PORT,
   },
   base: `/compensations`,
   plugins: [
