@@ -6,7 +6,7 @@ import { federation } from '@module-federation/vite'
 // eslint-disable-next-line import/no-default-export
 export default defineConfig({
   server: {
-    port: 40100,
+    port: 4003,
   },
   base: `/compensations`,
   plugins: [
@@ -63,6 +63,7 @@ export default defineConfig({
         `react/jsx-runtime`,
         `/compensations/env-config.js`,
         `inner_circle_layout_ui/layout`,
+        `/node_modules`,
       ],
       output: {
         format: `es`,
