@@ -20,13 +20,19 @@ export default function App() {
 
   return (
     <AccessBasedOnPemissionsStateContext.Provider value={routesState}>
-      <BrowserRouter>
+      <BrowserRouter future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}>
         <Routes>
-          <Route path="/*"
-            element={<WithPrivateRoute />} />
+          <Route
+            path="/*"
+            element={<WithPrivateRoute />}
+          />
         </Routes>
         <Sidebar
-          routesState={routesState} />
+          routesState={routesState}
+        />
       </BrowserRouter>
     </AccessBasedOnPemissionsStateContext.Provider>
   )
