@@ -54,6 +54,8 @@ export default defineConfig({
   },
   build: {
     target: `chrome89`, // Setting the target browser version for the build
+    minify: false,
+    cssCodeSplit: false,
     rollupOptions: {
       external: [
         /^__mf__virtual\/.*/,
