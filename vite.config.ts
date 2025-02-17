@@ -23,7 +23,7 @@ export default defineConfig({
         inner_circle_layout_ui: {
           type: `module`,
           name: `inner_circle_layout_ui`, // The unique name of the remote application that will be used for identification
-          entry: `http://localhost:${LAYOUT_PORT}/layout/mf-manifest.json`, // The URL where the manifest file for the remote application can be found
+          entry: `http://localhost:${LAYOUT_PORT}/layout/remoteEntry.js`, // The URL where the manifest file for the remote application can be found
         },
       },
       shared: {
