@@ -1,12 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import { useMemo } from 'react'
+import { lazy, Suspense, useMemo } from 'react'
 import { withPrivateRoute } from './common/withPrivateRoute'
 import Template from './template/Template'
 import { AccessBasedOnPemissionsState } from './routes/state/AccessBasedOnPemissionsState'
 import { AccessBasedOnPemissionsStateContext } from './routes/state/AccessBasedOnPemissionsStateContext'
 
-import Sidebar from 'inner_circle_layout_ui/layout'
+// import Sidebar from 'inner_circle_layout_ui/layout'
+const Sidebar = lazy(
+  async () => import(`inner_circle_layout_ui/layout`),
+)
 
 const WithPrivateRoute = withPrivateRoute(Template)
 
@@ -30,9 +33,14 @@ export default function App() {
             element={<WithPrivateRoute />}
           />
         </Routes>
-        <Sidebar
+        {/* <Sidebar
           routesState={routesState}
-        />
+        /> */}
+        <Suspense fallback="loading...">
+          <Sidebar
+            routesState={routesState}
+          />
+        </Suspense>
       </BrowserRouter>
     </AccessBasedOnPemissionsStateContext.Provider>
   )
