@@ -16,11 +16,10 @@ import { TemplatePages } from './components/TemplatePages/TemplatePages'
 import { useSidebarRoutes } from './hooks/useSidebarRoutes'
 
 import { getAdminRoutes, getSidebarRoutes } from '../routes/adminRoutes'
-import AccessBasedOnPemissionsStateContext from '../routes/state/AccessBasedOnPemissionsStateContext'
+import { AccessBasedOnPemissionsStateContext } from '../routes/state/AccessBasedOnPemissionsStateContext'
 import { parseJwt } from '../common/utils/utilsForPermissions'
 import { authService } from '../common/authService'
 
-// eslint-disable-next-line react-refresh/only-export-components
 function Template() {
   const location = useLocation()
 
@@ -53,7 +52,6 @@ function Template() {
   const [
     token,
   ] = useContext(authService.AuthContext)
-
   const infoBoxDataName = parseJwt(token).corporateEmail.split(`@`)[0]
 
   return (
@@ -114,5 +112,5 @@ function Template() {
   )
 }
 
-// eslint-disable-next-line import/no-default-export, react-refresh/only-export-components
+// eslint-disable-next-line import/no-default-export
 export default memo(Template)

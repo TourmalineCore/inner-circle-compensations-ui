@@ -1,15 +1,21 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import { useMemo } from 'react'
+import { lazy, Suspense, useMemo } from 'react'
 import { withPrivateRoute } from './common/withPrivateRoute'
 import Template from './template/Template'
-import AccessBasedOnPemissionsState from './routes/state/AccessBasedOnPemissionsState'
-import AccessBasedOnPemissionsStateContext from './routes/state/AccessBasedOnPemissionsStateContext'
+import { AccessBasedOnPemissionsState } from './routes/state/AccessBasedOnPemissionsState'
+import { AccessBasedOnPemissionsStateContext } from './routes/state/AccessBasedOnPemissionsStateContext'
+
+// import Sidebar from 'inner_circle_layout_ui/layout'
+const Sidebar = lazy(
+  async () => import(`inner_circle_layout_ui/layout`),
+)
 
 const WithPrivateRoute = withPrivateRoute(Template)
 
 // eslint-disable-next-line import/no-default-export
 export default function App() {
+
   const routesState = useMemo(
     () => new AccessBasedOnPemissionsState(),
     [],
@@ -17,13 +23,24 @@ export default function App() {
 
   return (
     <AccessBasedOnPemissionsStateContext.Provider value={routesState}>
-      <BrowserRouter>
+      <BrowserRouter future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}>
         <Routes>
           <Route
             path="/*"
             element={<WithPrivateRoute />}
           />
         </Routes>
+        {/* <Sidebar
+          routesState={routesState}
+        /> */}
+        <Suspense fallback="loading...">
+          <Sidebar
+            routesState={routesState}
+          />
+        </Suspense>
       </BrowserRouter>
     </AccessBasedOnPemissionsStateContext.Provider>
   )

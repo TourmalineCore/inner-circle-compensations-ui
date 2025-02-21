@@ -18,9 +18,9 @@ module.exports = {
     "api-types",
   ],
   parser: "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "tsx": true
+  parserOptions: {
+    ecmaFeatures: {
+      tsx: true
     },
   },
   plugins: [
@@ -28,13 +28,13 @@ module.exports = {
     "react",
     "import",
   ],
-  "settings": {
+  settings: {
     "import/resolver": {
-      "node": {
-        "paths": ["node_modules", "src"],
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      node: {
+        paths: ["node_modules", "src"],
+        extensions: [".js", ".jsx", ".ts", ".tsx"]
       }
-    }
+    },
   },
   rules: {
     // disable chain cy error
@@ -47,7 +47,7 @@ module.exports = {
       },
     ],
     // semi and @typescript-eslint/semi configured to get rid of semicolons at the end of each line
-    "semi": [
+    semi: [
       "error",
       "never",
     ],

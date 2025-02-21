@@ -1,41 +1,28 @@
-name: deploy compensations to prod k8s
+name: Deploy to Prod and e2e test to prod
 
 on:
   push:
     branches:
       - master
-  pull_request:
-
-env:
-  GITHUB_REGISTRY: ghcr.io
 
 jobs:
-  build-image:
-    name: Build and push service image  
-    runs-on: ubuntu-22.04
-    steps:
-      - name: checkout
-        uses: actions/checkout@v1
-      - name: Build and push image
-        run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
-          docker build -t $GITHUB_REGISTRY/tourmalinecore/inner-circle/compensations:latest -t $GITHUB_REGISTRY/tourmalinecore/inner-circle/compensations:${{ github.sha }} .
-          docker push $GITHUB_REGISTRY/tourmalinecore/inner-circle/compensations:latest
-          docker push $GITHUB_REGISTRY/tourmalinecore/inner-circle/compensations:${{ github.sha }}
-  
+  push_to_registry:
+    uses: ./.github/workflows/docker-build-and-push.yml
+    secrets: inherit
+
   deploy-to-prod-k8s:
-    needs: build-image
     name: Deploy service to k8s for prod environment  
-    if: github.event_name == 'push'
+    needs: [push_to_registry]
     runs-on: ubuntu-22.04
     steps:
-      - name: checkout
-        uses: actions/checkout@v1
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v3
         with:
           exec: |
-            RELEASE_NAME=compensations
+            RELEASE_NAME=compensations-ui
             helm repo add bitnami https://charts.bitnami.com/bitnami
             helm upgrade --install --namespace dev-inner-circle --create-namespace --values ./ci/values.yaml \
             --set "image.tag=${{ github.sha }}" \
@@ -54,11 +41,10 @@ jobs:
   e2e-test-prod:
     runs-on: ubuntu-22.04
     container: cypress/browsers:node-18.14.1-chrome-111.0.5563.146-1-ff-111.0.1-edge-111.0.1661.54-1
-    if: github.event_name == 'push'
-    needs: deploy-to-prod-k8s
+    needs: [deploy-to-prod-k8s]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Check out the repo
+        uses: actions/checkout@v4
 
       - name: E2E test on prod
         uses: cypress-io/github-action@v5

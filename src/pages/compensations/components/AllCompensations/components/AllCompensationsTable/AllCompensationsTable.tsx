@@ -137,12 +137,14 @@ export const AllCompensationsTable = observer(({
             ))}
           </div>
         ) : (
-          <div
-            data-cy="all-compensations-table-no-data"
-            className="all-compensations-table__no-data"
-          >
-            {allCompensationsState.filterTerm === `unpaid` ? `No unpaid compensation in this month` : `No records in this month`}
-          </div>
+          <tr>
+            <td
+              data-cy="all-compensations-table-no-data"
+              className="all-compensations-table__no-data"
+            >
+              {allCompensationsState.filterTerm === `unpaid` ? `No unpaid compensation in this month` : `No records in this month`}
+            </td>
+          </tr>
         )}
       </tbody>
 

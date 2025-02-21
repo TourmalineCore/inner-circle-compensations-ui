@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import AccessBasedOnPemissionsStateContext from '../../routes/state/AccessBasedOnPemissionsStateContext'
+import { AccessBasedOnPemissionsStateContext } from '../../routes/state/AccessBasedOnPemissionsStateContext'
 
 export function CompensationsPage() {
   const navigate = useNavigate()

@@ -35,3 +35,5 @@ cypress.config*
 !cypress.config.local-env.ts
 
 env-config.js
+
+.__mf__temp

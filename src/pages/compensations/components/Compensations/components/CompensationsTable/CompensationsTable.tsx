@@ -98,26 +98,30 @@ export const CompensationsTable = observer(({
               </tr>
             ))}
 
-            <div
-              data-cy="compensations-table-column-total"
-              className="compensations-table__column compensations-table__column-total"
-            >
-              <span>Unpaid</span>
-              <span
-                className="compensations-table__total"
-                data-cy="compensations-table-sum"
+            <tr>
+              <td
+                data-cy="compensations-table-column-total"
+                className="compensations-table__column compensations-table__column-total"
               >
-                {formatMoney(compensationsState.allCompensations.totalUnpaidAmount)}
-              </span>
-            </div>
+                <span>Unpaid</span>
+                <span
+                  className="compensations-table__total"
+                  data-cy="compensations-table-sum"
+                >
+                  {formatMoney(compensationsState.allCompensations.totalUnpaidAmount)}
+                </span>
+              </td>
+            </tr>
           </>
         ) : (
-          <div
-            data-cy="compensations-table-no-data"
-            className="compensations-table__no-data"
-          >
-            {compensationsState.filterTerm === `unpaid` ? `No unpaid compensation` : `No records`}
-          </div>
+          <tr>
+            <td
+              data-cy="compensations-table-no-data"
+              className="compensations-table__no-data"
+            >
+              {compensationsState.filterTerm === `unpaid` ? `No unpaid compensation` : `No records`}
+            </td>
+          </tr>
         )}
       </tbody>
     </table>
