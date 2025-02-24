@@ -9,7 +9,7 @@
     "start-local-env": "vite --host --mode local-env",
     "build": "tsc && vite build",
     "docker:build": "docker build -t inner-circle-compensations-ui .",
-    "docker:run": "docker run -p 4455:80 inner-circle-compensations-ui",
+    "docker:run": "docker run -p 4456:80 inner-circle-compensations-ui",
     "lint": "run-s lint-ts lint-eslint",
     "lint-eslint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint-ts": "tsc --noEmit",
