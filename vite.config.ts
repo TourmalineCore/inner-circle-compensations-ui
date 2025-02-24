@@ -13,9 +13,8 @@ export default defineConfig({
   server: {
     port: COMPENSATIONS_PORT,
   },
-  base: `/`,
-
-  // base: `/compensations`,
+  // base: `/`, // for local docker
+  base: `/compensations`, // for local-env
   plugins: [
     react(),
     svgr(),
