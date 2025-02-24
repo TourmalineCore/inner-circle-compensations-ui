@@ -1,8 +1,9 @@
-FROM node:20.11.1-alpine3.19 as build
-COPY package.json .
-COPY package-lock.json .
+FROM node:19.5.0-alpine AS build
+ENV PATH=/node_modules/.bin:$PATH
+COPY package.json ./
+COPY package-lock.json ./
 RUN npm ci
-COPY . .
+COPY . ./
 RUN npm run build
 
 FROM nginx:1.26.0-alpine3.19-slim
@@ -17,4 +18,4 @@ COPY .env-vars .
 RUN apk add --no-cache bash
 RUN chmod +x /usr/share/nginx/html/env.sh
 
-CMD ["/bin/bash", "-c", "/usr/share/nginx/html/env.sh && nginx -g 'daemon off;' -c /data/conf/nginx.conf"]
+CMD ["/bin/bash", "-c", "nginx -g 'daemon off;' -c /data/conf/nginx.conf"]

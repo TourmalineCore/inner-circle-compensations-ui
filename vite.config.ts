@@ -1,42 +1,29 @@
 /* eslint-disable @typescript-eslint/quotes */
 import { defineConfig } from 'vite'
-import { federation } from '@module-federation/vite'
+import federation from '@originjs/vite-plugin-federation'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 
 const LOCAL_ENV_PORT = 40100
 const COMPENSATIONS_PORT = process.env.NODE_ENV === `production` ? LOCAL_ENV_PORT : 4003
-const LAYOUT_PORT = process.env.NODE_ENV === `production` ? LOCAL_ENV_PORT : 4006
+// const LAYOUT_PORT = process.env.NODE_ENV === `production` ? LOCAL_ENV_PORT : 4006
 
 // eslint-disable-next-line import/no-default-export
 export default defineConfig({
   server: {
     port: COMPENSATIONS_PORT,
   },
-  base: `/compensations`,
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern',
-      },
-    },
-  },
+  base: `/`,
+
+  // base: `/compensations`,
   plugins: [
     react(),
     svgr(),
     federation({
       name: "inner_circle_compensations_ui", // Unique name for the application
-      // manifest: true,
       remotes: {
-        inner_circle_layout_ui: {
-          type: "module",
-          name: "inner_circle_layout_ui", // The unique name of the remote application that will be used for identification
-          entry: `http://localhost:${LAYOUT_PORT}/layout/remoteEntry.js`, // The URL where the manifest file for the remote application can be found
-          entryGlobalName: "inner_circle_layout_ui",
-          shareScope: "default",
-        },
+        inner_circle_layout_ui: `http://localhost:4006/assets/inner_circle_layout_ui.js`,
       },
-      filename: "remoteEntry.js",
       shared: [
         "react",
       ],
@@ -47,14 +34,12 @@ export default defineConfig({
       this setting prevents that by sharing the same instance across all applications */
     }),
   ],
-  define: {
-    'import.meta.env.VITE_BASE_PATH': JSON.stringify(
-      process.env.NODE_ENV === `production` ? `/compensations` : ``,
-    ),
-  },
+  // define: {
+  //   'import.meta.env.VITE_BASE_PATH': JSON.stringify(
+  //     process.env.NODE_ENV === `production` ? `/compensations` : ``,
+  //   ),
+  // },
   build: {
     target: `chrome89`, // Setting the target browser version for the build
-    // minify: false,
-    // cssCodeSplit: false,
   },
 })
