@@ -2,7 +2,7 @@
 
 image:
   registry: ghcr.io
-  repository: tourmalinecore/inner-circle/compensations
+  repository: tourmalinecore/inner-circle-compensations-ui
   tag: "latest"
   pullPolicy: Always
   debug: true
