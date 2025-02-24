@@ -1,9 +1,8 @@
-FROM node:19.5.0-alpine AS build
-ENV PATH=/node_modules/.bin:$PATH
-COPY package.json ./
-COPY package-lock.json ./
-RUN NODE_ENV=development npm install
-COPY . ./
+FROM node:20.11.1-alpine3.19 as build
+COPY package.json .
+COPY package-lock.json .
+RUN npm ci
+COPY . .
 RUN npm run build
 
 FROM nginx:1.26.0-alpine3.19-slim
