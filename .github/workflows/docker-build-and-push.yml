@@ -35,8 +35,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          # TODO images: ghcr.io/tourmalinecore/${{ github.event.repository.name }}
-          images: ghcr.io/tourmalinecore/inner-circle/compensations-ui
+          images: ghcr.io/tourmalinecore/${{ github.event.repository.name }}
           tags: |
             # minimal (short sha)
             type=sha
@@ -56,5 +55,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64,linux/arm64
-  
   
