@@ -99,7 +99,7 @@ jobs:
     runs-on: ubuntu-22.04
     needs: 
       - install
-      - [push_to_registry]
+      - push_to_registry
     steps:
       - name: Checkout local-env
         uses: actions/checkout@v4
