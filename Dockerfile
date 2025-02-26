@@ -17,4 +17,4 @@ COPY .env-vars .
 RUN apk add --no-cache bash
 RUN chmod +x /usr/share/nginx/html/env.sh
 
-CMD ["/bin/bash", "-c", "nginx -g 'daemon off;' -c /data/conf/nginx.conf"]
+CMD ["/bin/bash", "-c", "/usr/share/nginx/html/env.sh && nginx -g 'daemon off;' -c /data/conf/nginx.conf"]
