@@ -19,7 +19,9 @@ export default defineConfig({
     react(),
     svgr(),
     federation({
-      name: "inner_circle_compensations_ui", // Unique name for the application
+      // Unique name for the application
+      name: "inner_circle_compensations_ui",
+      // The path where the remote application file can be found and its name
       remotes: {
         // inner_circle_layout_ui: `http://localhost:4455/assets/inner_circle_layout_ui.js`, // for local docker
         inner_circle_layout_ui: `http://localhost:${LOCAL_ENV_PORT}/layout/assets/inner_circle_layout_ui.js`, // for local-env
@@ -27,11 +29,6 @@ export default defineConfig({
       shared: [
         "react",
       ],
-
-      /* singleton: true: This setting ensures that only a single instance of the specified module 
-      (in this case, react) is loaded in the application. 
-      If multiple applications try to load their own version of React, 
-      this setting prevents that by sharing the same instance across all applications */
     }),
   ],
   define: {
