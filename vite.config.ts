@@ -30,7 +30,6 @@ export default defineConfig({
       exposes: {
         "./AllCompensationsPage": "./src/pages/AllCompensationsPage.tsx",
         "./CompensationsPersonalPage": "./src/pages/CompensationsPersonalPage.tsx",
-        "./CompensationsPage": "./src/pages/CompensationsPage.tsx",
       },
       shared: [
         "react",
