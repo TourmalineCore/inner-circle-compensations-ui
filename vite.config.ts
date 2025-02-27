@@ -37,6 +37,7 @@ export default defineConfig({
     ),
   },
   build: {
-    target: `chrome89`, // Setting the target browser version for the build
+    // Setting the target browser version for the build
+    target: `chrome89`,
   },
 })
