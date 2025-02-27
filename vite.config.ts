@@ -21,10 +21,16 @@ export default defineConfig({
     federation({
       // Unique name for the application
       name: "inner_circle_compensations_ui",
+      filename: "inner_circle_compensations_ui.js",
       // The path where the remote application file can be found and its name
       remotes: {
         // inner_circle_layout_ui: `http://localhost:4455/assets/inner_circle_layout_ui.js`, // for local docker
         inner_circle_layout_ui: `http://localhost:${LOCAL_ENV_PORT}/layout/assets/inner_circle_layout_ui.js`, // for local-env
+      },
+      exposes: {
+        "./AllCompensationsPage": "./src/pages/AllCompensationsPage.tsx",
+        "./CompensationsPersonalPage": "./src/pages/CompensationsPersonalPage.tsx",
+        "./CompensationsPage": "./src/pages/CompensationsPage.tsx",
       },
       shared: [
         "react",

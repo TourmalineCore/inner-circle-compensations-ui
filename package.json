@@ -10,6 +10,7 @@
     "build": "tsc && vite build",
     "docker:build": "docker build -t inner-circle-compensations-ui .",
     "docker:run": "docker run -p 4456:80 inner-circle-compensations-ui",
+    "docker:build:local-env": "docker build -t my-compensations:0.0.1 .",
     "lint": "run-s lint-ts lint-eslint",
     "lint-eslint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint-ts": "tsc --noEmit",
