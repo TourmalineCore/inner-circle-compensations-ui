@@ -24,18 +24,5 @@
 @use "../pages/compensations/components/AllCompensations/components/ToolTipTable/ToolTipTable";
 @use "../pages/compensations/components/CreateCompensations/components/CompensationsTypesTips/CompensationsTypesTips";
 
-// Template
-@use "../template/components/Breadcrumbs/Breadcrumbs";
-@use "../template/components/Copyright/Copyright";
-@use "../template/components/MobileControlsPanel/MobileControlsPanel";
-@use "../template/components/Sidebar/components/SidebarInfoBox/SidebarInfoBox";
-@use "../template/components/Sidebar/components/SidebarItem/components/SidebarTooltip/SidebarTooltip";
-@use "../template/components/Sidebar/components/SidebarItem/SidebarItem";
-@use "../template/components/Sidebar/components/SidebarSettings/SidebarSettingsMenu/SidebarSettingsMenu";
-@use "../template/components/Sidebar/components/SidebarSettings/SidebarSettingsControl";
-@use "../template/components/Sidebar/components/SidebarLogo/SidebarLogo";
-@use "../template/components/Sidebar/Sidebar";
-@use "../template/Template";
-
 // Theme
 @use "../theme/themeVariables";

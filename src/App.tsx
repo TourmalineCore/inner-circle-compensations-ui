@@ -1,8 +1,6 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import { lazy, Suspense, useMemo } from 'react'
-import { withPrivateRoute } from './common/withPrivateRoute'
-import Template from './template/Template'
 import { AccessBasedOnPemissionsState } from './routes/state/AccessBasedOnPemissionsState'
 import { AccessBasedOnPemissionsStateContext } from './routes/state/AccessBasedOnPemissionsStateContext'
 
@@ -10,8 +8,6 @@ import { AccessBasedOnPemissionsStateContext } from './routes/state/AccessBasedO
 const Sidebar = lazy(
   async () => import(`inner_circle_layout_ui/layout`),
 )
-
-const WithPrivateRoute = withPrivateRoute(Template)
 
 // eslint-disable-next-line import/no-default-export
 export default function App() {
@@ -27,12 +23,6 @@ export default function App() {
         v7_startTransition: true,
         v7_relativeSplatPath: true,
       }}>
-        <Routes>
-          <Route
-            path="/*"
-            element={<WithPrivateRoute />}
-          />
-        </Routes>
         {/* <Sidebar
           routesState={routesState}
         /> */}
