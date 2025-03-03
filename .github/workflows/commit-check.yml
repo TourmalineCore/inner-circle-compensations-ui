@@ -145,5 +145,6 @@ jobs:
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
-          
+          path: |
+            cypress/videos/*.mp4
+            cypress/screenshots/**/*.png
