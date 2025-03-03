@@ -1,8 +1,9 @@
 import { BrowserRouter } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
+import { getPageRoutes } from './routes/pageRoutes'
 
-// import Sidebar from 'inner_circle_layout_ui/layout'
-const Sidebar = lazy(
+// import Layout from remote app
+const Layout = lazy(
   async () => import(`inner_circle_layout_ui/layout`),
 )
 
@@ -14,7 +15,7 @@ export default function App() {
       v7_relativeSplatPath: true,
     }}>
       <Suspense fallback="loading...">
-        <Sidebar />
+        <Layout getPageRoutes={getPageRoutes} />
       </Suspense>
     </BrowserRouter>
   )
