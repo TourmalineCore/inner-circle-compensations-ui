@@ -101,15 +101,6 @@ jobs:
       - install
       - push_to_registry
     steps:
-      - name: Checkout inner-circle-layout-ui
-        uses: actions/checkout@v4
-        with:
-          repository: TourmalineCore/inner-circle-layout-ui
-          ref: feature/add-module-federation
-
-      - name: Get latest commit SHA of inner-circle-layout-ui
-        run: echo "ICL_UI_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
-      
       - name: Checkout local-env
         uses: actions/checkout@v4
         with:
@@ -121,7 +112,6 @@ jobs:
           runCmd: |
             # we need to override "latest" image tag of ui inside local-env to run e2e against the current commit ui version and not against latest from master
             yq -i '.image.tag = "sha-${{ github.sha }}"' deploy/values-compensations-ui.yaml.gotmpl
-            yq -i '.image.tag = "sha-${{ env.ICL_UI_SHA }}"' deploy/values-inner-circle-layout-ui.yaml.gotmpl
 
             kind create cluster --name inner-circle --config kind-local-config.yaml --kubeconfig ./.inner-circle-cluster-kubeconfig
             # we need to properly expose KUBECONFIG as an absolute path, pwd prints current working directory path
