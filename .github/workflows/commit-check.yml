@@ -101,11 +101,6 @@ jobs:
       - install
       - push_to_registry
     steps:
-      - name: Checkout local-env
-        uses: actions/checkout@v4
-        with:
-          repository: TourmalineCore/inner-circle-local-env
-
       - name: Checkout inner-circle-layout-ui
         uses: actions/checkout@v4
         with:
@@ -114,6 +109,11 @@ jobs:
 
       - name: Get latest commit SHA of inner-circle-layout-ui
         run: echo "ICL_UI_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
+      
+      - name: Checkout local-env
+        uses: actions/checkout@v4
+        with:
+          repository: TourmalineCore/inner-circle-local-env
 
       - name: Deploy Local Env to Kind k8s
         uses: devcontainers/ci@v0.3
