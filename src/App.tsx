@@ -1,30 +1,22 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { getPageRoutes } from './routes/pageRoutes'
 
-import { useMemo } from 'react'
-import { withPrivateRoute } from './common/withPrivateRoute'
-import Template from './template/Template'
-import AccessBasedOnPemissionsState from './routes/state/AccessBasedOnPemissionsState'
-import AccessBasedOnPemissionsStateContext from './routes/state/AccessBasedOnPemissionsStateContext'
-
-const WithPrivateRoute = withPrivateRoute(Template)
+// import Layout from remote app
+const Layout = lazy(
+  async () => import(`inner_circle_layout_ui/layout`),
+)
 
 // eslint-disable-next-line import/no-default-export
 export default function App() {
-  const routesState = useMemo(
-    () => new AccessBasedOnPemissionsState(),
-    [],
-  )
-
   return (
-    <AccessBasedOnPemissionsStateContext.Provider value={routesState}>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/*"
-            element={<WithPrivateRoute />}
-          />
-        </Routes>
-      </BrowserRouter>
-    </AccessBasedOnPemissionsStateContext.Provider>
+    <BrowserRouter future={{
+      v7_startTransition: true,
+      v7_relativeSplatPath: true,
+    }}>
+      <Suspense fallback="loading...">
+        <Layout getPageRoutes={getPageRoutes} />
+      </Suspense>
+    </BrowserRouter>
   )
 }
