@@ -10,7 +10,7 @@ jobs:
     uses: ./.github/workflows/docker-build-and-push.yml
     secrets: inherit
 
-  deploy-to-prod-k8s:
+  deploy-to-prod:
     name: Deploy service to k8s for prod environment  
     needs: [push_to_registry]
     runs-on: ubuntu-22.04
@@ -18,25 +18,28 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v4
 
+      - name: Create default global .kube/config file
+        run: |
+          cd $HOME
+          mkdir .kube
+          echo "${{ secrets.DEV_KUBECONFIG }}" > .kube/config
+
       - name: Deploy
-        uses: WyriHaximus/github-action-helm3@v3
+        uses: helmfile/helmfile-action@v1.9.0
         with:
-          exec: |
-            RELEASE_NAME=compensations-ui
-            helm repo add bitnami https://charts.bitnami.com/bitnami
-            helm upgrade --install --namespace dev-inner-circle --create-namespace --values ./ci/values.yaml \
-            --set "image.tag=${{ github.sha }}" \
-            --set "ingress.enabled=true" \
-            --set "ingress.hostname=${{ secrets.DEV_HOST }}" \
-            --set "extraConfigMapEnvVars.LINK_TO_SALARY_SERVICE=${{ secrets.DEV_LINK_TO_SALARY_SERVICE }}" \
-            --set "extraConfigMapEnvVars.LINK_TO_ACCOUNT_SERVICE=${{ secrets.DEV_LINK_TO_ACCOUNT_SERVICE }}" \
-            --set "extraConfigMapEnvVars.LINK_TO_COMPENSATIONS_SERVICE=${{ secrets.DEV_LINK_TO_COMPENSATIONS_SERVICE }}" \
-            --set "extraConfigMapEnvVars.API_ROOT=${{ secrets.DEV_LINK_TO_API_SERVICE }}" \
-            --set "extraConfigMapEnvVars.API_ROOT_AUTH=${{ secrets.DEV_LINK_TO_API_ROOT_AUTH }}" \
-            --set "extraConfigMapEnvVars.ENV_KEY=${{ secrets.DEV_ENV }}" \
-            "${RELEASE_NAME}" \
-            bitnami/nginx --version 15.0.2
-          kubeconfig: "${{ secrets.DEV_KUBECONFIG }}"
+          helmfile-version: 'v0.164.0'
+          helm-version: 'v3.14.4'
+          helmfile-args: >
+            apply --namespace dev-inner-circle -f ci/helmfile.yaml 
+            --state-values-set image.tag=sha-${{ github.sha }} 
+            --state-values-set ingress.hostname=${{ secrets.DEV_HOST }}
+            --state-values-set extraConfigMapEnvVars.LINK_TO_SALARY_SERVICE=/employees/
+            --state-values-set extraConfigMapEnvVars.LINK_TO_ACCOUNT_SERVICE=account-management
+            --state-values-set extraConfigMapEnvVars.LINK_TO_COMPENSATIONS_SERVICE=compensations/
+            --state-values-set extraConfigMapEnvVars.API_ROOT=/api
+            --state-values-set extraConfigMapEnvVars.API_ROOT_AUTH=/api/auth
+            --state-values-set extraConfigMapEnvVars.ENV_KEY=dev
+          helmfile-auto-init: "false"       
 
   e2e-test-prod:
     runs-on: ubuntu-22.04
