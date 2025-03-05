@@ -27,7 +27,7 @@ export default defineConfig({
       remotes: {
         // inner_circle_layout_ui: `http://localhost:4455/assets/inner_circle_layout_ui.js`, // for local docker
         // inner_circle_layout_ui: `http://localhost:${LOCAL_ENV_PORT}/layout/assets/inner_circle_layout_ui.js`, // for local-env
-        inner_circle_layout_ui: `${process.env.VITE_DEV_HOST}/layout/assets/inner_circle_layout_ui.js`, // for prod
+        inner_circle_layout_ui: `https://${process.env.VITE_DEV_HOST}/layout/assets/inner_circle_layout_ui.js`, // for prod
       },
       shared: [
         "react",
