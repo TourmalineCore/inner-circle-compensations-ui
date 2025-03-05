@@ -12,5 +12,6 @@ export default defineConfig({
       USER_PASSWORD: `cEoPa$$wo1d`,
     },
     video: true,
+    screenshotOnRunFailure: true,
   },
 })
