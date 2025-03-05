@@ -44,7 +44,7 @@ jobs:
   e2e-test-prod:
     runs-on: ubuntu-22.04
     container: cypress/browsers:node-18.14.1-chrome-111.0.5563.146-1-ff-111.0.1-edge-111.0.1661.54-1
-    needs: [deploy-to-prod-k8s]
+    needs: [deploy-to-prod]
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
