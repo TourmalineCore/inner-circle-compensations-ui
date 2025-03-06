@@ -38,7 +38,6 @@ jobs:
             --state-values-set extraConfigMapEnvVars.LINK_TO_COMPENSATIONS_SERVICE='compensations/'
             --state-values-set extraConfigMapEnvVars.API_ROOT='/api'
             --state-values-set extraConfigMapEnvVars.API_ROOT_AUTH='/api/auth'
-            --state-values-set extraConfigMapEnvVars.ENV_KEY='dev'
           helmfile-auto-init: "false"       
 
   e2e-test-prod:
