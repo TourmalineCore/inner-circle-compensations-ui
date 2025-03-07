@@ -38,7 +38,6 @@ jobs:
             --state-values-set extraConfigMapEnvVars.LINK_TO_COMPENSATIONS_SERVICE='compensations/'
             --state-values-set extraConfigMapEnvVars.API_ROOT='/api'
             --state-values-set extraConfigMapEnvVars.API_ROOT_AUTH='/api/auth'
-            --state-values-set extraConfigMapEnvVars.ENV_KEY='dev'
           helmfile-auto-init: "false"       
 
   e2e-test-prod:
@@ -61,8 +60,8 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_BASE_URL: ${{ secrets.DEV_BASE_URL }}
-          API_ROOT: ${{ secrets.TEST_LINK_TO_API_SERVICE }}
-          API_ROOT_AUTH: ${{ secrets.TEST_LINK_TO_API_ROOT_AUTH }}
-          LINK_TO_COMPENSATIONS_SERVICE: ${{ secrets.TEST_LINK_TO_COMPENSATIONS_SERVICE }}
+          API_ROOT: '/api'
+          API_ROOT_AUTH: '/api/auth'
+          LINK_TO_COMPENSATIONS_SERVICE: 'compensations/'
           USER_LOGIN: ${{ secrets.DEV_USER_LOGIN }}
           USER_PASSWORD: ${{ secrets.DEV_USER_PASSWORD }}
