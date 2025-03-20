@@ -7,8 +7,12 @@ on:
       - feature/*
 
 jobs:
+  # this is needed to wait for the new docker image to be build and published to the registry
+  # so that we can use the image to run ui of the needed commit related version as part of local-env
+  # the idea is taken from here https://stackoverflow.com/a/71489231
   push_to_registry:
     uses: ./.github/workflows/docker-build-and-push.yml
+    # without this it cannot login to the registry
     secrets: inherit
 
   deploy-to-prod:
@@ -39,6 +43,7 @@ jobs:
             --state-values-set extraConfigMapEnvVars.LINK_TO_COMPENSATIONS_SERVICE='compensations/'
             --state-values-set extraConfigMapEnvVars.API_ROOT='/api'
             --state-values-set extraConfigMapEnvVars.API_ROOT_AUTH='/api/auth'
+            --state-values-set extraConfigMapEnvVars.VITE_BASE_URL=${{ secrets.BASE_URL }}
           helmfile-auto-init: "false"       
 
   e2e-test-prod:
@@ -64,6 +69,7 @@ jobs:
           API_ROOT: '/api'
           API_ROOT_AUTH: '/api/auth'
           LINK_TO_COMPENSATIONS_SERVICE: '/compensations/'
+          VITE_BASE_URL: ${{ secrets.BASE_URL }}
           USER_LOGIN: ${{ secrets.DEV_USER_LOGIN }}
           USER_PASSWORD: ${{ secrets.DEV_USER_PASSWORD }}
     

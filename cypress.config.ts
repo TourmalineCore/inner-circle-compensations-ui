@@ -9,8 +9,9 @@ export default defineConfig({
     baseUrl: process.env.CYPRESS_BASE_URL,
     env: {
       API_ROOT: process.env.API_ROOT,
-      LINK_TO_COMPENSATIONS_SERVICE: process.env.LINK_TO_COMPENSATIONS_SERVICE,
       API_ROOT_AUTH: process.env.API_ROOT_AUTH,
+      LINK_TO_COMPENSATIONS_SERVICE: process.env.LINK_TO_COMPENSATIONS_SERVICE,
+      VITE_BASE_URL: process.env.VITE_BASE_URL,
       USER_LOGIN: process.env.USER_LOGIN,
       USER_PASSWORD: process.env.USER_PASSWORD,
     },
