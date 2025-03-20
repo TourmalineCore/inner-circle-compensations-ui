@@ -8,6 +8,12 @@ npm ci
 npm start
 ```
 
+## Create local docker container to connect it with local-env
+
+```
+npm run docker:build:local-env
+```
+
 ## Component tests
 
 To run component tests in console you need enter the command
