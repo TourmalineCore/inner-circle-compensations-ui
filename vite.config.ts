@@ -5,6 +5,10 @@ import federation from '@originjs/vite-plugin-federation'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 
+// description about how to set up configuration you can see in 
+// https://github.com/TourmalineCore/inner-circle-books-ui/blob/master/vite.config.ts (host app)
+// and https://github.com/TourmalineCore/inner-circle-layout-ui/blob/master/vite.config.ts (remote app)
+
 const LOCAL_ENV_PORT = 40100
 const COMPENSATIONS_PORT = process.env.NODE_ENV === `production` ? LOCAL_ENV_PORT : 4003
 
@@ -18,10 +22,8 @@ export default defineConfig({
     react(),
     svgr(),
     federation({
-      // Unique name for the application
       name: "inner_circle_compensations_ui",
       filename: "inner_circle_compensations_ui.js",
-      // The path where the remote application file can be found and its name
       remotes: {
         inner_circle_layout_ui: `${process.env.VITE_BASE_URL}/layout/assets/inner_circle_layout_ui.js`,
       },
@@ -36,7 +38,6 @@ export default defineConfig({
     ),
   },
   build: {
-    // Setting the target browser version for the build
     target: `esnext`,
   },
 })
