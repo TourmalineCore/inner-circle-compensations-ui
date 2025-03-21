@@ -9,3 +9,11 @@ export const authService = createAuthService({
   tokenValueAccessor: `value`,
   tokenExpireAccessor: `expiresInUtc`,
 })
+
+export async function setLogin(payload: any) {
+  const {
+    data,
+  } = await authService.loginCall(payload)
+
+  authService.setLoggedIn(data)
+}
