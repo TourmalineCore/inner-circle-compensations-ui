@@ -9,7 +9,7 @@ import svgr from 'vite-plugin-svgr'
 // https://github.com/TourmalineCore/inner-circle-books-ui/blob/master/vite.config.ts (host app)
 // and https://github.com/TourmalineCore/inner-circle-layout-ui/blob/master/vite.config.ts (remote app)
 
-const LOCAL_ENV_PORT = 40100
+const LOCAL_ENV_PORT = 30090
 const COMPENSATIONS_PORT = process.env.NODE_ENV === `production` ? LOCAL_ENV_PORT : 4003
 
 // eslint-disable-next-line import/no-default-export
