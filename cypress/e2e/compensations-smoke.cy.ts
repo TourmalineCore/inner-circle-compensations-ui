@@ -66,6 +66,7 @@ describe(`Compensations Smoke`, () => {
     // find our new compensation
     AllCompensationsPage.findCompensation(newCompensationComment)
 
+    // make our new compensation as paid
     cy
       .get(`.all-compensations-table__items-list`)
       .getByData(`all-compensations-table-item`)
