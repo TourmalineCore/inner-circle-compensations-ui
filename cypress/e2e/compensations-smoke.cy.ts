@@ -70,7 +70,7 @@ describe(`Compensations Smoke`, () => {
     cy
       .get(`.all-compensations-table__items-list`)
       .getByData(`all-compensations-table-item`)
-      .contains(`[data-cy="all-compensations-table-column-employee"]`, `Account E2E Test`)
+      .contains(`[data-cy="all-compensations-table-column-employee"]`, /Account E2E Test|Ceo Ceo Ceo/)
       .parent()
       .within(() => {
         cy
