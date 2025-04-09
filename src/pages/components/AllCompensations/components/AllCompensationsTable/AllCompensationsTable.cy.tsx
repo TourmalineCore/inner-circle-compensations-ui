@@ -151,6 +151,24 @@ describe(`AllCompensationsTable`, () => {
       .getByData(`all-compensations-table-tooltip-item`)
       .should(`exist`)
   })
+
+  it(`
+    GIVEN all compensations page 
+    WHEN total unpaid amount is hover 
+    THEN render all nominals with counts
+    `, () => {
+    mountComponent({
+      compensations: initialData,
+    })
+
+    cy
+      .getByData(`all-compensations-table-unpaid-sum`)
+      .trigger(`mouseover`)
+
+    cy
+      .getByData(`all-compensations-table-unpaid-sum-nominals`)
+      .should(`exist`)
+  })
 })
 
 function mountComponent({
