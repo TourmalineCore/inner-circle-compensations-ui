@@ -6,6 +6,7 @@ import { ToolTipTable } from '../ToolTipTable/ToolTipTable'
 import { MarkAsPaidButton } from '../AllCompensationsActions/components/MarkAsPaidButton/MarkAsPaidButton'
 import { AllCompensationsStateContext } from '../../state/AllCompensationsStateContext'
 import { faL } from '@fortawesome/free-solid-svg-icons'
+import { convertAmountsToNominals } from '../../convertAmountsToNominals'
 
 export const AllCompensationsTable = observer(({
   className = ``,
@@ -54,6 +55,13 @@ export const AllCompensationsTable = observer(({
     setShowTooltip(false)
     rowRefs.current[index] = null
   }
+
+  const totalUnpaidAmountNominals = convertAmountsToNominals({
+    amounts: allCompensationsState
+      .allCompensations
+      .items
+      .map((item) => item.unpaidAmount),
+  })
 
   return (
     <>
@@ -179,7 +187,12 @@ export const AllCompensationsTable = observer(({
           <div
             data-cy="all-compensations-table-unpaid-sum-nominals"
           >
-            Hello World!
+            {
+              totalUnpaidAmountNominals
+                .nominals
+                .map((nominalWithCount) => `${nominalWithCount.nominal} * ${nominalWithCount.count}`)
+                .join(`, `)
+            }
           </div>
         )
       }
