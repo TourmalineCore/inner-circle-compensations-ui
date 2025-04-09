@@ -5,7 +5,6 @@ import { formatMoney } from '../../../../../common/utils/formatMoney'
 import { ToolTipTable } from '../ToolTipTable/ToolTipTable'
 import { MarkAsPaidButton } from '../AllCompensationsActions/components/MarkAsPaidButton/MarkAsPaidButton'
 import { AllCompensationsStateContext } from '../../state/AllCompensationsStateContext'
-import { faL } from '@fortawesome/free-solid-svg-icons'
 import { convertAmountsToNominals } from '../../convertAmountsToNominals'
 
 export const AllCompensationsTable = observer(({
@@ -172,7 +171,7 @@ export const AllCompensationsTable = observer(({
             <th
               className="all-compensations-table__column-unpaid__sum"
               data-cy="all-compensations-table-unpaid-sum"
-              onMouseEnter={(e) => setShowNominalsForUnpaidAmount(true)}
+              onMouseEnter={() => setShowNominalsForUnpaidAmount(true)}
               onMouseLeave={() => setShowNominalsForUnpaidAmount(false)}
             >
               {formatMoney(allCompensationsState.totalUnpaidCount)}
