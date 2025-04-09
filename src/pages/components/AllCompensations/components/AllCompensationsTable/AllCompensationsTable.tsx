@@ -190,7 +190,10 @@ export const AllCompensationsTable = observer(({
             {
               totalUnpaidAmountNominals
                 .nominals
-                .map((nominalWithCount) => `${nominalWithCount.nominal} * ${nominalWithCount.count}`)
+                .map(({
+                  nominal,
+                  count,
+                }) => `${nominal} * ${count}`)
                 .join(`, `)
             }
           </div>
