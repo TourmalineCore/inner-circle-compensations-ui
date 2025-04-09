@@ -154,8 +154,8 @@ describe(`AllCompensationsTable`, () => {
 
   it(`
     GIVEN all compensations page 
-    WHEN total unpaid amount is hover 
-    THEN render all nominals with counts
+    WHEN total unpaid amount is hover and it is 1,520
+    THEN render the following nominals: 1000 * 1, 500 * 1, 100 * 1
     `, () => {
     mountComponent({
       compensations: initialData,
@@ -167,7 +167,7 @@ describe(`AllCompensationsTable`, () => {
 
     cy
       .getByData(`all-compensations-table-unpaid-sum-nominals`)
-      .should(`exist`)
+      .contains(`1000 * 1, 500 * 1, 100 * 1`)
   })
 })
 
