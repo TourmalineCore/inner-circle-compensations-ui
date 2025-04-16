@@ -151,6 +151,24 @@ describe(`AllCompensationsTable`, () => {
       .getByData(`all-compensations-table-tooltip-item`)
       .should(`exist`)
   })
+
+  it(`
+    GIVEN all compensations page 
+    WHEN total unpaid amount is hover and it is 1,520
+    THEN render the following nominals: 1000 * 1, 500 * 1, 100 * 1
+    `, () => {
+    mountComponent({
+      compensations: initialData,
+    })
+
+    cy
+      .getByData(`all-compensations-table-unpaid-sum`)
+      .trigger(`mouseover`)
+
+    cy
+      .getByData(`all-compensations-table-unpaid-sum-nominals`)
+      .contains(`1000 * 1, 500 * 1, 100 * 1`)
+  })
 })
 
 function mountComponent({
