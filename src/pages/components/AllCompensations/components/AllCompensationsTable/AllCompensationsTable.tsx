@@ -9,8 +9,10 @@ import { convertAmountsToNominals } from '../../convertAmountsToNominals'
 
 export const AllCompensationsTable = observer(({
   className = ``,
+  onDeleteCompensation,
 }: {
   className?: string,
+  onDeleteCompensation: (compensationId: number) => unknown,
 }) => {
   const allCompensationsState = useContext(AllCompensationsStateContext)
   const [
@@ -143,7 +145,10 @@ export const AllCompensationsTable = observer(({
                         ref={(el) => (tooltipRefs.current[employeeId] = el as HTMLDivElement | null)}
                       >
                         {showTooltip && (
-                          <ToolTipTable compensations={compensations} />
+                          <ToolTipTable
+                            compensations={compensations}
+                            onDelete={onDeleteCompensation}
+                          />
                         )}
                       </div>
                     </span>

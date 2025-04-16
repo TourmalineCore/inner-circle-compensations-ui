@@ -24,6 +24,7 @@ describe(`ToolTipTable`, () => {
   `, () => {
     mountComponent({
       compensations: initialData.compensations,
+      onDelete: () => { },
     })
 
     cy
@@ -38,6 +39,7 @@ describe(`ToolTipTable`, () => {
   `, () => {
     mountComponent({
       compensations: initialData.compensations,
+      onDelete: () => { },
     })
 
     cy
@@ -58,20 +60,65 @@ describe(`ToolTipTable`, () => {
 
     cy
       .getByData(`tooltip-table-column-total-amount`)
-      .should(`have.text`, formatMoney(200))
+      // to bypass newly introduced X button which affects this cell's text
+      .contains(formatMoney(200))
+  })
+
+  it(`
+    GIVEN all compensations page 
+    WHEN user removes a compensation
+    THEN should call onDelete callback with its id
+    `, () => {
+    mountComponent({
+      compensations: [
+        {
+          quantity: 2,
+          amount: 100,
+          comment: `milk`,
+          compensationType: `Products`,
+          compensationRequestedAtUtc: `2024-01-10T11:31:25Z`,
+          id: 57,
+        },
+        {
+          quantity: 1,
+          amount: 7000,
+          comment: `meat`,
+          compensationType: `Products`,
+          compensationRequestedAtUtc: `2024-01-10T11:31:25Z`,
+          id: 66,
+        },
+      ],
+      onDelete: cy
+        .spy()
+        .as(`onDeleteSpy`),
+    })
+
+    cy
+      .getByData(`tooltip-table-remove-compensation-button`)
+      .last()
+      .click()
+
+    cy
+      .get(`@onDeleteSpy`)
+      .should(`have.been.calledWith`, 66)
   })
 })
 
 function mountComponent({
   compensations,
+  onDelete,
 }: {
   compensations: EmployeeAllCompensationsItemType[],
+  onDelete: (compensationId: number) => unknown,
 }) {
   const allCompensationsState = new AllCompensationsState()
 
   cy.mount(
     <AllCompensationsStateContext.Provider value={allCompensationsState}>
-      <ToolTipTable compensations={compensations} />
+      <ToolTipTable
+        compensations={compensations}
+        onDelete={onDelete}
+      />
     </AllCompensationsStateContext.Provider>,
   )
 }
