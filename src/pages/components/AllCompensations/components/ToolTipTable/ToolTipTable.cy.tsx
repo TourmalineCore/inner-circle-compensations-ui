@@ -24,6 +24,7 @@ describe(`ToolTipTable`, () => {
   `, () => {
     mountComponent({
       compensations: initialData.compensations,
+      onDelete: () => { },
     })
 
     cy
@@ -38,6 +39,7 @@ describe(`ToolTipTable`, () => {
   `, () => {
     mountComponent({
       compensations: initialData.compensations,
+      onDelete: () => { },
     })
 
     cy
