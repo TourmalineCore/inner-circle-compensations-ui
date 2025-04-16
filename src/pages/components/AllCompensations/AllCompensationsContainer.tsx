@@ -4,6 +4,7 @@ import { api } from '../../../common/api'
 import { LINK_TO_COMPENSATIONS_SERVICE } from '../../../common/config/config'
 import { AllCompensationsContent } from './AllCompensationsContent'
 import { AllCompensationsStateContext } from './state/AllCompensationsStateContext'
+import { AxiosResponse } from 'axios'
 
 export const AllCompensationsContainer = observer(() => {
   const allCompensationsState = useContext(AllCompensationsStateContext)
@@ -16,7 +17,9 @@ export const AllCompensationsContainer = observer(() => {
   ])
 
   return (
-    <AllCompensationsContent />
+    <AllCompensationsContent
+      onDeleteCompensation={onDeleteCompensation}
+    />
   )
 
   async function loadCompensations() {
@@ -31,5 +34,14 @@ export const AllCompensationsContainer = observer(() => {
     })
 
     allCompensationsState.setFilterTerm()
+  }
+
+  async function onDeleteCompensation(compensationId: number) {
+    await api.delete<
+      void,
+      AxiosResponse<void>
+    >(
+      `${LINK_TO_COMPENSATIONS_SERVICE}${compensationId}/soft-delete`,
+    )
   }
 })
