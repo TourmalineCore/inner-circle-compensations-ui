@@ -2,7 +2,7 @@ import './commands'
 
 // @ts-ignore
 window.__ENV__ = {
-  VITE_API_ROOT: `http://test.com/api`,
+  API_ROOT: `http://test.com/api`,
   VITE_API_ROOT_AUTH: `http://test.com/auth-api`,
   LINK_TO_ACCOUNT_SERVICE: `/`,
   LINK_TO_COMPENSATIONS_SERVICE: `/`,
