@@ -167,7 +167,9 @@ function mountComponent({
 
   cy.mount(
     <AllCompensationsStateContext.Provider value={allCompensationsState}>
-      <AllCompensationsContent />
+      <AllCompensationsContent
+        onDeleteCompensation={() => { }}
+      />
     </AllCompensationsStateContext.Provider>,
   )
 }

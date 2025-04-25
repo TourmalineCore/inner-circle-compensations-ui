@@ -2,8 +2,10 @@ import { formatMoney } from '../../../../../common/utils/formatMoney'
 
 export function ToolTipTable({
   compensations,
+  onDelete,
 }: {
   compensations: EmployeeAllCompensationsItemType[],
+  onDelete: (compensationId: number) => unknown,
 }) {
   return (
     <div className="tooltip-table">
@@ -62,6 +64,13 @@ export function ToolTipTable({
                 className="tooltip-table__table__column-total-amount"
               >
                 {formatMoney(quantity * amount)}
+                {` `}
+                <span
+                  data-cy="tooltip-table-remove-compensation-button"
+                  onClick={() => onDelete(id)}
+                >
+                  X
+                </span>
               </td>
             </tr>
           ))}
