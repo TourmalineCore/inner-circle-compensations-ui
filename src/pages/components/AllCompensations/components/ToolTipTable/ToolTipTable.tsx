@@ -65,12 +65,14 @@ export function ToolTipTable({
               >
                 {formatMoney(quantity * amount)}
                 {` `}
-                <span
+                <button
+                  type="button"
                   data-cy="tooltip-table-remove-compensation-button"
+                  className="tooltip-table__table__delete-button"
                   onClick={() => onDelete(id)}
                 >
-                  X
-                </span>
+                  ×
+                </button>
               </td>
             </tr>
           ))}
