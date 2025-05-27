@@ -34,6 +34,7 @@ export const AllCompensationsContainer = observer(() => {
     })
 
     allCompensationsState.setFilterTerm()
+    allCompensationsState.updateStatus(false)
   }
 
   async function onDeleteCompensation(compensationId: number) {
@@ -43,5 +44,7 @@ export const AllCompensationsContainer = observer(() => {
     >(
       `${LINK_TO_COMPENSATIONS_SERVICE}${compensationId}/soft-delete`,
     )
+
+    allCompensationsState.updateStatus(true)
   }
 })
