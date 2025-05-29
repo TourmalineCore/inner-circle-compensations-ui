@@ -1,10 +1,9 @@
-import { observer } from 'mobx-react-lite'
 import { useMemo } from 'react'
-import { AllCompensations } from './components/AllCompensations/AllCompensations'
 import { AllCompensationsStateContext } from './components/AllCompensations/state/AllCompensationsStateContext'
 import { AllCompensationsState } from './components/AllCompensations/state/AllCompensationsState'
+import { AllCompensationsContainer } from './components/AllCompensations/AllCompensationsContainer'
 
-export const AllCompensationsPage = observer(() => {
+export function AllCompensationsPage() {
   const allCompensationsState = useMemo(
     () => new AllCompensationsState(),
     [],
@@ -12,7 +11,7 @@ export const AllCompensationsPage = observer(() => {
 
   return (
     <AllCompensationsStateContext.Provider value={allCompensationsState}>
-      <AllCompensations />
+      <AllCompensationsContainer />
     </AllCompensationsStateContext.Provider>
   )
-})
+}
