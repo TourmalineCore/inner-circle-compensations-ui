@@ -1,19 +1,18 @@
 import { AllCompensationsContainer } from './AllCompensationsContainer'
-import { AllCompensationsState } from './state/AllCompensationsState'
+import { AllCompensationsState, getSelectedDate } from './state/AllCompensationsState'
 import { AllCompensationsStateContext } from './state/AllCompensationsStateContext'
 
 describe(`AllCompensationsContainer`, () => {
-  const now = new Date()
+  const now = getSelectedDate(new Date())
   const year = now.getFullYear()
-  const month = String(now.getMonth() + 1)
-  const yearMonth = `${year}-${month}`
+  const month = now.getMonth() + 1
 
   const mockCompensations: AllCompensationsType = {
     items: [
       {
         employeeId: 101,
         employeeFullName: `Ivan Ivanov`,
-        compensationRequestedForYearAndMonth: yearMonth,
+        compensationRequestedForYearAndMonth: `${year}-${month}`,
         totalAmount: 7200,
         unpaidAmount: 7200,
         compensations: [
