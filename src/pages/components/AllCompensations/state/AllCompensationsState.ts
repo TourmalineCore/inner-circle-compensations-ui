@@ -76,8 +76,8 @@ export class AllCompensationsState {
     this._selectedDate = newDate
   }
 
-  triggerPageReload(newStatus: boolean) {
-    this._needToReloadPage = newStatus
+  triggerPageReload() {
+    this._needToReloadPage = !this._needToReloadPage
   }
 
   setFilterTerm() {

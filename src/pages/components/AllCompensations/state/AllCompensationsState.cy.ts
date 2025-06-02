@@ -75,7 +75,7 @@ describe(`AllCompensationsState`, () => {
     expect(allCompensationsState.needToReloadPage)
       .eq(false)
 
-    allCompensationsState.triggerPageReload(true)
+    allCompensationsState.triggerPageReload()
 
     expect(allCompensationsState.needToReloadPage)
       .eq(true)

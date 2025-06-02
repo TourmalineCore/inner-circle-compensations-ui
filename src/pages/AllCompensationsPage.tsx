@@ -11,7 +11,9 @@ export function AllCompensationsPage() {
 
   return (
     <AllCompensationsStateContext.Provider value={allCompensationsState}>
-      <AllCompensationsContainer />
+      <AllCompensationsContainer
+        onCompensationDeleted={() => allCompensationsState.triggerPageReload()}
+      />
     </AllCompensationsStateContext.Provider>
   )
 }

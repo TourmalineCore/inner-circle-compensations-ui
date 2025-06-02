@@ -2,15 +2,15 @@ import { AllCompensationsActions } from './components/AllCompensationsActions/Al
 import { AllCompensationsTable } from './components/AllCompensationsTable/AllCompensationsTable'
 
 export function AllCompensationsContent({
-  onDeleteCompensation,
+  onDeleteSelectedCompensation,
 }: {
-  onDeleteCompensation: (compensationId: number) => unknown,
+  onDeleteSelectedCompensation: (compensationId: number) => unknown,
 }) {
   return (
     <section data-cy="all-compensations-content">
       <AllCompensationsActions />
       <AllCompensationsTable
-        onDeleteCompensation={onDeleteCompensation}
+        onDeleteSelectedCompensation={onDeleteSelectedCompensation}
       />
     </section>
   )

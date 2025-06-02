@@ -6,7 +6,11 @@ import { AllCompensationsContent } from './AllCompensationsContent'
 import { AllCompensationsStateContext } from './state/AllCompensationsStateContext'
 import { AxiosResponse } from 'axios'
 
-export const AllCompensationsContainer = observer(() => {
+export const AllCompensationsContainer = observer(({
+  onCompensationDeleted,
+}: {
+  onCompensationDeleted: () => unknown,
+}) => {
   const allCompensationsState = useContext(AllCompensationsStateContext)
 
   useEffect(() => {
@@ -18,7 +22,7 @@ export const AllCompensationsContainer = observer(() => {
 
   return (
     <AllCompensationsContent
-      onDeleteCompensation={onDeleteCompensation}
+      onDeleteSelectedCompensation={onDeleteSelectedCompensation}
     />
   )
 
@@ -34,10 +38,11 @@ export const AllCompensationsContainer = observer(() => {
     })
 
     allCompensationsState.setFilterTerm()
-    allCompensationsState.triggerPageReload(false)
+
+    onCompensationDeleted()
   }
 
-  async function onDeleteCompensation(compensationId: number) {
+  async function onDeleteSelectedCompensation(compensationId: number) {
     await api.delete<
       void,
       AxiosResponse<void>
@@ -45,6 +50,6 @@ export const AllCompensationsContainer = observer(() => {
       `${LINK_TO_COMPENSATIONS_SERVICE}${compensationId}/soft-delete`,
     )
 
-    allCompensationsState.triggerPageReload(true)
+    onCompensationDeleted()
   }
 })
