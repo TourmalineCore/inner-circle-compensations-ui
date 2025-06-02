@@ -22,7 +22,7 @@ export const AllCompensationsContainer = observer(({
 
   return (
     <AllCompensationsContent
-      onDeleteSelectedCompensation={onDeleteSelectedCompensation}
+      onDeleteClick={onDeleteSelectedCompensation}
     />
   )
 

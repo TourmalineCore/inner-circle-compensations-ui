@@ -2,10 +2,10 @@ import { formatMoney } from '../../../../../common/utils/formatMoney'
 
 export function ToolTipTable({
   compensations,
-  onDelete,
+  onDeleteClick,
 }: {
   compensations: EmployeeAllCompensationsItemType[],
-  onDelete: (compensationId: number) => unknown,
+  onDeleteClick: (compensationId: number) => unknown,
 }) {
   return (
     <div className="tooltip-table">
@@ -78,7 +78,7 @@ export function ToolTipTable({
                   type="button"
                   data-cy="tooltip-table-remove-compensation-button"
                   className="tooltip-table__table__delete-button"
-                  onClick={() => onDelete(id)}
+                  onClick={() => onDeleteClick(id)}
                 >
                   ×
                 </button>

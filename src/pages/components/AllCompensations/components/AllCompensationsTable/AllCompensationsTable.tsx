@@ -9,10 +9,10 @@ import { convertAmountsToNominals } from '../../convertAmountsToNominals'
 
 export const AllCompensationsTable = observer(({
   className = ``,
-  onDeleteSelectedCompensation,
+  onDeleteClick,
 }: {
   className?: string,
-  onDeleteSelectedCompensation: (compensationId: number) => unknown,
+  onDeleteClick: (compensationId: number) => unknown,
 }) => {
   const allCompensationsState = useContext(AllCompensationsStateContext)
 
@@ -163,7 +163,7 @@ export const AllCompensationsTable = observer(({
                           {showTooltip && (
                             <ToolTipTable
                               compensations={compensations}
-                              onDelete={onDeleteSelectedCompensation}
+                              onDeleteClick={onDeleteClick}
                             />
                           )}
                         </div>

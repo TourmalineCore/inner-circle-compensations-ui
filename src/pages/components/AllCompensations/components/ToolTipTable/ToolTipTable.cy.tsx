@@ -24,7 +24,7 @@ describe(`ToolTipTable`, () => {
   `, () => {
     mountComponent({
       compensations: initialData.compensations,
-      onDelete: () => { },
+      onDeleteClick: () => { },
     })
 
     cy
@@ -39,7 +39,7 @@ describe(`ToolTipTable`, () => {
   `, () => {
     mountComponent({
       compensations: initialData.compensations,
-      onDelete: () => { },
+      onDeleteClick: () => { },
     })
 
     cy
@@ -65,10 +65,10 @@ describe(`ToolTipTable`, () => {
   })
 
   it(`
-    GIVEN all compensations page 
-    WHEN user removes a compensation
-    THEN should call onDelete callback with its id
-    `, () => {
+  GIVEN all compensations page 
+  WHEN user removes a compensation
+  THEN should call onDelete callback with its id
+  `, () => {
     mountComponent({
       compensations: [
         {
@@ -88,7 +88,7 @@ describe(`ToolTipTable`, () => {
           id: 66,
         },
       ],
-      onDelete: cy
+      onDeleteClick: cy
         .spy()
         .as(`onDeleteSpy`),
     })
@@ -106,10 +106,10 @@ describe(`ToolTipTable`, () => {
 
 function mountComponent({
   compensations,
-  onDelete,
+  onDeleteClick,
 }: {
   compensations: EmployeeAllCompensationsItemType[],
-  onDelete: (compensationId: number) => unknown,
+  onDeleteClick: (compensationId: number) => unknown,
 }) {
   const allCompensationsState = new AllCompensationsState()
 
@@ -117,7 +117,7 @@ function mountComponent({
     <AllCompensationsStateContext.Provider value={allCompensationsState}>
       <ToolTipTable
         compensations={compensations}
-        onDelete={onDelete}
+        onDeleteClick={onDeleteClick}
       />
     </AllCompensationsStateContext.Provider>,
   )
