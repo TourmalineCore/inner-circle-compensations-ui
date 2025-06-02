@@ -9,11 +9,15 @@ export function ToolTipTable({
 }) {
   return (
     <div className="tooltip-table">
-      <table data-cy="tooltip-table"
-        className="tooltip-table__table">
+      <table
+        data-cy="tooltip-table"
+        className="tooltip-table__table"
+      >
         <thead>
-          <tr className="tooltip-table__table__head"
-            data-cy="tooltip-table-head">
+          <tr
+            className="tooltip-table__table__head"
+            data-cy="tooltip-table-head"
+          >
             <th className="tooltip-table__table__column-type">Type</th>
             <th className="tooltip-table__table__column-quantity">Quantity</th>
             <th className="tooltip-table__table__column-amount">Amount</th>
@@ -21,9 +25,14 @@ export function ToolTipTable({
             <th className="tooltip-table__table__column-total-amount">Total</th>
           </tr>
         </thead>
+
         <tbody>
           {compensations.map(({
-            id, compensationType, quantity, amount, comment,
+            id,
+            compensationType,
+            quantity,
+            amount,
+            comment,
           }) => (
             <tr
               data-cy="tooltip-table-item"

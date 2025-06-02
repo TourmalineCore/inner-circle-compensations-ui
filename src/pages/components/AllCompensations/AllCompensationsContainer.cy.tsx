@@ -12,7 +12,7 @@ describe(`AllCompensationsContainer`, () => {
     items: [
       {
         employeeId: 101,
-        employeeFullName: `Иван Иванов`,
+        employeeFullName: `Ivan Ivanov`,
         compensationRequestedForYearAndMonth: yearMonth,
         totalAmount: 7200,
         unpaidAmount: 7200,
@@ -42,28 +42,33 @@ describe(`AllCompensationsContainer`, () => {
   }
 
   it(`
-    GIVEN all compensations page 
-    WHEN delete the first compensation
-    SHOULD call DELETE endpoint
-    AND call GET compensations endpoint
+  GIVEN all compensations page 
+  WHEN delete the first compensation
+  SHOULD call DELETE endpoint
+  AND call GET compensations endpoint
   `, () => {
 
-    cy.intercept(`GET`, `**/admin/all?year=${year}&month=${month}`, {
-      body: mockCompensations,
-    })
+    cy
+      .intercept(`GET`, `**/admin/all?year=${year}&month=${month}`, {
+        body: mockCompensations,
+      })
       .as(`getCompensations`)
 
-    cy.intercept(`DELETE`, `**//soft-delete`, {
-      statusCode: 204,
-    })
+    cy
+      .intercept(`DELETE`, `**//soft-delete`, {
+        statusCode: 204,
+      })
       .as(`deleteCompensation`)
+
     mountComponent()
 
-    cy.getByData(`all-compensations-filter-button`)
+    cy
+      .getByData(`all-compensations-filter-button`)
       .first()
       .click()
 
-    cy.getByData(`all-compensations-table-tooltip`)
+    cy
+      .getByData(`all-compensations-table-tooltip`)
       .first()
       .trigger(`mouseover`, {
         force: true,
