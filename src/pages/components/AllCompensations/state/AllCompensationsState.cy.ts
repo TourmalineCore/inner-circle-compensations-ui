@@ -72,12 +72,12 @@ describe(`AllCompensationsState`, () => {
   WHEN called change status
   THEN status changed
   `, () => {
-    expect(allCompensationsState.needToReloadPage)
+    expect(allCompensationsState.needToReloadCompensations)
       .eq(false)
 
-    allCompensationsState.triggerPageReload()
+    allCompensationsState.triggerCompensationsReload()
 
-    expect(allCompensationsState.needToReloadPage)
+    expect(allCompensationsState.needToReloadCompensations)
       .eq(true)
   })
 

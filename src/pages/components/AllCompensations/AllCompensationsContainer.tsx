@@ -16,7 +16,7 @@ export const AllCompensationsContainer = observer(({
   useEffect(() => {
     loadCompensations()
   }, [
-    allCompensationsState.needToReloadPage,
+    allCompensationsState.needToReloadCompensations,
     allCompensationsState.selectedDate,
   ])
 

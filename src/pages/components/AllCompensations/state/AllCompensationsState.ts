@@ -10,7 +10,7 @@ export class AllCompensationsState {
 
   private _filterTerm = ``
 
-  private _needToReloadPage = false
+  private _needToReloadCompensations = false
 
   private _selectedDate: Date = getSelectedDate(new Date())
 
@@ -51,8 +51,8 @@ export class AllCompensationsState {
     }
   }
 
-  get needToReloadPage() {
-    return this._needToReloadPage
+  get needToReloadCompensations() {
+    return this._needToReloadCompensations
   }
 
   initialize({
@@ -76,8 +76,8 @@ export class AllCompensationsState {
     this._selectedDate = newDate
   }
 
-  triggerPageReload() {
-    this._needToReloadPage = !this._needToReloadPage
+  triggerCompensationsReload() {
+    this._needToReloadCompensations = !this._needToReloadCompensations
   }
 
   setFilterTerm() {
