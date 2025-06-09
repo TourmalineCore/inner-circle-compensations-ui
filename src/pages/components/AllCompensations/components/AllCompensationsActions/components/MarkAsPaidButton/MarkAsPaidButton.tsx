@@ -29,6 +29,6 @@ export const MarkAsPaidButton = observer(({
 
     await api.put(`${LINK_TO_COMPENSATIONS_SERVICE}mark-as-paid`, compensationsIds)
 
-    allCompensationsState.triggerCompensationsReload()
+    allCompensationsState.updateStatus(!allCompensationsState.isChange)
   }
 })

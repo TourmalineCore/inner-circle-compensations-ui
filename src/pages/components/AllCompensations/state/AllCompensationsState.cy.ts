@@ -72,12 +72,12 @@ describe(`AllCompensationsState`, () => {
   WHEN called change status
   THEN status changed
   `, () => {
-    expect(allCompensationsState.needToReloadCompensations)
+    expect(allCompensationsState.isChange)
       .eq(false)
 
-    allCompensationsState.triggerCompensationsReload()
+    allCompensationsState.updateStatus(true)
 
-    expect(allCompensationsState.needToReloadCompensations)
+    expect(allCompensationsState.isChange)
       .eq(true)
   })
 
@@ -135,5 +135,19 @@ describe(`AllCompensationsState`, () => {
 
     expect(allCompensationsState.monthYearDate.year)
       .eq(2023)
+  })
+
+  it(`
+  GIVEN all compensations page 
+  WHEN called soft delete compensation
+  THEN trigger reload compensations
+  `, () => {
+    expect(allCompensationsState.needToReloadCompensations)
+      .eq(false)
+
+    allCompensationsState.triggerCompensationsReload()
+
+    expect(allCompensationsState.needToReloadCompensations)
+      .eq(true)
   })
 })

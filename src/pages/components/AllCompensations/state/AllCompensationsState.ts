@@ -10,6 +10,8 @@ export class AllCompensationsState {
 
   private _filterTerm = ``
 
+  private _isChange = false
+
   private _needToReloadCompensations = false
 
   private _selectedDate: Date = getSelectedDate(new Date())
@@ -51,6 +53,10 @@ export class AllCompensationsState {
     }
   }
 
+  get isChange() {
+    return this._isChange
+  }
+
   get needToReloadCompensations() {
     return this._needToReloadCompensations
   }
@@ -74,6 +80,10 @@ export class AllCompensationsState {
 
   updateDate(newDate: Date) {
     this._selectedDate = newDate
+  }
+
+  updateStatus(newStatus: boolean) {
+    this._isChange = newStatus
   }
 
   triggerCompensationsReload() {
