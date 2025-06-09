@@ -22,10 +22,7 @@ describe(`ToolTipTable`, () => {
   WHEN user hovers over the amount 
   THEN render tooltip table
   `, () => {
-    mountComponent({
-      compensations: initialData.compensations,
-      onDeleteClick: () => { },
-    })
+    mountComponent({})
 
     cy
       .getByData(`tooltip-table`)
@@ -37,10 +34,7 @@ describe(`ToolTipTable`, () => {
   WHEN user hovers over the amount 
   THEN render valid data for all elements
   `, () => {
-    mountComponent({
-      compensations: initialData.compensations,
-      onDeleteClick: () => { },
-    })
+    mountComponent({})
 
     cy
       .getByData(`tooltip-table-column-type`)
@@ -100,16 +94,22 @@ describe(`ToolTipTable`, () => {
 
     cy
       .get(`@onDeleteSpy`)
-      .should(`have.been.calledWith`, 66)
+      .should(`have.been.calledWith`, {
+        compensationId: 66,
+      })
   })
 })
 
 function mountComponent({
-  compensations,
-  onDeleteClick,
+  compensations = initialData.compensations,
+  onDeleteClick = async () => { },
 }: {
-  compensations: EmployeeAllCompensationsItemType[],
-  onDeleteClick: (compensationId: number) => unknown,
+  compensations?: EmployeeAllCompensationsItemType[],
+  onDeleteClick?: ({
+    compensationId,
+  }: {
+    compensationId: number,
+  }) => Promise<void>,
 }) {
   const allCompensationsState = new AllCompensationsState()
 

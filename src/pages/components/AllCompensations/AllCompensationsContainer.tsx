@@ -42,7 +42,11 @@ export const AllCompensationsContainer = observer(({
     onCompensationDeleted()
   }
 
-  async function onDeleteSelectedCompensation(compensationId: number) {
+  async function onDeleteSelectedCompensation({
+    compensationId,
+  }: {
+    compensationId: number,
+  }) {
     await api.delete<
       void,
       AxiosResponse<void>

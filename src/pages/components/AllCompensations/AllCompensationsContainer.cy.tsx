@@ -48,30 +48,32 @@ describe(`AllCompensationsContainer`, () => {
   `, () => {
 
     cy
-      .intercept(`GET`, `**/admin/all?year=${year}&month=${month}`, {
-        body: mockCompensations,
-      })
+      .intercept(
+        `GET`,
+        `*/admin/all?year=${year}&month=${month}`,
+        {
+          body: mockCompensations,
+        })
       .as(`getCompensations`)
 
     cy
-      .intercept(`DELETE`, `**//soft-delete`, {
-        statusCode: 204,
-      })
+      .intercept(
+        `DELETE`,
+        `**/soft-delete`,
+        {
+          statusCode: 204,
+        })
       .as(`deleteCompensation`)
 
     mountComponent()
 
-    cy
-      .getByData(`all-compensations-filter-button`)
-      .first()
-      .click()
-
+    // trigger MouseOver on tooltip
     cy
       .getByData(`all-compensations-table-tooltip`)
-      .first()
-      .trigger(`mouseover`, {
-        force: true,
-      })
+      .trigger(`mouseover`)
+
+    // click remove compensation button
+    cy
       .getByData(`tooltip-table-remove-compensation-button`)
       .first()
       .click({

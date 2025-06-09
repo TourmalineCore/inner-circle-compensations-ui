@@ -4,7 +4,7 @@ import { AllCompensationsTable } from './components/AllCompensationsTable/AllCom
 export function AllCompensationsContent({
   onDeleteClick,
 }: {
-  onDeleteClick: (compensationId: number) => unknown,
+  onDeleteClick: OnDeleteClick,
 }) {
   return (
     <section data-cy="all-compensations-content">

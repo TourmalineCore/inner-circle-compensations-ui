@@ -12,7 +12,7 @@ export const AllCompensationsTable = observer(({
   onDeleteClick,
 }: {
   className?: string,
-  onDeleteClick: (compensationId: number) => unknown,
+  onDeleteClick: OnDeleteClick,
 }) => {
   const allCompensationsState = useContext(AllCompensationsStateContext)
 
@@ -85,107 +85,119 @@ export const AllCompensationsTable = observer(({
         </thead>
 
         <tbody>
-          {allCompensationsState.allCompensations.items.length !== 0
-            ? (
-              <div className="all-compensations-table__items-list">
-                {allCompensationsState.allCompensations.items.map(({
-                  employeeId,
-                  employeeFullName,
-                  totalAmount,
-                  unpaidAmount,
-                  isSelected,
-                  isPaid,
-                  compensations,
-                }) => (
-                  <tr
-                    data-cy="all-compensations-table-item"
-                    key={employeeId}
-                    className={clsx(`all-compensations-table__item`, {
-                      'all-compensations-table__item--selected': isSelected,
-                      'all-compensations-table__item--not-selected': !isSelected,
-                    })}
-                  >
-                    <td
-                      data-cy="all-compensations-table-column-employee"
-                      className="all-compensations-table__column-employee"
-                    >
-                      {employeeFullName}
-                    </td>
-
-                    <td
-                      data-cy="all-compensations-table-column-status"
-                      className={clsx(`all-compensations-table__column-status`, {
-                        'all-compensations-table__column-status--content--unpaid': !isPaid,
-                        'all-compensations-table__column-status--content--paid': isPaid,
-                      })}
-                    >
-                      <span className="all-compensations-table__column-status--content">
-                        {
-                          isPaid
-                            ? `PAID`
-                            : `UNPAID`
-                        }
-                      </span>
-                    </td>
-
-                    <td
-                      data-cy="all-compensations-table-column-action"
-                      className={clsx(`all-compensations-table__column-action`, {
-                        'all-compensations-table__column-action--unpaid': !isPaid,
-                        'all-compensations-table__column-action--paid': isPaid,
-                      })}
-                    >
-                      <MarkAsPaidButton compensations={compensations} />
-                    </td>
-
-                    <td className="all-compensations-table__column-unpaid">
-                      <span data-cy="all-compensations-table-column-unpaid">
-                        {formatMoney(unpaidAmount)}
-                      </span>
-                    </td>
-
-                    <td className="all-compensations-table__column-amount">
-                      <span
-                        className="all-compensations-table__tooltip"
-                        data-cy="all-compensations-table-tooltip"
-                        onMouseEnter={(e) => handleTooltipShow(e.currentTarget as HTMLTableRowElement, employeeId)}
-                        onMouseLeave={() => handleTooltipHide(employeeId)}
-                        ref={(el) => (rowRefs.current[employeeId] = el as HTMLTableRowElement | null)}
-                      >
-                        <span data-cy="all-compensations-table-column-amount">
-                          {formatMoney(totalAmount)}
-                        </span>
-                        <div
-                          className="all-compensations-table__tooltip__item"
-                          data-cy="all-compensations-table-tooltip-item"
-                          ref={(el) => (tooltipRefs.current[employeeId] = el as HTMLDivElement | null)}
-                        >
-                          {showTooltip && (
-                            <ToolTipTable
-                              compensations={compensations}
-                              onDeleteClick={onDeleteClick}
-                            />
-                          )}
-                        </div>
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </div>
-            ) : (
-              <tr>
-                <td
-                  data-cy="all-compensations-table-no-data"
-                  className="all-compensations-table__no-data"
-                >
+          {
+            allCompensationsState
+              .allCompensations
+              .items
+              .length !== 0
+              ? (
+                <div className="all-compensations-table__items-list">
                   {
-                    allCompensationsState.filterTerm === `unpaid`
-                      ? `No unpaid compensation in this month`
-                      : `No records in this month`
-                  }
-                </td>
-              </tr>
-            )}
+                    allCompensationsState
+                      .allCompensations
+                      .items
+                      .map(({
+                        employeeId,
+                        employeeFullName,
+                        totalAmount,
+                        unpaidAmount,
+                        isSelected,
+                        isPaid,
+                        compensations,
+                      }) => (
+                        <tr
+                          data-cy="all-compensations-table-item"
+                          key={employeeId}
+                          className={clsx(`all-compensations-table__item`, {
+                            'all-compensations-table__item--selected': isSelected,
+                            'all-compensations-table__item--not-selected': !isSelected,
+                          })}
+                        >
+                          <td
+                            data-cy="all-compensations-table-column-employee"
+                            className="all-compensations-table__column-employee"
+                          >
+                            {employeeFullName}
+                          </td>
+
+                          <td
+                            data-cy="all-compensations-table-column-status"
+                            className={clsx(`all-compensations-table__column-status`, {
+                              'all-compensations-table__column-status--content--unpaid': !isPaid,
+                              'all-compensations-table__column-status--content--paid': isPaid,
+                            })}
+                          >
+                            <span className="all-compensations-table__column-status--content">
+                              {
+                                isPaid
+                                  ? `PAID`
+                                  : `UNPAID`
+                              }
+                            </span>
+                          </td>
+
+                          <td
+                            data-cy="all-compensations-table-column-action"
+                            className={clsx(`all-compensations-table__column-action`, {
+                              'all-compensations-table__column-action--unpaid': !isPaid,
+                              'all-compensations-table__column-action--paid': isPaid,
+                            })}
+                          >
+                            <MarkAsPaidButton compensations={compensations} />
+                          </td>
+
+                          <td className="all-compensations-table__column-unpaid">
+                            <span data-cy="all-compensations-table-column-unpaid">
+                              {formatMoney(unpaidAmount)}
+                            </span>
+                          </td>
+
+                          <td className="all-compensations-table__column-amount">
+                            <span
+                              className="all-compensations-table__tooltip"
+                              data-cy="all-compensations-table-tooltip"
+                              onMouseEnter={(e) => handleTooltipShow(e.currentTarget as HTMLTableRowElement, employeeId)}
+                              onMouseLeave={() => handleTooltipHide(employeeId)}
+                              ref={(el) => (rowRefs.current[employeeId] = el as HTMLTableRowElement | null)}
+                            >
+                              <span data-cy="all-compensations-table-column-amount">
+                                {formatMoney(totalAmount)}
+                              </span>
+                              <div
+                                className="all-compensations-table__tooltip__item"
+                                data-cy="all-compensations-table-tooltip-item"
+                                ref={(el) => (tooltipRefs.current[employeeId] = el as HTMLDivElement | null)}
+                              >
+                                {
+                                  showTooltip && (
+                                    <ToolTipTable
+                                      compensations={compensations}
+                                      onDeleteClick={onDeleteClick}
+                                    />
+                                  )
+                                }
+                              </div>
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                </div>
+              )
+              :
+              (
+                <tr>
+                  <td
+                    data-cy="all-compensations-table-no-data"
+                    className="all-compensations-table__no-data"
+                  >
+                    {
+                      allCompensationsState.filterTerm === `unpaid`
+                        ? `No unpaid compensation in this month`
+                        : `No records in this month`
+                    }
+                  </td>
+                </tr>
+              )}
         </tbody>
 
         <tfoot>

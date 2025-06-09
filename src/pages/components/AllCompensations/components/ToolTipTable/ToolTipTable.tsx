@@ -5,7 +5,7 @@ export function ToolTipTable({
   onDeleteClick,
 }: {
   compensations: EmployeeAllCompensationsItemType[],
-  onDeleteClick: (compensationId: number) => unknown,
+  onDeleteClick: OnDeleteClick,
 }) {
   return (
     <div className="tooltip-table">
@@ -27,64 +27,67 @@ export function ToolTipTable({
         </thead>
 
         <tbody>
-          {compensations.map(({
-            id,
-            compensationType,
-            quantity,
-            amount,
-            comment,
-          }) => (
-            <tr
-              data-cy="tooltip-table-item"
-              key={id}
-              className="tooltip-table__table__item"
-            >
-
-              <td
-                data-cy="tooltip-table-column-type"
-                className="tooltip-table__table__column-type"
+          {
+            compensations.map(({
+              id,
+              compensationType,
+              quantity,
+              amount,
+              comment,
+            }) => (
+              <tr
+                data-cy="tooltip-table-item"
+                key={id}
+                className="tooltip-table__table__item"
               >
-                {compensationType}
-              </td>
 
-              <td
-                data-cy="tooltip-table-column-quantity"
-                className="tooltip-table__table__column-quantity"
-              >
-                {quantity}
-              </td>
-
-              <td
-                data-cy="tooltip-table-column-amount"
-                className="tooltip-table__table__column-amount"
-              >
-                {formatMoney(amount)}
-              </td>
-
-              <td
-                data-cy="tooltip-table-column-comment"
-                className="tooltip-table__table__column-comment"
-              >
-                {comment}
-              </td>
-
-              <td
-                data-cy="tooltip-table-column-total-amount"
-                className="tooltip-table__table__column-total-amount"
-              >
-                {formatMoney(quantity * amount)}
-                {` `}
-                <button
-                  type="button"
-                  data-cy="tooltip-table-remove-compensation-button"
-                  className="tooltip-table__table__delete-button"
-                  onClick={() => onDeleteClick(id)}
+                <td
+                  data-cy="tooltip-table-column-type"
+                  className="tooltip-table__table__column-type"
                 >
-                  ×
-                </button>
-              </td>
-            </tr>
-          ))}
+                  {compensationType}
+                </td>
+
+                <td
+                  data-cy="tooltip-table-column-quantity"
+                  className="tooltip-table__table__column-quantity"
+                >
+                  {quantity}
+                </td>
+
+                <td
+                  data-cy="tooltip-table-column-amount"
+                  className="tooltip-table__table__column-amount"
+                >
+                  {formatMoney(amount)}
+                </td>
+
+                <td
+                  data-cy="tooltip-table-column-comment"
+                  className="tooltip-table__table__column-comment"
+                >
+                  {comment}
+                </td>
+
+                <td
+                  data-cy="tooltip-table-column-total-amount"
+                  className="tooltip-table__table__column-total-amount"
+                >
+                  {formatMoney(quantity * amount)}
+                  {` `}
+                  <button
+                    type="button"
+                    data-cy="tooltip-table-remove-compensation-button"
+                    className="tooltip-table__table__delete-button"
+                    onClick={() => onDeleteClick({
+                      compensationId: id,
+                    })}
+                  >
+                    ×
+                  </button>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
