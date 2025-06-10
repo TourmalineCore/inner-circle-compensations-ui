@@ -14,6 +14,19 @@ export const AllCompensationsContainer = observer(({
   const allCompensationsState = useContext(AllCompensationsStateContext)
 
   useEffect(() => {
+    async function loadCompensations() {
+      const dateFilteringCompensations = allCompensationsState.monthYearDate
+
+      const {
+        data,
+      } = await api.get(`${LINK_TO_COMPENSATIONS_SERVICE}admin/all?year=${dateFilteringCompensations.year}&month=${dateFilteringCompensations.month}`)
+
+      allCompensationsState.initialize({
+        loadedCompensations: data,
+      })
+
+      allCompensationsState.setFilterTerm()
+    }
     loadCompensations()
   }, [
     allCompensationsState.isChange,
@@ -26,22 +39,6 @@ export const AllCompensationsContainer = observer(({
       onDeleteClick={onDeleteSelectedCompensation}
     />
   )
-
-  async function loadCompensations() {
-    const dateFilteringCompensations = allCompensationsState.monthYearDate
-
-    const {
-      data,
-    } = await api.get(`${LINK_TO_COMPENSATIONS_SERVICE}admin/all?year=${dateFilteringCompensations.year}&month=${dateFilteringCompensations.month}`)
-
-    allCompensationsState.initialize({
-      loadedCompensations: data,
-    })
-
-    allCompensationsState.setFilterTerm()
-
-    onCompensationDeleted()
-  }
 
   async function onDeleteSelectedCompensation({
     compensationId,
