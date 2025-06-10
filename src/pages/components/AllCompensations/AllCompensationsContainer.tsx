@@ -27,6 +27,7 @@ export const AllCompensationsContainer = observer(({
 
       allCompensationsState.setFilterTerm()
     }
+    
     loadCompensations()
   }, [
     allCompensationsState.isChange,
