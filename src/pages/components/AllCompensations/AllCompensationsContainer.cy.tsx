@@ -47,6 +47,10 @@ describe(`AllCompensationsContainer`, () => {
   AND call GET compensations endpoint
   `, () => {
 
+    const onCompensationDeletedSpy = cy
+      .spy()
+      .as(`onCompensationDeletedSpy`)
+
     cy
       .intercept(
         `GET`,
@@ -65,7 +69,7 @@ describe(`AllCompensationsContainer`, () => {
         })
       .as(`deleteCompensation`)
 
-    mountComponent()
+    mountComponent(onCompensationDeletedSpy)
 
     // trigger MouseOver on tooltip
     cy
@@ -82,16 +86,21 @@ describe(`AllCompensationsContainer`, () => {
 
     cy.wait(`@deleteCompensation`)
     cy.wait(`@getCompensations`)
+
+    // check if onCompensationDeleted was called
+    cy
+      .get(`@onCompensationDeletedSpy`)
+      .should(`have.been.calledOnce`)
   })
 })
 
-function mountComponent() {
+function mountComponent(onCompensationDeleted: () => void) {
   const allCompensationsState = new AllCompensationsState()
 
   cy.mount(
     <AllCompensationsStateContext.Provider value={allCompensationsState}>
       <AllCompensationsContainer
-        onCompensationDeleted={() => { }}
+        onCompensationDeleted={onCompensationDeleted}
       />
     </AllCompensationsStateContext.Provider>,
   )
