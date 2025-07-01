@@ -24,5 +24,7 @@ export function CheckToken({
     return null
   }
 
-  return <>{children}</>
+  return <>
+    {children}
+  </>
 }
