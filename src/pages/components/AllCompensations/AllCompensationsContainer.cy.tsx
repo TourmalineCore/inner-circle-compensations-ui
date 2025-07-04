@@ -78,6 +78,7 @@ describe(`AllCompensationsContainer`, () => {
 
     // click remove compensation button
     // Note: to click on a hidden element you need to use force: true
+    // Cypress doesn't work well with hovering over elements, so we work with the hidden tooltip using force: true
     cy
       .getByData(`tooltip-table-remove-compensation-button`)
       .first()
