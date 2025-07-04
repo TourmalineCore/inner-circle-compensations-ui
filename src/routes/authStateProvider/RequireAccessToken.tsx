@@ -1,7 +1,7 @@
 import { ReactNode, useContext, useEffect } from 'react'
 import { authService } from '../../common/authService'
 
-export function CheckToken({
+export function RequireAccessToken({
   children,
 }: {
   children: ReactNode,
