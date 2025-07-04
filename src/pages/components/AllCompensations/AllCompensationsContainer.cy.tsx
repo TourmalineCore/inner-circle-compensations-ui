@@ -77,6 +77,7 @@ describe(`AllCompensationsContainer`, () => {
       .trigger(`mouseover`)
 
     // click remove compensation button
+    // Note: to click on a hidden element you need to use force: true
     cy
       .getByData(`tooltip-table-remove-compensation-button`)
       .first()
