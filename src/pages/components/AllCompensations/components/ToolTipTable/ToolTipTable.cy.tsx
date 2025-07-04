@@ -102,14 +102,14 @@ describe(`ToolTipTable`, () => {
 
 function mountComponent({
   compensations = initialData.compensations,
-  onDeleteClick = async () => { },
+  onDeleteClick = () => { },
 }: {
   compensations?: EmployeeAllCompensationsItemType[],
   onDeleteClick?: ({
     compensationId,
   }: {
     compensationId: number,
-  }) => Promise<void>,
+  }) => unknown,
 }) {
   const allCompensationsState = new AllCompensationsState()
 
