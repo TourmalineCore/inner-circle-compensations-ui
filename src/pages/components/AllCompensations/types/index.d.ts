@@ -28,4 +28,4 @@ type OnDeleteClick = ({
   compensationId,
 }: {
   compensationId: number,
-}) => Promise<void>;
+}) => unknown;
