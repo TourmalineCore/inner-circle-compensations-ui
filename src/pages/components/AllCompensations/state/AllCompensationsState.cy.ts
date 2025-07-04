@@ -139,8 +139,8 @@ describe(`AllCompensationsState`, () => {
 
   it(`
   GIVEN all compensations page 
-  WHEN called soft delete compensation
-  THEN trigger reload compensations
+  WHEN trigger compensations reload
+  THEN needToReloadCompensations flag changes its value
   `, () => {
     expect(allCompensationsState.needToReloadCompensations)
       .eq(false)
