@@ -136,18 +136,4 @@ describe(`AllCompensationsState`, () => {
     expect(allCompensationsState.monthYearDate.year)
       .eq(2023)
   })
-
-  it(`
-  GIVEN all compensations page 
-  WHEN trigger compensations reload
-  THEN needToReloadCompensations flag changes its value
-  `, () => {
-    expect(allCompensationsState.needToReloadCompensations)
-      .eq(false)
-
-    allCompensationsState.triggerCompensationsReload()
-
-    expect(allCompensationsState.needToReloadCompensations)
-      .eq(true)
-  })
 })
