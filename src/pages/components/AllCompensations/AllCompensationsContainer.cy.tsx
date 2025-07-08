@@ -3,6 +3,7 @@ import { AllCompensationsState, getSelectedDate } from './state/AllCompensations
 import { AllCompensationsStateContext } from './state/AllCompensationsStateContext'
 
 describe(`AllCompensationsContainer`, () => {
+  // ToDo figure out how to mock Date in the app and in its tests
   const now = getSelectedDate(new Date())
   const year = now.getFullYear()
   const month = now.getMonth() + 1
@@ -10,63 +11,35 @@ describe(`AllCompensationsContainer`, () => {
   const firstCompensationId = 57
   const secondCompensationId = 66
 
-  const firstMockCompensations: AllCompensationsType = {
+  const firstMockCompensations = {
     items: [
       {
-        employeeId: 101,
-        employeeFullName: `Ivan Ivanov`,
-        compensationRequestedForYearAndMonth: `${year}-${month}`,
-        totalAmount: 7200,
-        unpaidAmount: 7200,
         compensations: [
           {
-            quantity: 2,
-            amount: 100,
-            comment: `milk`,
-            compensationType: `Products`,
-            compensationRequestedAtUtc: now.toISOString(),
+            comment: `first compensaion`,
             id: firstCompensationId,
           },
           {
-            quantity: 1,
-            amount: 7000,
-            comment: `meat`,
-            compensationType: `Products`,
-            compensationRequestedAtUtc: now.toISOString(),
+            comment: `second compensaion`,
             id: secondCompensationId,
           },
         ],
-        isPaid: false,
       },
     ],
-    totalAmount: 7200,
-    totalUnpaidAmount: 7200,
-  }
+  } as AllCompensationsType
 
-  const secondMockCompensations: AllCompensationsType = {
+  const secondMockCompensations = {
     items: [
       {
-        employeeId: 101,
-        employeeFullName: `Ivan Ivanov`,
-        compensationRequestedForYearAndMonth: `${year}-${month}`,
-        totalAmount: 7000,
-        unpaidAmount: 7000,
         compensations: [
           {
-            quantity: 1,
-            amount: 7000,
-            comment: `meat`,
-            compensationType: `Products`,
-            compensationRequestedAtUtc: now.toISOString(),
+            comment: `second compensaion`,
             id: secondCompensationId,
           },
         ],
-        isPaid: false,
       },
     ],
-    totalAmount: 7000,
-    totalUnpaidAmount: 7000,
-  }
+  } as AllCompensationsType
 
   it(`
   GIVEN all compensations page 
@@ -75,7 +48,7 @@ describe(`AllCompensationsContainer`, () => {
   AND call GET compensations endpoint
   `, () => {
 
-    // get all compensations with first mock
+    // mocked compensations for initial loading
     cy
       .intercept(
         `GET`,
@@ -84,7 +57,7 @@ describe(`AllCompensationsContainer`, () => {
           body: firstMockCompensations,
         })
 
-    // soft delete compensation by id
+    // mocked delete of the first compensation
     cy
       .intercept(
         `DELETE`,
@@ -95,7 +68,7 @@ describe(`AllCompensationsContainer`, () => {
 
     mountComponent()
 
-    // get all compensations with second mock
+    // mocked compensations for their reload after delete
     cy
       .intercept(
         `GET`,
@@ -104,15 +77,16 @@ describe(`AllCompensationsContainer`, () => {
           body: secondMockCompensations,
         })
 
-    // trigger MouseOver on tooltip
+    // show compensations table after we hover over total amount
     cy
       .getByData(`all-compensations-table-tooltip`)
       .trigger(`mouseover`)
 
-    // check that compensations length is 2
+    // check that there are 2 compensations
     cy
       .getByData(`tooltip-table-item`)
       .should(`have.length`, 2)
+      .should(`include.text`, `first compensaion`)
 
     // click remove compensation button
     // Note: to click on a hidden element you need to use force: true
@@ -124,10 +98,12 @@ describe(`AllCompensationsContainer`, () => {
         force: true,
       })
 
-    // check that compensations length is 1
+    // check that there is only one compensation left
     cy
       .getByData(`tooltip-table-item`)
       .should(`have.length`, 1)
+      .should(`not.include.text`, `first compensaion`)
+
   })
 })
 
