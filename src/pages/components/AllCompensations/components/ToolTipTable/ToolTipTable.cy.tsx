@@ -22,10 +22,7 @@ describe(`ToolTipTable`, () => {
   WHEN user hovers over the amount 
   THEN render tooltip table
   `, () => {
-    mountComponent({
-      compensations: initialData.compensations,
-      onDelete: () => { },
-    })
+    mountComponent({})
 
     cy
       .getByData(`tooltip-table`)
@@ -37,10 +34,7 @@ describe(`ToolTipTable`, () => {
   WHEN user hovers over the amount 
   THEN render valid data for all elements
   `, () => {
-    mountComponent({
-      compensations: initialData.compensations,
-      onDelete: () => { },
-    })
+    mountComponent({})
 
     cy
       .getByData(`tooltip-table-column-type`)
@@ -65,10 +59,10 @@ describe(`ToolTipTable`, () => {
   })
 
   it(`
-    GIVEN all compensations page 
-    WHEN user removes a compensation
-    THEN should call onDelete callback with its id
-    `, () => {
+  GIVEN all compensations page 
+  WHEN user removes a compensation
+  THEN should call onDelete callback with its id
+  `, () => {
     mountComponent({
       compensations: [
         {
@@ -88,7 +82,7 @@ describe(`ToolTipTable`, () => {
           id: 66,
         },
       ],
-      onDelete: cy
+      onDeleteClick: cy
         .spy()
         .as(`onDeleteSpy`),
     })
@@ -100,16 +94,22 @@ describe(`ToolTipTable`, () => {
 
     cy
       .get(`@onDeleteSpy`)
-      .should(`have.been.calledWith`, 66)
+      .should(`have.been.calledWith`, {
+        compensationId: 66,
+      })
   })
 })
 
 function mountComponent({
-  compensations,
-  onDelete,
+  compensations = initialData.compensations,
+  onDeleteClick = () => { },
 }: {
-  compensations: EmployeeAllCompensationsItemType[],
-  onDelete: (compensationId: number) => unknown,
+  compensations?: EmployeeAllCompensationsItemType[],
+  onDeleteClick?: ({
+    compensationId,
+  }: {
+    compensationId: number,
+  }) => unknown,
 }) {
   const allCompensationsState = new AllCompensationsState()
 
@@ -117,7 +117,7 @@ function mountComponent({
     <AllCompensationsStateContext.Provider value={allCompensationsState}>
       <ToolTipTable
         compensations={compensations}
-        onDelete={onDelete}
+        onDeleteClick={onDeleteClick}
       />
     </AllCompensationsStateContext.Provider>,
   )

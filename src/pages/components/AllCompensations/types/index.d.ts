@@ -23,3 +23,9 @@ type AllCompensationsType = {
   totalAmount: number,
   totalUnpaidAmount: number,
 };
+
+type OnDeleteClick = ({
+  compensationId,
+}: {
+  compensationId: number,
+}) => unknown;
