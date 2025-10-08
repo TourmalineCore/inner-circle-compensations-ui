@@ -61,7 +61,7 @@ describe(`AllCompensationsTable`, () => {
     })
 
     cy
-      .getByData(`all-compensations-table-item`)
+      .getByData(`all-compensations-table-row-item`)
       .should(`exist`)
   })
 
@@ -144,11 +144,11 @@ describe(`AllCompensationsTable`, () => {
     })
 
     cy
-      .getByData(`all-compensations-table-tooltip`)
+      .getByData(`all-compensations-table-row-tooltip`)
       .trigger(`mouseover`)
 
     cy
-      .getByData(`all-compensations-table-tooltip-item`)
+      .getByData(`all-compensations-table-row-tooltip-item`)
       .should(`exist`)
   })
 
