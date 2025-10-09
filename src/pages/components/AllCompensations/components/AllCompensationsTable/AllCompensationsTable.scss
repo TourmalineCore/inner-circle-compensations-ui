@@ -16,35 +16,12 @@
     height: calc(100vh - 345px);
   }
 
-  &__head {
-    display: flex;
-    align-items: center;
-    border-bottom: 0.5px solid var(--comp-color-light-gray);
-    padding-right: 16px;
-    color: var(--color-black);
-  }
-
-  &__total {
-    display: flex;
-    align-items: center;
-    border-top: 1px solid var(--comp-color-light-gray);
-    width: 100%;
-  }
-
   &__no-data {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 24px;
     color: #aaa;
-  }
-
-  &__column-total {
-    padding: 16px;
-    width: 80%;
-    font-weight: 500;
-    text-align: start;
-    color: var(--color-black);
   }
 }
 

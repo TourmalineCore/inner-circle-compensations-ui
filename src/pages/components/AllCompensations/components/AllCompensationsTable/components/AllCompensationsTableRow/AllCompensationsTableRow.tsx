@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import { observer } from 'mobx-react-lite'
-import { MarkAsPaidButton } from '../../AllCompensationsActions/components/MarkAsPaidButton/MarkAsPaidButton'
-import { formatMoney } from '../../../../../../common/utils/formatMoney'
-import { ToolTipTable } from '../../ToolTipTable/ToolTipTable'
+import { MarkAsPaidButton } from '../../../AllCompensationsActions/components/MarkAsPaidButton/MarkAsPaidButton'
+import { formatMoney } from '../../../../../../../common/utils/formatMoney'
+import { ToolTipTable } from '../../../ToolTipTable/ToolTipTable'
 
 interface AllCompensationsTableRowProps extends AllCompensationsItemType {
   onDeleteClick: OnDeleteClick,

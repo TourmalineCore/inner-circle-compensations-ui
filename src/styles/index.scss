@@ -12,7 +12,9 @@
 @use "../pages/components/Compensations/components/CompensationsFilter/CompensationsFilter";
 @use "../pages/components/Compensations/Compensations";
 @use "../pages/components/AllCompensations/components/AllCompensationsTable/AllCompensationsTable";
-@use "../pages/components/AllCompensations/components/AllCompensationsTable/components/AllCompensationsTableRow";
+@use "../pages/components/AllCompensations/components/AllCompensationsTable/components/AllCompensationsTableRow/AllCompensationsTableRow";
+@use "../pages/components/AllCompensations/components/AllCompensationsTable/components/AllCompensationsTableHeader/AllCompensationsTableHeader";
+@use "../pages/components/AllCompensations/components/AllCompensationsTable/components/AllCompensationsTableFooter/AllCompensationsTableFooter";
 @use "../pages/components/AllCompensations/components/AllCompensationsActions/AllCompensationsActions";
 @use "../pages/components/AllCompensations/components/AllCompensationsActions/components/AllCompensationsFilter/AllCompensationsFilter";
 @use "../pages/components/AllCompensations/components/AllCompensationsActions/components/DateAllCompensations/DatePickerAllCompensations";

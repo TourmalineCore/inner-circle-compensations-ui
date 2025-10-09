@@ -1,10 +1,11 @@
 import { useContext, useState } from 'react'
 import { observer } from 'mobx-react-lite'
-import { formatMoney } from '../../../../../common/utils/formatMoney'
 import { AllCompensationsStateContext } from '../../state/AllCompensationsStateContext'
 import { convertAmountsToNominals } from '../../convertAmountsToNominals'
-import { AllCompensationsTableRow } from './components/AllCompensationsTableRow'
+import { AllCompensationsTableRow } from './components/AllCompensationsTableRow/AllCompensationsTableRow'
 import { useTooltipLogic } from './utils/useTooltipLogic'
+import { AllCompensationsTableHeader } from './components/AllCompensationsTableHeader/AllCompensationsTableHeader'
+import { AllCompensationsTableFooter } from './components/AllCompensationsTableFooter/AllCompensationsTableFooter'
 
 export const AllCompensationsTable = observer(({
   className = ``,
@@ -45,18 +46,7 @@ export const AllCompensationsTable = observer(({
         data-cy="all-compensations-table"
         className={`all-compensations-table ${className}`}
       >
-        <thead>
-          <tr
-            className="all-compensations-table__head"
-            data-cy="all-compensations-table-head"
-          >
-            <th className="column-employee">Name</th>
-            <th className="column-status">Status</th>
-            <th className="column-action" />
-            <th className="column-unpaid">Unpaid</th>
-            <th className="column-amount">Amount</th>
-          </tr>
-        </thead>
+        <AllCompensationsTableHeader />
 
         <tbody>
           {
@@ -101,33 +91,11 @@ export const AllCompensationsTable = observer(({
               )}
         </tbody>
 
-        <tfoot>
-          <tr
-            className="all-compensations-table__total"
-            data-cy="all-compensations-table-total"
-          >
-            <td
-              className="all-compensations-table__column-total"
-              colSpan={3}
-            >
-              Total compensations per month
-            </td>
-            <th
-              className="column-unpaid__sum"
-              data-cy="all-compensations-table-unpaid-sum"
-              onMouseEnter={() => setShowNominalsForUnpaidAmount(true)}
-              onMouseLeave={() => setShowNominalsForUnpaidAmount(false)}
-            >
-              {formatMoney(allCompensationsState.totalUnpaidCount)}
-            </th>
-            <td
-              className="column-amount__sum"
-              data-cy="all-compensations-table-sum"
-            >
-              {formatMoney(allCompensationsState.totalCount)}
-            </td>
-          </tr>
-        </tfoot>
+        <AllCompensationsTableFooter
+          totalUnpaidCount={allCompensationsState.totalUnpaidCount}
+          totalCount={allCompensationsState.totalCount}
+          setShowNominalsForUnpaidAmount={setShowNominalsForUnpaidAmount}
+        />
       </table>
       {
         showNominalsForUnpaidAmount && (

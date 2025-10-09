@@ -1,0 +1,14 @@
+.all-compensations-table-footer {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid var(--comp-color-light-gray);
+    width: 100%;
+
+  &__column-total {
+    padding: 16px;
+    width: 80%;
+    font-weight: 500;
+    text-align: start;
+    color: var(--color-black);
+  }
+}
