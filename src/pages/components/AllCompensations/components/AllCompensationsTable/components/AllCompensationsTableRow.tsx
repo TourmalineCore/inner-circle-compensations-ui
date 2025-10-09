@@ -37,20 +37,20 @@ export const AllCompensationsTableRow = observer(({
       })}
     >
       <td
-        data-cy="all-compensations-table-column-employee"
-        className="all-compensations-table__column-employee"
+        data-cy="column-employee"
+        className="column-employee"
       >
         {employeeFullName}
       </td>
 
       <td
-        data-cy="all-compensations-table-column-status"
-        className={clsx(`all-compensations-table__column-status`, {
-          'all-compensations-table__column-status--content--unpaid': !isPaid,
-          'all-compensations-table__column-status--content--paid': isPaid,
+        data-cy="column-status"
+        className={clsx(`column-status`, {
+          'column-status__content--unpaid': !isPaid,
+          'column-status__content--paid': isPaid,
         })}
       >
-        <span className="all-compensations-table__column-status--content">
+        <span className="column-status__content">
           {
             isPaid
               ? `PAID`
@@ -60,22 +60,22 @@ export const AllCompensationsTableRow = observer(({
       </td>
 
       <td
-        data-cy="all-compensations-table-column-action"
-        className={clsx(`all-compensations-table__column-action`, {
-          'all-compensations-table__column-action--unpaid': !isPaid,
-          'all-compensations-table__column-action--paid': isPaid,
+        data-cy="column-action"
+        className={clsx(`column-action`, {
+          'column-action--unpaid': !isPaid,
+          'column-action--paid': isPaid,
         })}
       >
         <MarkAsPaidButton compensations={compensations} />
       </td>
 
-      <td className="all-compensations-table__column-unpaid">
-        <span data-cy="all-compensations-table-column-unpaid">
+      <td className="column-unpaid">
+        <span data-cy="column-unpaid">
           {formatMoney(unpaidAmount)}
         </span>
       </td>
 
-      <td className="all-compensations-table__column-amount">
+      <td className="column-amount">
         <span
           className="all-compensations-table-row__tooltip"
           data-cy="all-compensations-table-row-tooltip"
@@ -83,7 +83,7 @@ export const AllCompensationsTableRow = observer(({
           onMouseLeave={() => onTooltipHide(employeeId)}
           ref={(el) => (rowRefs.current[employeeId] = el as HTMLTableRowElement | null)}
         >
-          <span data-cy="all-compensations-table-column-amount">
+          <span data-cy="column-amount">
             {formatMoney(totalAmount)}
           </span>
           <div

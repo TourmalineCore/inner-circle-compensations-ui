@@ -114,23 +114,23 @@ describe(`AllCompensationsTable`, () => {
     })
 
     cy
-      .getByData(`all-compensations-table-column-employee`)
+      .getByData(`column-employee`)
       .should(`have.text`, `Ceo Ceo Ceo`)
 
     cy
-      .getByData(`all-compensations-table-column-status`)
+      .getByData(`column-status`)
       .should(`have.text`, `UNPAID`)
 
     cy
-      .getByData(`all-compensations-table-column-action`)
+      .getByData(`column-action`)
       .should(`exist`)
 
     cy
-      .getByData(`all-compensations-table-column-unpaid`)
+      .getByData(`column-unpaid`)
       .should(`have.text`, formatMoney(1520))
 
     cy
-      .getByData(`all-compensations-table-column-amount`)
+      .getByData(`column-amount`)
       .should(`have.text`, formatMoney(4280.45))
   })
 

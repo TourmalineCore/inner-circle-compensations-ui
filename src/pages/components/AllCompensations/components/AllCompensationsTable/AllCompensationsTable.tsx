@@ -50,11 +50,11 @@ export const AllCompensationsTable = observer(({
             className="all-compensations-table__head"
             data-cy="all-compensations-table-head"
           >
-            <th className="all-compensations-table__column-employee">Name</th>
-            <th className="all-compensations-table__column-status">Status</th>
-            <th className="all-compensations-table__column-action" />
-            <th className="all-compensations-table__column-unpaid">Unpaid</th>
-            <th className="all-compensations-table__column-amount">Amount</th>
+            <th className="column-employee">Name</th>
+            <th className="column-status">Status</th>
+            <th className="column-action" />
+            <th className="column-unpaid">Unpaid</th>
+            <th className="column-amount">Amount</th>
           </tr>
         </thead>
 
@@ -113,7 +113,7 @@ export const AllCompensationsTable = observer(({
               Total compensations per month
             </td>
             <th
-              className="all-compensations-table__column-unpaid__sum"
+              className="column-unpaid__sum"
               data-cy="all-compensations-table-unpaid-sum"
               onMouseEnter={() => setShowNominalsForUnpaidAmount(true)}
               onMouseLeave={() => setShowNominalsForUnpaidAmount(false)}
@@ -121,7 +121,7 @@ export const AllCompensationsTable = observer(({
               {formatMoney(allCompensationsState.totalUnpaidCount)}
             </th>
             <td
-              className="all-compensations-table__column-amount__sum"
+              className="column-amount__sum"
               data-cy="all-compensations-table-sum"
             >
               {formatMoney(allCompensationsState.totalCount)}
