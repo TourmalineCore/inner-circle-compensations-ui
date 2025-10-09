@@ -4,7 +4,7 @@ import { MarkAsPaidButton } from '../../../AllCompensationsActions/components/Ma
 import { formatMoney } from '../../../../../../../common/utils/formatMoney'
 import { ToolTipTable } from '../../../ToolTipTable/ToolTipTable'
 
-interface AllCompensationsTableRowProps extends AllCompensationsItemType {
+interface AllCompensationsTableItemProps extends AllCompensationsItemType {
   onDeleteClick: OnDeleteClick,
   onTooltipShow: (row: HTMLTableRowElement, index: number) => unknown,
   onTooltipHide: (index: number) => unknown,
@@ -13,7 +13,7 @@ interface AllCompensationsTableRowProps extends AllCompensationsItemType {
   tooltipRefs: React.MutableRefObject<(HTMLDivElement | null)[]>,
 }
 
-export const AllCompensationsTableRow = observer(({
+export const AllCompensationsTableItem = observer(({
   employeeId,
   employeeFullName,
   totalAmount,
@@ -27,13 +27,13 @@ export const AllCompensationsTableRow = observer(({
   showTooltip,
   rowRefs,
   tooltipRefs,
-}: AllCompensationsTableRowProps) => {
+}: AllCompensationsTableItemProps) => {
   return (
     <tr
-      data-cy="all-compensations-table-row-item"
+      data-cy="all-compensations-table-item"
       key={employeeId}
-      className={clsx(`all-compensations-table-row__item`, {
-        'all-compensations-table-row__item--selected': isSelected,
+      className={clsx(`all-compensations-table-item`, {
+        'all-compensations-table-item--selected': isSelected,
       })}
     >
       <td
@@ -77,8 +77,8 @@ export const AllCompensationsTableRow = observer(({
 
       <td className="column-amount">
         <span
-          className="all-compensations-table-row__tooltip"
-          data-cy="all-compensations-table-row-tooltip"
+          className="all-compensations-table-item__tooltip"
+          data-cy="all-compensations-table-item-tooltip"
           onMouseEnter={(e) => onTooltipShow(e.currentTarget as HTMLTableRowElement, employeeId)}
           onMouseLeave={() => onTooltipHide(employeeId)}
           ref={(el) => (rowRefs.current[employeeId] = el as HTMLTableRowElement | null)}
@@ -87,8 +87,8 @@ export const AllCompensationsTableRow = observer(({
             {formatMoney(totalAmount)}
           </span>
           <div
-            className="all-compensations-table-row__tooltip__item"
-            data-cy="all-compensations-table-row-tooltip-item"
+            className="all-compensations-table-item__tooltip__item"
+            data-cy="all-compensations-table-item-tooltip-item"
             ref={(el) => (tooltipRefs.current[employeeId] = el as HTMLDivElement | null)}
           >
             {

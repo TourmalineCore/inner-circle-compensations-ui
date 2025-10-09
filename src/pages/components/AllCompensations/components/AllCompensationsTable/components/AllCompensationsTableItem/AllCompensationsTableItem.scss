@@ -1,12 +1,10 @@
-.all-compensations-table-row {
-  &__item {
-    display: flex;
-    align-items: center;
-    border-bottom: 0.5px solid var(--comp-color-light-gray);
+.all-compensations-table-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 0.5px solid var(--comp-color-light-gray);
 
-    &--selected {
-      background: var(--comp-color-light-gray);
-    }
+  &--selected {
+    background: var(--comp-color-light-gray);
   }
 
   &__tooltip {

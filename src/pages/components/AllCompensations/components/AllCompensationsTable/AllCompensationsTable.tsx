@@ -2,7 +2,7 @@ import { useContext, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import { AllCompensationsStateContext } from '../../state/AllCompensationsStateContext'
 import { convertAmountsToNominals } from '../../convertAmountsToNominals'
-import { AllCompensationsTableRow } from './components/AllCompensationsTableRow/AllCompensationsTableRow'
+import { AllCompensationsTableItem } from './components/AllCompensationsTableItem/AllCompensationsTableItem'
 import { useTooltipLogic } from './utils/useTooltipLogic'
 import { AllCompensationsTableHeader } from './components/AllCompensationsTableHeader/AllCompensationsTableHeader'
 import { AllCompensationsTableFooter } from './components/AllCompensationsTableFooter/AllCompensationsTableFooter'
@@ -16,6 +16,8 @@ export const AllCompensationsTable = observer(({
 }) => {
   const allCompensationsState = useContext(AllCompensationsStateContext)
 
+  const items = allCompensationsState.allCompensations.items
+
   const {
     showTooltip,
     rowRefs,
@@ -24,7 +26,7 @@ export const AllCompensationsTable = observer(({
     handleTooltipHide,
   } = useTooltipLogic({
     dependencies: [
-      allCompensationsState.allCompensations.items,
+      items,
     ],
   })
 
@@ -34,10 +36,7 @@ export const AllCompensationsTable = observer(({
   ] = useState(false)
 
   const totalUnpaidAmountNominals = convertAmountsToNominals({
-    amounts: allCompensationsState
-      .allCompensations
-      .items
-      .map((item) => item.unpaidAmount),
+    amounts: items.map((item) => item.unpaidAmount),
   })
 
   return (
@@ -50,28 +49,22 @@ export const AllCompensationsTable = observer(({
 
         <tbody>
           {
-            allCompensationsState
-              .allCompensations
-              .items
-              .length !== 0
+            items.length !== 0
               ? (
                 <div className="all-compensations-table__items-list">
                   {
-                    allCompensationsState
-                      .allCompensations
-                      .items
-                      .map((item) => (
-                        <AllCompensationsTableRow
-                          key={item.employeeId}
-                          {...item}
-                          onDeleteClick={onDeleteClick}
-                          onTooltipShow={handleTooltipShow}
-                          onTooltipHide={handleTooltipHide}
-                          showTooltip={showTooltip}
-                          rowRefs={rowRefs}
-                          tooltipRefs={tooltipRefs}
-                        />
-                      ))}
+                    items.map((item) => (
+                      <AllCompensationsTableItem
+                        key={item.employeeId}
+                        {...item}
+                        onDeleteClick={onDeleteClick}
+                        onTooltipShow={handleTooltipShow}
+                        onTooltipHide={handleTooltipHide}
+                        showTooltip={showTooltip}
+                        rowRefs={rowRefs}
+                        tooltipRefs={tooltipRefs}
+                      />
+                    ))}
                 </div>
               )
               :
@@ -97,11 +90,10 @@ export const AllCompensationsTable = observer(({
           setShowNominalsForUnpaidAmount={setShowNominalsForUnpaidAmount}
         />
       </table>
+
       {
         showNominalsForUnpaidAmount && (
-          <div
-            data-cy="all-compensations-table-unpaid-sum-nominals"
-          >
+          <div data-cy="all-compensations-table-unpaid-sum-nominals">
             {
               totalUnpaidAmountNominals
                 .nominals
