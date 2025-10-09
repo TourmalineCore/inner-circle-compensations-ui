@@ -38,19 +38,19 @@ export const AllCompensationsTableItem = observer(({
     >
       <td
         data-cy="column-employee"
-        className="column-employee"
+        className="column column--employee"
       >
         {employeeFullName}
       </td>
 
       <td
         data-cy="column-status"
-        className={clsx(`column-status`, {
-          'column-status__content--unpaid': !isPaid,
-          'column-status__content--paid': isPaid,
+        className={clsx(`column column--status`, {
+          'column--unpaid-status': !isPaid,
+          'column--paid-status': isPaid,
         })}
       >
-        <span className="column-status__content">
+        <span className="column--status__content">
           {
             isPaid
               ? `PAID`
@@ -61,21 +61,20 @@ export const AllCompensationsTableItem = observer(({
 
       <td
         data-cy="column-action"
-        className={clsx(`column-action`, {
-          'column-action--unpaid': !isPaid,
-          'column-action--paid': isPaid,
-        })}
+        className="column column--action"
       >
-        <MarkAsPaidButton compensations={compensations} />
+        {
+          !isPaid && <MarkAsPaidButton compensations={compensations} />
+        }
       </td>
 
-      <td className="column-unpaid">
+      <td className="column column--unpaid">
         <span data-cy="column-unpaid">
           {formatMoney(unpaidAmount)}
         </span>
       </td>
 
-      <td className="column-amount">
+      <td className="column column--amount">
         <span
           className="all-compensations-table-item__tooltip"
           data-cy="all-compensations-table-item-tooltip"
@@ -87,7 +86,7 @@ export const AllCompensationsTableItem = observer(({
             {formatMoney(totalAmount)}
           </span>
           <div
-            className="all-compensations-table-item__tooltip__item"
+            className="all-compensations-table-item__tooltip-item"
             data-cy="all-compensations-table-item-tooltip-item"
             ref={(el) => (tooltipRefs.current[employeeId] = el as HTMLDivElement | null)}
           >

@@ -14,13 +14,13 @@ export const AllCompensationsTableFooter = observer(({
     <tfoot>
       <tr className="all-compensations-table-footer">
         <td
-          className="all-compensations-table-footer__column-total"
+          className="all-compensations-table-footer__total"
           colSpan={3}
         >
           Total compensations per month
         </td>
         <th
-          className="column-unpaid__sum"
+          className="column column--unpaid__sum"
           data-cy="all-compensations-table-unpaid-sum"
           onMouseEnter={() => setShowNominalsForUnpaidAmount(true)}
           onMouseLeave={() => setShowNominalsForUnpaidAmount(false)}
@@ -28,7 +28,7 @@ export const AllCompensationsTableFooter = observer(({
           {formatMoney(totalUnpaidCount)}
         </th>
         <td
-          className="column-amount__sum"
+          className="column column--amount__sum"
           data-cy="all-compensations-table-sum"
         >
           {formatMoney(totalCount)}
