@@ -1,0 +1,29 @@
+.all-compensations-table-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 0.5px solid var(--comp-color-light-gray);
+
+  &--selected {
+    background: var(--comp-color-light-gray);
+  }
+
+  &__tooltip {
+    padding: 16px;
+  }
+
+  &__tooltip-item {
+    position: absolute;
+    display: none;
+    border-radius: 2px;
+    padding: 8px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 14px rgb(0 0 0 / 15%);
+    background-color: var(--color-white);
+    transform: translate(-87%, -75%); // move an element
+  }
+
+  &__tooltip:hover > &__tooltip-item {
+    display: block;
+  }
+}

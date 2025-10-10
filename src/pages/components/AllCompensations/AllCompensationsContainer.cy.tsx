@@ -79,7 +79,7 @@ describe(`AllCompensationsContainer`, () => {
 
     // show compensations table after we hover over total amount
     cy
-      .getByData(`all-compensations-table-tooltip`)
+      .getByData(`all-compensations-table-item-tooltip`)
       .trigger(`mouseover`)
 
     // check that there are 2 compensations

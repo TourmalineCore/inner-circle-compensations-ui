@@ -77,7 +77,7 @@ describe(`AllCompensationsContent`, () => {
     })
 
     cy
-      .getByData(`all-compensations-table-column-amount`)
+      .getByData(`column-amount`)
       .should(`have.length`, 1)
 
     cy
@@ -94,7 +94,7 @@ describe(`AllCompensationsContent`, () => {
       .click()
 
     cy
-      .getByData(`all-compensations-table-column-amount`)
+      .getByData(`column-amount`)
       .should(`have.length`, 2)
 
     cy
