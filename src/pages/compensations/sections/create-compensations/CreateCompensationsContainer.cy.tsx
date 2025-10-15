@@ -1,5 +1,7 @@
 import { API_ROOT, LINK_TO_COMPENSATIONS_SERVICE } from '../../../../common/config/config'
-import { CreateCompensations } from './CreateCompensations'
+import { CreateCompensationsContainer } from './CreateCompensationsContainer'
+import { CreateCompensationsState } from './state/CreateCompensationsState'
+import { CreateCompensationsStateContext } from './state/CreateCompensationsStateContext'
 import { INITIAL_TYPES } from './types/InitialTypes'
 
 describe(`CreateCompensations`, () => {
@@ -293,7 +295,11 @@ describe(`CreateCompensations`, () => {
 })
 
 function mountComponent() {
+  const compensationsCreateState = new CreateCompensationsState()
+
   cy.mount(
-    <CreateCompensations />,
+    <CreateCompensationsStateContext.Provider value={compensationsCreateState}>
+      <CreateCompensationsContainer />
+    </CreateCompensationsStateContext.Provider>,
   )
 }

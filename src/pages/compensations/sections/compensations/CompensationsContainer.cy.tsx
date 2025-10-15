@@ -1,5 +1,5 @@
 import { formatMoney } from '../../../../common/utils/formatMoney'
-import { Compensations } from './Compensations'
+import { CompensationsContainer } from './CompensationsContainer'
 import { CompensationsState } from './state/CompensationsState'
 import { CompensationsStateContext } from './state/CompensationsStateContext'
 
@@ -129,7 +129,7 @@ function mountComponent({
 
   cy.mount(
     <CompensationsStateContext.Provider value={compensationsState}>
-      <Compensations />
+      <CompensationsContainer />
     </CompensationsStateContext.Provider>,
   )
 }
