@@ -1,4 +1,4 @@
-import { compensationAllRoutes, compensationPersonalRoutes } from '../pages/routes'
+import { compensationAllRoutes, compensationRoutes } from '../pages/routes'
 import { BreadcrumbComponentProps } from 'use-react-router-breadcrumbs'
 
 export function getPageRoutes(accessPermissions: Map<any, boolean>) {
@@ -9,7 +9,7 @@ export function getPageRoutes(accessPermissions: Map<any, boolean>) {
   }[] = []
 
   if (accessPermissions.get(`CanRequestCompensations`)) {
-    routes.push(...compensationPersonalRoutes)
+    routes.push(...compensationRoutes)
   }
 
   if (accessPermissions.get(`CanManageCompensations`)) {

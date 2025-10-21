@@ -1,19 +1,14 @@
-import { AllCompensationsPage } from "./AllCompensationsPage"
-import { CompensationsPersonalPage } from "./CompensationsPersonalPage"
+import { AllCompensationsPage } from "./all-compensations/AllCompensationsPage"
+import { CompensationsPage } from "./compensations/CompensationsPage"
 
 const DEFAULT_PATH = `/compensations`
 
-export const compensationPersonalRoutes = [
+export const compensationRoutes = [
   {
     path: `${DEFAULT_PATH}/my`,
     breadcrumb: `My Compensations`,
-    Component: CompensationsPersonalPage,
+    Component: CompensationsPage,
   },
-  // {
-  //   path: `${DEFAULT_PATH}/`,
-  //   breadcrumb: `Compensations`,
-  //   Component: CompensationsPage,
-  // },
 ]
 
 export const compensationAllRoutes = [
@@ -22,9 +17,4 @@ export const compensationAllRoutes = [
     breadcrumb: `All Compensations`,
     Component: AllCompensationsPage,
   },
-  // {
-  //   path: `${DEFAULT_PATH}/`,
-  //   breadcrumb: `Compensations`,
-  //   Component: CompensationsPage,
-  // },
 ]

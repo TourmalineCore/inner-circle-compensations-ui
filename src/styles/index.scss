@@ -8,24 +8,25 @@
 @use "../components/ThemeColorPicker/ThemeColorPicker";
 
 // Pages
-@use "../pages/components/Compensations/components/CompensationsTable/CompensationsTable";
-@use "../pages/components/Compensations/components/CompensationsFilter/CompensationsFilter";
-@use "../pages/components/Compensations/Compensations";
-@use "../pages/components/AllCompensations/components/AllCompensationsTable/AllCompensationsTable";
-@use "../pages/components/AllCompensations/components/AllCompensationsTable/components/AllCompensationsTableItem/AllCompensationsTableItem";
-@use "../pages/components/AllCompensations/components/AllCompensationsTable/components/AllCompensationsTableHeader/AllCompensationsTableHeader";
-@use "../pages/components/AllCompensations/components/AllCompensationsTable/components/AllCompensationsTableFooter/AllCompensationsTableFooter";
-@use "../pages/components/AllCompensations/components/AllCompensationsActions/AllCompensationsActions";
-@use "../pages/components/AllCompensations/components/AllCompensationsActions/components/AllCompensationsFilter/AllCompensationsFilter";
-@use "../pages/components/AllCompensations/components/AllCompensationsActions/components/DateAllCompensations/DatePickerAllCompensations";
-@use "../pages/components/AllCompensations/components/AllCompensationsActions/components/MarkAsPaidButton/MarkAsPaidButton";
-@use "../pages/components/AllCompensations/AllCompensations";
-@use "../pages/components/CreateCompensations/components/DateCompensations/DatePickerCompensations";
-@use "../pages/components/CreateCompensations/components/TableCreateCompensations/TableCreateCompensations";
-@use "../pages/components/CreateCompensations/CreateCompensations.scss";
-@use "../pages/components/AllCompensations/components/ToolTipTable/ToolTipTable";
-@use "../pages/components/CreateCompensations/components/CompensationsTypesTips/CompensationsTypesTips";
-@use "../pages/CompensationsPersonalPage";
+@use "../pages/all-compensations/components/AllCompensationsTable/AllCompensationsTable";
+@use "../pages/all-compensations/components/AllCompensationsTable/components/AllCompensationsTableItem/AllCompensationsTableItem";
+@use "../pages/all-compensations/components/AllCompensationsTable/components/AllCompensationsTableHeader/AllCompensationsTableHeader";
+@use "../pages/all-compensations/components/AllCompensationsTable/components/AllCompensationsTableFooter/AllCompensationsTableFooter";
+@use "../pages/all-compensations/components/AllCompensationsActions/AllCompensationsActions";
+@use "../pages/all-compensations/components/AllCompensationsActions/components/AllCompensationsFilter/AllCompensationsFilter";
+@use "../pages/all-compensations/components/AllCompensationsActions/components/DateAllCompensations/DatePickerAllCompensations";
+@use "../pages/all-compensations/components/AllCompensationsActions/components/MarkAsPaidButton/MarkAsPaidButton";
+@use "../pages/all-compensations/AllCompensations";
+@use "../pages/all-compensations/components/ToolTipTable/ToolTipTable";
+
+@use "../pages/compensations/CompensationsPage.scss";
+@use "../pages/compensations/sections/create-compensations/CreateCompensations.scss"; 
+@use "../pages/compensations/sections/create-compensations/components/CompensationsTypesTips/CompensationsTypesTips.scss";
+@use "../pages/compensations/sections/create-compensations/components/DateCompensations/DatePickerCompensations.scss";
+@use "../pages/compensations/sections/create-compensations/components/TableCreateCompensations/TableCreateCompensations.scss";
+@use "../pages/compensations/sections/compensations/components/CompensationsTable/CompensationsTable.scss";
+@use "../pages/compensations/sections/compensations/components/CompensationsFilter/CompensationsFilter.scss";
+@use "../pages/compensations/sections/compensations/Compensations.scss";
 
 // Theme
 @use "../theme/themeVariables";
