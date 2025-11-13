@@ -25,7 +25,7 @@ export default defineConfig({
       name: "inner_circle_compensations_ui",
       filename: "inner_circle_compensations_ui.js",
       remotes: {
-        inner_circle_layout_ui: `${process.env.VITE_BASE_URL}/layout/assets/inner_circle_layout_ui.js`,
+        inner_circle_layout_ui: `/layout/assets/inner_circle_layout_ui.js`,
       },
       shared: [
         "react",
