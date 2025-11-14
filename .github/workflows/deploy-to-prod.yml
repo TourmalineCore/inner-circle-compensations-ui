@@ -38,11 +38,9 @@ jobs:
             --state-values-set image.tag=sha-${{ github.sha }} 
             --state-values-set ingress.hostname=${{ secrets.DEV_HOST }}
             --state-values-set extraConfigMapEnvVars.LINK_TO_SALARY_SERVICE='/employees/'
-            --state-values-set extraConfigMapEnvVars.LINK_TO_ACCOUNT_SERVICE='account-management'
             --state-values-set extraConfigMapEnvVars.LINK_TO_COMPENSATIONS_SERVICE='compensations/'
             --state-values-set extraConfigMapEnvVars.API_ROOT='/api'
             --state-values-set extraConfigMapEnvVars.API_ROOT_AUTH='/api/auth'
-            --state-values-set extraConfigMapEnvVars.VITE_BASE_URL=${{ secrets.BASE_URL }}
           helmfile-auto-init: "false"
 
   e2e-test-prod:
@@ -68,7 +66,6 @@ jobs:
           API_ROOT: '/api'
           API_ROOT_AUTH: '/api/auth'
           LINK_TO_COMPENSATIONS_SERVICE: '/compensations/'
-          VITE_BASE_URL: ${{ secrets.BASE_URL }}
           USER_LOGIN: ${{ secrets.DEV_USER_LOGIN }}
           USER_PASSWORD: ${{ secrets.DEV_USER_PASSWORD }}
     
