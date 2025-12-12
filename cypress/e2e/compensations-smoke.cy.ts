@@ -2,17 +2,20 @@ import { AllCompensationsPage } from './pages/AllCompensationsPage'
 import { PersonalCompensationsPage } from './pages/PersonalCompensationsPage'
 
 const E2E_SMOKE_COMMENT_PREFIX = `[E2E-SMOKE]`
-const now = new Date()
-const year = now.getFullYear()
-const month = now.getMonth() + 1
+const YEAR = 2025
+const MONTH = 9
 
 describe(`Compensations Smoke`, () => {
-  beforeEach(`Authorize and cleanup`, () => {
+  beforeEach(`Set Date and Authorize and Cleanup`, () => {
+    // set cypress default date
+    cy.clock(new Date(YEAR, MONTH - 1, 27), [
+      `Date`,
+    ])
     cy.authByApi()
     cy.removeCompensations()
   })
 
-  afterEach(`Authorize and cleanup`, () => {
+  afterEach(`Cleanup`, () => {
     cy.removeCompensations()
   })
 
@@ -66,7 +69,7 @@ describe(`Compensations Smoke`, () => {
     cy
       .intercept(
         `GET`,
-        `api/compensations/admin/all?year=${year}&month=${month}`)
+        `api/compensations/admin/all?year=${YEAR}&month=${MONTH}`)
       .as(`getCompensationsRequest`)
 
     // visit all compensations page
