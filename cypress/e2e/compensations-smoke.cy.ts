@@ -66,6 +66,12 @@ describe(`Compensations Smoke`, () => {
     // find our new compensation
     AllCompensationsPage.findCompensation(newCompensationComment)
 
+    cy
+      .intercept(
+        `PUT`,
+        `/api/compensations/mark-as-paid`)
+      .as(`getMarkAsPaidRequest`)
+
     // make our new compensation as paid
     cy
       .get(`.all-compensations-table__items-list`)
@@ -78,6 +84,8 @@ describe(`Compensations Smoke`, () => {
           .should(`be.visible`)
           .click()
       })
+
+    cy.wait(`@getMarkAsPaidRequest`)
 
     // visit personal page
     PersonalCompensationsPage.visit()
