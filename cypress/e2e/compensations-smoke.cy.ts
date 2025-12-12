@@ -2,14 +2,20 @@ import { AllCompensationsPage } from './pages/AllCompensationsPage'
 import { PersonalCompensationsPage } from './pages/PersonalCompensationsPage'
 
 const E2E_SMOKE_COMMENT_PREFIX = `[E2E-SMOKE]`
+const YEAR = 2025
+const MONTH = 9
 
 describe(`Compensations Smoke`, () => {
-  beforeEach(`Authorize and cleanup`, () => {
+  beforeEach(`Set Date and Authorize and Cleanup`, () => {
+    // set cypress default date
+    cy.clock(new Date(YEAR, MONTH - 1, 27), [
+      `Date`,
+    ])
     cy.authByApi()
     cy.removeCompensations()
   })
 
-  afterEach(`Authorize and cleanup`, () => {
+  afterEach(`Cleanup`, () => {
     cy.removeCompensations()
   })
 
@@ -60,11 +66,25 @@ describe(`Compensations Smoke`, () => {
     // check that the table contains new compensation with "unpaid" status
     PersonalCompensationsPage.checkStatus(newCompensationComment, `unpaid`)
 
+    cy
+      .intercept(
+        `GET`,
+        `api/compensations/admin/all?year=${YEAR}&month=${MONTH}`)
+      .as(`getCompensationsRequest`)
+
     // visit all compensations page
     AllCompensationsPage.visit()
 
     // find our new compensation
     AllCompensationsPage.findCompensation(newCompensationComment)
+
+    cy
+      .intercept(
+        `PUT`,
+        `/api/compensations/mark-as-paid`)
+      .as(`getMarkAsPaidRequest`)
+
+    cy.wait(`@getCompensationsRequest`)
 
     // make our new compensation as paid
     cy
@@ -78,6 +98,8 @@ describe(`Compensations Smoke`, () => {
           .should(`be.visible`)
           .click()
       })
+
+    cy.wait(`@getMarkAsPaidRequest`)
 
     // visit personal page
     PersonalCompensationsPage.visit()
