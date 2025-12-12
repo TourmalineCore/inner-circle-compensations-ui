@@ -2,6 +2,9 @@ import { AllCompensationsPage } from './pages/AllCompensationsPage'
 import { PersonalCompensationsPage } from './pages/PersonalCompensationsPage'
 
 const E2E_SMOKE_COMMENT_PREFIX = `[E2E-SMOKE]`
+const now = new Date()
+const year = now.getFullYear()
+const month = now.getMonth() + 1
 
 describe(`Compensations Smoke`, () => {
   beforeEach(`Authorize and cleanup`, () => {
@@ -60,6 +63,12 @@ describe(`Compensations Smoke`, () => {
     // check that the table contains new compensation with "unpaid" status
     PersonalCompensationsPage.checkStatus(newCompensationComment, `unpaid`)
 
+    cy
+      .intercept(
+        `GET`,
+        `api/compensations/admin/all?year=${year}&month=${month}`)
+      .as(`getCompensationsRequest`)
+
     // visit all compensations page
     AllCompensationsPage.visit()
 
@@ -71,6 +80,8 @@ describe(`Compensations Smoke`, () => {
         `PUT`,
         `/api/compensations/mark-as-paid`)
       .as(`getMarkAsPaidRequest`)
+
+    cy.wait(`@getCompensationsRequest`)
 
     // make our new compensation as paid
     cy
