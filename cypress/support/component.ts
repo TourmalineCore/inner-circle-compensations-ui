@@ -1,5 +1,10 @@
 import './commands'
 
+// @ts-ignore
+window.__ENV__ = {
+  API_ROOT_URL: `/api/compensations`,
+}
+
 /// <reference types="cypress" />
 
 // styles
