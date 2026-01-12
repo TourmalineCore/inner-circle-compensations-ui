@@ -1,6 +1,4 @@
 export const {
-  API_ROOT,
-  API_ROOT_AUTH,
-  LINK_TO_EMPLOYEES_SERVICE,
-  LINK_TO_COMPENSATIONS_SERVICE,
+  API_ROOT_URL,
+  AUTH_API_ROOT_URL,
 } = (window.__ENV__ || import.meta.env)
