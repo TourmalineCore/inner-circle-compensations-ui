@@ -1,3 +1,4 @@
+import { API_ROOT_URL } from '../../common/config/config'
 import { AllCompensationsContainer } from './AllCompensationsContainer'
 import { AllCompensationsState, getSelectedDate } from './state/AllCompensationsState'
 import { AllCompensationsStateContext } from './state/AllCompensationsStateContext'
@@ -52,7 +53,7 @@ describe(`AllCompensationsContainer`, () => {
     cy
       .intercept(
         `GET`,
-        `*/admin/all?year=${year}&month=${month}`,
+        `${API_ROOT_URL}/admin/all?year=${year}&month=${month}`,
         {
           body: firstMockCompensations,
         })
@@ -61,7 +62,7 @@ describe(`AllCompensationsContainer`, () => {
     cy
       .intercept(
         `DELETE`,
-        `*/${firstCompensationId}/soft-delete`,
+        `${API_ROOT_URL}/${firstCompensationId}/soft-delete`,
         {
           statusCode: 204,
         })
@@ -72,7 +73,7 @@ describe(`AllCompensationsContainer`, () => {
     cy
       .intercept(
         `GET`,
-        `*/admin/all?year=${year}&month=${month}`,
+        `${API_ROOT_URL}/admin/all?year=${year}&month=${month}`,
         {
           body: secondMockCompensations,
         })
