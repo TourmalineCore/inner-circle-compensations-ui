@@ -8,7 +8,7 @@ export default defineConfig({
     specPattern: `cypress/e2e/**/*.cy.ts`,
     baseUrl: process.env.CYPRESS_BASE_URL,
     env: {
-      API_ROOT_URL: process.env.API_ROOT,
+      API_ROOT_URL: process.env.API_ROOT_URL,
       AUTH_API_ROOT_URL: process.env.AUTH_API_ROOT_URL,
       USER_LOGIN: process.env.USER_LOGIN,
       USER_PASSWORD: process.env.USER_PASSWORD,
