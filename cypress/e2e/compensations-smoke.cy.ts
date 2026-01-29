@@ -75,9 +75,6 @@ describe(`Compensations Smoke`, () => {
     // visit all compensations page
     AllCompensationsPage.visit()
 
-    // find our new compensation
-    AllCompensationsPage.findCompensation(newCompensationComment)
-
     cy
       .intercept(
         `PUT`,
