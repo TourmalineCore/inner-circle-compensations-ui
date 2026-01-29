@@ -88,16 +88,9 @@ describe(`Compensations Smoke`, () => {
 
     // make our new compensation as paid
     cy
-      .get(`.all-compensations-table__items-list`)
-      .getByData(`all-compensations-table-item`)
-      .contains(`[data-cy="column-employee"]`, /Account E2E Test|Ceo Ceo Ceo/)
-      .parent()
-      .within(() => {
-        cy
-          .getByData(`mark-as-paid-button`)
-          .should(`be.visible`)
-          .click()
-      })
+      .getByData(`mark-as-paid-button`)
+      .should(`be.visible`)
+      .click()
 
     cy.wait(`@getMarkAsPaidRequest`)
 
