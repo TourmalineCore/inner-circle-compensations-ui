@@ -2,8 +2,7 @@ import './commands'
 
 // @ts-ignore
 window.__ENV__ = {
-  API_ROOT: `/api`,
-  LINK_TO_COMPENSATIONS_SERVICE: `/`,
+  API_ROOT_URL: `/api/compensations`,
 }
 
 /// <reference types="cypress" />

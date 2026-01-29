@@ -2,7 +2,6 @@ import { useContext, useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 import { toast } from 'react-toastify'
 import { api } from '../../../../common/api'
-import { LINK_TO_COMPENSATIONS_SERVICE } from '../../../../common/config/config'
 import { CompensationsStateContext } from '../compensations/state/CompensationsStateContext'
 import { CreateCompensationsStateContext } from './state/CreateCompensationsStateContext'
 import { CreateCompensationsContent } from './CreateCompensationsContent'
@@ -39,7 +38,7 @@ export const CreateCompensationsContainer = observer(() => {
     try {
       const {
         data,
-      } = await api.get(`${LINK_TO_COMPENSATIONS_SERVICE}types`)
+      } = await api.get(`/types`)
 
       createCompensationState.initializeTypes({
         loadedTypes: data,
@@ -55,7 +54,7 @@ export const CreateCompensationsContainer = observer(() => {
 
     try {
       await api.post(
-        `${LINK_TO_COMPENSATIONS_SERVICE}create`,
+        `/create`,
         {
           compensations: createCompensationState.allCompensations,
           compensationRequestedForYearAndMonth: createCompensationState.compensationRequestedForYearAndMonth,
@@ -67,7 +66,7 @@ export const CreateCompensationsContainer = observer(() => {
 
       const {
         data,
-      } = await api.get(`${LINK_TO_COMPENSATIONS_SERVICE}all`)
+      } = await api.get(`/all`)
 
       compensationsState.initialize({
         loadedCompensations: data,

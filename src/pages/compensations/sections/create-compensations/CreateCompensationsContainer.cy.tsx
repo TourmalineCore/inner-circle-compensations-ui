@@ -1,4 +1,4 @@
-import { API_ROOT, LINK_TO_COMPENSATIONS_SERVICE } from '../../../../common/config/config'
+import { API_ROOT_URL } from '../../../../common/config/config'
 import { CreateCompensationsContainer } from './CreateCompensationsContainer'
 import { CreateCompensationsState } from './state/CreateCompensationsState'
 import { CreateCompensationsStateContext } from './state/CreateCompensationsStateContext'
@@ -13,7 +13,7 @@ describe(`CreateCompensations`, () => {
     cy
       .intercept(
         `GET`,
-        `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+        `${API_ROOT_URL}/types`,
         INITIAL_TYPES,
       )
 
@@ -32,7 +32,7 @@ describe(`CreateCompensations`, () => {
     cy
       .intercept(
         `GET`,
-        `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+        `${API_ROOT_URL}/types`,
         INITIAL_TYPES,
       )
 
@@ -71,7 +71,7 @@ describe(`CreateCompensations`, () => {
     cy
       .intercept(
         `GET`,
-        `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+        `${API_ROOT_URL}/types`,
         INITIAL_TYPES,
       )
       .as(`call-1`)
@@ -81,7 +81,7 @@ describe(`CreateCompensations`, () => {
     cy
       .intercept(
         `POST`,
-        `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}create`,
+        `${API_ROOT_URL}/create`,
         {
           statusCode: 400,
         },
@@ -111,7 +111,7 @@ describe(`CreateCompensations`, () => {
     cy
       .intercept(
         `POST`,
-        `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}create`,
+        `${API_ROOT_URL}/create`,
         {
           compensations: [
             {
@@ -170,7 +170,7 @@ describe(`CreateCompensations`, () => {
     cy
       .intercept(
         `GET`,
-        `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+        `${API_ROOT_URL}/types`,
         INITIAL_TYPES,
       )
       .as(`call-9`)
@@ -206,7 +206,7 @@ describe(`CreateCompensations`, () => {
     cy
       .intercept(
         `GET`,
-        `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+        `${API_ROOT_URL}/types`,
         INITIAL_TYPES,
       )
       .as(`call-10`)
@@ -265,7 +265,7 @@ describe(`CreateCompensations`, () => {
     cy
       .intercept(
         `GET`,
-        `${API_ROOT}${LINK_TO_COMPENSATIONS_SERVICE}types`,
+        `${API_ROOT_URL}/types`,
         INITIAL_TYPES,
       )
       .as(`call-11`)
