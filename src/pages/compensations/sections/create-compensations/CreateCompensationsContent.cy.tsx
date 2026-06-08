@@ -1,4 +1,3 @@
-import { CreateCompensationsContainer } from './CreateCompensationsContainer'
 import { CreateCompensationsContent } from './CreateCompensationsContent'
 import { CreateCompensationsState } from './state/CreateCompensationsState'
 import { CreateCompensationsStateContext } from './state/CreateCompensationsStateContext'
