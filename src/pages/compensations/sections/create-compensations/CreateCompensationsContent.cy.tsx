@@ -1,4 +1,5 @@
 import { CreateCompensationsContainer } from './CreateCompensationsContainer'
+import { CreateCompensationsContent } from './CreateCompensationsContent'
 import { CreateCompensationsState } from './state/CreateCompensationsState'
 import { CreateCompensationsStateContext } from './state/CreateCompensationsStateContext'
 
@@ -62,7 +63,7 @@ function mountComponent({
 
   cy.mount(
     <CreateCompensationsStateContext.Provider value={createCompensationsState}>
-      <CreateCompensationsContainer />
+      <CreateCompensationsContent onSubmit={() => { }} />
     </CreateCompensationsStateContext.Provider>,
   )
 }
