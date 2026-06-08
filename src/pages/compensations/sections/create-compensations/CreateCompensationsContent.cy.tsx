@@ -4,7 +4,6 @@ import { CreateCompensationsStateContext } from './state/CreateCompensationsStat
 
 describe(`CreateCompensationsContent`, () => {
   describe(`Disable Submit Button`, disableSubmitButtonTests)
-
 })
 
 function disableSubmitButtonTests() {
