@@ -1,5 +1,37 @@
 .create-compensations-content {
   width: 100%;
+
+  &__button {
+    display: block;
+    margin-top: 16px;
+    margin-left: auto;
+    border: 1px solid var(--comp-color-gray);
+    border-radius: 10px;
+    width: 160px;
+    height: 44px;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 18px;
+    line-height: 1.4;
+    background-color: var(--color-white);
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      opacity: 0.5;
+    }
+  }
+
+  &__button-loader {
+    display: inline-block;
+    margin-right: 12px;
+    border-top: 1.5px solid var(--comp-color-dark-gray);
+    border-right: 1.5px solid transparent;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: rotation 1s linear infinite;
+  }
 }
 
 .create-compensations-container {
@@ -19,26 +51,6 @@
     line-height: 1.4;
   }
 
-  &__button {
-    display: block;
-    margin-top: 16px;
-    margin-left: auto;
-    border: 1px solid var(--comp-color-gray);
-    border-radius: 10px;
-    padding: 10px 72px;
-    font-family: inherit;
-    font-weight: inherit;
-    font-size: 18px;
-    line-height: 1.4;
-    background-color: var(--color-white);
-    cursor: pointer;
-
-    &:hover,
-    &:active {
-      opacity: 0.5;
-    }
-  }
-
   &__error-message {
     margin-top: 16px;
     min-height: 21px;
@@ -47,3 +59,14 @@
     color: #da2228;
   }
 }
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

@@ -17,20 +17,12 @@ export const CreateCompensationsContainer = observer(() => {
   return (
     <div className="create-compensations-container">
       <h2 className="create-compensations-container__header">New compensation</h2>
-      <CreateCompensationsContent />
+      <CreateCompensationsContent onSubmit={createCompensation} />
       <div className="create-compensations-container__error-message"
         data-cy="create-compensations-container-error-message">
         {createCompensationState.isFilled && createCompensationState.isTriedToSubmit && (`Please fill required field`)}
         {!createCompensationState.isFilled && createCompensationState.isNegative && createCompensationState.isTriedToSubmit && (`Amount can not be negative`)}
       </div>
-      <button
-        className="create-compensations-container__button"
-        data-cy="create-compensations-container-submit"
-        type="button"
-        onClick={() => createCompensation()}
-      >
-        Send
-      </button>
     </div>
   )
 
@@ -50,6 +42,7 @@ export const CreateCompensationsContainer = observer(() => {
   }
 
   async function createCompensation() {
+    createCompensationState.setIsSaving()
     createCompensationState.setIsTriedToSubmit(true)
 
     try {
@@ -74,6 +67,9 @@ export const CreateCompensationsContainer = observer(() => {
     }
     catch {
       toast.error(createCompensationState.isFilled)
+    }
+    finally {
+      createCompensationState.resetIsSaving()
     }
   }
 })

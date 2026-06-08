@@ -28,6 +28,8 @@ export class CreateCompensationsState {
 
   private _isTriedToSubmit = false
 
+  private _isSaving = false
+
   constructor() {
     makeAutoObservable(this)
   }
@@ -64,6 +66,10 @@ export class CreateCompensationsState {
 
   get isTriedToSubmit() {
     return this._isTriedToSubmit
+  }
+
+  get isSaving() {
+    return this._isSaving
   }
 
   initializeTypes({
@@ -131,5 +137,13 @@ export class CreateCompensationsState {
     compensationItem!.comment = comment
     compensationItem!.amount = amount
     compensationItem!.quantity = quantity
+  }
+
+  setIsSaving() {
+    this._isSaving = true
+  }
+
+  resetIsSaving() {
+    this._isSaving = false
   }
 }

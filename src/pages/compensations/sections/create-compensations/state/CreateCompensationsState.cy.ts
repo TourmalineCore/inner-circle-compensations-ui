@@ -2,6 +2,8 @@ import { INITIAL_TYPES } from '../types/InitialTypes'
 import { CreateCompensationsState } from './CreateCompensationsState'
 
 describe(`CreateCompensationsState`, () => {
+  describe(`Is Saving`, isSavingTests)
+
   it(`
   GIVEN compensations page 
   WHEN initialized
@@ -333,6 +335,40 @@ describe(`CreateCompensationsState`, () => {
       .eq(false)
   })
 })
+
+function isSavingTests() {
+  let createCompensationsState: CreateCompensationsState
+
+  beforeEach(() => {
+    createCompensationsState = new CreateCompensationsState()
+  })
+
+  it(`
+  GIVEN initial isSaving = false
+  WHEN setIsSaving and resetIsSaving are triggered
+  SHOULD toggle isSaving to true and then back to false
+  `, () => {
+    expect(createCompensationsState.isSaving)
+      .to
+      .be
+      .false
+
+    createCompensationsState.setIsSaving()
+
+    expect(createCompensationsState.isSaving)
+      .to
+      .be
+      .true
+
+    createCompensationsState.resetIsSaving()
+
+    expect(createCompensationsState.isSaving)
+      .to
+      .be
+      .false
+  })
+
+}
 
 function getCompensation({
   id = 1,
