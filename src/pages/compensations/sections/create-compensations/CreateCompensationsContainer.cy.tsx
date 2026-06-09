@@ -51,7 +51,7 @@ describe(`CreateCompensations`, () => {
     mountComponent()
 
     cy
-      .getByData(`create-compensations-container-submit`)
+      .getByData(`create-compensations-content-submit`)
       .click()
 
     cy
@@ -89,7 +89,7 @@ describe(`CreateCompensations`, () => {
       .as(`call-2`)
 
     cy
-      .getByData(`create-compensations-container-submit`)
+      .getByData(`create-compensations-content-submit`)
       .click()
 
     cy
@@ -126,7 +126,7 @@ describe(`CreateCompensations`, () => {
       .as(`call-3`)
 
     cy
-      .getByData(`create-compensations-container-submit`)
+      .getByData(`create-compensations-content-submit`)
       .click()
 
     cy
@@ -154,7 +154,7 @@ describe(`CreateCompensations`, () => {
       .type(`0`)
 
     cy
-      .getByData(`create-compensations-container-submit`)
+      .getByData(`create-compensations-content-submit`)
       .click()
 
     cy
@@ -189,7 +189,7 @@ describe(`CreateCompensations`, () => {
       .type(`200`)
 
     cy
-      .getByData(`create-compensations-container-submit`)
+      .getByData(`create-compensations-content-submit`)
       .click()
 
     cy
@@ -225,7 +225,7 @@ describe(`CreateCompensations`, () => {
       .type(`-2`)
 
     cy
-      .getByData(`create-compensations-container-submit`)
+      .getByData(`create-compensations-content-submit`)
       .click()
 
     cy
@@ -249,7 +249,7 @@ describe(`CreateCompensations`, () => {
       .type(`-2`)
 
     cy
-      .getByData(`create-compensations-container-submit`)
+      .getByData(`create-compensations-content-submit`)
       .click()
 
     cy
@@ -284,7 +284,7 @@ describe(`CreateCompensations`, () => {
       .type(`2`)
 
     cy
-      .getByData(`create-compensations-container-submit`)
+      .getByData(`create-compensations-content-submit`)
       .click()
 
     cy

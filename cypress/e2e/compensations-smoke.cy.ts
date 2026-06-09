@@ -60,7 +60,7 @@ describe(`Compensations Smoke`, () => {
       .should(`have.text`, `1 600 ₽`) // TODO use formatMoney util
 
     cy
-      .getByData(`create-compensations-container-submit`)
+      .getByData(`create-compensations-content-submit`)
       .click()
 
     // check that the table contains new compensation with "unpaid" status
